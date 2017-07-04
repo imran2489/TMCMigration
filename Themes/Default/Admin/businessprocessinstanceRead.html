@@ -1,0 +1,39 @@
+﻿<div class="page-header">
+    <h2>{{trigger.name}}</h2>
+</div>
+
+
+<h2>{{'conditions'|translate}}</h2>
+
+<table class="table table-striped">
+
+    <thead>
+        <tr>
+            <th>{{'key'|translate}}</th>
+            <th>{{'value'|translate}}</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="condition in trigger.workflowConditions">
+            <td>{{condition.key}}</td>
+            <td>{{condition.value}}</td>
+        </tr>
+    </tbody>
+</table>
+
+<h2>{{'tasks'|translate}}</h2>
+
+<table class="table table-striped">
+
+    <thead>
+        <tr>
+            <th>{{'taskname'|translate}}</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="task in trigger.workflowTasks">
+            <td>{{task.taskName}}</td>
+
+        </tr>
+    </tbody>
+</table>

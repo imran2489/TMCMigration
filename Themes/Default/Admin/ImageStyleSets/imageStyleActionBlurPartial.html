@@ -1,0 +1,20 @@
+﻿<altai-toolbar-menu menu-model="$ctrl.toolbar" languages="$ctrl.languages"></altai-toolbar-menu>
+<form class="altai-form" name="contentTypeAttributeUpdate">
+    <div class="altai-admin-section">
+        <h2>{{'imagestyleaction'|translate}} {{'blur'|translate}}</h2>
+        <div class="altai-simple-form">
+            <div class="form-group">
+                <label>{{'order'|translate}}</label>
+                <input type="text" ng-model="$ctrl.imageStyleAction.order" />
+            </div>
+            <div class="form-group">
+                <label>{{'blurradius'|translate}}</label>
+                <input type="text" ng-model="$ctrl.imageStyleAction.blurRadius" />
+            </div>
+            <div class="form-group">
+                <label>{{'sigma'|translate}}</label>
+                <input type="text" ng-model="$ctrl.imageStyleAction.sigma" />
+            </div>
+        </div>
+    </div>
+</form>

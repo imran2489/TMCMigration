@@ -1,0 +1,243 @@
+﻿<div print-section class="root theme--square altai-theme-content actu dossier event container-content" data-reveal-selectors="section:not(.masonry):not(:first-of-type):not(.parallax)">
+    <section class="comeos-cover cover-large comeos-bg-commissievergadering">
+        <div class="altai-panel">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-10 col-sm-offset-1 text-center">
+                        <div class="title">{{vm.item.title}}</div>
+                        <div class="subtitle">{{vm.item.date | localDate}} <span ng-if="vm.item.locatiecommissievergadering.stad">- {{vm.item.locatiecommissievergadering.stad}}</span></div>
+                        <div class="contact-buttons">
+                            <div class="contact-buttons">
+                                <comeos-content-item-like-component class="like" ng-if="vm.item != undefined" content-item="vm.item"></comeos-content-item-like-component>
+                                <!--<div class="mail" altai-social-share item="vm.item"><i class="mdi mdi-share-variant"></i></div>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="main-container container">
+
+        <section class="blog-post">
+            <div class="pagecontentstart">
+
+                <div class="row text-center" ng-if="vm.item.commissiecommissievergadering.themecommissie.length || vm.item.commissiecommissievergadering.sectorcommissie.length || vm.item.commissiecommissievergadering.regioncommissie.length ||vm.item.commissiecommissievergadering.pccommissie.length">
+
+                    <div class="col-sm-10 col-sm-offset-1 ">
+
+                        <div class="dossier-tags">
+                            <span class="dossier-tags-chip" getlink content-item-id="{{tag.isroot !== false ? tag.id : tag[tag.contentType + '_' + tag.contentType].id}}" content-type-id="{{::tag.contentTypeId}}" theme="{{::tag.id}}" ng-repeat="tag in vm.item.commissiecommissievergadering.themecommissie">
+                                {{tag.title}}
+                            </span>
+                            <span class="dossier-tags-chip" getlink content-item-id="{{tag.isroot !== false ? tag.id : tag[tag.contentType + '_' + tag.contentType].id}}" content-type-id="{{::tag.contentTypeId}}" ng-repeat="tag in vm.item.commissiecommissievergadering.sectorcommissie">
+                                {{tag.title}}
+                            </span>
+                            <span class="dossier-tags-chip" getlink content-item-id="{{tag.isroot !== false ? tag.id : tag[tag.contentType + '_' + tag.contentType].id}}" content-type-id="{{::tag.contentTypeId}}" ng-repeat="tag in vm.item.commissiecommissievergadering.regioncommissie.length">
+                                {{tag.title}}
+                            </span>
+                            <span class="dossier-tags-chip" getlink content-item-id="{{tag.isroot !== false ? tag.id : tag[tag.contentType + '_' + tag.contentType].id}}" content-type-id="{{::tag.contentTypeId}}" ng-repeat="tag in vm.item.commissiecommissievergadering.pccommissie">
+                                {{tag.title}}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row dossier-section" altai-hide-past="vm.item.date" hide-past-offset-days="1">
+                        <div class="col-md-12">
+                            <div class="comeos-button-row" ng-if="vm.item.registrationmeetingcommissievergadering" altai-hide-past="vm.item.date" hide-past-offset-days="1">
+                                <a href="/meetingreg/{{vm.item.id}}/{{vm.item.registrationmeetingcommissievergadering.id}}/9454?submit=true" class="comeos-button no-animate">
+                                    <i ng-if="vm.item.registrationmeetingcommissievergadering.registrationstateregistrationmeeting.id == '9454'" class="mdi mdi-check"></i><translate>bevestigaanwezig</translate>
+                                </a>
+                                <a href="/meetingreg/{{vm.item.id}}/{{vm.item.registrationmeetingcommissievergadering.id}}/9455?submit=true" class="comeos-button no-animate">
+                                    <i ng-if="vm.item.registrationmeetingcommissievergadering.registrationstateregistrationmeeting.id == '9455'" class="mdi mdi-check"></i> <translate>bevestigafwezig</translate>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row dossier-section">
+                        <div class="col-md-6 left-col">
+                            <section ng-if="vm.item.invitationintro">
+                                <div altai-compile-html="{{vm.item.invitationintro}}"></div>
+                            </section>
+
+                            <section ng-if="(vm.item.filecommissievergadering2.length || vm.item.filecommissievergadering3.length)">
+                                <h2 translate>verslag</h2>
+                                <div ng-if="$ctrl.activeLang.code=='fr'" class="dossier-section" ng-show="vm.item.filecommissievergadering2.length > 0">
+                                    <div class="attached-file" ng-repeat="doc in vm.item.filecommissievergadering2">
+                                        <a ng-href="{{::$root.staticFileBase}}/{{doc.file}}" target="_blank"><fileicon doctype="doc.fileextension"></fileicon> <span>{{doc.label}}</span></a>
+                                    </div>
+                                </div>
+                                <div ng-if="$ctrl.activeLang.code=='nl'" class="dossier-section" ng-show="vm.item.filecommissievergadering3.length > 0">
+                                    <div class="attached-file" ng-repeat="doc in vm.item.filecommissievergadering3">
+                                        <a ng-href="{{::$root.staticFileBase}}/{{doc.file}}" target="_blank"><fileicon doctype="doc.fileextension"></fileicon> <span>{{doc.label}}</span></a>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <section ng-if="vm.item.agendaitemcommissievergadering.length>0">
+                                <h2 translate>agenda</h2>
+                                <div class="agendaitemlist">
+                                    <div class="agendaitem" ng-repeat="agendaitem in vm.item.agendaitemcommissievergadering track by $index">
+                                        <h5>{{$index+1}}. {{agendaitem.title}}</h5>
+                                        <div altai-compile-html="{{agendaitem.content}}"></div>
+
+                                        <div ng-if="agendaitem.fileagendaitem.length > 0 || agendaitem.fileagendaitem1.length > 0">
+                                            <div ng-if="$ctrl.activeLang.code=='fr'" class="dossier-section" ng-show="agendaitem.fileagendaitem.length > 0">
+                                                <div class="attached-file" ng-repeat="doc in agendaitem.fileagendaitem">
+                                                    <a ng-href="{{::$root.staticFileBase}}/{{doc.file}}" target="_blank"><fileicon doctype="doc.fileextension"></fileicon> <span>{{doc.label}}</span></a>
+                                                </div>
+                                            </div>
+                                            <div ng-if="$ctrl.activeLang.code=='nl'" class="dossier-section" ng-show="agendaitem.fileagendaitem1.length > 0">
+                                                <div class="attached-file" ng-repeat="doc in agendaitem.fileagendaitem1">
+                                                    <a ng-href="{{::$root.staticFileBase}}/{{doc.file}}" target="_blank"><fileicon doctype="doc.fileextension"></fileicon> <span>{{doc.label}}</span></a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="event-details-links">
+                                            <div ng-show="agendaitem.linkagendaitem.length > 0">
+
+                                                <div class="attached-link" ng-repeat="link in agendaitem.linkagendaitem">
+                                                    <a ng-if="link.linktarget!=undefined" ng-href="{{link.linkurl}}" target="{{link.linktarget}}"><span class="attached-link-icon"><i class="mdi mdi-link"></i></span><span>{{link.linktekst}}</span></a>
+                                                    <a ng-if="link.linktarget==undefined" ng-href="{{link.linkurl}}" target="_blank"><span class="attached-link-icon"><i class="mdi mdi-link"></i></span><span>{{link.linktekst}}</span></a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="agendasubitemlist">
+                                            <div class="agendasubitem" ng-repeat="agendasubitem in agendaitem.agendasubitemagendaitem track by $index">
+                                                <h5>{{$parent.$index+1}}.{{$index+1}}. {{agendasubitem.title}}</h5>
+                                                <div altai-compile-html="{{agendasubitem.content}}"></div>
+
+                                                <div ng-if="agendasubitem.fileagendasubitem.length > 0 || agendasubitem.fileagendasubitem1.length > 0">
+                                                    <div ng-if="$ctrl.activeLang.code=='fr'" class="dossier-section" ng-show="agendasubitem.fileagendasubitem.length > 0">
+
+                                                        <div class="attached-file" ng-repeat="doc in agendasubitem.fileagendasubitem">
+                                                            <a ng-href="{{::$root.staticFileBase}}/{{doc.file}}" target="_blank"><fileicon doctype="doc.fileextension"></fileicon> <span>{{doc.label}}</span></a>
+                                                        </div>
+                                                    </div>
+                                                    <div ng-if="$ctrl.activeLang.code=='nl'" class="dossier-section" ng-show="agendasubitem.fileagendasubitem1.length > 0">
+
+                                                        <div class="attached-file" ng-repeat="doc in agendasubitem.fileagendasubitem1">
+                                                            <a ng-href="{{::$root.staticFileBase}}/{{doc.file}}" target="_blank"><fileicon doctype="doc.fileextension"></fileicon> <span>{{doc.label}}</span></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="event-details-links">
+                                                    <div ng-show="agendasubitem.linkagendasubitem.length > 0">
+
+                                                        <div class="attached-link" ng-repeat="link in agendasubitem.linkagendasubitem">
+                                                            <a ng-if="link.linktarget!=undefined" ng-href="{{link.linkurl}}" target="{{link.linktarget}}"><span class="attached-link-icon"><i class="mdi mdi-link"></i></span><span>{{link.linktekst}}</span></a>
+                                                            <a ng-if="link.linktarget==undefined" ng-href="{{link.linkurl}}" target="_blank"><span class="attached-link-icon"><i class="mdi mdi-link"></i></span><span>{{link.linktekst}}</span></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </section>
+
+                            <section ng-if="vm.item.filecommissievergadering.length > 0 || vm.item.filecommissievergadering1.length > 0">
+                                <div ng-if="$ctrl.activeLang.code=='fr'" class="dossier-section" ng-show="vm.item.filecommissievergadering.length > 0">
+
+                                    <div class="attached-file" ng-repeat="doc in vm.item.filecommissievergadering">
+                                        <a ng-href="{{::$root.staticFileBase}}/{{doc.file}}" target="_blank"><fileicon doctype="doc.fileextension"></fileicon> <span>{{doc.label}}</span></a>
+                                    </div>
+                                </div>
+                                <div ng-if="$ctrl.activeLang.code=='nl'" class="dossier-section" ng-show="vm.item.filecommissievergadering1.length > 0">
+
+                                    <div class="attached-file" ng-repeat="doc in vm.item.filecommissievergadering1">
+                                        <a ng-href="{{::$root.staticFileBase}}/{{doc.file}}" target="_blank"><fileicon doctype="doc.fileextension"></fileicon> <span>{{doc.label}}</span></a>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <section class="event-details-links">
+                                <div ng-show="vm.item.linkcommissievergadering.length > 0">
+
+                                    <div class="attached-link" ng-repeat="link in vm.item.linkcommissievergadering">
+                                        <a ng-if="link.linktarget!=undefined" ng-href="{{link.linkurl}}" target="{{link.linktarget}}"><span class="attached-link-icon"><i class="mdi mdi-link"></i></span><span>{{link.linktekst}}</span></a>
+                                        <a ng-if="link.linktarget==undefined" ng-href="{{link.linkurl}}" target="_blank"><span class="attached-link-icon"><i class="mdi mdi-link"></i></span><span>{{link.linktekst}}</span></a>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <section ng-if="vm.item.invitationoutro">
+                                <div altai-compile-html="{{vm.item.invitationoutro}}"></div>
+                            </section>
+                        </div>
+
+                        <div class="col-md-5 col-md-offset-1 col-xs-12">
+                            <div class="right-col">
+
+                                <section class="event-details-tijdstip">
+                                    <div class="dossier-contact-section">
+                                        <div class="profile-picture profile-picture-circle"><img ng-src="{{::$root.staticFileBase}}/{{vm.item.commissiecommissievergadering.persooncommissie.persoon_file.file}}" /></div>
+                                        <div><span class="h6">{{vm.item.commissiecommissievergadering.persooncommissie.voornaam}} {{vm.item.commissiecommissievergadering.persooncommissie.achternaam}}</span></div>
+
+                                    </div>
+                                </section>
+
+
+                                <section class="event-details-tijdstip" ng-if="vm.item.date">
+                                    <h5 translate>tijdstip</h5>
+                                    <div><i class="fa fa-calendar"></i>&nbsp;{{vm.item.date | localDate}} <span ng-if="vm.item.tijdvan">({{vm.item.tijdvan | date:'HH:mm'}}<span ng-if="vm.item.tijdtot"> - {{vm.item.tijdtot | date:'HH:mm'}}</span>)</span></div>
+                                </section>
+
+
+                                <section class="event-details-lunch" ng-if="vm.item.lunchoptioncommissievergadering">
+                                    <h5 translate>lunch</h5>
+                                    <div>{{vm.item.lunchoptioncommissievergadering.title}}</div>
+                                </section>
+
+
+                                <section class="event-details-location" ng-if="vm.item.locatiecommissievergadering">
+                                    <h5 translate>locatie</h5>
+
+                                    <div class="naam"><a ng-href="vm.item.linklocatie.linkurl">{{vm.item.locatiecommissievergadering.title}}</a> <span class="zaal" ng-if="vm.item.zaalcommissievergadering">- <span translate>zaal</span> {{vm.item.zaalcommissievergadering.title}}</span></div>
+
+
+
+                                    <div class="contactdetails">
+                                        <p><span altai-compile-html="{{vm.item.locatiecommissievergadering.contact}}"></span></p>
+                                    </div>
+                                    <div class="gmap"><span altai-compile-html="{{vm.item.locatiecommissievergadering.googlemapsembedlink}}"></span></div>
+
+                                    <div ng-if="vm.item.locatiecommissievergadering.routebeschijving" class="comeos-button-row">
+                                        <div class="comeos-button no-animate" data-toggle="modal" data-target="#locationmodal"><span translate>directions</span></div>
+                                    </div>
+
+                                    <div ng-if="vm.item.locatiecommissievergadering.routebeschijving" id="locationmodal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h4 class="modal-title" id="myModalLabel">{{'directions'|translate}}</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div altai-compile-html="{{vm.item.locatiecommissievergadering.routebeschijving}}"></div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </div>
+</div>
+

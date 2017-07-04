@@ -1,0 +1,225 @@
+﻿<div print-section class="root theme--square altai-theme-content actu dossier event container-content">
+    <div altai-set-title titletext="{{vm.item.title}}"></div>
+    <section altai-image-style-set-background imagestyleset="pageheader" image="vm.item.filenetworkingevent3.file" class="comeos-cover cover-large comeos-bg-actumessage" ng-class="{'highcover':vm.item.filenetworkingevent3.file}">
+        <div ng-if="vm.item.filenetworkingevent3.file" class="altai-overlay"></div>
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-1 text-center">
+                <div class="title">{{vm.item.title}}</div>
+                <div class="subtitle">{{vm.item.date | localDate}} <span ng-if="vm.item.locatienetworkingevent.stad"> {{vm.item.locatienetworkingevent.stad}}</span></div>
+                <div class="contact-buttons">
+                
+
+
+                    <div class="contact-buttons">
+                        <comeos-content-item-like-header-component class="like" ng-if="vm.item != undefined" content-item="vm.item"></comeos-content-item-like-header-component>
+                        <socialshareheader ng-if="vm.item != undefined" item="vm.item"></socialshareheader>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <div class="main-container container">
+
+        <section class="blog-post">
+            <div class="pagecontentstart">
+                <!--<div class="row text-center">
+                    <div class="col-sm-10 col-sm-offset-1 ">
+                        <div class="breadcrumbs">
+                            <a ui-sref="Root.Content.Library" translate>agenda</a> > <a>{{vm.item.contentType}} {{vm.item.title}} - {{vm.item.date | localDate}}</a>
+                        </div>
+                    </div>
+                </div>-->
+
+                <div class="row text-center" ng-if="(vm.item.themenetworkingevent.length || vm.item.sectornetworkingevent.length || vm.item.regionnetworkingevent.length || vm.item.pcnetworkingevent.length)&&(vm.item.sectornetworkingevent.length && vm.item.sectornetworkingevent.length<6)">
+
+                    <div class="col-sm-10 col-sm-offset-1 ">
+
+                        <div class="dossier-tags text-center">
+                            <span class="dossier-tags-chip" getlink content-item-id="{{tag.isroot !== false ? tag.id : tag[tag.contentType + '_' + tag.contentType].id}}" content-type-id="{{::tag.contentTypeId}}" theme="{{::tag.id}}" ng-repeat="tag in vm.item.themenetworkingevent">
+                                {{tag.title}}
+                            </span>
+                            <span class="dossier-tags-chip" getlink content-item-id="{{tag.isroot !== false ? tag.id : tag[tag.contentType + '_' + tag.contentType].id}}" content-type-id="{{::tag.contentTypeId}}" ng-repeat="tag in vm.item.sectornetworkingevent">
+                                {{tag.title}}
+                            </span>
+                            <span class="dossier-tags-chip" getlink content-item-id="{{tag.isroot !== false ? tag.id : tag[tag.contentType + '_' + tag.contentType].id}}" content-type-id="{{::tag.contentTypeId}}" ng-repeat="tag in vm.item.pcnetworkingevent">
+                                {{tag.title}}
+                            </span>
+                            <span class="dossier-tags-chip" getlink content-item-id="{{tag.isroot !== false ? tag.id : tag[tag.contentType + '_' + tag.contentType].id}}" content-type-id="{{::tag.contentTypeId}}" ng-repeat="tag in vm.item.regionnetworkingevent">
+                                {{tag.title}}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!--<div class="row dossier-section">
+                    <div class="col-md-12">
+                        <div class="comeos-button-row">
+                            <div class="comeos-button no-animate"><a ui-sref="content.avondconfinschrijving({id:item.id,datum:item.datum.substring(0,10),locatie:item.eventLocatie[0].gemeenteDisplay})" translate>bevestigaanwezig</a></div>
+                            <div class="comeos-button no-animate"><a ui-sref="content.avondconfinschrijving({id:item.id,datum:item.datum.substring(0,10),locatie:item.eventLocatie[0].gemeenteDisplay})" translate>bevestigafwezig</a></div>
+                        </div>
+                    </div>
+                </div>-->
+                <div class="row dossier-section" ng-if="vm.item && !vm.item.registrationacademynetworkingevent">
+                    <div class="col-md-12">
+                        <div class="comeos-button-row">
+                            <a class="comeos-button no-animate" ui-sref="Root.Content.NetworkingeventPublicRegistration({networkingevent:vm.item.id})"><span translate>enroll</span></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row dossier-section" ng-if="vm.item.registrationacademynetworkingevent">
+                    <div class="col-md-12">
+                        <div class="comeos-button-row">
+                            <div ng-if="vm.item.registrationacademynetworkingevent.registrationstateregistrationacademy.id == 9454" class="comeos-button no-animate" ui-sref="Root.Content.NetworkingeventRegistrationUpdate({networkingevent:vm.item.id, contentid:vm.item.registrationacademynetworkingevent.id, state: 9454})"><i class="mdi mdi-check"></i> <span translate>enrolled</span></div>
+                            <div ng-if="vm.item.registrationacademynetworkingevent.registrationstateregistrationacademy.id == 9455" class="comeos-button no-animate" ui-sref="Root.Content.NetworkingeventRegistrationUpdate({networkingevent:vm.item.id, contentid:vm.item.registrationacademynetworkingevent.id, state: 9454})"><i class="mdi mdi-close"></i> <span translate>absentregistrated</span></div>
+                            <div ng-if="(vm.item.registrationacademynetworkingevent.registrationstateregistrationacademy.id != 9454) && (vm.item.registrationacademyworkshop.registrationstateregistrationacademy.id != 9455)" class="comeos-button no-animate" ui-sref="Root.Content.NetworkingeventRegistrationUpdate({networkingevent:vm.item.id, contentid:vm.item.registrationacademynetworkingevent.id, state: 9454})"><span translate>enroll</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row dossier-section">
+
+                    <div class="col-md-6 col-xs-12 left-col">
+                        <div class="left-col">
+                            <section ng-if="vm.item.intro">
+                                <div class="cktext article-body" altai-compile-html="{{vm.item.intro}}">
+                                </div>
+                            </section>
+
+                            <section class="event-programma" ng-if="vm.item.programmaitemnetworkingevent.length>0">
+                                <h2 translate>programma</h2>
+                                <table>
+                                    <tr class="programma-item" ng-repeat="item in vm.item.programmaitemnetworkingevent">
+                                        <td class="time"><i class="mdi mdi-clock"></i> {{item.tijdvan| date:'HH:mm'}}</td>
+                                        <td class="description" altai-compile-html="{{item.inhoud}}"></td>
+                                    </tr>
+                                </table>
+                            </section>
+
+                            <section ng-if="vm.item.doelpubliek">
+                                <h2 translate>doelpubliek</h2>
+                                <div class="cktext article-body" altai-compile-html="{{vm.item.doelpubliek}}">
+                                </div>
+                            </section>
+
+                            <section ng-if="vm.item.prijs">
+                                <h2 translate>deelname</h2>
+                                <div class="cktext article-body" altai-compile-html="{{vm.item.prijs}}"></div>
+                            </section>
+
+                            <section ng-if="vm.item.taal">
+                                <h2 translate>taal</h2>
+                                <div class="cktext article-body" altai-compile-html="{{vm.item.taal}}"></div>
+                            </section>
+                            <section ng-if="vm.item.filenetworkingevent2" class="event-fotos">
+                                <h2 translate>gallery</h2>
+                                <altaigallery imagefiles="vm.item.filenetworkingevent2"></altaigallery>
+                            </section>
+                        </div>
+                    </div>
+
+                    <div class="col-md-5 col-md-offset-1 col-xs-12">
+                        <div class="right-col">
+                            <!--<section class="event-details-tijdstip" ng-if="vm.item.date">
+                                <h5 translate>tijdstip</h5>
+                                <div><i class="fa fa-calendar"></i>&nbsp;{{vm.item.date | localDate}} ({{vm.item.beginuur}} - {{vm.item.einduur}})</div>
+                            </section>-->
+                            <section class="event-details-tijdstip" ng-if="vm.item.persoonnetworkingevent">
+                                <div class="dossier-contact-section">
+                                    <div class="profile-picture profile-picture-circle"><img ng-src="{{::$root.staticFileBase}}/{{vm.item.persoonnetworkingevent.persoon_file.file}}" /></div>
+                                    <div><span class="h6">{{vm.item.persoonnetworkingevent.voornaam}} {{vm.item.persoonnetworkingevent.achternaam}}</span></div>
+
+                                </div>
+                            </section>
+
+                            <section class="event-details-tijdstip" ng-if="vm.item.date">
+                                <h5 translate>tijdstip</h5>
+                                <div><i class="fa fa-calendar"></i>&nbsp;{{vm.item.date | localDate}} ({{vm.item.tijdvan | date:'HH:mm'}}<span ng-if="vm.item.tijdtot"> - {{vm.item.tijdtot | date:'HH:mm'}}</span>)</div>
+                            </section>
+
+                            <section class="languageselection" ng-if="vm.item.taalnetworkingevent.length > 0">
+                                <h5 translate>talen</h5>
+                                <span class="attached-file" ng-repeat="taal in vm.item.taalnetworkingevent track by $index">
+                                    {{taal.title}}<span ng-if="!$last">, </span>
+                                </span>
+                            </section>
+
+                            <section class="languageselection" ng-if="vm.item.languageusednetworkingevent.length > 0">
+                                <h5 translate>talen</h5>
+                                <div class="languagespec" ng-repeat="taalspec in vm.item.languageusednetworkingevent track by $index">
+                                    <div class="languagetitle">{{taalspec.languagespecifierlanguageused.title}}</div>
+                                    <div><span ng-repeat="taal in taalspec.taallanguageused track by $index">{{taal.title}}<span ng-if="!$last">, </span></span></div>
+                                </div>
+                            </section>
+
+                            <section class="event-details-location" ng-if="vm.item.locatienetworkingevent">
+                                <h5 translate>locatie</h5>
+
+                                <div class="naam"><a ui-sref="Root.Detail.Location({id:vm.item.eventLocatie[0].id})">{{vm.item.locatienetworkingevent.title}}</a> <span class="zaal" ng-if="vm.item.zaalnetworkingevent">- <span translate>zaal</span> {{vm.item.zaalnetworkingevent.title}}</span></div>
+
+
+
+                                <div class="contactdetails">
+                                    <p><span altai-compile-html="{{vm.item.locatienetworkingevent.contact}}"></span></p>
+                                </div>
+                                <div class="gmap"><span altai-compile-html="{{vm.item.locatienetworkingevent.googlemapsembedlink}}"></span></div>
+                            </section>
+
+                            <section ng-if="vm.item.filenetworkingevent.length > 0 || vm.item.filenetworkingevent1.length > 0">
+                                <div ng-if="vm.activeLang.code=='fr'" class="dossier-section" ng-show="vm.item.filenetworkingevent1.length > 0">
+                                    <h5 translate>attachments</h5>
+                                    <div class="attached-file" ng-repeat="doc in vm.item.filenetworkingevent1">
+                                        <a ng-href="{{::$root.staticFileBase}}/{{doc.file}}" target="_blank"><fileicon doctype="doc.fileextension"></fileicon> <span>{{doc.label}}</span></a>
+                                    </div>
+                                </div>
+                                <div ng-if="vm.activeLang.code=='nl'" class="dossier-section" ng-show="vm.item.filenetworkingevent.length > 0">
+                                    <h5 translate>attachments</h5>
+                                    <div class="attached-file" ng-repeat="doc in vm.item.filenetworkingevent">
+                                        <a ng-href="{{::$root.staticFileBase}}/{{doc.file}}" target="_blank"><fileicon doctype="doc.fileextension"></fileicon> <span>{{doc.label}}</span></a>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <section class="event-details-links">
+                                <div ng-show="vm.item.linknetworkingevent.length > 0">
+                                    <h5 translate>relatedlinks</h5>
+                                    <div class="attached-link" ng-repeat="link in vm.item.linknetworkingevent">
+                                        <a ng-if="link.linktarget!=undefined" ng-href="{{link.linkurl}}" target="{{link.linktarget}}"><span class="attached-link-icon"><i class="mdi mdi-link"></i></span><span>{{link.linktekst}}</span></a>
+                                        <a ng-if="link.linktarget==undefined" ng-href="{{link.linkurl}}" target="_blank"><span class="attached-link-icon"><i class="mdi mdi-link"></i></span><span>{{link.linktekst}}</span></a>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <section class="event-details-sponsors">
+                                <div ng-show="vm.item.sponsororganizationnetworkingevent.length > 0">
+                                    <h5 translate>sponsoredby</h5>
+                                    <div class="text-center">
+                                        <span class="sponsorimage" ng-repeat="sponsor in vm.item.sponsororganizationnetworkingevent">
+                                            <a class="justclickable" target="_blank" href="{{sponsor.linksponsororganization[0].linkurl}}"><img ng-src="{{::$root.staticFileBase}}/{{sponsor.filesponsororganization.file}}" /></a>
+                                        </span>
+                                    </div>
+
+                                </div>
+                            </section>
+
+                            <section class="event-details-partners">
+                                <div ng-show="vm.item.sponsororganizationnetworkingevent1.length > 0">
+                                    <h5 translate>incollaborationwithourpartners</h5>
+                                    <div class="text-center">
+                                        <span class="sponsorimage" ng-repeat="partner in vm.item.sponsororganizationnetworkingevent1">
+                                            <a class="justclickable" target="_blank" href="{{partner.linksponsororganization[0].linkurl}}"><img ng-src="{{::$root.staticFileBase}}/{{partner.filesponsororganization.file}}" /></a>
+                                        </span>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+        </section>
+    </div>
+</div>
+

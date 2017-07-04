@@ -1,0 +1,50 @@
+﻿<div id="questionnaire">
+
+    <div id="questionnaire-top">
+        <i class="fa fa-question-circle"></i>&nbsp;{{vm.name}}
+        <div class="progress-top" ng-if="vm.mode=='inprogress'">vraag <b>{{vm.question}}</b> van <b>{{vm.questionCount}}</b></div>
+    </div>
+
+    <div id="questionnaire-content">
+
+        <div ng-if="vm.mode=='welcome' && vm.options.welcomeTemplateUrl" ng-include="vm.options.welcomeTemplateUrl"></div>
+
+        <div ng-if="vm.inapplicableCount() >= 5" class="alert alert-warning">
+            U heeft momenteel op teveel vragen "niet van toepassing"-geantwoord. U kunt uw antwoorden nog steeds versturen, maar de resultaten zullen niet worden meegerekend.
+        </div>
+
+        <div ng-show="vm.question==$index+1 && vm.mode=='inprogress'" class="animate-show" ng-repeat="question in vm.questions">
+            <altai-multiplechoice questionid="question.id" question="question.description" choices="question.questionMutlipleChoiceOptionSet.options"></altai-multiplechoice>
+        </div>
+
+        <div ng-show="vm.mode=='review'">
+            <p>Uw antwoorden zijn klaar om te worden verzonden. U kunt deze eerst nog eens overlopen door de vorige/volgende-knoppen te gebruiken. Indien al uw antwoorden zijn aangegeven zoals gewenst kunt u uw antwoorden versturen.</p>
+            <p><button class="btn btn-success" ng-click="vm.submitAnswers()"><i class="fa fa-envelope-o"></i>&nbsp;Verstuur antwoorden</button></p>
+        </div>
+
+        <div ng-show="vm.mode=='complete'">
+            {{vm.options.completedMessage}}
+        </div>
+
+        <div ng-show="vm.mode=='submitting'">
+            <i class="fa fa-spinner fa-spin"></i> Bezig met het verzenden van uw antwoorden, gelieve dit venster niet te sluiten!
+        </div>
+
+        <div ng-show="vm.mode=='error'" class="alert alert-danger">
+            {{vm.error}}
+        </div>
+
+        <div id="questionnaire-progress" ng-if="vm.mode=='inprogress' || vm.mode=='review'">
+
+            <div id="questionnaire-progressbar">
+                <div class="filled" ng-style="{'width':(vm.progress)*100+'%'}"></div>
+            </div>
+
+            <button id="prevquestion" ng-click="vm.prevQuestion()" ng-disabled="vm.question<=1"><i class="fa fa-chevron-left"></i></button>
+            <button id="nextquestion" ng-click="vm.nextQuestion()" ng-disabled="vm.question>vm.answers.length"><i class="fa fa-chevron-right"></i></button>
+
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,16 @@
+﻿<div class="comeos-menu-zone" >
+    <div class="nav-bar">
+        <div class="nav-module menu-module left">
+            <ul class="menu">
+                <li ng-repeat="item in vm.menu.menuItems">
+                    <a ui-sref="{{item.state.name}}">{{item.label}}</a>
+                    <ul ng-if="item.childMenuItems">
+                        <li ng-repeat="subitem in item.childMenuItems">
+                            <a href="#" ui-sref="{{subitem.state.name}}">{{subitem.label}}</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,25 @@
+﻿<div class="page-header">
+    <h2>{{vm.theme.name}}</h2>
+</div>
+
+<panel title="Templates" table="true">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>{{'name'|translate}}</th>
+                <th>{{'type'|translate}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="tpl in vm.theme.themeTemplates">
+                <td><a ui-sref="admin.theme.template({id:tpl.template.id})">{{tpl.template.name}}</a></td>
+                <td>{{tpl.template.templateType.name}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="panel-buttons">
+        <altai-button type="add">{{'create'|translate}}</altai-button>
+    </div>
+
+</panel>

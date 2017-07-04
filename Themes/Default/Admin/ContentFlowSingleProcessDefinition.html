@@ -1,0 +1,127 @@
+﻿<altai-toolbar-menu menu-model="vm.toolbar" use-default-langs="true" languages="vm.languages"></altai-toolbar-menu>
+<div class="altai-list">
+    <div class="search">
+        <input class="query" type="text" placeholder="{{'searchinname'|translate}}" ng-model-options="{ debounce: 300 }" ng-model="vm.searchModel.name" />
+        <md-button ng-click="vm.importTasksForContentFlowProcessDefinition()" class="md-button-altai md-raised"><i class="mdi mdi-import"></i> {{::'importtasks'|translate}} </md-button>
+        <md-button ng-click="vm.deleteTasksForContentFlowProcessDefinition()" class="md-button-altai md-raised"><i class="mdi mdi-delete-sweep"></i> {{::'deletetasks'|translate}} </md-button>
+        <md-button ng-click="vm.deleteVariablesForContentFlowProcessDefinition()" class="md-button-altai md-raised"><i class="mdi mdi-delete-sweep"></i> {{::'deletevariables'|translate}} </md-button>
+    </div>
+</div>
+<form class="altai-form" name="contentFlowProcessDefinitionUpdate">
+    <div class="altai-admin-section">
+        <div class="subheader">
+            <h2>{{'processdefinitiondetails'|translate}}</h2>
+        </div>
+        <div class="altai-simple-form">
+            <div class="form-group">
+                <label>{{'id'|translate}}</label>
+                <div>{{vm.contentFlowProcessDefinition.id}}</div>
+            </div>
+            <div class="form-group">
+                <label>{{'activitiKey'|translate}}</label>
+                <div>{{vm.contentFlowProcessDefinition.activitiKey}}</div>
+            </div>
+            <div class="form-group">
+                <label>{{'activitiVersion'|translate}}</label>
+                <div>{{vm.contentFlowProcessDefinition.activitiVersion}}</div>
+            </div>
+            <div class="form-group">
+                <label>{{'label'|translate}}</label>
+                <div altai-translatable-input="vm.contentFlowProcessDefinition.labelTranslatable" languages="vm.languages" />
+            </div>
+        </div>
+    </div>
+</form>
+<div class="altai-admin-section">
+    <div class="subheader">
+        <h2>{{'processdefinitionvariables'|translate}}</h2>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>{{'id'|translate}}</th>
+                <th>{{'label'|translate}}</th>
+                <th>{{'key'|translate}}</th>
+                <th>{{'variableType'|translate}}</th>
+                <th>{{'hasdefaultvalue'|translate}}</th>
+                <th>{{'defaultvalue'|translate}}</th>
+                <th>{{'edittemplate'|translate}}</th>
+                <th>{{'contentcollection'|translate}}</th>
+                <th>{{'userdefinable'|translate}}</th>
+                <th>{{'servicedefinable'|translate}}</th>
+                <th>{{'serviceurl'|translate}}</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr ng-repeat="instance in vm.contentFlowProcessDefinition.contentFlowProcessStartVariableDefinitions">
+                <td>{{instance.id}}</td>
+                <td>{{instance.label}}</td>
+                <td>{{instance.key}}</td>
+                <td>{{instance.variableType}}</td>
+                <td>{{instance.hasDefaultValue}}</td>
+                <td>{{instance.defaultValue}}</td>
+                <td>{{instance.editTemplate}}</td>
+                <td>{{instance.contentCollection}}</td>
+                <td>{{instance.userDefinable}}</td>
+                <td>{{instance.serviceDefinable}}</td>
+                <td>{{instance.serviceUrl}}</td>
+                <td>
+                    <md-button ng-click="vm.editVariable(instance.id)" class="md-button-altai md-raised"><i class="mdi mdi-pencil"></i> {{::'edit'|translate}} </md-button>
+                    <md-button ng-click="vm.deleteVariable(instance)" class="md-button-altai md-raised"><i class="mdi mdi-delete"></i> {{::'delete'|translate}} </md-button>
+                </td>
+            </tr>
+
+            <tr ng-if="!vm.contentFlowProcessDefinition.contentFlowProcessStartVariableDefinitions.length">
+                <td colspan="2">{{'noresults'|translate}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="panel-buttons">
+        <md-button ng-click="vm.createVariable()" class="md-button-altai md-raised"><i class="mdi mdi-plus"></i> {{::'createvariable'|translate}} </md-button>
+    </div>
+
+    <div class="panel-buttons">
+        <altai-pagination paged-result="vm.contentItems" switch-page="vm.openPage(pageIndex)"></altai-pagination>
+    </div>
+
+</div>
+<div class="altai-admin-section">
+    <div class="subheader">
+        <h2>{{'tasks'|translate}}</h2>
+    </div>
+    <table>
+
+        <thead>
+            <tr>
+                <th>{{'id'|translate}}</th>
+                <th>{{'activitiid'|translate}}</th>
+                <th>{{'label'|translate}}</th>
+                <th>{{'actions'|translate}}</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr ng-repeat="instance in vm.contentFlowProcessDefinition.contentFlowTaskDefinitions">
+                <td>{{instance.id}}</td>
+                <td>{{instance.activitiId}}</td>
+                <td>{{instance.label}}</td>
+                <td>
+                    <md-button ng-click="vm.openTask(instance.id)" class="md-button-altai md-raised"><i class="mdi mdi-pencil"></i> {{::'edit'|translate}} </md-button>
+                    <md-button ng-click="vm.deleteTask(instance)" class="md-button-altai md-raised"><i class="mdi mdi-delete"></i> {{::'delete'|translate}} </md-button>
+                </td>
+            </tr>
+
+            <tr ng-if="!vm.contentFlowProcessDefinition.contentFlowTaskDefinitions.length">
+                <td colspan="2">{{'noresults'|translate}}</td>
+            </tr>
+        </tbody>
+
+    </table>
+
+    <div class="panel-buttons">
+        <altai-pagination paged-result="vm.contentItems" switch-page="vm.openPage(pageIndex)"></altai-pagination>
+    </div>
+
+</div>

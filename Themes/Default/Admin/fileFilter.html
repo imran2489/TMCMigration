@@ -1,0 +1,15 @@
+﻿<div class="tag-selector">
+    <div class="tag-container">
+        <span class="tag" ng-click="$ctrl.selectTag($ctrl.inputModel)" ng-class="{'active':$ctrl.isSelected($ctrl.inputModel),'childItems':$ctrl.inputModel.childItems}">
+            <span class="check"><i class="mdi mdi-check"></i></span>
+            <span class="title"> {{$ctrl.inputModel.name}}</span>
+            <span class="chevron"><i class="mdi mdi-chevron-down"></i></span>
+        </span>
+        <div class="dropdown" ng-show="$ctrl.inputModel.childItems">
+            <div ng-repeat="subitem in $ctrl.inputModel.childItems" class="subtag" ng-click="$ctrl.selectTag(subitem)" ng-class="{'active':$ctrl.isSelected(subitem)}">
+                <span class="check"><i class="mdi mdi-check"></i></span>
+                <span class="title"> {{subitem.name}}</span>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,13 @@
+﻿<altai-toolbar-menu menu-model="vm.toolbar" languages="vm.languages"></altai-toolbar-menu>
+<form class="altai-form altai-Forum" name="taskForm" novalidate>
+    <div class="form-group">
+        <label>{{'taskname'|translate}}</label>
+        <select ng-model="newTask.TaskName" ng-options="type for type in vm.taskTypes"></select>
+    </div>
+   
+    <div class="form-group">
+        <label>{{'active'|translate}}</label>
+        <md-checkbox class="smallcheckbox" ng-model="newTask.Active"></md-checkbox>
+    </div>
+
+</form>

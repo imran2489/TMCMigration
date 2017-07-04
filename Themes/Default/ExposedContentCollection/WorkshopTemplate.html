@@ -1,0 +1,262 @@
+﻿<div analytics analytics-item="$ctrl.data.pageResults[0]" analytics-on-view="true"></div>
+<div print-section class="root theme--square altai-theme-content actu dossier event container-content">
+    <div altai-set-title titletext="{{$ctrl.data.pageResults[0].title}}"></div>
+    <section altai-image-style-set-background imagestyleset="pageheader" image="$ctrl.data.pageResults[0].fileworkshop3.file" class="comeos-cover cover-large comeos-bg-workshop" ng-class="{'highcover':$ctrl.data.pageResults[0].fileworkshop3.file}">
+        <div ng-if="$ctrl.data.pageResults[0].fileworkshop3.file" class="altai-overlay"></div>
+        <div class="altai-panel">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-10 col-sm-offset-1 text-center">
+                        <div class="title">{{$ctrl.data.pageResults[0].title}}</div>
+                        <div class="subtitle">{{$ctrl.data.pageResults[0].date | localDate}} <span ng-if="$ctrl.data.pageResults[0].locatieworkshop.stad">- {{$ctrl.data.pageResults[0].locatieworkshop.stad}}</span></div>
+                        <div class="contact-buttons">
+
+                            <div class="contact-buttons">
+                                <comeos-content-item-like-header-component class="like" ng-if="$ctrl.data.pageResults[0] != undefined" content-item="$ctrl.data.pageResults[0]"></comeos-content-item-like-header-component>
+                                <socialshareheader item="$ctrl.data.pageResults[0]"></socialshareheader>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="main-container container">
+
+        <section class="blog-post">
+            <div class="pagecontentstart">
+
+                <div class="row text-center" ng-if="$ctrl.data.pageResults[0].themeworkshop || $ctrl.data.pageResults[0].sectorworkshop || $ctrl.data.pageResults[0].regionworkshop || $ctrl.data.pageResults[0].pcworkshop">
+
+                    <div class="col-sm-10 col-sm-offset-1 ">
+
+                        <div class="dossier-tags text-center">
+                            <span class="dossier-tags-chip" getlink content-item-id="{{tag.isroot !== false ? tag.id : tag[tag.contentType + '_' + tag.contentType].id}}" content-type-id="{{::tag.contentTypeId}}" theme="{{::tag.id}}" ng-repeat="tag in $ctrl.data.pageResults[0].themeworkshop">
+                                {{tag.title}}
+                            </span>
+                            <span class="dossier-tags-chip" getlink content-item-id="{{tag.isroot !== false ? tag.id : tag[tag.contentType + '_' + tag.contentType].id}}" content-type-id="{{::tag.contentTypeId}}" ng-repeat="tag in $ctrl.data.pageResults[0].sectorworkshop">
+                                {{tag.title}}
+                            </span>
+                            <span class="dossier-tags-chip" getlink content-item-id="{{tag.isroot !== false ? tag.id : tag[tag.contentType + '_' + tag.contentType].id}}" content-type-id="{{::tag.contentTypeId}}" ng-repeat="tag in $ctrl.data.pageResults[0].pcworkshop">
+                                {{tag.title}}
+                            </span>
+                            <span class="dossier-tags-chip" getlink content-item-id="{{tag.isroot !== false ? tag.id : tag[tag.contentType + '_' + tag.contentType].id}}" content-type-id="{{::tag.contentTypeId}}" ng-repeat="tag in $ctrl.data.pageResults[0].regionworkshop">
+                                {{tag.title}}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row dossier-section" ng-if="$ctrl.data.pageResults[0] && !$ctrl.data.pageResults[0].registrationacademyworkshop && ($root.user.authorized  || $ctrl.data.pageResults[0].publicevent)" altai-hide-past="$ctrl.data.pageResults[0].date" hide-past-offset-days="1">
+                    <div class="col-md-12">
+                        <div class="comeos-button-row">
+                            <a class="comeos-button no-animate" ui-sref="Root.Content.WorkshopPublicRegistration({workshop:$ctrl.data.pageResults[0].id})"><span translate>enroll</span></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row dossier-section" ng-if="$ctrl.data.pageResults[0] && !$ctrl.data.pageResults[0].registrationacademyworkshop && (!$root.user.authorized  && !$ctrl.data.pageResults[0].publicevent)" altai-hide-past="$ctrl.data.pageResults[0].date" hide-past-offset-days="1">
+                    <div class="col-md-12">
+                        <pay-wall-with-custom-message title="{{::'MembersOnlyRegistration'|translate}}" login-button="true" login-button-text="{{::'Login'|translate}}" contact-button="true" contact-button-text="{{::'NoMember?PushHere'|translate}}">
+
+                        </pay-wall-with-custom-message>
+                    </div>
+                </div>
+                <div class="row dossier-section" ng-if="$ctrl.data.pageResults[0].registrationacademyworkshop" altai-hide-past="$ctrl.data.pageResults[0].date" hide-past-offset-days="1">
+                    <div class="col-md-12">
+                        <div class="comeos-button-row">
+                            <div ng-if="$ctrl.data.pageResults[0].registrationacademyworkshop.registrationstateregistrationacademy.id == 9454" class="comeos-button no-animate"><i class="mdi mdi-check"></i> <span translate>enrolled</span></div>
+                            <div ng-if="$ctrl.data.pageResults[0].registrationacademyworkshop.registrationstateregistrationacademy.id == 9455" class="comeos-button no-animate" ui-sref="Root.Content.WorkshopRegistrationUpdate({workshop:$ctrl.data.pageResults[0].id, contentid:$ctrl.data.pageResults[0].registrationacademyworkshop.id, state: 9454})"><i class="mdi mdi-close"></i> <span translate>absentregistrated</span></div>
+                            <div ng-if="($ctrl.data.pageResults[0].registrationacademyworkshop.registrationstateregistrationacademy.id != 9454) && ($ctrl.data.pageResults[0].registrationacademyworkshop.registrationstateregistrationacademy.id != 9455)" class="comeos-button no-animate" ui-sref="Root.Content.WorkshopRegistrationUpdate({workshop:$ctrl.data.pageResults[0].id, contentid:$ctrl.data.pageResults[0].registrationacademyworkshop.id, state: 9454})"><span translate>enroll</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row dossier-section">
+
+                    <div class="col-md-6 col-xs-12 left-col">
+                        <div class="left-col">
+                            <section ng-if="$ctrl.data.pageResults[0].intro">
+                                <div class="cktext article-body" altai-compile-html="{{$ctrl.data.pageResults[0].intro}}">
+                                </div>
+                            </section>
+                            <section class="event-programma" ng-if="$ctrl.data.pageResults[0].programmaitemworkshop.length>0">
+                                <h2 translate>programma</h2>
+                                <table>
+                                    <tr class="programma-item" ng-repeat="item in $ctrl.data.pageResults[0].programmaitemworkshop">
+                                        <td class="time"><i class="mdi mdi-clock"></i> {{item.tijdvan| date:'HH:mm'}}</td>
+                                        <td class="description" altai-compile-html="{{item.inhoud}}"></td>
+                                    </tr>
+                                </table>
+                            </section>
+                            <section ng-if="$ctrl.data.pageResults[0].doelpubliek">
+                                <h2 translate>doelpubliek</h2>
+                                <div class="cktext article-body" altai-compile-html="{{$ctrl.data.pageResults[0].doelpubliek}}">
+                                </div>
+                            </section>
+                            <section ng-if="$ctrl.data.pageResults[0].prijs && $ctrl.data.pageResults[0].prijs.slice(0, 7) != '<p>&nbs'">
+                                <h2 translate>deelname</h2>
+                                <div class="cktext article-body" altai-compile-html="{{$ctrl.data.pageResults[0].prijs}}"></div>
+                            </section>
+
+                            <section ng-if="$ctrl.data.pageResults[0].fileworkshop2" class="event-fotos">
+                                <h2 translate>gallery</h2>
+                                <altaigallery imagefiles="$ctrl.data.pageResults[0].fileworkshop2"></altaigallery>
+                            </section>
+                        </div>
+                    </div>
+
+                    <div class="col-md-5 col-md-offset-1 col-xs-12">
+                        <div class="right-col">
+                                        
+                            <section class="event-details-tijdstip">
+
+                                <div class="dossier-contact-section">
+                                    <div class="profile-picture profile-picture-circle"><img ng-src="{{::$root.staticFileBase}}/{{$ctrl.data.pageResults[0].persoonworkshop.persoon_file.file}}" /></div>
+                                    <div><span class="h6">{{$ctrl.data.pageResults[0].persoonworkshop.voornaam}} {{$ctrl.data.pageResults[0].persoonworkshop.achternaam}}</span></div>
+                                </div>
+
+                            </section>
+
+                            <section class="event-details-tijdstip" ng-if="$ctrl.data.pageResults[0].singledatetimeselectionworkshop.length > 0">
+                                <h5 translate>tijdstip</h5>
+                                <div class="moment" ng-repeat="moment in $ctrl.data.pageResults[0].singledatetimeselectionworkshop"><i class="fa fa-calendar"></i>&nbsp;{{moment.datum | localDate}} <span ng-if="moment.tijdvan">({{moment.tijdvan | date:'HH:mm'}} <span ng-if="moment.tijdtot">- {{moment.tijdtot | date:'HH:mm'}})</span></span></div>
+                            </section>
+
+                            <section class="event-details-tijdstip" ng-if="!$ctrl.data.pageResults[0].singledatetimeselectionworkshop && $ctrl.data.pageResults[0].date">
+                                <h5 translate>tijdstip</h5>
+                                <div><i class="fa fa-calendar"></i>&nbsp;{{$ctrl.data.pageResults[0].date | localDate}} <span ng-if="$ctrl.data.pageResults[0].tijdvan">({{$ctrl.data.pageResults[0].tijdvan | date:'HH:mm'}}<span ng-if="$ctrl.data.pageResults[0].tijdtot"> - {{$ctrl.data.pageResults[0].tijdtot | date:'HH:mm'}}</span>)</span></div>
+                            </section>
+
+                            <section class="languageselection" ng-if="$ctrl.data.pageResults[0].taalworkshop.length > 0">
+                                <h5 translate>talen</h5>
+                                <span class="attached-file" ng-repeat="taal in $ctrl.data.pageResults[0].taalworkshop track by $index">
+                                    {{taal.title}}<span ng-if="!$last">, </span>
+                                </span>
+                            </section>
+
+                            <section class="languageselection" ng-if="$ctrl.data.pageResults[0].languageusedworkshop.length > 0">
+                                <h5 translate>talen</h5>
+                                <div class="languagespec" ng-repeat="taalspec in $ctrl.data.pageResults[0].languageusedworkshop track by $index">
+                                    <div class="languagetitle">{{taalspec.languagespecifierlanguageused.title}}</div>
+                                    <div><span ng-repeat="taal in taalspec.taallanguageused track by $index">{{taal.title}}<span ng-if="!$last">, </span></span></div>
+                                </div>
+                            </section>
+
+                            <section class="event-details-location" ng-if="$ctrl.data.pageResults[0].locatieworkshop">
+                                <h5 translate>locatie</h5>
+
+                                <div class="naam"><a ui-sref="Root.Detail.Location({id:$ctrl.data.pageResults[0].eventLocatie[0].id})">{{$ctrl.data.pageResults[0].locatieworkshop.title}}</a> <span class="zaal" ng-if="$ctrl.data.pageResults[0].zaalworkshop">- <span translate>zaal</span> {{$ctrl.data.pageResults[0].zaalworkshop.title}}</span></div>
+
+
+
+                                <div class="contactdetails">
+                                    <p><span altai-compile-html="{{$ctrl.data.pageResults[0].locatieworkshop.contact}}"></span></p>
+                                </div>
+                                <div class="gmap"><span altai-compile-html="{{$ctrl.data.pageResults[0].locatieworkshop.googlemapsembedlink}}"></span></div>
+
+                                <div class="contactdetails" ng-if="$ctrl.data.pageResults[0].locatieworkshop.routebeschijving" print-only>
+                                    <div altai-compile-html="{{$ctrl.data.pageResults[0].locatieworkshop.routebeschijving}}"></div>
+                                </div>
+
+                                <div ng-if="$ctrl.data.pageResults[0].locatieworkshop.routebeschijving" class="comeos-button-row">
+                                    <div class="comeos-button no-animate" data-toggle="modal" data-target="#locationmodal"><span translate>directions</span></div>
+                                </div>
+
+                                <div ng-if="$ctrl.data.pageResults[0].locatieworkshop.routebeschijving" id="locationmodal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h4 class="modal-title" id="myModalLabel">{{'directions'|translate}}</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div altai-compile-html="{{$ctrl.data.pageResults[0].locatieworkshop.routebeschijving}}"></div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <section ng-if="$ctrl.data.pageResults[0].fileworkshop.length > 0 || $ctrl.data.pageResults[0].fileworkshop1.length > 0">
+                                <div ng-if="$ctrl.activeLang.code=='fr'" class="dossier-section" ng-show="$ctrl.data.pageResults[0].fileworkshop1.length > 0">
+                                    <h5 translate>attachments</h5>
+                                    <div class="attached-file" ng-repeat="doc in $ctrl.data.pageResults[0].fileworkshop1">
+                                        <a ng-href="{{::$root.staticFileBase}}/{{doc.file}}" target="_blank"><fileicon doctype="doc.fileextension"></fileicon> <span>{{doc.label}}</span></a>
+                                    </div>
+                                </div>
+                                <div ng-if="$ctrl.activeLang.code=='nl'" class="dossier-section" ng-show="$ctrl.data.pageResults[0].fileworkshop.length > 0">
+                                    <h5 translate>attachments</h5>
+                                    <div class="attached-file" ng-repeat="doc in $ctrl.data.pageResults[0].fileworkshop">
+                                        <a ng-href="{{::$root.staticFileBase}}/{{doc.file}}" target="_blank"><fileicon doctype="doc.fileextension"></fileicon> <span>{{doc.label}}</span></a>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <section class="event-details-links">
+                                <div ng-show="$ctrl.data.pageResults[0].linkworkshop.length > 0">
+                                    <h5 translate>relatedlinks</h5>
+                                    <div class="attached-link" ng-repeat="link in $ctrl.data.pageResults[0].linkworkshop">
+                                        <a ng-if="link.linktarget!=undefined" ng-href="{{link.linkurl}}" target="{{link.linktarget}}"><span class="attached-link-icon"><i class="mdi mdi-link"></i></span><span>{{link.linktekst}}</span></a>
+                                        <a ng-if="link.linktarget==undefined" ng-href="{{link.linkurl}}" target="_blank"><span class="attached-link-icon"><i class="mdi mdi-link"></i></span><span>{{link.linktekst}}</span></a>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <section class="event-details-sponsors">
+                                <div ng-show="$ctrl.data.pageResults[0].sponsororganizationworkshop.length > 0">
+                                    <h5 translate>sponsoredby</h5>
+                                    <div class="text-center">
+                                        <span class="sponsorimage" ng-repeat="sponsor in $ctrl.data.pageResults[0].sponsororganizationworkshop">
+                                            <a class="justclickable" target="_blank" href="{{sponsor.linksponsororganization[0].linkurl}}"><span altai-image-style-set imagestyleset="squarecorporatelogo" image="sponsor.filesponsororganization.file"></span></a>
+                                        </span>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <section class="event-details-partners">
+                                <div ng-show="$ctrl.data.pageResults[0].sponsororganizationworkshop1.length > 0">
+                                    <h5 translate>incollaborationwithourpartners</h5>
+                                    <div class="text-center">
+                                        <span class="sponsorimage" ng-repeat="partner in $ctrl.data.pageResults[0].sponsororganizationworkshop1">
+                                            <a class="justclickable" target="_blank" href="{{partner.linksponsororganization[0].linkurl}}"><span altai-image-style-set imagestyleset="squarecorporatelogo" image="partner.filesponsororganization.file"></span></a>
+                                        </span>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row dossier-section" ng-if="$ctrl.data.pageResults[0] && !$ctrl.data.pageResults[0].registrationacademyworkshop && ($root.user.authorized  || $ctrl.data.pageResults[0].publicevent)" altai-hide-past="$ctrl.data.pageResults[0].date" hide-past-offset-days="1">
+                    <div class="col-md-12">
+                        <div class="comeos-button-row">
+                            <a class="comeos-button no-animate" ui-sref="Root.Content.WorkshopPublicRegistration({workshop:$ctrl.data.pageResults[0].id})"><span translate>enroll</span></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row dossier-section" ng-if="$ctrl.data.pageResults[0] && !$ctrl.data.pageResults[0].registrationacademyworkshop && (!$root.user.authorized  && !$ctrl.data.pageResults[0].publicevent)" altai-hide-past="$ctrl.data.pageResults[0].date" hide-past-offset-days="1">
+                    <div class="col-md-12">
+                        <pay-wall-with-custom-message title="{{::'MembersOnlyRegistration'|translate}}" login-button="true" login-button-text="{{::'Login'|translate}}" contact-button="true" contact-button-text="{{::'NoMember?PushHere'|translate}}"></pay-wall-with-custom-message>
+                    </div>
+                </div>
+                <div class="row dossier-section" ng-if="$ctrl.data.pageResults[0].registrationacademyworkshop" altai-hide-past="$ctrl.data.pageResults[0].date" hide-past-offset-days="1">
+                    <div class="col-md-12">
+                        <div class="comeos-button-row">
+                            <div ng-if="$ctrl.data.pageResults[0].registrationacademyworkshop.registrationstateregistrationacademy.id == 9454" class="comeos-button no-animate"><i class="mdi mdi-check"></i> <span translate>enrolled</span></div>
+                            <div ng-if="$ctrl.data.pageResults[0].registrationacademyworkshop.registrationstateregistrationacademy.id == 9455" class="comeos-button no-animate" ui-sref="Root.Content.WorkshopRegistrationUpdate({workshop:$ctrl.data.pageResults[0].id, contentid:$ctrl.data.pageResults[0].registrationacademyworkshop.id, state: 9454})"><i class="mdi mdi-close"></i> <span translate>absentregistrated</span></div>
+                            <div ng-if="($ctrl.data.pageResults[0].registrationacademyworkshop.registrationstateregistrationacademy.id != 9454) && ($ctrl.data.pageResults[0].registrationacademyworkshop.registrationstateregistrationacademy.id != 9455)" class="comeos-button no-animate" ui-sref="Root.Content.WorkshopRegistrationUpdate({workshop:$ctrl.data.pageResults[0].id, contentid:$ctrl.data.pageResults[0].registrationacademyworkshop.id, state: 9454})"><span translate>enroll</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row  dossier-section" print-remove>
+                    <div class="col-sm-10 col-sm-offset-1  comeos-buttons">
+                        <a class="comeos-button" analytics analytics-item="$ctrl.data.pageResults[0]" analytics-on-click="logprint" print-btn><span translate>print</span></a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </div>
+</div>
+

@@ -1,0 +1,43 @@
+﻿<div class="altai-content-relation-update">
+    <div class="header">
+        <label>{{::vm.contentTypeRelationLink.label}}<span ng-show="::vm.contentTypeRelationLink.required">*</span></label>
+        <button type="button" ng-show='(vm.contentTypeRelationLink.allowMultiple || !vm.model) && vm.contentTypeRelationLink.allowCreateNew' class='icon' ng-click='vm.addItem()'><i class='mdi mdi-plus'></i> </button>
+        <button type="button" ng-show='vm.contentTypeRelationLink.allowCreateLink && !vm.multiSelectOpened' class='icon' ng-click='vm.linkItem()'><i class='mdi mdi-link'></i> </button>
+    </div>
+
+    <div ng-include="vm.editTemplateLocation" ng-if="vm.editTemplateLocation && !vm.contentTypeRelationLink.editContentCollectionId" class="fullWidth"></div>
+
+    <altai-content-collection-update-relation ng-if="vm.contentTypeRelationLink.editContentCollectionId" content-collection-id="vm.contentTypeRelationLink.editContentCollectionId" input-model="vm.options" output-model="vm.existingModel" is-disabled="vm.selectRelationNone" multiple="vm.contentTypeRelationLink.allowMultiple" required="vm.contentTypeRelationLink.required" edit-mode="vm.editMode"></altai-content-collection-update-relation>
+
+    <div class="content-relation-item-group" ng-if="::!vm.contentTypeRelationLink.editTemplate && !vm.contentTypeRelationLink.editContentCollectionId">
+        <div class='item-wrapper item-wrapper-multiselect' ng-show="vm.multiSelectOpened" ng-if="vm.contentTypeRelationLink.allowCreateLink">
+            <div isteven-multi-select input-model="vm.options" output-model="vm.existingModel" button-label="icon name" item-label="icon name maker" tick-property="ticked"></div>
+            <button class="icon" ng-click="vm.closeLinker()"><i class="mdi mdi-close"></i></button>
+        </div>
+        <div ng-model="vm.existingModel" ui-sortable="vm.existingSortingOptions">
+            <div ng-repeat="model in vm.existingModel track by model.id" ng-if="vm.contentTypeRelationLink.allowCreateNew" class="item-wrapper" style="flex-direction:column">
+                <div>
+                    <div style="display:flex;flex-direction:row">
+                        <altai-content-item-update-inner ng-if="showItem" languages="vm.languages" content-item="model.contentItem" update-model="model.updateModel" content-type="model.contentType" content-item-id="model.id"></altai-content-item-update-inner>
+                        <div altai-content-id-field="model" model-visibility="showItem" ng-hide="showItem" style="flex:1"></div>
+                        <button type="button" class='icon' ng-click='vm.removeExistingItem(model)'><i class='mdi mdi-delete'></i> </button>
+                    </div>
+                </div>
+                <div>
+                    <button ng-click="showItem=!showItem" ng-show="showItem" type="button" class="icon"><i class="mdi mdi-arrow-up"></i></button>
+                    <button ng-click="showItem=!showItem" ng-show="!showItem" type="button" class="icon"><i class="mdi mdi-arrow-down"></i></button>
+                    <div class="drag-handle"><i class="mdi mdi-arrow-all"></i></div>
+                </div>
+            </div>
+        </div>
+        <div ng-model="vm.newModel" ui-sortable="vm.newSortingOptions">
+            <div ng-repeat='model in vm.newModel track by $index' class='item-wrapper'>
+                <altai-content-relation-update-item model='vm.newModel[$index]' options='vm.options' content-type-relation-link='vm.contentTypeRelationLink' existing-mode="::vm.existingMode" languages='vm.languages' class='altai-content-relation-update-item'></altai-content-relation-update-item>
+                <button type="button" class='icon' ng-click='vm.removeItem(model)'><i class='mdi mdi-delete'></i> </button>
+            </div>
+
+            <md-button ng-show='(vm.contentTypeRelationLink.allowMultiple || !vm.model) && vm.contentTypeRelationLink.allowCreateNew' ng-click="vm.addItem()" class="md-button-altai md-raised"><i class="mdi mdi-plus"></i> {{::'add'|translate}}</md-button>
+
+        </div>
+    </div>
+</div>

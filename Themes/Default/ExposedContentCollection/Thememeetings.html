@@ -1,0 +1,20 @@
+﻿<section ng-if="$ctrl.data.pageResults[0]">
+        <div class="row">
+            <h2 class="text-center">{{'Thememeetings'|translate}}</h2>
+        </div>
+</section>
+<section ng-if="$ctrl.data.pageResults[0]">
+    <div class="row">   
+            <comeos-masonry items="$ctrl.data.pageResults"></comeos-masonry>
+        </div>
+        <div class="row" ng-if="$ctrl.data && $ctrl.data.totalCount>(($ctrl.loadMorePage + 1)* $ctrl.data.pageSize)">
+            <div class="col-sm-12">
+                <div class="button-row--centralized">
+                    <div class="panel-buttons">
+                        <div ng-click="$ctrl.loadingMore ? '' : $ctrl.loadMore()" class="comeos-button comeos-button-cover"><span ng-hide="$ctrl.loadingMore" translate>LoadMore</span> <span ng-show="$ctrl.loadingMore" translate>Loading..</span></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+</section>

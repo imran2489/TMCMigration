@@ -1,0 +1,75 @@
+﻿<div class="altai-admin-toolbar altai-theme-admin" ng-cloak ng-if="$ctrl.showMenu">
+    <div class="altai-admin-toolbar-left">
+        <md-toolbar class="md-menu-toolbar">
+            <div layout="row">
+                <div>
+                    <img ui-sref="admin" ui-sref-opts="{reload: true}" src="img/admin/altaicmsheaderbarfulltextwhite.png" class="admin-logo desktop mdi" />
+                    <img ui-sref="admin" ui-sref-opts="{reload: true}" src="img/admin/altaicmsheaderbarfulltextmobilewhite.png" class="admin-logo mobile mdi" />
+                    <img ui-sref="admin" ui-sref-opts="{reload: true}" src="img/admin/altaicmsheaderbarfulltextmicrowhite.png" class="admin-logo micro mdi" />
+                    <md-menu-bar>
+                        <md-menu ng-repeat="menuItem in ::menuItems track by menuItem.label" ng-if="menuItem.children.length > 0 || menuItem.name=='content' ||menuItem.name=='workflow'">
+
+                            <button ng-click="$mdOpenMenu()">
+                                <i ng-class="::menuItem.icon"></i>
+                                <span class="menutextoolbar">{{menuItem.label|translate}}</span>
+                            </button>
+                            <md-menu-content>
+
+                                <md-menu-item ng-if="menuItem.name=='content' && contentTypes.length > 0">
+                                    <md-menu>
+                                        <md-button ng-click="$mdOpenMenu()">{{'new'|translate}}</md-button>
+                                        <md-menu-content>
+                                            <md-menu-item ng-repeat="ct in contentTypes track by ct.id"><md-button ng-click="openCt(ct)">{{::ct.label}}</md-button></md-menu-item>
+                                        </md-menu-content>
+                                    </md-menu>
+                                </md-menu-item>
+                                <md-menu-item ng-if="menuItem.name=='workflow' && contentTypes.length > 0">
+                                    <md-menu>
+                                        <md-button ng-click="$mdOpenMenu()">{{'startworkflowfor'|translate}}</md-button>
+                                        <md-menu-content>
+                                            <md-menu-item ng-repeat="ct in contentTypes"><md-button ng-click="openFlowCt(ct)">{{ct.label}}</md-button></md-menu-item>
+                                        </md-menu-content>
+                                    </md-menu>
+                                </md-menu-item>
+                                <!--<md-menu-divider ng-if="menuItem.name=='content' && contentTypes.length > 0"></md-menu-divider>-->
+
+                                <md-menu-item class="md-indent" ng-repeat="child in menuItem.children">
+                                    <i class="menuicon" ng-class="::child.icon"></i>
+                                    <md-button ng-click="openState(child)">
+                                        {{child.label|translate}}
+                                    </md-button>
+                                </md-menu-item>
+                            </md-menu-content>
+                        </md-menu>
+
+                    </md-menu-bar>
+                </div>
+            </div>
+        </md-toolbar>
+    </div>
+
+    <div class="altai-admin-toolbar-right">
+        <div class="altai-spinner-outer" ng-show="$ctrl.loading">
+            <div class="altai-spinner"></div>
+        </div>
+
+        <altai-admin-toolbar-mode-selector ng-if="$ctrl.showStateBuilderSwitch" class="mode-selector"></altai-admin-toolbar-mode-selector>
+        <div class="logout"><button class="toolbaricon" ui-sref="Root.Home"><i class="mdi mdi-home"></i></button></div>
+
+        <altai-admin-toolbar-state-selector ng-if="$ctrl.showStates" class="state-selector"></altai-admin-toolbar-state-selector>
+
+        <!--<altai-task-center ng-if="$ctrl.showTaskCenter" class="taskcenter"></altai-task-center>-->
+
+        <!--<background-work-info-center ng-if="$ctrl.showBackgroundWorkInfoCenter" class="taskcenter"></background-work-info-center>-->
+
+        <div class="altai-language-bar language-bar-main">
+            <button class="btn btn-altai btn-altai-small altai-button-secondary" ng-click="selectLang(lang)" ng-class="{'selected':lang.selected}" ng-repeat="lang in languages track by lang.code">{{::lang.code}}</button>
+        </div>
+
+        <div class="logout">
+            <button class="toolbaricon" ng-click="$ctrl.logout()"><i class="mdi mdi-logout"></i></button>
+        </div>
+    </div>
+
+
+</div>

@@ -1,0 +1,84 @@
+﻿<div id="altai-slideshowgrid-outer" ng-style="$ctrl.slideshowStyle" ng-if="$ctrl.shouldShowSlides">
+    <div ng-if="$ctrl.slideshowmode=='moveright'">
+        <div id="altai-slideshowgrid" ng-class="{'no-results':$ctrl.slides.length==0}" ng-style="$ctrl.slideshowStyle" hm-recognizer-options='[
+             {"type":"pan","enable":false,},
+             {"type":"swipe","enable":false,},
+             {"type":"swipe","directions":"DIRECTION_HORIZONTAL"}
+             ]' hm-swipeleft="$ctrl.moveRight();" hm-swiperight="$ctrl.moveLeft();">
+            <div id="altai-slideshowgrid-inner" ng-if="$ctrl.slidesReady" ng-style="{'width':($ctrl.slideWidth)*($ctrl.slides.length),'transform':'translateX(-'+$ctrl.minposition*($ctrl.slideWidth)+'px)'}">
+
+                <div class="altai-slideshowgrid-item" ng-repeat="item in $ctrl.slides track by $index" ng-style="item.style" altai-imagestyleset="slideshowgridPictures" ng-class="item.contentType">
+                    <div ng-if="item.slidelinkraw" class="altai-slideshowgrid-content" ng-style="item.contentstyle">
+                        <a ng-href="{{item.slidelinkraw}}" class="slideshowlink">
+                            <div class="altai-slideshowgrid-item-type"></div>
+                            <div class="altai-slideshowgrid-item-title" ng-style="item.titlestyle">{{item.slideshowtitle}}</div>
+                            <div ng-if="item.slideshowtagline" class="altai-slideshowgrid-item-tagline" ng-style="item.taglinestyle" altai-compile-html="{{item.slideshowtagline | crop:250}}"></div>
+                        </a>
+                    </div>
+                    <div ng-if="!item.slidelinkraw" class="altai-slideshowgrid-content" ui-sref="{{item.slidelink || 'home'}}" ng-style="item.contentstyle">
+                        <div class="altai-slideshowgrid-item-type"></div>
+                        <div class="altai-slideshowgrid-item-title" ng-style="item.titlestyle">{{item.slideshowtitle}}</div>
+                        <div ng-if="item.slideshowtagline" class="altai-slideshowgrid-item-tagline" ng-style="item.taglinestyle" altai-compile-html="{{item.slideshowtagline | crop:250}}"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="altai-slideshowgrid-indicators" ng-if="$ctrl.shouldShowIconBubbles" ng-style="$ctrl.slideshowIndicatorsStyle">
+                <div class="altai-slideshowgrid-indicator" ng-click="$ctrl.moveToPosition($index)" ng-class="{'selected':indicator.visible}" ng-repeat="indicator in $ctrl.slides track by $index">
+
+                </div>
+                <div class="altai-slideshowgrid-pauseplay" ng-if="$ctrl.slideshowPlaying" ng-click="$ctrl.togglePlay()"><i class="mdi mdi-pause"></i></div>
+                <div class="altai-slideshowgrid-pauseplay" ng-if="!$ctrl.slideshowPlaying" ng-click="$ctrl.togglePlay()"><i class="mdi mdi-play"></i></div>
+            </div>
+
+            <!--<div ng-if="$ctrl.shouldShowDownButton" class="altai-slideshowgrid-down" ng-style="$ctrl.slideshowDownStyle" altai-smooth-scroll="" anchor="comeosmainmenu" offset="140" state="Root.Home">
+                <i class="mdi mdi mdi-24px mdi-chevron-down"></i>
+            </div>-->
+
+            <div ng-if="$ctrl.shouldShowDownButton" class="mouse-scroll" ng-style="$ctrl.slideshowDownStyle" altai-smooth-scroll="" anchor="comeosmainmenu" offset="140" state="Root.Home">
+                <span class="mouse">
+                    <span class="mouse-movement">
+                    </span>
+                </span>
+            </div>
+
+            <!--<div class="altai-slideshowgrid-left" ng-click="$ctrl.moveLeft()" ng-show="$ctrl.minposition>0" ng-style="$ctrl.slideshowNavigationStyle"><i class="mdi mdi-18px mdi-chevron-left"></i></div>
+            <div class="altai-slideshowgrid-right" ng-click="$ctrl.moveRight()" ng-show="$ctrl.maxposition<$ctrl.slides.length-1" ng-style="$ctrl.slideshowNavigationStyle"><i class="mdi mdi-18px" ng-class="{'mdi-chevron-right':$ctrl.position!=$ctrl.slides.length,'mdi-home':$ctrl.position==$ctrl.slides.length}"></i></div>-->
+
+            <div class="altai-slideshowgrid-left" ng-show="$ctrl.shouldshowleftindicator" ng-click="$ctrl.moveLeft()"  ng-style="$ctrl.slideshowNavigationStyle"><i class="mdi mdi-18px mdi-chevron-left"></i></div>
+            <div class="altai-slideshowgrid-right" ng-show="$ctrl.shouldshowrightindicator" ng-click="$ctrl.moveRight()" ng-style="$ctrl.slideshowNavigationStyle"><i class="mdi mdi-18px" ng-class="{'mdi-chevron-right':$ctrl.position!=$ctrl.slides.length,'mdi-home':$ctrl.position==$ctrl.slides.length}"></i></div>
+
+        </div>
+    </div>
+    
+    <div ng-if="$ctrl.slideshowmode=='fadeinout'">
+        <div id="altai-slideshowgrid" ng-class="{'no-results':$ctrl.slides.length==0}" ng-style="$ctrl.slideshowStyle">
+
+            <div id="altai-slideshowgrid-inner" ng-if="$ctrl.slidesReady" ng-style="{'width':($ctrl.slideWidth)}">
+
+                <div  class="altai-slideshowgrid-item" ng-style="$ctrl.slides[$ctrl.position].style" altai-imagestyleset="slideshowgridPictures" ui-sref="item.url" ng-class="{'fadingin':$ctrl.fadingin,'fadingout':$ctrl.fadingout}">
+                    <div class="altai-slideshowgrid-content" ui-sref="{{$ctrl.slides[$ctrl.position].slidelink || 'home'}}" ng-style="$ctrl.slides[$ctrl.position].contentstyle">
+                        <div class="altai-slideshowgrid-item-type"></div>
+                        <div class="altai-slideshowgrid-item-title" ng-style="$ctrl.slides[$ctrl.position].titlestyle">{{$ctrl.slides[$ctrl.position].slideshowtitle}}</div>
+                        <div ng-if="$ctrl.slides[$ctrl.position].slideshowtagline" class="altai-slideshowgrid-item-tagline" ng-style="$ctrl.slides[$ctrl.position].taglinestyle" altai-compile-html="{{$ctrl.slides[$ctrl.position].slideshowtagline}}"></div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="altai-slideshowgrid-indicators" ng-style="$ctrl.slideshowIndicatorsStyle">
+                <div class="altai-slideshowgrid-indicator" ng-click="$ctrl.moveToPosition($index)" ng-class="{'selected':$index==$ctrl.position}" ng-repeat="indicator in $ctrl.slides track by $index">
+
+                </div>
+                <div class="altai-slideshowgrid-pauseplay" ng-if="$ctrl.slideshowPlaying" ng-click="$ctrl.togglePlay()"><i class="mdi mdi-pause"></i></div>
+                <div class="altai-slideshowgrid-pauseplay" ng-if="!$ctrl.slideshowPlaying" ng-click="$ctrl.togglePlay()"><i class="mdi mdi-play"></i></div>
+            </div>
+
+            <div class="altai-slideshowgrid-left" ng-click="$ctrl.moveLeft()" ng-show="$ctrl.position>0" ng-style="$ctrl.slideshowNavigationStyle"><i class="mdi mdi-chevron-left mdi-18px"></i></div>
+            <div class="altai-slideshowgrid-right" ng-click="$ctrl.moveRight()" ng-style="$ctrl.slideshowNavigationStyle"><i class="mdi mdi-18px" ng-class="{'mdi-chevron-right':$ctrl.position!=$ctrl.slides.length,'mdi-home':$ctrl.position==$ctrl.slides.length}"></i></div>
+
+        </div>
+    </div>
+
+
+    <div class="loading" ng-show="loading"><i class="fa fa-cog fa-spin"></i> laden</div>
+</div>
+

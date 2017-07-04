@@ -1,0 +1,47 @@
+﻿<div class="altai-list">
+    <div class="search">
+        <div style="flex:1"></div>
+
+        <button class="altai-admin-icon" ng-click="$ctrl.changeViewMode('list')" style="margin-left:20px;"><i class="mdi mdi-format-list-bulleted"></i></button>
+        <button class="altai-admin-icon" ng-click="$ctrl.changeViewMode('grid')"><i class="mdi mdi-grid"></i></button>
+        <button class="add" ng-click="$ctrl.openCreateFileWindow()"><i class="mdi mdi-plus"></i></button>
+    </div>
+
+    <div ng-show="$ctrl.mode=='grid'" class="file-grid">
+        <div ng-repeat="file in $ctrl.files.pageResults | altaiFileFilter: $ctrl.activeDocFilters:$ctrl.activeImageFilters:$ctrl.filterSettings" class="file-grid-item" ng-click="$ctrl.selectFile(file)" ng-class="{checked:$ctrl.isSelected(file.id)}">
+            <span class="check-grid"><i class="mdi mdi-check"></i></span>
+            <div class="file-grid-item-label" ng-if="!file.isImage"><i class="mdi mdi-file"></i>&nbsp;{{file.name}}</div>
+            <img ng-src="{{$root.staticFileBase}}/{{file.name}}" ng-if="file.isImage" />
+        </div>
+    </div>
+
+    <div ng-show="$ctrl.mode=='list'">
+        <div class="row file-list" ng-repeat="file in $ctrl.files.pageResults" ng-click="$ctrl.selectFile(file)" ng-class="{checked:$ctrl.isSelected(file.id)}">
+            <span class="check-list"><i class="mdi mdi-check"></i></span>
+            <div class="avatar"><i class="mdi mdi-file"></i></div>
+            <div class="text rowtext">
+                <h2>{{file.label}} ({{file.name}})</h2>
+            </div>
+            <div class="rowactions">
+
+                <button type="button" class="icon" ng-click="$ctrl.updateFile(file)">
+                    <md-tooltip md-direction="top">{{'edit'|translate}}</md-tooltip>
+                    <i class="mdi mdi-pencil"></i>
+                </button>
+
+                <button type="button" class="icon" ng-click="$ctrl.deleteFile(file)">
+                    <md-tooltip md-direction="top">{{'delete'|translate}}</md-tooltip>
+                    <i class="mdi mdi-delete"></i>
+                </button>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="altai-admin-section">
+        <div class="panel-buttons">
+            <altai-pagination paged-result="$ctrl.files" switch-page="$ctrl.openPage(pageIndex)"></altai-pagination>
+        </div>
+    </div>
+
+</div>

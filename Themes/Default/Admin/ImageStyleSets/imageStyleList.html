@@ -1,0 +1,27 @@
+﻿<div class="admin-header">
+    <h2><i class="fa fa-magic"></i>{{"imagestyles"|translate}}</h2>
+</div>
+
+<table class="table-admin">
+
+    <tr>
+        <th>{{'NAME'|translate}}</th>
+        <th>{{'ORIENTATION'|translate}}</th>
+        <th>{{'MIN-WIDTH'|translate}}</th>
+        <th>{{'RETINA'|translate}}</th>
+        <th>{{'ACTIONS'|translate}}</th>
+    </tr>
+    <tr data-ng-repeat="imageStyle in $ctrl.imageStyleList">
+        <td>{{imageStyle.name}}</td>
+         <td>{{imageStyle.orientation}}</td>
+         <td>{{imageStyle.minWidth}}</td>
+         <td>{{imageStyle.retina}}</td>
+        <td>
+            <button type="button" class="btn btn-success btn-md" data-ng-click="$ctrl.recycleImageCache(imageStyle.id)"><i class="fa fa-magic"></i>&nbsp;{{"recycleimagecache"|translate}}</button>
+            <a class="btn btn-warning btn-md" href="#!/admin/imagestyle/{{imageStyle.id}}"><i class="fa fa-pencil"></i></a>
+            <button type="button" class="btn btn-danger btn-md" data-ng-click="$ctrl.removeImageStyle(imageStyle.id)"><i class="fa fa-trash-o"></i></button>
+        </td>
+    </tr>
+</table>
+<button type="button" class="btn btn-success btn-md" data-ng-click="$ctrl.recycleImageCache()"><i class="fa fa-magic"></i>&nbsp;{{"recycleentireimagecache"|translate}}</button>
+<a href="#!/admin/imagestyle/create" class="btn btn-primary"><i class="fa fa-plus"></i>&nbsp;{{"createnewimagestyle"|translate}}</a>

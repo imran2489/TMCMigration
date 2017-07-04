@@ -1,0 +1,215 @@
+﻿@import "../config.less";
+
+.altai-theme-content {
+    #bodyView{ 
+    .tag-selector {
+        width: 100%;
+        margin-top: 10px;
+
+        .tag-container {
+            position: relative;
+            display: inline-block;
+
+            .dropdown {
+                position: absolute;
+                background-color: @grey5;
+                top: 30px;
+                left: 0;
+                width: 300px;
+                border-radius: 3px;
+                box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+                min-height: 1px;
+                overflow: hidden;
+                z-index: 70;
+                transition: min-height 0.05s ease-in-out;
+            }
+            .dropdown.expanded {
+                display: block;
+                min-height: 20px;
+            }
+            .subtag {
+                display: block;
+                border-left: 5px solid #d9d9d9;
+                padding: 10px;
+                cursor: pointer;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                -webkit-user-select: none;
+                user-select: none;
+                -moz-transition: border-left 0.2s ease-in-out, border 0.3s ease-in-out;
+                -o-transition: border-left 0.2s ease-in-out, border 0.3s ease-in-out;
+                -webkit-transition: border-left 0.2s ease-in-out, border 0.3s ease-in-out;
+                transition: border-left 0.2s ease-in-out, border 0.3s ease-in-out;
+                .title{
+                    font-size: inherit;
+                    line-height: inherit;
+                }
+                .check {
+                    visibility: hidden;
+                    width: 20px;
+                }
+            }
+
+            .subtag:hover {
+                border-left: 5px solid @blue;
+            }
+
+            .subtag.active {
+                border-left: 5px solid @blue;
+
+                .check {
+                    visibility: visible;
+                    float: left;
+                    display: inline;
+                }
+            }
+        }
+
+        .tag {
+            background-color: @grey3;
+            padding: 4px 20px 4px 20px;
+            padding-left: 30px;
+            border-radius: 5px;
+            margin-right: 7px;
+            color: black;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            margin-bottom: 7px;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            -webkit-user-select: none;
+            user-select: none;
+            
+
+            .check {
+                position: absolute;
+                top: 0;
+                left: 0;
+                background-color: #d9d9d9;
+                width: 20px;
+                color: #d9d9d9;
+                height: 100%;
+                display:flex;
+                justify-content:center;
+                align-items:center;
+                -moz-transition: background-color 100ms ease, color 100ms ease;
+                -o-transition: background-color 100ms ease, color 100ms ease;
+                -webkit-transition: background-color 100ms ease, color 100ms ease;
+                transition: background-color 100ms ease, color 100ms ease;
+            }
+
+            .chevron {
+                display: none;
+            }
+        }
+        .tag-title-container {
+            display:flex;
+            .title{
+                //flex:1 0 0px;
+                padding-left:10px;
+                font-size: 100%;
+                line-height: inherit;
+                font-family: inherit;
+                text-decoration: none;
+            }
+
+        }
+        .tag.parent {
+            padding: 4px 5px 4px 20px;
+            .chevron {
+                right: 4px;
+                top: 5px;
+                display:block;
+                transition: all 0.2s linear;
+                margin-left:20px;
+            }
+             .tag-title-container {
+                 .title{
+                     font-size: 100%;
+                     line-height: inherit;
+                     font-family: inherit;
+                     text-decoration: none;
+                 }
+             }
+        }
+
+        .tag.active {
+
+            .check {
+                background-color: @blue;
+                color: white;
+            }
+        }
+        .tag.parent:hover .check{
+            background-color: #d9d9d9;
+            color: #d9d9d9;
+        }
+        .tag.parent:hover .chevron{
+            color:@blue;
+        }
+
+        .tag.parent.active:hover .check{
+            background-color: @blue;
+            color: white;
+        }
+        .hasChildren{
+            background-color: @blue !important;
+
+        }
+        .mdi-checkbox-blank-circle{
+            font-size: 8px;
+            color: white;
+        }
+            
+        .tag.parent .check:hover{
+            background-color: @blue;
+            color: @blue;
+        }
+        .tag.active.parent .check:hover{
+            color:white;
+        }
+        .tag:hover .check {
+            background-color: @blue;
+            color: @blue;
+        }
+        .tag.active:hover .check {
+            color: white;
+        }
+
+        .tag.disabled {
+            color: #c1c1c1;
+            cursor: default;
+        }
+
+        .tag.disabled:hover .check {
+            background-color: #d9d9d9;
+            color: #d9d9d9;
+        }
+
+        .tag-select-all {
+            background-color: #f1f1f1;
+
+            .check {
+                background-color: #d9d9d9;
+                color: #d9d9d9;
+            }
+        }
+
+        
+
+
+
+        .chevron.rotated {
+            transform: rotate(180deg);
+        }
+    }
+    }
+    md-checkbox.md-checked .md-ink-ripple{
+        color: @blue;
+    }
+}

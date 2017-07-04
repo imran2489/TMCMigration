@@ -1,0 +1,117 @@
+﻿@import "../comeos.config.less";
+
+.altai-theme-content #bodyView {  
+    //Comeos pages
+    
+    .comeos-highlighted{
+        padding-top: 50px;
+        padding-bottom: 50px;
+        font-family: @comeos-font;
+        .event-date{
+            color:@comeos-black;
+            margin-bottom:20px;
+        }
+        .card-1 .card__body h5{
+            font-weight:800;
+        }
+        a .card p{
+            color:@comeos-black;
+        }
+        h1, h3{
+            font-family: @comeos-font;
+        }
+        h1{
+            margin:0;
+            margin-top:20px;
+        }
+        h3{
+            font-size:18px;
+        }
+        .btn.rounded-button{
+            border-radius:100px !important; 
+            background-color: transparent;
+            border-color: @comeos-black;
+            margin-left:auto;
+            margin-right:auto;
+            color: @comeos-black;
+            cursor:pointer;
+        } 
+        .button-container{
+            display:flex;
+            justify-content:center;
+        }
+
+    }
+    .comeos-highlighted-light-grey{
+        background-color:@comeos-light-grey;
+    }
+    .comeos-highlighted-light{
+        background-color:@comeos-light;
+    }
+    .comeos-highlighted-green{
+        background-color:@comeos-bg-green;
+        h1,h3{
+            color:@comeos-white;
+        }
+        .btn.rounded-button{
+
+            border-color: @comeos-white;
+            color:@comeos-white;
+        }
+        .btn.rounded-button:hover{
+            background-color:  @comeos-white;
+            border-color: @comeos-white !important;
+            color:@comeos-black !important;
+            cursor:pointer;
+        }
+    }
+    .comeos-highlighted-dark{
+        background-color:@comeos-bg-blue-darker;
+        color:@comeos-white;
+        h1,h3{
+            color:@comeos-white;
+        }
+        
+    }
+    .comeos-text-banner{
+        font-family: @comeos-font;
+        font-size: 1.3em;
+        text-align:center;
+        p,span{
+            line-height: 1.8em;
+        }
+    }
+    .comeos-text-banner-black{
+        background-color:@comeos-black;
+        color: @comeos-white;
+        a{
+            color:@comeos-white;
+        }
+    }
+    .comeos-text-banner-white{
+        background-color:@comeos-white;
+        color: @comeos-black;
+        a{
+            color:@comeos-black;
+        }
+    }
+    .comeos-text-banner-green{
+        background-color:@comeos-bg-green;
+        color: @comeos-white;
+        a{
+            color:@comeos-white;
+        }
+    }
+    .comeos-text-banner-yellow{
+        background-color:@comeos-yellow;
+        color: @comeos-white;
+        a{
+            color:@comeos-white;
+        }
+    }
+    .col-centered{
+        float:none;
+        margin:0 auto;
+    }
+   
+}  

@@ -1,0 +1,21 @@
+﻿<section id="cd-timeline" class="cd-container">
+    <div class="cd-timeline-block" ng-repeat="event in $ctrl.history">
+        <div class="cd-timeline-img cd-location">
+            <i class="mdi mdi-laptop-windows"></i>
+        </div>
+        <div class="cd-timeline-content">
+            <h2><b>Matthias</b> bezoekt pagina "<u>{{event.param1}}</u>"</h2>
+            <span class="cd-date">{{event.param2}}</span>
+        </div>
+    </div>
+    <div class="cd-timeline-block">
+        <div class="cd-timeline-img cd-movie">
+            <i class="mdi mdi-email-outline"></i>
+        </div>
+        <div class="cd-timeline-content">
+            <h2><b>Matthias</b> verstuurt email</h2>
+            <p>Inhoud</p>
+            <span class="cd-date">Jul 26</span>
+        </div> 
+    </div>
+</section>

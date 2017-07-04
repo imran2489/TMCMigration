@@ -1,0 +1,15 @@
+﻿<altai-toolbar-menu menu-model="vm.toolbar" languages="vm.languages"></altai-toolbar-menu>
+
+<form class="altai-form">
+
+    <div class="form-group">
+        <label>{{'name'|translate}}</label>
+        <input disabled type="text" ng-model="newContentType.name" altai-machine-name="newContentType.labelTranslatable" />
+    </div>
+
+    <div class="form-group">
+        <label>{{'label'|translate}}</label>
+        <div altai-translatable-input="newContentType.labelTranslatable" languages="vm.languages" />
+    </div>
+
+</form>

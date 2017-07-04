@@ -1,0 +1,64 @@
+﻿<div class="altai-list">
+    <div class="search">
+        <input class="query" type="text" placeholder="{{'searchinname'|translate}}" ng-model-options="{ debounce: 300 }" ng-model="vm.searchModel.name" />
+        <md-button ng-click="vm.createContentItem()" class="md-button-altai md-raised"><i class="mdi mdi-plus"></i> {{::'create'|translate}} </md-button>
+    </div>
+    <div class="header-filter-collection">
+        <div class="header-filter-section">
+            <div class='header-filter-item'>
+                <div isteven-multi-select input-model="vm.contentTypes" output-model="vm.searchModel.chosenContentTypeModel" button-label="icon label" item-label="icon label maker" tick-property="ticked"></div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="altai-admin-section">
+    <table>
+
+        <thead>
+            <tr>
+                <th></th>
+                <th><a ng-click="vm.setSorting('ContentTypeName')">{{'type'|translate}}</a></th>
+                <th><a ng-click="vm.setSorting('Name')">{{'name'|translate}}</a></th>
+                <th><a ng-click="vm.setSorting('LastUpdated')">{{'lastedited'|translate}}</a></th>
+                <th><a ng-click="vm.setSorting('Published')">{{'published'|translate}}</a></th>
+                <th>{{'actions'|translate}}</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr ng-repeat="contentRow in vm.contentItems.results track by contentRow.Id">
+                <td><i class="mdi mdi-google-circles-extended"></i></td>
+                <td>{{contentRow.ContentType}}</td>
+                <td>{{contentRow.Name|altaicutoff:50}}</td>
+                <td>{{contentRow.LastUpdated| date:'dd-MM-yyyy HH:mm'}}</td>
+                <td><span data-ng-show="contentRow.Published">{{'yes'|translate}}</span><span data-ng-hide="contentRow.Published">{{'no'|translate}}</span></td>
+                <td>
+                    <altai-content-item-buttons content-item="contentRow"></altai-content-item-buttons>
+                </td>
+            </tr>
+        </tbody>
+
+    </table>
+
+    <div class="row" ng-if="vm.contentItems.pages > 0">
+        <div class="col-sm-12">
+            <div class="button-row--centralized">
+                <div class="panel-buttons">
+                    <nav class="altai-pagination ng-isolate-scope">
+                        <pagination ng-model="vm.searchModel.pageNr"
+                                    total-items="vm.contentItems.pages*vm.contentItems.pageSize"
+                                    max-size="10"
+                                    items-per-page="12"
+                                    boundary-links="true"
+                                    previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;">
+                        </pagination>
+                    </nav>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>

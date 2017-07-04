@@ -1,0 +1,30 @@
+﻿<div class="page-header">
+    <h2>{{'updatestateview'|translate}}</h2>
+</div>
+
+<table class="table table-striped">
+    <tr>
+        <th colspan="2">{{'details'|translate}}</th>
+    </tr>
+    <tr>
+        <td style="width:25%">{{'state'|translate}}:</td>
+        <td>{{stateView.state.name}}</td>
+    </tr>
+
+        <tr>
+        <td>{{'view:'|translate}}</td>
+        <td>{{stateView.view.name}}</td>
+    </tr>
+
+    <tr>
+        <td>{{'panel'|translate}}:</td>
+        <td>
+            <select data-ng-options="p.id as p.name for p in panels" data-ng-model="stateView.panelId">
+                <option value="">--</option>
+            </select>
+        </td>
+    </tr>
+
+</table>
+
+<button class="btn btn-success" data-ng-click="saveStateView()"><i class="fa fa-save"></i>&nbsp;{{'save'|translate}}</button>

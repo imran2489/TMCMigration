@@ -1,0 +1,12 @@
+﻿<div class="container">
+    <div class="grid">
+        <!-- WARNING: do not use track by, because for masonry to work correctly we need to re-render the whole list -->
+        <div class="grid-item" ng-repeat="item in $ctrl.items | unique:'item.id'" comeos-masonry-init>
+            
+            <comeos-card ng-if="(item.contentType!='magazineartikel' && item.contentType!='cao' && item.contentType!='caobundel' && item.contentType!='ceoletter' && item.contentType!='ceoevent')" item="item" hide-tag="false"></comeos-card>
+            <comeos-card-direct-download ng-if="item.contentType=='magazineartikel'" item="item" hide-tag="false"></comeos-card-direct-download>
+            <comeos-card-cao ng-if="item.contentType=='cao' || item.contentType=='caobundel'" item="item" hide-tag="false"></comeos-card-cao>
+            <comeos-event-card ng-if="item.contentType=='ceoletter' || item.contentType=='ceoevent'" item="item"></comeos-event-card>
+        </div>
+    </div>
+</div>

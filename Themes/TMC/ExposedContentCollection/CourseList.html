@@ -1,0 +1,9 @@
+﻿<h2>Courses</h2>
+
+<div style="border:5px solid lightblue;padding:20px;" ng-repeat="course in $ctrl.data.pageResults track by course.id">
+
+    <h1><a href="/course/{{course.id}}">{{course.title}}</a></h1>
+
+    <p>{{course.description}}</p>
+
+</div>

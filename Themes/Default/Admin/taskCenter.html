@@ -1,0 +1,41 @@
+﻿<md-menu-bar class="smallbar">
+    <md-menu class="taskcenter">
+        <button class="taskcentericon" ng-click="$mdOpenMenu()">
+            <i class="mdi mdi-clipboard-check"></i>
+            <span ng-if="vm.tasks.length + vm.claimabletasks.length > 0" class="iconcounter">{{vm.tasks.length + vm.claimabletasks.length}}</span>
+        </button>
+        <md-menu-content class="taskcenterlist">
+            <md-menu-item class="md-center" ng-if="vm.tasks.length + vm.claimabletasks.length > 0">
+                {{::'you_have'|translate}} {{vm.tasks.length + vm.claimabletasks.length}} {{::'tasks_waiting'|translate}}
+            </md-menu-item>
+            <md-menu-item class="md-center" ng-if="(vm.tasks.length==undefined && vm.tasks.claimabletasks==undefined) || vm.tasks.length + vm.claimabletasks.length == 0">
+                {{::'you_have'|translate}} {{::'no_none'|translate}} {{::'tasks_waiting'|translate}}
+            </md-menu-item>
+            <md-menu-item ng-repeat="task in vm.tasks | orderBy:-processTasksResponseData.createTime | limitTo:5" class="md-indent taskcenterrow assignedtask">
+
+                <span class="taskcenterfield field-contenttype"><span class="contenttypeletterpill" ng-class="'pill-'+task.contentItem.contentType.name">{{task.contentItem.contentType.label|limitTo:1}}</span></span>
+                <span class="taskcenterfield field-taskname">{{task.contentFlowTaskDefinition.label}}</span>
+                <span class="taskcenterfield field-contentitemname">{{task.contentItem.name}}</span>
+                <span class="taskcenterfield field-date">{{task.processTasksResponseData.createTime | date:"dd/MM/yyyy h:mm:ss"}}</span>
+                <span class="taskcenterfield field-commentpill"><span class="commentpill" ng-class="{'interesting':task.comments.length>0}"><i class="mdi mdi-comment-account-outline"></i> {{task.comments.length}}</span></span>
+
+            </md-menu-item>
+            <md-menu-item ng-repeat="task in vm.claimabletasks" class="md-indent taskcenterrow claimabletask">
+
+                <span class="taskcenterfield field-contenttype"><span class="contenttypeletterpill" ng-class="'pill-'+task.contentItem.contentType.name">{{task.contentItem.contentType.label|limitTo:1}}</span></span>
+                <span class="taskcenterfield field-taskname">{{task.contentFlowTaskDefinition.label}}</span>
+                <span class="taskcenterfield field-contentitemname">{{task.contentItem.name}}</span>
+                <span class="taskcenterfield field-date">{{task.processTasksResponseData.createTime | date:"dd/MM/yyyy h:mm:ss"}}</span>
+                <span class="taskcenterfield field-commentpill"><span class="commentpill" ng-class="{'interesting':task.comments.length>0}"><i class="mdi mdi-comment-account-outline"></i> {{task.comments.length}}</span></span>
+
+            </md-menu-item>
+            <md-menu-item  class="md-center" ng-if="vm.tasks.length + vm.claimabletasks.length > 5">
+                <div>... {{vm.tasks.length + vm.claimabletasks.length - 5}} {{'more_tasks'|translate}}</div>
+            </md-menu-item>
+            <md-menu-item class="md-center taskcenterrow" ng-if="(vm.tasks!=undefined && vm.claimabletasks!=undefined) && vm.tasks.length + vm.claimabletasks.length != 0">
+                    <button class="btn btn-altai altai-button-go" ng-click="vm.openTaskWindow()">{{::'see_all_tasks'|translate}}</button>
+            </md-menu-item>
+        </md-menu-content>
+    </md-menu>
+
+</md-menu-bar>

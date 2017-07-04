@@ -1,0 +1,26 @@
+﻿<div class="altai-admin-section">
+    <div class="subheader">
+        <h3>{{::'SystemSettings'|translate}}</h3>
+    </div>
+
+    <div class="altai-list">
+        <div class="row">
+            <div class="avatar"><i class="mdi mdi-cached"></i></div>
+            <div class="text rowtext">
+                <h2>Cache</h2>
+            </div>
+            <div class="rowactions">
+                <md-button ng-click="vm.clearCache()" class="md-button-altai md-raised"><i class="mdi mdi-delete"></i> {{::'Clear'|translate}} </md-button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="avatar"><i class="mdi mdi-cached"></i></div>
+            <div class="text rowtext">
+                <h2>AppPool</h2>
+            </div>
+            <div class="rowactions">
+                <md-button ng-click="vm.RecycleAppPool()" class="md-button-altai md-raised"><i class="mdi mdi-cached"></i> {{::'recycle'|translate}}</md-button>
+            </div>
+        </div>
+    </div>
+</div>

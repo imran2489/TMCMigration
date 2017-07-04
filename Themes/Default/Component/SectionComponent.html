@@ -1,0 +1,22 @@
+﻿<div class="dossier-vragen">
+    <div ng-if="$ctrl.sectionmodel.length>0">
+        <div class="row">
+            <div class="col-md-12 comeos-buttons">
+                <div class="comeos-button no-animate" ng-click="$ctrl.expandAll()" ng-show="!$ctrl.allexpanded">
+                        Toon het volledige dossier
+                </div>
+                <div class="comeos-button no-animate" ng-click="$ctrl.collapseAll()" ng-show="$ctrl.allexpanded">
+                        Verberg de antwoorden
+                </div>
+                <a class="comeos-button" ng-click="$ctrl.printFile()">
+                    Print het volledige dossier
+                </a>
+            </div>
+            </div>
+
+        <altaisubsection subsectionmodel="subsection" ng-repeat="subsection in $ctrl.sectionmodel">
+
+        </altaisubsection>
+        
+    </div>
+</div>

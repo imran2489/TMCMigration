@@ -1,0 +1,101 @@
+﻿@import "../config.less";
+@import "../comeos.config.less";
+
+.altai-theme-content {
+    #bodyView{ 
+        .modal {
+          text-align: center;
+          z-index: 1100!important;
+        }
+        .modal-backdrop, .modal-backdrop.in{
+            opacity: 0.1;
+        }
+
+
+        @media screen and (min-width: 768px) { 
+          .modal:before {
+            display: inline-block;
+            vertical-align: middle;
+            content: " ";
+            height: 100%;
+          }
+        }
+
+        .modal-dialog {
+          display: inline-block;
+          text-align: left;
+          vertical-align: middle;
+          max-height: calc(~"100vh - 20px");
+          max-width: calc(~"100vw -20px");
+          overflow: auto;
+        }
+        .modal{
+            *:focus {
+            outline: 0;
+            outline: none;
+            }
+     }
+    .modal-content {
+        z-index:1100;
+        border-radius: 0;
+        border: none;
+        padding: 10px;
+        -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        .modal-header{
+            border-bottom: none;
+        }
+        .modal-footer{
+            border-top: 0;
+        }
+        .share-buttons{
+            display: -webkit-flex;
+            display: flex;
+            -webkit-flex-direction: row; /* works with row or column */
+            flex-direction: row;
+            -webkit-align-items: center;
+            align-items: center;
+            -webkit-justify-content: space-around;
+            justify-content: space-around;
+        }
+        .share{
+            border-radius: 20px;
+            padding: 10px 20px;
+            margin: 15px 5px;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .twitter{
+            background-color: #00a9f1;
+            color: #fff;
+        }
+        .linkedin{
+            background-color: #007bb6;
+            color: #fff;
+        }
+        .facebook{
+            background-color: #3b5998;
+            color: #fff;
+        }
+        .googleplus{
+            background-color: #DC4E41;
+            color: #fff;
+        }
+        .mail{
+            background-color: @comeos-bg-dark-grey;
+            color: #fff;
+
+        }
+        .description{
+            margin: 5px 0 15px 0;
+            width: 100%;
+        }
+    }
+    .comeos-button {
+
+    }
+    .comeos-button:hover{
+
+    }
+}
+    }

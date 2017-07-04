@@ -1,0 +1,33 @@
+﻿<altai-toolbar-menu menu-model="$ctrl.toolbar" languages="$ctrl.languages" ng-if="!$ctrl.embedded"></altai-toolbar-menu>
+
+<div class="altai-admin-section" ng-class="{'file-uploader-embedded':$ctrl.embedded}">
+
+    <div ngf-drop="$ctrl.selectFiles($files)" ngf-select="$ctrl.selectFiles($files)" ngf-drag-over-class="'dragover'" ngf-multiple="true" class="altai-file-dropzone">
+        <div class="upload-icon"><i class="mdi mdi-cloud-upload"></i></div>
+        <div class="upload-text">{{'dropselectfiles'|translate}}</div>
+    </div>
+    <div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div>
+    
+    <table ng-if="$ctrl.files && $ctrl.files.length>0">
+        <thead>
+            <tr>
+                <th></th>
+                <th>{{'name'|translate}}</th>
+                <th>{{'label'|translate}}</th>
+                <th>{{'type'|translate}}</th>
+                <th>{{'size'|translate}}</th>
+                <th>{{'progress'|translate}}</th>
+            </tr>
+        </thead>
+        <tbody ui-sortable ng-model="$ctrl.files">
+            <tr ng-repeat="file in $ctrl.files">
+                <td><img ngf-thumbnail="file" class="thumb" style="width:60px;"></td>
+                <td>{{file.name}}</td>
+                <td><div altai-translatable-input="file.labelTranslatable" languages="$ctrl.languages" /></td>
+                <td>{{file.type}}</td>
+                <td>{{file.size}}</td>
+                <td><md-progress-linear md-mode="determinate" value="{{file.progress}}"></md-progress-linear></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

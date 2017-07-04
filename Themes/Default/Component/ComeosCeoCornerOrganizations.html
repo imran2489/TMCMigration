@@ -1,0 +1,11 @@
+﻿<div ng-hide="$ctrl.companies">{{'loading'|translate}}</div>
+
+<div ng-repeat="comp in $ctrl.companies track by comp.id" style="margin-top: 40px;">
+    <altai-exposed-content-collection template-id="618" exposed-content-collection-id="106" parameters="{id: comp.id}" titleexp="comp.name" no-results="{{'noEmployees'| translate}}"></altai-exposed-content-collection>
+    <!--<form class="mycomeos-invite-newemp">
+
+        <p>{{::'ceocornerinviteexpl'|translate}}</p>
+
+        <input type="text" ng-model="newEmployeeEmail" /> <button ng-click="$ctrl.inviteNewEmployee(newEmployeeEmail,comp['efficy_id'])" class="comeos-button">{{'invitenewemployee'|translate}}</button>
+    </form>-->
+</div>

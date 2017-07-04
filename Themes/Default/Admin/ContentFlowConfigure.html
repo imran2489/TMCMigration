@@ -1,0 +1,55 @@
+﻿<div class="altai-admin-section">
+    <panel table="true">
+
+        <h2>{{'workflowsforcontenttypes'|translate}}</h2>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>{{'contenttypename'|translate}}</th>
+                    <th>{{'processdefinitionname'|translate}}</th>
+                    <th style="width:100px; text-align:right">{{'actions'|translate}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="contenttypebusinessprocessdefinition in vm.contenttypebusinessprocessdefinitions track by contenttypebusinessprocessdefinition.id">
+                    <td>{{contenttypebusinessprocessdefinition.contentType.label}}</td>
+                    <td>{{contenttypebusinessprocessdefinition.contentFlowProcessDefinition.activitiId}}</td>
+                    <td style="width:100px; text-align:right" class="actioncell">
+                        <button class="icon" ng-click="vm.updatelink(contenttypebusinessprocessdefinition)">
+                            <md-tooltip md-direction="top">{{'edit'|translate}}</md-tooltip>
+                            <i class="mdi mdi-pencil"></i>
+                        </button>
+                        <button class="icon" ng-click="vm.deletelink(contenttypebusinessprocessdefinition)">
+                            <md-tooltip md-direction="top">{{'delete'|translate}}</md-tooltip>
+                            <i class="mdi mdi-delete"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+
+
+            <tr class="table table-striped-add">
+                <td>
+                    <select ng-model="vm.newlink.contentTypeId">
+                        <option
+                            ng-repeat="contenttype in vm.contenttypes"
+                            value="{{contenttype.id}}">{{contenttype.label}}
+                        </option>
+                    </select>
+                </td>
+                <td>
+                    <select ng-model="vm.newlink.contentFlowProcessDefinitionId">
+                        <option ng-repeat="definition in vm.businessprocessdefinitions"
+                                value="{{definition.id}}">
+                            {{definition.activitiKey}} ({{'version'|translate}}: {{definition.activitiVersion}})
+                        </option>
+                    </select>
+                </td>
+                <td style="width:100px; text-align:right"><button class="icon" ng-click="vm.createlink(vm.newlink)"><i class="mdi mdi-plus"></i></button></td>
+            </tr>
+
+        </table>
+
+    </panel>
+</div>

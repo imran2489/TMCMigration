@@ -1,0 +1,72 @@
+﻿<altai-toolbar-menu menu-model="toolbar" languages="vm.languages"></altai-toolbar-menu>
+<div class="altai-admin-section">
+    <panel>
+        <h2>{{'updatestate'|translate}}</h2>
+        <form class="altai-form">
+
+
+            <div class="form-group">
+                <label>{{'name'|translate}}</label>
+                <input type="text" ng-model="vm.state.name" />
+            </div>
+
+            <div class="form-group">
+                <label>{{'title'|translate}}</label>
+                <div altai-translatable-input="vm.state.titleTranslatable" languages="vm.languages" />
+            </div>
+
+            <div class="form-group">
+                <label>{{'url'|translate}}</label>
+                <input type="text" ng-model="vm.state.url" />
+            </div>
+
+            <div class="form-group">
+                <label>{{'startpage'|translate}}</label>
+                <input type="checkbox" ng-model="vm.state.startpage" />
+            </div>
+
+
+            <div class="form-group">
+                <label>{{'parentstate'|translate}}</label>
+                <select ng-model="vm.state.parentStateId" ng-options="state.id as state.name for state in vm.states">
+                    <option value="">--</option>
+                </select>
+            </div>
+
+
+            <div class="form-group">
+                <label>{{'template'|translate}}</label>
+                <select ng-model="vm.state.templateId" data-ng-options="t.id as t.name for t in vm.stateTemplates"></select>
+            </div>
+
+        </form>
+    </panel>
+    <panel table="true">
+        <h2>{{'stateviews'|translate}}</h2>
+        <table class="table table-striped">
+            <tr>
+
+                <th style="width: 20%">{{'viewname'|translate}}</th>
+                <th style="width: 5%">{{'sticky'|translate}}</th>
+                <th style="width: 5%">{{'panel'|translate}}</th>
+                <th></th>
+
+            </tr>
+            <tr data-ng-repeat="view in vm.state.stateViews">
+
+                <td>{{view.viewName}}</td>
+                <td>
+                    <input type="checkbox" data-ng-model="view.sticky" />
+                </td>
+                <td>
+                    <select data-ng-model="view.panelId" data-ng-options="p.id as p.name for p in vm.panels">
+                        <option value="">--</option>
+                    </select>
+                </td>
+                <td>
+                    <md-button ng-click="vm.openPanelAccessesWindow(view.panelId)" class="md-button-altai md-raised"><i class="mdi mdi-key"></i> {{::'authorization'|translate}} </md-button>
+                </td>
+            </tr>
+        </table>
+    </panel>
+</div>

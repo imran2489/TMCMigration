@@ -1,0 +1,14 @@
+﻿<div class="installer-outer">
+    <div class="installer">
+        <img ui-sref="Root.Home" src="https://static.comeos.be/Themes/comeos/img/Comeos_LogoB.png" class="login-logo" />
+
+        <div ng-if="!$ctrl.loading">
+            <div ng-if="!$ctrl.unsubscribed">
+                <p>{{'areyousureyouwanttounsubscribe'|translate}}</p>
+                <button type="submit" class="comeos-button no-animate" ng-click="$ctrl.unsubscribe()">{{'unsubscribe'|translate}}</button><button type="button" class="comeos-button no-animate" ng-click="$ctrl.cancel()">{{'cancel'|translate}}</button>
+            </div>
+            <p ng-if="$ctrl.unsubscribed">{{'unsubscribe_message'|translate}}</p>
+        </div>
+        <p ng-if="$ctrl.loading">{{'unsubscribing'|translate}}<p/>
+</div>
+</div>

@@ -1,0 +1,35 @@
+﻿<section id="wieiswie">
+    <div class="row">
+        <div class="col-sm-12 text-center">
+            <h1 translate>whoiswho</h1>
+        </div>
+    </div>
+    <h5>
+
+    </h5>
+    <div>
+        <!--<div class="row">
+            <div class="comeos-search-bar">
+                <input type="text" ng-model="$ctrl.searchRequest.queryField" ng-model-options="{debounce: 400}" placeholder="{{'search' | translate}}">
+                <i class="mdi mdi-chevron-right chevron"></i>
+            </div>
+        </div>-->
+
+        <div class="exposed-collection-aggregations inlineaggregations text-center">
+            <div ng-repeat="(aggregationName, aggregation) in $ctrl.data.aggregations" class="dossier-tags">
+                <div class="dossier-tags-chip" ng-repeat="item in aggregation.items" ng-click="$ctrl.selectFilterValue(item, aggregation.filterId, aggregation.label)" ng-class="{active: item.selected, child: item.child}">{{item.item.key}}</div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="container">
+                <div class="comeoscards">
+                    <!-- WARNING: do not use track by, because for masonry to work correctly we need to re-render the whole list -->
+                    <div ng-if="item.persooncomeosdepartment.length" class="grid-item who-is-who" ng-repeat="item in $ctrl.outputData">
+                        <whoiswhocard item="item" hide-tag="false"></whoiswhocard>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

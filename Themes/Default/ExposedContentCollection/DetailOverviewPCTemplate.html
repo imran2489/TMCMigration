@@ -1,0 +1,82 @@
+﻿<div analytics analytics-item="$ctrl.data.pageResults[0]" analytics-on-view="true"></div>
+<div print-section class="altai-theme-content comeos-detailoverview comeos-pc">
+    <div altai-set-title titletext="{{$ctrl.data.pageResults[0].title}}"></div>
+    <section class="comeos-cover cover-large comeos-bg-pc highcover" altai-image-style-set-background imagestyleset="pageheader" image="$ctrl.data.pageResults[0].filepc2.file">
+            <div class="row">
+                <div class="col-sm-12 text-center">
+                    <!--<div class="detailoverviewtype">{{'pc'|translate}}</div>-->
+                    <div class="title">{{$ctrl.data.pageResults[0].title}}</div>
+                    <div class="contact-buttons">
+                        <socialshareheader ng-if="$ctrl.data.pageResults[0] != undefined" item="$ctrl.data.pageResults[0]"></socialshareheader>
+                    </div>
+                </div>
+            </div>
+    </section>
+    <altai-menu class="midmenu" template-id="542" menu-id="7"></altai-menu>
+
+    <section class="comeos-detailoverview-introduction">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12" style="text-align: left" altai-compile-html="{{::$ctrl.data.pageResults[0].description}}">
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="bibliotheek" class="comeos-bg-grey-light" style="margin: 0; padding: 0">
+        <div class="container" style="padding-bottom: 0px">
+            <div class="row">
+                <div class="col-sm-12">
+                    <altai-exposed-content-collection template-id="280" exposed-content-collection-id="22" titleexp="('information_on'|translate) + ' ' + $ctrl.data.pageResults[0].title" no-results="{{'noResults'| translate}}"></altai-exposed-content-collection>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="caos" class="comeos-bg-grey" style="margin: 0; padding: 0">
+        <div class="container" style="padding-bottom: 0px">
+            <div class="row">
+                <div class="col-sm-12">
+                    <altai-exposed-content-collection template-id="280" exposed-content-collection-id="85" titleexp="('CAOs'|translate) + ' ' + $ctrl.data.pageResults[0].title" no-results="{{'noCAOForThisPC'| translate}}"></altai-exposed-content-collection>
+                    <a ng-if="$ctrl.activeLang.code=='fr'&&$ctrl.data.pageResults[0].caobundel_pc.caobundel_file_fr" class="comeos-button comeos-button-white comeos-button-fullwidth" ng-href="{{::$root.staticFileBase}}/{{$ctrl.data.pageResults[0].caobundel_pc.caobundel_file_fr.file}}" target="_blank">Téléchargez l'empaqueter complet</a>
+                    <a ng-if="$ctrl.activeLang.code=='nl'&&$ctrl.data.pageResults[0].caobundel_pc.caobundel_file_nl" class="comeos-button comeos-button-white comeos-button-fullwidth" ng-href="{{::$root.staticFileBase}}/{{$ctrl.data.pageResults[0].caobundel_pc.caobundel_file_nl.file}}" target="_blank">Download de volledige bundel</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="samenvattendefiche" class="comeos-bg-grey-lightest" style="margin: 0; padding: 20px 0 4em 0">
+        <div class="container" style="padding-bottom: 0px">
+            <div class="row">
+                <div class="col-sm-12">
+                    <altai-exposed-content-collection template-id="402" exposed-content-collection-id="16" titleexp="('summarysheet'|translate) + ' ' + $ctrl.data.pageResults[0].title" no-results="{{'noSummarysheetForThisPC'| translate}}"></altai-exposed-content-collection>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="baremas" class="comeos-bg-grey" style="margin: 0; padding: 0">
+        <div class="container" style="padding-bottom: 0px">
+            <div class="row">
+                <div class="col-sm-12">
+                    <altai-exposed-content-collection template-id="280" exposed-content-collection-id="87" titleexp="('overzichten'|translate) + ' ' + $ctrl.data.pageResults[0].title" no-results="{{'noSummaryForThisPC'| translate}}"></altai-exposed-content-collection>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="negotiations" class="comeos-bg-grey-light" style="margin: 0; padding: 0">
+        <div class="container" style="padding: 0;">
+            <div class="row">
+                <div class="col-sm-12" style="min-height: 0px;">
+                    <altai-exposed-content-collection template-id="280" exposed-content-collection-id="135" titleexp="('Onderhandelingen'|translate) + ' ' + $ctrl.data.pageResults[0].title"></altai-exposed-content-collection>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="events" class="comeos-bg-grey" style="margin: 0; padding: 0">
+        <div class="container" style="padding: 0;">
+            <div class="row">
+                <div class="col-sm-12" style="min-height: 0px">
+                    <altai-exposed-content-collection template-id="280" exposed-content-collection-id="112" titleexp="('academyenevents'|translate) + ' ' + $ctrl.data.pageResults[0].title"></altai-exposed-content-collection>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

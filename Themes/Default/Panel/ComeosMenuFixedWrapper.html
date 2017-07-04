@@ -1,0 +1,27 @@
+﻿<div id="comeosmainmenu" class="comeos-menu comeos-menu-fixed" comeos-fixed-menu>
+    <div class="comeos-header comeos-header-small">
+        <div class="header-top">
+            <div class="flex-left">
+                <a class="header-top-logo" ui-sref="Root.Home()"><img src="https://static.comeos.be/Themes/comeos/img/Comeos_Logo_Pos_SmallMenuBar.png" /></a>
+            </div>
+            <div class="flex-right">
+                <div class="header-top-menu dynamic darkbg">[zone:secondarymenu]</div>
+                <comeos-top-menu class="header-top-menu" show-circle="true"></comeos-top-menu>
+            </div>
+        </div>
+    </div>
+    <div class="comeos-menu-desktop" >
+        <div class="comeos-menu-zone" id="comeosMenuPlaceholder">
+            [zone:left]
+        </div>
+        <div class="comeos-menu-zone comeos-menu-zone-right" >
+            [zone:right]
+        </div>
+    </div>
+    <div class="comeos-sub-menu">
+        [zone:sub-menu]
+    </div>
+</div>
+<div class="comeos-mobile-menu"><!--Outside div with position: fixed -> iOS fix-->
+    [zone:mobile-menu]
+</div>

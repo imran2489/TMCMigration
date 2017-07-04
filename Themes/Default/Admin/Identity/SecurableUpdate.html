@@ -1,0 +1,10 @@
+﻿<altai-toolbar-menu menu-model="$ctrl.toolbar" languages="$ctrl.languages"></altai-toolbar-menu>
+
+<form class="altai-form">
+
+    <div class="form-group" ng-repeat="securable in $ctrl.securables track by securable.name">
+        <label>{{securable.name}}</label>
+        <div altai-translatable-input="securable.labelTranslatable" languages="$ctrl.languages" />
+    </div>
+
+</form>

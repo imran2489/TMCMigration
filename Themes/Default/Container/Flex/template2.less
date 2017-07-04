@@ -1,0 +1,37 @@
+﻿.template2 {
+    display:flex;
+    -ms-flex-direction:column;
+    -webkit-flex-direction:column;
+    flex-direction:column;
+
+    .row{
+        -ms-flex-direction:row;
+        -webkit-flex-direction:row;
+        flex-direction:row;
+        display:flex;
+        .template2-zone2{
+            flex-grow:1;
+        }
+        .template2-zone3{
+            flex-grow:2;
+        }
+        .template2-zone4{
+            flex-grow:1;
+        }
+    }
+
+    @media only screen and (max-width : 767px) {
+        .row {
+            -ms-flex-direction: column;
+            -webkit-flex-direction: column;
+            flex-direction: column;
+        }
+    }
+} 
+.template2.preview{
+    .zone{
+        height:50px;
+        background-color:tomato;
+        border:1px solid white;
+    }
+}

@@ -1,0 +1,50 @@
+﻿
+<div class="tree-list" ui-sortable="vm.menuItemSortOptions" ng-model="vm.treeModel">
+    <div class="tree-item" ng-repeat="item in vm.treeModel" ng-click="vm.toggleChildrenItems($index, $event)">
+        <div class="tree-item-header">
+            <div>
+                <span class="tree-order-circle">{{item.order}}</span>
+            </div>
+            <div class="tree-item-title">
+                <span  class="chevron">
+                    <i class="mdi mdi-chevron-up " ng-class="{expanded:item.expanded}" ng-if="item.items"></i>
+                </span>
+                <span class="title">
+                    {{item.title}} 
+                </span>
+                <span style="padding-left:20px;" ng-if="item.published">{{'published'|translate}}</span>
+            </div>
+            <div class="tree-item-actions">
+                <span>
+                    <i class="mdi mdi-key-variant tree-clickable" ng-click="vm.setSecurityMenuItem(item.hash)"></i>                
+                </span>
+                <span>
+                    <i class="mdi mdi-pencil tree-clickable" ng-click="vm.editItem(item.hash)"></i>
+                </span>
+                <span>
+                    <i class="mdi mdi-plus tree-clickable" ng-click="vm.addChildItem(item.hash)"></i>
+                </span>
+                
+            </div>
+        </div>
+        <div class="tree-item-children" ng-class="{expanded:item.expanded}">
+            <div class="tree-item-children-content">
+                <tree-list tree-model="item.items" parent-id="item.hash" ng-if="item.items"></tree-list>
+            </div>
+        </div>
+    </div>
+    <div class="tree-item tree-item-button" ng-click="vm.addNewItem(vm.parentId)">
+        <div class="tree-item-header">
+            <div>
+                <span class="tree-order-circle"><i class="mdi mdi-plus"></i></span>
+            </div>
+            <div class="tree-item-title">
+                <span class="chevron">
+                </span>
+                <span class="title">
+                    Add new
+                </span>
+            </div>
+        </div>
+    </div>
+</div>

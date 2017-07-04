@@ -1,0 +1,93 @@
+﻿@import "../comeos.config.less";
+
+.altai-theme-content {
+    width: 100%;
+    height: 100%;
+    background-color: @background-color;
+
+    .attached-file, .attached-link{
+        padding: 0;
+        margin-bottom: 10px;
+        text-decoration: none;
+    }
+
+    .attached-file-icon, .attached-link-icon{
+        margin-right:10px;
+    }
+
+    a {
+        color: #000;
+    }
+
+    a:hover {
+        color: #000;
+    }
+
+    .container {
+        /*width: 60%;
+        margin: auto;*/
+
+        .actu-title-text {
+            color: @title-color;
+            font-size: 20px;
+            padding-top: 0;
+            margin-top: 0;
+        }
+
+        .actu-title-date {
+            color: @font-color;
+        }
+    }
+
+    .actu-tags {
+        padding-top: 40px;
+        padding-bottom: 40px;
+
+        .actu-tags-chip {
+            background-color: @grey-1;
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-bottom: 5px;
+            padding-top: 5px;
+            border-radius: 10px;
+            margin-bottom:8px;
+            margin-left: 10px;
+            display:inline-block;
+        }
+
+    }
+
+    .actu-section {
+        margin-top: 20px;
+
+        .actu-section-title {
+            font-size: 20px;
+            margin-top: 30px;
+        }
+    }
+
+    .share-icon {
+        float: right;
+        font-size: 20px;
+    }
+
+    .actu-pdf {
+        color: @red;
+        font-size: 25px;
+    }
+
+    .actu-person-icon {
+        border-radius: 50% 50% 50% 50%;
+        width: 100px;
+        height: 100px;
+        overflow: hidden;
+
+        img {
+            width: 100px;
+        }
+    }
+
+    .actu-nieuwsbrief-link {
+        font-size: 22px;
+    }
+}

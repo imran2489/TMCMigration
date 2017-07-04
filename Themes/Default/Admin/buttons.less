@@ -1,0 +1,174 @@
+﻿@import "../config";
+
+/*@altai-button-box-shadow-x-hover: 0;
+@altai-button-box-shadow-y-hover: 4px;
+@altai-button-box-shadow-x: 0;
+@altai-button-box-shadow-y: 3px;
+@altai-button-hover-top: -1px;
+@altai-button-border-radius: 15px;
+@altai-button-padding-x: 15px;
+@altai-button-padding-y: 5px;
+@altai-button-margin-x: 10px;
+@altai-button-margin-y: 5px;
+
+@altai-button-text-darken-percentage: 40%;
+@altai-button-box-shadow-darken-percentage: 15%;
+@altai-button-box-shadow-darken-percentage-hover: 15%;*/
+
+/*button colors*/
+@color-bg-altai-button-go: #5ef9a4;
+@color-bg-altai-button-back: #ffcf49;
+@color-bg-altai-button-danger: #ff5858;
+@color-bg-altai-button-accent: #ed82ff;
+@color-bg-altai-button-primary: #24a6ff;
+@color-bg-altai-button-secondary: #d3d3d3;
+
+@altai-button-box-shadow-x-hover: 0;
+@altai-button-box-shadow-y-hover: 0;
+@altai-button-box-shadow-x: 0;
+@altai-button-box-shadow-y: 0;
+@altai-button-hover-top: 0;
+@altai-button-border-radius: 3px;
+@altai-button-padding-x: 15px;
+@altai-button-padding-y: 5px;
+@altai-button-margin-x: 10px;
+@altai-button-margin-y: 5px;
+
+@altai-button-text-darken-percentage: 60%;
+@altai-button-box-shadow-darken-percentage: 15%;
+@altai-button-box-shadow-darken-percentage-hover: 15%;
+
+
+
+.altai-theme-admin {
+    .btn-altai:hover {
+        box-shadow: @altai-button-box-shadow-x-hover @altai-button-box-shadow-y-hover #ab3c3c;
+        top: @altai-button-hover-top;
+    }
+
+    .btn-altai {
+        border-radius: @altai-button-border-radius;
+        color: #fff;
+        -webkit-transition: none;
+        -moz-transition: none;
+        transition: none;
+    }
+
+    .btn {
+        border: none;
+        font-family: inherit;
+        font-size: 12px;
+        background: none;
+        cursor: pointer;
+        padding: @altai-button-padding-y @altai-button-padding-x;
+        display: inline-block;
+        margin: @altai-button-margin-y @altai-button-margin-y;
+        letter-spacing: 1px;
+        font-weight: 500;
+        outline: none;
+        position: relative;
+        -webkit-transition: all 0.1s;
+        -moz-transition: all 0.1s;
+        transition: all 0.1s;
+    }
+
+    .btn-altai-small{
+        font-size: 10px;
+        min-width: 25px;
+        min-height: 25px;
+        padding: 5px;
+    }
+
+    .altai-button-go {
+        box-shadow: @altai-button-box-shadow-x @altai-button-box-shadow-y darken(@color-bg-altai-button-go,@altai-button-box-shadow-darken-percentage);
+        color: darken(@color-bg-altai-button-go,@altai-button-text-darken-percentage);
+        background-color: @color-bg-altai-button-go !important;
+    }
+
+    .altai-button-go:hover {
+        box-shadow: @altai-button-box-shadow-x-hover @altai-button-box-shadow-y-hover darken(@color-bg-altai-button-go,@altai-button-box-shadow-darken-percentage-hover);
+    }
+
+    .altai-button-go:active {
+        box-shadow: 0 0 darken(@color-bg-altai-button-go,@altai-button-box-shadow-darken-percentage-hover);
+        top: @altai-button-box-shadow-y;
+    }
+
+    .altai-button-secondary {
+        box-shadow: @altai-button-box-shadow-x @altai-button-box-shadow-y darken(@color-bg-altai-button-secondary,@altai-button-box-shadow-darken-percentage);
+        color: darken(@color-bg-altai-button-secondary,@altai-button-text-darken-percentage);
+        background-color: @color-bg-altai-button-secondary !important;
+    }
+
+    .altai-button-secondary:hover {
+        box-shadow: @altai-button-box-shadow-x-hover @altai-button-box-shadow-y-hover darken(@color-bg-altai-button-secondary,@altai-button-box-shadow-darken-percentage-hover);
+    }
+
+    .altai-button-secondary:active {
+        box-shadow: 0 0 darken(@color-bg-altai-button-secondary,@altai-button-box-shadow-darken-percentage-hover);
+        top: @altai-button-box-shadow-y;
+    }
+
+    
+
+    .altai-button-back {
+        box-shadow: @altai-button-box-shadow-x @altai-button-box-shadow-y darken(@color-bg-altai-button-back,@altai-button-box-shadow-darken-percentage);
+        color: darken(@color-bg-altai-button-back,@altai-button-text-darken-percentage);
+        background-color: @color-bg-altai-button-back !important;
+    }
+
+    .altai-button-back:hover {
+        box-shadow: @altai-button-box-shadow-x-hover @altai-button-box-shadow-y-hover darken(@color-bg-altai-button-back,@altai-button-box-shadow-darken-percentage-hover);
+    } 
+
+    .altai-button-back:active {
+        box-shadow: 0 0 darken(@color-bg-altai-button-back,@altai-button-box-shadow-darken-percentage-hover);
+        top: @altai-button-box-shadow-y;
+    }
+
+
+    .altai-button-danger {
+        box-shadow: @altai-button-box-shadow-x @altai-button-box-shadow-y darken(@color-bg-altai-button-danger,@altai-button-box-shadow-darken-percentage);
+        color: lighten(@color-bg-altai-button-danger,@altai-button-text-darken-percentage);
+        background-color: @color-bg-altai-button-danger !important;
+    }
+
+    .altai-button-danger:hover {
+        box-shadow: @altai-button-box-shadow-x-hover @altai-button-box-shadow-y-hover darken(@color-bg-altai-button-danger,@altai-button-box-shadow-darken-percentage-hover);
+    }
+
+    .altai-button-danger:active {
+        box-shadow: 0 0 darken(@color-bg-altai-button-danger,@altai-button-box-shadow-darken-percentage-hover);
+        top: @altai-button-box-shadow-y;
+    }
+
+    .altai-button-accent {
+        box-shadow: @altai-button-box-shadow-x @altai-button-box-shadow-y darken(@color-bg-altai-button-accent,@altai-button-box-shadow-darken-percentage);
+        color: darken(@color-bg-altai-button-accent,@altai-button-text-darken-percentage);
+        background-color: @color-bg-altai-button-accent !important;
+    }
+
+    .altai-button-accent:hover {
+        box-shadow: @altai-button-box-shadow-x-hover @altai-button-box-shadow-y-hover darken(@color-bg-altai-button-accent,@altai-button-box-shadow-darken-percentage-hover);
+    }
+
+    .altai-button-accent:active {
+        box-shadow: 0 0 darken(@color-bg-altai-button-accent,@altai-button-box-shadow-darken-percentage-hover);
+        top: @altai-button-box-shadow-y;
+    }
+
+    .altai-button-primary, .altai-button-secondary.selected {
+        box-shadow: @altai-button-box-shadow-x @altai-button-box-shadow-y darken(@color-bg-altai-button-primary,@altai-button-box-shadow-darken-percentage);
+        color: darken(@color-bg-altai-button-primary,@altai-button-text-darken-percentage);
+        background-color: @color-bg-altai-button-primary !important;
+    }
+
+    .altai-button-primary:hover, .altai-button-secondary.selected:hover {
+        box-shadow: @altai-button-box-shadow-x-hover @altai-button-box-shadow-y-hover darken(@color-bg-altai-button-primary,@altai-button-box-shadow-darken-percentage-hover);
+    }
+
+    .altai-button-primary:active, .altai-button-secondary.selected:active {
+        box-shadow: 0 0 darken(@color-bg-altai-button-primary,@altai-button-box-shadow-darken-percentage-hover);
+        top: @altai-button-box-shadow-y;
+    }
+}

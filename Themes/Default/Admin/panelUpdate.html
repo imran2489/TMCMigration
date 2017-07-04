@@ -1,0 +1,42 @@
+﻿<div class="page-header">
+    <h2><i class="fa fa-square"></i>&nbsp;{{'updatepanel'|translate}}</h2>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading ng-binding">{{'panelsettings'|translate}}</div>
+    <table class="table table-striped table-bordered">
+
+        <tr>
+            <td style="width: 25%">{{'name'|translate}}</td>
+            <td>
+                <input type="text" ng-model="panel.name" />
+            </td>
+        </tr>
+
+        <tr>
+            <td style="width: 25%">{{'template'|translate}}:</td>
+            <td>
+                <select data-ng-model="panel.templateId" data-ng-options="t.id as t.name for t in panelTemplates"></select>
+            </td>
+        </tr>
+
+    </table>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading ng-binding">{{'buildingblocks'|translate}}</div>
+
+    <ul class="list-group" as-sortable="dragControlListeners" ng-model="panel.buildingBlocks">
+        <li class="list-group-item" ng-repeat="buildingBlock in panel.buildingBlocks" as-sortable-item>
+            <a data-ng-click="deleteBlock(buildingBlock.id)" style="float:right;"><i class="fa fa-trash-o"></i> {{'delete'|translate}}</a>
+            <div data-as-sortable-item-handle>
+
+                <span class="label label-primary">{{buildingBlock.buildingBlockType.name}}</span> {{buildingBlock.order}}  {{'buildingblock'|translate}} {{buildingBlock.id}}
+
+            </div>
+        </li>
+    </ul>
+
+</div>
+
+<button class="btn btn-success" ng-click="savePanel()"><i class="fa fa-save"></i>&nbsp;{{'save'|translate}}</button>

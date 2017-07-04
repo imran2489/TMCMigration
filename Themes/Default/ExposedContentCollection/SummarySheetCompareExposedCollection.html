@@ -1,0 +1,36 @@
+﻿<section ng-if="$ctrl.titleexp" ng-class="$ctrl.classes">
+    <div class="row">
+        <div class="col-sm-12">
+            <h2 class="text-center">{{$ctrl.titleexp}}</h2>
+        </div>
+    </div>
+</section>
+<section class="section section-comeos no-padding-section" ng-if="$ctrl.data.pageResults">
+    <div class="row">
+        <div class="comeos-search-bar">
+            <input type="text" ng-model="$ctrl.searchRequest.queryField" ng-model-options="{debounce: 400}" placeholder="{{'searchsummarysheet' | translate}}">
+            <i class="mdi mdi-chevron-right chevron"></i>
+        </div>
+    </div>
+    <div class="row exposed-collection-aggregations">
+        <div class="col-xs-12">
+            <div class="row aggregationrow" ng-repeat="(aggregationName, aggregation) in $ctrl.data.aggregations">
+                    <span class="aggregationcheckbox"  ng-repeat="item in aggregation.items" ng-click="$ctrl.selectFilterValue(item, aggregation.filterId, aggregation.label)">
+                        <input type="checkbox" value="1" ng-model="item.selected" id="checkboxFiveInput" name="" ng-class="{active: item.selected, child: item.child}" />
+                        <label for="checkboxInput"></label>
+                        <span class="checkboxlabel">{{item.item.key}}</span>
+                    </span>            
+            </div>
+        </div>
+    </div>
+    <div class="row">
+            <summarysheetcompare class="summarysheet" summarysheets="$ctrl.data.pageResults">
+            </summarysheetcompare>
+    </div>
+</section>
+<section class="section section-comeos no-padding-section" ng-if="$ctrl.data && !$ctrl.data.member">
+    <div class="row">
+        <paywall></paywall>
+    </div>
+</section>
+

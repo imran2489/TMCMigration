@@ -1,0 +1,25 @@
+﻿<altai-toolbar-menu menu-model="$ctrl.toolbar" languages="$ctrl.languages"></altai-toolbar-menu>
+<form class="altai-form" name="contentTypeAttributeUpdate">
+    <div class="altai-admin-section">
+        <h2>{{'imagestyle'|translate}}</h2>
+        <div class="altai-simple-form">
+            <div class="form-group">
+                <label>{{'name'|translate}}</label>
+                <input type="text" ng-model="$ctrl.name" />
+            </div>
+            <div class="form-group">
+                <label>{{'minwidth'|translate}}</label>
+                <input type="text" ng-model="$ctrl.minWidth" />
+            </div>
+            <div class="form-group">
+                <label>{{'orientation'|translate}}</label>
+                <select ng-model="$ctrl.orientation" ng-options="c.value as c.text for c in $ctrl.orientationList" required></select>
+            </div>
+
+            <div class="form-group">
+                <label>{{'retina'|translate}}</label>
+                <select ng-model="$ctrl.retina" ng-options="c.value as c.text for c in $ctrl.retinaList" required></select>
+            </div>
+        </div>
+    </div>
+</form>

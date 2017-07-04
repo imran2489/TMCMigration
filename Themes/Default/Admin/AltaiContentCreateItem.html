@@ -1,0 +1,14 @@
+﻿
+<div class="form-group" ng-repeat="attr in ::vm.contentType.contentTypeAttributes track by attr.id" ng-if="!attr.systemValue" ng-init="fieldCounter[attr.id]=[0]">
+    <label>{{::attr.attribute.label}}<span ng-show="::attr.attribute.required">*</span>&nbsp;:</label>
+
+    <altai-content-attribute-update model="vm.contentItem.attribute[attr.id]" content-type-attribute="::attr" languages="vm.languages"></altai-content-attribute-update>
+</div>
+
+<div class="form-group" ng-repeat="ctrl in ::vm.contentType.contentTypeRelationLinks | filter:{hidden:false} track by ctrl.id" ng-if="!ctrl.contentTypeRelation.systemValue && !ctrl.systemValue">
+
+    <div class="relation-form-group" ng-show="vm.originLink.contentTypeRelationId != ctrl.contentTypeRelationId">
+        <altai-content-relation-update languages="vm.languages" content-type-relation-link="ctrl" existing-model="vm.contentItem.relation[ctrl.id].existing" new-model="vm.contentItem.relation[ctrl.id].new" edit-mode="true" create-mode="true"></altai-content-relation-update>
+    </div>
+
+</div>

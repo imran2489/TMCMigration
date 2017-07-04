@@ -1,0 +1,63 @@
+﻿@import "../config";
+
+.altai-theme-admin {
+    .file-grid {
+        display: flex;
+        flex-wrap: wrap;
+        margin-left: 20px;
+
+        .file-grid-item {
+            border: 2px solid rgba(255,255,255,0);
+            width: 220px;
+            margin-right: 10px;
+            height: 165px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+
+            img {
+                max-height: 165px;
+                max-width: 220px;
+            }
+
+            &:hover {
+                background-color: @grey-verylight;
+            }
+
+            .check-grid {
+                display: none;
+            }
+        }
+
+        .file-grid-item.checked {
+            border: 2px solid @blue;
+
+            .check-grid {
+                display: table-cell;
+                position: absolute;
+                width: 20px;
+                height: 20px;
+                background-color: @blue;
+                color: white;
+                text-align: center;
+                vertical-align: middle;
+            }
+        }
+    }
+
+    .file-list {
+        cursor: pointer;
+
+        .check-list {
+            visibility: hidden;
+        }
+    }
+
+    .checked .check-list {
+        visibility: visible;
+    }
+}

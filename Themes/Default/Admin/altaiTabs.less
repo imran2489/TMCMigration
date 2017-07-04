@@ -1,0 +1,24 @@
+﻿@import url('../config.less');
+
+.altai-tabs-header {
+    display: flex;
+    border-bottom: 1px solid #ccc;
+
+    div {
+        padding: 0 20px 10px 20px;
+    }
+
+    div:hover {
+        cursor: pointer;
+    }
+
+    .active {
+        border-bottom: 2px solid @blue;
+        font-weight: bold;
+        color: @blue;
+    }
+}
+
+.altai-tabs-content {
+    padding: 0 20px 20px 20px;
+}

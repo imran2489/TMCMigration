@@ -1,0 +1,44 @@
+﻿<div class="altai-list">
+    <div class="search">
+        <input class="query" type="text" placeholder="{{'searchinname'|translate}}" ng-model-options="{ debounce: 300 }" ng-model="vm.searchModel.name" />
+        <md-button ng-click="vm.deleteAllProcessDefinitions()" class="md-button-altai md-raised"><i class="mdi mdi-import"></i> {{::'deleteallprocesses'|translate}} </md-button>
+        <md-button ng-click="vm.importProcessDefinitions()" class="md-button-altai md-raised"><i class="mdi mdi-import"></i> {{::'importprocesses'|translate}} </md-button>
+    </div>
+</div>
+
+<div class="altai-admin-section">
+
+    <table>
+
+        <thead>
+            <tr>
+                <th>{{'id'|translate}}</th>
+                <th>{{'activitiid'|translate}}</th>
+                <th>{{'actions'|translate}}</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr ng-repeat="instance in vm.instances">
+                <td>{{instance.id}}</td>
+                <td>{{instance.activitiId}}</td>
+                <td>
+                    <md-button ng-click="vm.importTasksForContentFlowProcessDefinition(instance.id)" class="md-button-altai md-raised"><i class="mdi mdi-import"></i> {{::'importtasks'|translate}} </md-button>
+                    <md-button ng-click="vm.openProcess(instance.id)" class="md-button-altai md-raised"><i class="mdi mdi-pencil"></i> {{::'edit'|translate}} </md-button>
+                    <md-button ng-click="vm.delete(instance)" class="md-button-altai md-raised"><i class="mdi mdi-delete"></i> {{::'delete'|translate}} </md-button>
+                </td>
+
+            </tr>
+
+            <tr ng-if="!vm.instances.length">
+                <td colspan="2">{{'noresults'|translate}}</td>
+            </tr>
+        </tbody>
+
+    </table>
+
+    <div class="panel-buttons">
+        <altai-pagination paged-result="vm.contentItems" switch-page="vm.openPage(pageIndex)"></altai-pagination>
+    </div>
+
+</div>

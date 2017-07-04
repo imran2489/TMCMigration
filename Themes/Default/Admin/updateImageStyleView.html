@@ -1,0 +1,22 @@
+﻿<div class="admin-header">
+    <h2><i class="fa fa-sitemap"></i>&nbsp;{{'updateimagestyleset'|translate}}</h2>
+</div>
+
+<table class="table-admin">
+    <tr>
+        <th colspan="2">{{'imagestylesetdetails'|translate}}</th>
+    </tr>
+    <tr>
+        <td>{{'name'|translate}}:</td>
+        <td>
+            <input type="text" data-ng-model="imageStyleSet.name" />
+        </td>
+    </tr>
+
+    <tr>
+        <td></td>
+        <td>
+            <button class="btn btn-primary" data-ng-click="updateImageStyleSet()"><i class="fa fa-save"></i>&nbsp;{{'save'|translate}}</button></td>
+    </tr>
+
+</table>

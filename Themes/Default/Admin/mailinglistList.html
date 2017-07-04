@@ -1,0 +1,41 @@
+﻿<div class="page-header">
+    <h2><i class="fa fa-envelope-o"></i>&nbsp;{{'newsletters'|translate}}</h2>
+</div>
+
+<panel table="true" title="MailingLists">
+    <table class="table table-striped">
+
+        <thead>
+
+            <tr>
+                <th class="table-admin-col1">{{'newsletterlist'|translate}}</th>
+                <th>{{'public'|translate}}</th>
+                <th class="table-admin-actions">{{'actions'|translate}}</th>
+            </tr>
+
+        </thead>
+        <tbody>
+
+            <tr ng-repeat="list in lists">
+                <td><a ui-sref="admin.mailinglist.readList({id:list.id})">{{list.name}}</a></td>
+                <td>{{list.public|binary}}</td>
+                <td>
+                    <altai-button type="send" ui-sref="admin.mailinglist.send({id:list.id})">{{'send'|translate}}</altai-button>
+                    <altai-button type="edit" ui-sref="admin.mailinglist.update({id:list.id})">{{'update'|translate}}</altai-button>
+                    <altai-button type="delete" ng-click="deleteMailinglist(list)">{{'delete'|translate}}</altai-button>
+                </td>
+            </tr>
+
+            <tr ng-if="!lists.length">
+                <td colspan="4">{{'noresults'|translate}}</td>
+            </tr>
+
+        </tbody>
+
+    </table>
+
+    <div class="panel-buttons">
+        <altai-button type="add" ui-sref="admin.mailinglist.create">{{'create'|translate}}</altai-button>
+    </div>
+
+</panel>

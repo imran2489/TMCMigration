@@ -1,0 +1,110 @@
+﻿@import "../config";
+
+.altai-theme-admin {
+    .altai-list {
+
+        .row:hover {
+            background-color: @grey1;
+
+            .avatar {
+                background-color: none;
+            }
+        }
+
+        .row {
+            display: flex;
+            padding: 4px 20px 4px 20px;
+            align-items: center;
+
+            .rowtext {
+                flex: 1;
+            }
+
+            .rowactions {
+            }
+
+            .rowstats {
+                display: flex;
+
+                div {
+                    margin-right: 10px;
+                }
+            }
+
+            .text {
+
+                h2, h3 {
+                    margin: 0;
+                }
+
+                h2 {
+                    font-size: 13px;
+                    font-weight: lighter;
+                    letter-spacing: 1px;
+                }
+
+                h3 {
+                    font-size: 12px;
+                    font-weight: lighter;
+                    letter-spacing: 1px;
+                    color: @grey4;
+                }
+            }
+
+            .avatar {
+                width: 20px;
+                height: 20px;
+                background-color: none;
+                margin-right: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: @highlight-color;
+            }
+        }
+
+        .search {
+            display: flex;
+            display: flex;
+            padding: 20px 20px 10px 20px;
+            align-items: center;
+
+            .query {
+                flex: 1;
+                padding: 7px;
+                border: 0;
+                background-color: @color-form-input;
+                border-left: 4px solid #efefef;
+            }
+
+            .add {
+                outline: none;
+                margin-left: 10px;
+                border-radius: 50%;
+                border: 0;
+                height: 30px;
+                width: 30px;
+                background-color: transparent;
+                color: #0068FF;
+                border: 2px solid #0068ff;
+            }
+        }
+
+
+        .header-filter-collection {
+            padding: @padding-larger;
+            display: flex;
+            flex: 1;
+
+            .header-filter-section {
+                display: flex;
+                flex: 1;
+
+                .header-filter-item {
+                    display: flex;
+                    flex: 1;
+                }
+            }
+        }
+    }
+}

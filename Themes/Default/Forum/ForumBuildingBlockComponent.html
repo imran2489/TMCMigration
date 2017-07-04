@@ -1,0 +1,180 @@
+﻿
+<div ng-if="$ctrl.isList" class="container content-container">
+    <div class="page-header">
+        <h2>{{'forumCount'|translate}}</h2>
+    </div>
+    <div class="altai-card-container altai-Forum ">
+        <table class="forumTable">
+            <thead>
+                <tr>
+                    <th><a ng-click="$ctrl.setSorting('Name')">{{'title'|translate}}<span ng-if="$ctrl.searchModel.sorterAttr =='Name'"><span ng-if="$ctrl.searchModel.sorterDesc"><i class="mdi mdi-menu-down"></i></span><span ng-if="!$ctrl.searchModel.sorterDesc"><i class="mdi mdi-menu-up"></i></span></span></a></th>
+                    <th><a>{{'user'|translate}}</a></th>
+                    <th><a ng-click="$ctrl.setSorting('Comments')">{{'comments'|translate}}<span ng-if="$ctrl.searchModel.sorterAttr =='Comments'"><span ng-if="$ctrl.searchModel.sorterDesc"><i class="mdi mdi-menu-down"></i></span><span ng-if="!$ctrl.searchModel.sorterDesc"><i class="mdi mdi-menu-up"></i></span></span></a></th>
+                    <th><a ng-click="$ctrl.setSorting('ViewCount')">{{'views'|translate}}<span ng-if="$ctrl.searchModel.sorterAttr =='ViewCount'"><span ng-if="$ctrl.searchModel.sorterDesc"><i class="mdi mdi-menu-down"></i></span><span ng-if="!$ctrl.searchModel.sorterDesc"><i class="mdi mdi-menu-up"></i></span></span></a></th>
+                    <th><a ng-click="$ctrl.setSorting('LastActivity')">{{'activity'|translate}}<span ng-if="$ctrl.searchModel.sorterAttr =='LastActivity'"><span ng-if="$ctrl.searchModel.sorterDesc"><i class="mdi mdi-menu-down"></i></span><span ng-if="!$ctrl.searchModel.sorterDesc"><i class="mdi mdi-menu-up"></i></span></span></a></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-click="$ctrl.gotoView(forum)" ng-repeat="forum in $ctrl.forums.pageResults track by forum.id">
+                    <td>{{forum.title}}</td>
+                    <td>
+                        <div ng-repeat="user in forum.usersLinked track by $index" class="forum-User">
+                            <ng-letter-avatar data="{{user.name}}" shape="round" fontsize="15" height="25" width="25" avatarcustombgcolor="{{user.color}}"></ng-letter-avatar>
+                        </div>
+                    </td>
+                    <td>{{forum.comments}}</td>
+                    <td>{{forum.viewCount}}</td>
+                    <td>{{forum.lastActivity| date:'mediumDate'}}</td>
+
+                </tr>
+            </tbody>
+        </table>
+        <div class="panel-buttons">
+            <altai-pagination paged-result="$ctrl.forums" switch-page="$ctrl.openPage(pageIndex)"></altai-pagination>
+        </div>
+    </div>
+</div>
+
+<div ng-if="!$ctrl.isList" class="altai-Forum">
+    <section class="comeos-bg-grey-light">
+        <div class="container content-container  comeos-bg-grey ">
+            <div id="topic-title" class="forum-header-separator">
+                <div class="container">
+                    <div class="title-wrapper">
+                        <h2>
+                            <span>
+                                {{$ctrl.forum.title}}
+                            </span>
+                        </h2>
+                        <div>
+                            <span class="badge-category">
+                                {{$ctrl.forum.categoryName}}
+                            </span>
+                        </div>
+                    </div>
+                    <div id="homeimage" ng-class="{'forum-signout': !$ctrl.$rootScope.isLoggedIn}">
+
+                        <button ng-if="!$ctrl.$rootScope.isLoggedIn" ng-click="$ctrl.login()" class="comeos-button" type="submit">{{'signInToPost'|translate}}</button>
+
+                        <img ng-click="$ctrl.toggleList()" src="/Themes/comeos/img/home.png" />
+                    </div>
+                </div>
+            </div>
+
+            <div id="topic-title">
+                <div class="container">
+                    <div class="title-wrapper">
+                        <div class="topic-avatar">
+                            <ng-letter-avatar data="{{$ctrl.forum.usersLinked[0].name}}" shape="round" fontsize="15" height="25" width="25"
+                                              avatarcustombgcolor="{{$ctrl.forum.usersLinked[0].color}}"></ng-letter-avatar>
+                        </div>
+                        <h5>
+                            <span>
+                                {{$ctrl.forum.userName}}
+                            </span>
+                        </h5>
+                    </div>
+                    <div id="homeimage">
+                        {{$ctrl.forum.createdDate| date:'mediumDate'}}
+                    </div>
+                </div>
+            </div>
+
+            <div class="forum-description">
+                <p style="margin:0px;" ng-bind-html="$ctrl.forum.description"></p>
+            </div>
+
+            <div id="topic-title" class="topic-map">
+                <div class="title-Container">
+                    <div class="forum-Detail">
+                        <h5>
+                            {{'created'|translate}}
+                        </h5>
+                        <span>{{$ctrl.forum.createdDate| date:'mediumDate'}}</span>
+                    </div>
+                    <div class="forum-Detail">
+                        <h5>
+                            {{'activity'|translate}}
+                        </h5>
+                        <span>{{$ctrl.forum.lastActivity| date:'mediumDate'}}</span>
+                    </div>
+                    <div class="forum-Detail">
+                        <h5>
+                            {{'posts'|translate}}
+                        </h5>
+                        <span>{{$ctrl.forum.comments}}</span>
+                    </div>
+                    <div class="forum-Detail">
+                        <h5>
+                            {{'views'|translate}}
+                        </h5>
+                        <span>{{$ctrl.forum.viewCount}}</span>
+                    </div>
+                    <div class="forum-Detail">
+                        <h5>
+                            {{'users'|translate}}
+                        </h5>
+                        <span class="forum-User">{{$ctrl.forum.usersLinked.length}}</span>
+                        <div ng-repeat="user in $ctrl.forum.usersLinked track by $index" class="forum-User">
+                            <ng-letter-avatar data="{{user.name}}" shape="round" fontsize="15" height="25" width="25" avatarcustombgcolor="{{user.color}}"></ng-letter-avatar>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="add-Link-Position">
+                <a ng-if="$ctrl.$rootScope.isLoggedIn" ng-click="$ctrl.togglePost()" class="add-Link">Add Post</a>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <add-post ng-if="$ctrl.addPost && $ctrl.$rootScope.isLoggedIn"  forum-id="$ctrl.forum.id" show="$ctrl.addPost"></add-post>
+
+
+
+    <section ng-repeat="post in $ctrl.posts track by post.id" class="comeos-bg-grey-light comment-area">
+        <div class="container content-container post-Container" >
+            <div id="topic-title">
+                <div class="container">
+                    <div class="title-wrapper">
+                        <div class="topic-avatar">
+                            <ng-letter-avatar data="{{post.userName}}" shape="round" fontsize="15" height="25" width="25"
+                                              avatarcustombgcolor="{{post.color}}"></ng-letter-avatar>
+                        </div>
+                        <h5>
+                            <span>
+                                {{post.userName}}
+                            </span>
+                        </h5>
+                    </div>
+                    <div id="homeimage">
+                        {{post.createdDate| date:'mediumDate'}}
+                    </div>
+                </div>
+            </div>
+            <div class="forum-description">
+                <p style="margin:0px;" ng-bind-html="post.description"></p>
+            </div>
+
+            <div class="add-Link-Position">
+                <a ng-if="$ctrl.$rootScope.isLoggedIn" ng-click="$ctrl.toggleComment(post)" class="add-Link">{{'reply'|translate}}</a>
+            </div>
+
+            <div class="container comment-button-container">
+
+                <md-button ng-click="$ctrl.openComments(post)" class="md-button-altai md-raised comment-count-button">
+                    <i ng-if="!post.openComments" class="mdi mdi-chevron-down"></i>
+                    <i ng-if="post.openComments" class="mdi mdi-chevron-up"></i>
+                    {{post.comments.length}}  {{'comments'|translate}}
+                </md-button>
+            </div>
+
+            <add-comment ng-if="post.addComment && $ctrl.$rootScope.isLoggedIn" post-id="post.id" forum-id="$ctrl.forum.id" show="post.addComment" post="post"></add-comment>
+
+            <comment-list ng-if="post.openComments" comments="post.comments"></comment-list>
+
+        </div>
+    </section>
+</div>

@@ -1,0 +1,7 @@
+﻿<div ng-if="$ctrl.data.pageResults.length>0">
+    <div class="dossier-vragen">
+        <div ng-repeat="hottopic in $ctrl.data.pageResults track by $index">
+            <hottopic item="hottopic"></hottopic>
+        </div>
+        </div>
+</div>

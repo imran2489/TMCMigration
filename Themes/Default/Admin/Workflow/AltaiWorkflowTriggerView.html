@@ -1,0 +1,65 @@
+﻿
+<div class="altai-admin-section">
+    <div class="page-header">
+        <h2>{{'Conditions'|translate}}</h2>
+        <md-button ng-click="vm.createCondition()" class="md-button-altai md-raised"><i class="mdi mdi-plus"></i> {{::'create'|translate}} </md-button>
+    </div>
+
+    <table>
+
+        <thead>
+            <tr>
+                <th>{{'key'|translate}}</th>
+                <th>{{'value'|translate}}</th>
+                <th>{{'actions'|translate}}</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr ng-repeat="condition in vm.conditions track by condition.id">
+                <td>{{condition.key}}</td>
+
+                <td>{{condition.value}}</td>
+
+                <td>
+                    <md-button ng-click="vm.deleteConditions(condition)" class="md-button-altai md-raised"><i class="mdi mdi-delete"></i> {{::'delete'|translate}}</md-button>
+                    <md-button ng-click="vm.editCondition(condition)" class="md-button-altai md-raised"><i class="mdi mdi-pencil"></i> {{::'edit'|translate}}</md-button>
+                </td>
+            </tr>
+        </tbody>
+
+    </table>
+
+
+
+</div>
+
+<div class="altai-admin-section">
+    <div class="page-header">
+        <h2>{{'Tasks'|translate}}</h2>
+        <md-button ng-click="vm.createTask()" class="md-button-altai md-raised"><i class="mdi mdi-plus"></i> {{::'create'|translate}} </md-button>
+    </div>
+    <table>
+
+        <thead>
+            <tr>
+                <th>{{'TaskName'|translate}}</th>
+
+                <th>{{'actions'|translate}}</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr ng-repeat="task in vm.tasks track by task.id">
+                <td>{{task.taskName}}</td>
+
+                <td>
+                    <md-button ng-click="vm.viewTask(task)" class="md-button-altai md-raised"><i class="mdi mdi-google-circles-extended"></i> {{'view'|translate}} </md-button>
+                    <md-button ng-click="vm.deleteTasks(task)" class="md-button-altai md-raised"><i class="mdi mdi-delete"></i> {{::'delete'|translate}}</md-button>
+                    <md-button ng-click="vm.editTask(task)" class="md-button-altai md-raised"><i class="mdi mdi-pencil"></i> {{::'edit'|translate}}</md-button>
+                </td>
+            </tr>
+        </tbody>
+
+    </table>
+</div>

@@ -1,0 +1,123 @@
+@import "../config";
+
+.altai-theme-admin {
+    .altai-content-attribute-update-item-wrapper {
+        display: flex;
+    }
+
+    .altai-admin-section {
+        padding: 10px 20px;
+
+
+
+        .header {
+            padding: 0 10px;
+
+            h1 {
+                font-size: 20px;
+            }
+        }
+
+        .actions {
+            margin-top: 15px;
+            margin-bottom: 15px;
+
+            button {
+                //padding: 10px 15px;
+                //background-color: #efefef;
+                //border: 0;
+                //font-size: 16px;
+            }
+        }
+
+        table {
+            margin: 20px 0 20px 0;
+            border-spacing: 0;
+            border-collapse: collapse;
+            border-top: 4px solid #eee;
+            width: 100%;
+            background-color: @color-bg-table;
+
+            select, textarea, input {
+                font-size: 100%;
+                border: 1px solid @color-table-border-input;
+            }
+
+            input {
+                padding: 5px;
+            }
+
+            thead {
+                font-weight: bold;
+
+                tr {
+                }
+
+                .checkbox {
+                    width: 1%;
+                }
+            }
+
+            td {
+                padding: 4px 10px 4px 10px;
+                text-align: left;
+                font-weight: 100;
+                font-size: small;
+            }
+
+            th {
+                padding: 10px;
+                text-align: left;
+                font-weight: 100;
+                font-size: small;
+                font-style: italic;
+            }
+
+            tr:nth-child(odd) {
+                background-color: @color-bg-table;
+            }
+            tr.accompanyingperson{
+                font-style: italic;
+                color: #404040;
+            }
+            tr.accompanyingperson:hover{
+                background-color: initial;
+            }
+
+            tbody {
+                tr:hover {
+                    //background-color: #f2f2f2;
+                    background-color: #dbdbdb;
+                }
+            }
+
+            .actioncell {
+                min-width: 80px;
+            }
+        }
+
+        form {
+            border: 0px solid #eee;
+            width: 100%;
+
+            .form-row {
+                display: flex;
+                padding: 10px;
+                align-items: center;
+
+                .label {
+                    width: 200px;
+                }
+
+                input {
+                    padding: 5px;
+                    min-width: 250px;
+                }
+            }
+
+            .form-row:nth-child(even) {
+                background-color: #efefef;
+            }
+        }
+    }
+}

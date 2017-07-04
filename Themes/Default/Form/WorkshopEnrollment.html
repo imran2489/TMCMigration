@@ -1,0 +1,113 @@
+﻿<div class='alert alert-success' data-ng-show='$ctrl.succesMsg'></div>
+<form id='WorkshopRegistration' name='WorkshopRegistration' ng-hide='$ctrl.succesMsg'>
+    <div class='form-group form-row-6'>
+        Aanhef:
+        <select ng-model="$ctrl.formData.content[0]">
+        <option label="Mevrouw" value="Mevrouw">Mevrouw</option>
+        <option label="Mijnheer" value="Mijnheer">Mijnheer</option>
+        </select>
+        <div class='altai-content-form-error' ng-show='WorkshopRegistration.aanhef.$invalid && WorkshopRegistration.aanhef.$touched'><i class='fa fa-warning'></i>&nbsp;{{'RequiredFieldError'|translate}}</div>
+    </div>
+    <div class='form-group form-row-7'>
+        <label>Voornaam</label>
+        <input altai-content-form-firstname attribute-id='49' type='text' name='firstname' class='form-control' data-ng-model='$ctrl.formData.content[1]'>
+        <div class='altai-content-form-error' ng-show='WorkshopRegistration.firstname.$invalid && WorkshopRegistration.firstname.$touched'><i class='fa fa-warning'></i>&nbsp;{{'RequiredFieldError'|translate}}</div>
+    </div>
+    <div class='form-group form-row-8'>
+        <label>Achternaam</label>
+        <input altai-content-form-lastname attribute-id='50' type='text' name='lastname' class='form-control' data-ng-model='$ctrl.formData.content[2]'>
+        <div class='altai-content-form-error' ng-show='WorkshopRegistration.lastname.$invalid && WorkshopRegistration.lastname.$touched'><i class='fa fa-warning'></i>&nbsp;{{'RequiredFieldError'|translate}}</div>
+    </div>
+    <div class='form-group form-row-9'>
+        <label>Functie</label>
+        <input altai-content-form-functie attribute-id='75' type='text' name='functie' class='form-control' data-ng-model='$ctrl.formData.content[3]'>
+        <div class='altai-content-form-error' ng-show='WorkshopRegistration.functie.$invalid && WorkshopRegistration.functie.$touched'><i class='fa fa-warning'></i>&nbsp;{{'RequiredFieldError'|translate}}</div>
+    </div>
+    <div class='form-group form-row-10'>
+        <label>Organization</label>
+        <input altai-content-form-organization attribute-id='76' type='text' name='organization' class='form-control' data-ng-model='$ctrl.formData.content[4]'>
+        <div class='altai-content-form-error' ng-show='WorkshopRegistration.organization.$invalid && WorkshopRegistration.organization.$touched'><i class='fa fa-warning'></i>&nbsp;{{'RequiredFieldError'|translate}}</div>
+    </div>
+    <div class='form-group form-row-11'>
+        <label>Adres</label>
+        <input altai-content-form-adres attribute-id='77' type='text' name='adres' class='form-control' data-ng-model='$ctrl.formData.content[5]'>
+        <div class='altai-content-form-error' ng-show='WorkshopRegistration.adres.$invalid && WorkshopRegistration.adres.$touched'><i class='fa fa-warning'></i>&nbsp;{{'RequiredFieldError'|translate}}</div>
+    </div>
+    <div class='form-group form-row-12'>
+        <label>Postcode</label>
+        <input altai-content-form-postcode attribute-id='78' type='text' name='postcode' class='form-control' data-ng-model='$ctrl.formData.content[6]'>
+        <div class='altai-content-form-error' ng-show='WorkshopRegistration.postcode.$invalid && WorkshopRegistration.postcode.$touched'><i class='fa fa-warning'></i>&nbsp;{{'RequiredFieldError'|translate}}</div>
+    </div>
+    <div class='form-group form-row-18'>
+        <label>Stad</label>
+        <input altai-content-form-stad attribute-id='79' type='text' name='stad' class='form-control' data-ng-model='$ctrl.formData.content[11]'>
+        <div class='altai-content-form-error' ng-show='WorkshopRegistration.stad.$invalid && WorkshopRegistration.stad.$touched'><i class='fa fa-warning'></i>&nbsp;{{'RequiredFieldError'|translate}}</div>
+    </div>
+    <div class='form-group form-row-13'>
+        <label>Email</label>
+        <input altai-content-form-email attribute-id='51' type='text' name='email' class='form-control' data-ng-model='$ctrl.formData.content[7]'>
+        <div class='altai-content-form-error' ng-show='WorkshopRegistration.email.$invalid && WorkshopRegistration.email.$touched'><i class='fa fa-warning'></i>&nbsp;{{'RequiredFieldError'|translate}}</div>
+    </div>
+    <div class='form-group form-row-14'>
+        <label>lidvancomeos</label>
+        <input type="checkbox" data-ng-model='$ctrl.formData.content[8]' />
+        <div class='altai-content-form-error' ng-show='WorkshopRegistration.lidvancomeos.$invalid && WorkshopRegistration.lidvancomeos.$touched'><i class='fa fa-warning'></i>&nbsp;{{'RequiredFieldError'|translate}}</div>
+    </div>
+    <div class='form-group form-row-16' style='display:none' ;>
+        <label class='control-label  ng-hide'>registrationacademyworkshop</label>
+        <div class='ng-hide'>
+            <span data-content-select='42' data-content-select-model='$ctrl.formData.content[9]' content-select-multiple='False'></span>
+        </div>
+    </div>
+    <!--<div class='form-group form-row-17'>
+        <span ng-init='rows=[0]'></span>
+        <label>accompanyingpersonregistrationacademy</label>
+        <div class='subform-row' ng-repeat='subRow in rows' style="border:1px solid #000">
+            <div class='form-group form-row-17-1'>
+                <label>aanhef</label>
+
+                <select ng-model="$ctrl.formData.subForms[1][$index][0]">
+                    <option label="Mevrouw" value="M">Mevrouw</option>
+                    <option label="Mijnheer" value="F">Mijnheer</option>
+                </select>
+              
+                <div class='altai-content-form-error' ng-show='WorkshopRegistration.aanhef0.$invalid && WorkshopRegistration.aanhef0.$touched'><i class='fa fa-warning'></i>&nbsp;{{'RequiredFieldError'|translate}}</div>
+            </div>
+            <div class='form-group form-row-17-2'>
+                <label>voornaam</label>
+                <div>
+                    <input type='text' name='voornaam1' class='form-control' ng-model='$ctrl.formData.subForms[1][$index][1]'>
+                </div>
+                <div class='altai-content-form-error' ng-show='WorkshopRegistration.voornaam1.$invalid && WorkshopRegistration.voornaam1.$touched'><i class='fa fa-warning'></i>&nbsp;{{'RequiredFieldError'|translate}}</div>
+            </div>
+            <div class='form-group form-row-17-3'>
+                <label>achternaam</label>
+                <div>
+                    <input type='text' name='achternaam2' class='form-control' ng-model='$ctrl.formData.subForms[1][$index][2]'>
+                </div>
+                <div class='altai-content-form-error' ng-show='WorkshopRegistration.achternaam2.$invalid && WorkshopRegistration.achternaam2.$touched'><i class='fa fa-warning'></i>&nbsp;{{'RequiredFieldError'|translate}}</div>
+            </div>
+            <div class='form-group form-row-17-4'>
+                <label>functie</label>
+                <div>
+                    <input type='text' name='functie3' class='form-control' ng-model='$ctrl.formData.subForms[1][$index][3]'>
+                </div>
+                <div class='altai-content-form-error' ng-show='WorkshopRegistration.functie3.$invalid && WorkshopRegistration.functie3.$touched'><i class='fa fa-warning'></i>&nbsp;{{'RequiredFieldError'|translate}}</div>
+            </div>
+            <div class='form-group form-row-17-5'>
+                <label>email</label>
+                <div>
+                    <input type='text' name='email4' class='form-control' ng-model='$ctrl.formData.subForms[1][$index][4]'>
+                </div>
+                <div class='altai-content-form-error' ng-show='WorkshopRegistration.email4.$invalid && WorkshopRegistration.email4.$touched'><i class='fa fa-warning'></i>&nbsp;{{'RequiredFieldError'|translate}}</div>
+            </div>
+        </div>
+        <div class='subform-row-add'>
+            <button ng-click='rows.push({0:0})'>+</button>
+        </div>
+    </div>-->
+
+    <div class='form-group'>
+        <button type='submit' ng-disabled='WorkshopRegistration.$invalid' class='btn btn-primary' data-ng-click='$ctrl.submitForm()'>Inschrijven</button><span data-ng-show='$ctrl.loading'>&nbsp;&nbsp;<i class='fa fa-circle-o-notch fa-spin'></i>&nbsp;{{'formSubmitting'|translate}}</span>
+    </div>
+</form>

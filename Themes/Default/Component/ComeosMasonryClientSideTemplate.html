@@ -1,0 +1,8 @@
+﻿<div class="container">
+    <div class="comeoscards">
+        <!-- WARNING: do not use track by, because for masonry to work correctly we need to re-render the whole list -->
+        <div class="grid-item who-is-who" ng-repeat="item in $ctrl.items">
+            <whoiswhocard item="item" hide-tag="false"></whoiswhocard>
+        </div>
+    </div>
+</div>

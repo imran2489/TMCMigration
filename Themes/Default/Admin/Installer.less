@@ -1,0 +1,108 @@
+﻿@import "../config";
+
+.installer-outer {
+    flex: 1;
+    justify-content: center;
+    display: flex;
+    background-color: #19D1C6;
+
+    .installer {
+        background-color: #fff;
+        align-self: center;
+        width: 500px;
+        padding: 20px;
+        box-shadow: 0 5px 5px rgba(0,0,0,0.1);
+        color: black;
+
+        .login-logo {
+            width: 120px;
+            padding-left: 0px;
+            margin-bottom:20px;
+        }
+
+        .comeos-button {
+            color: #000;
+            display: inline-block;
+            background-color: transparent;
+            padding: 10px;
+            /* height: 40px; */
+            border-radius: 40px;
+            border: 2px solid #000;
+            text-align: center;
+            cursor: pointer;
+            justify-content: center;
+            transition: background-color 100ms ease-in-out;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            margin-right: 20px;
+            text-decoration: none;
+        }
+
+        h1 {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: black;
+        }
+
+        .form-row {
+            display: flex;
+            margin-bottom: 10px;
+
+            .link {
+                display: flex;
+                align-items: center;
+                margin-left: 15px;
+
+                a {
+                    color: #000;
+                    text-decoration: none;
+                }
+
+                a:hover {
+                    text-decoration: underline;
+                }
+            }
+
+            .label {
+                width: 150px;
+                align-self: center;
+            }
+        }
+
+        .form-group{
+            margin-bottom: 10px;
+            .label {
+                
+            }
+        }
+
+        input {
+            flex: 1;
+            padding: 5px;
+            border: 2px solid;
+            border-radius: 20px;
+            color: #000000;
+        }
+    }
+}
+
+@media screen and (max-width:768px) {
+    .installer-outer {
+        .installer {
+            width: 100%;
+            max-width: 100%;
+        }
+    }
+}

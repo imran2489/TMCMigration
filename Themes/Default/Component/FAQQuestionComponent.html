@@ -1,0 +1,78 @@
+﻿<div print-section class="dossier-vraag-item" ng-class="{opened:$ctrl.expanded}">
+    <div class="dossier-vraag-item-vraag comeos-bg-complexdossier print-span" ng-click="$ctrl.toggle()">
+        <span class="dossier-actual-question print-span-color">{{$ctrl.faqquestionmodel.question}}</span><i class="questionicon mdi mdi-plus collapseicon"></i>
+    </div>
+
+    <div ng-if="!$ctrl.answer" class="answers" ng-show="$ctrl.expanded">
+        <paywall></paywall>
+    </div>
+    <div ng-if="$ctrl.answer" class="answers" ng-show="$ctrl.expanded">
+        <div class="dossier-tags-xs" ng-if="$ctrl.tagAnswerList.length>0">
+            <span class="dossier-tags-chip" ng-click="$ctrl.selectGeneralAnswer()" ng-class="{selected:$ctrl.generalAnswerSelected}">{{"PC UNDEFINED"|translate}}</span>
+            <span ng-repeat="tag in $ctrl.tagAnswerList">
+                <span class="dossier-tags-chip" ng-click="$ctrl.selectTag(tag)" ng-class="{selected:tag.selected}">{{tag.tag.name}}</span>
+            </span>
+            <span class="dossier-tags-chip" ng-repeat="tag in answer.answer_cao">
+                {{tag.name}}
+            </span>
+        </div>
+        <div class="dossier-vraag-item-antwoord cktext" ng-repeat="answer in $ctrl.generalTagAnswer.answers">
+            <div altai-compile-html="{{answer.answer}}"> </div>
+        </div>
+        <div ng-show="tag.selected" ng-repeat="tag in $ctrl.tagAnswerList">
+            <div class="dossier-vraag-item-antwoord cktext" ng-repeat="answer in tag.answers">
+                <div altai-compile-html="{{answer.answer}}"> </div>
+
+                <div ng-if="$ctrl.activelang.code=='fr'" class="dossier-section" ng-show="answer.answer_file_fr.length > 0">
+                    <h5 translate>attachments</h5>
+                    <div class="attached-file" ng-repeat="doc in answer.answer_file_fr">
+                        <a ng-href="{{::$root.staticFileBase}}/{{doc.file}}" target="_blank"><fileicon doctype="doc.fileextension"></fileicon> <span>{{doc.label}}</span></a>
+                    </div>
+                </div>
+
+                <div ng-if="$ctrl.activelang.code=='nl'" class="dossier-section" ng-show="answer.answer_file_nl.length > 0">
+                    <h5 translate>attachments</h5>
+                    <div class="attached-file" ng-repeat="doc in answer.answer_file_nl">
+                        <a ng-href="{{::$root.staticFileBase}}/{{doc.file}}" target="_blank"><fileicon doctype="doc.fileextension"></fileicon> <span>{{doc.label}}</span></a>
+                    </div>
+                </div>
+
+
+                <div class="dossier-section" ng-show="answer.answer_link.length > 0">
+                    <h5 translate>relatedlinks</h5>
+                    <div class="attached-link" ng-repeat="link in answer.answer_link">
+                        <a ng-if="link.linktarget!=undefined" ng-href="{{link.linkurl}}" target="{{link.linktarget}}"><span class="attached-link-icon"><i class="mdi mdi-link"></i></span><span>{{link.linktekst}}</span></a>
+                        <a ng-if="link.linktarget==undefined" ng-href="{{link.linkurl}}" target="_blank"><span class="attached-link-icon"><i class="mdi mdi-link"></i></span><span>{{link.linktekst}}</span></a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="dossier-vraag-item-antwoord" ng-repeat="answer in $ctrl.generalTagAnswer.answers">
+
+            <div ng-if="$ctrl.activelang.code=='fr'" class="dossier-section" ng-show="answer.answer_file_fr.length > 0">
+                <h5 translate>attachments</h5>
+                <div class="attached-file" ng-repeat="doc in answer.answer_file_fr">
+                    <a ng-href="{{::$root.staticFileBase}}/{{doc.file}}" target="_blank"><fileicon doctype="doc.fileextension"></fileicon> <span>{{doc.label}}</span></a>
+                </div>
+            </div>
+
+            <div ng-if="$ctrl.activelang.code=='nl'" class="dossier-section" ng-show="answer.answer_file_nl.length > 0">
+                <h5 translate>attachments</h5>
+                <div class="attached-file" ng-repeat="doc in answer.answer_file_nl">
+                    <a ng-href="{{::$root.staticFileBase}}/{{doc.file}}" target="_blank"><fileicon doctype="doc.fileextension"></fileicon> <span>{{doc.label}}</span></a>
+                </div>
+            </div>
+
+            <div class="dossier-section" ng-show="answer.answer_link.length > 0">
+                <h5 translate>relatedlinks</h5>
+                <div class="attached-link" ng-repeat="link in answer.answer_link">
+                    <a ng-if="link.linktarget!=undefined" ng-href="{{link.linkurl}}" target="{{link.linktarget}}"><span class="attached-link-icon"><i class="mdi mdi-link"></i></span><span>{{link.linktekst}}</span></a>
+                    <a ng-if="link.linktarget==undefined" ng-href="{{link.linkurl}}" target="_blank"><span class="attached-link-icon"><i class="mdi mdi-link"></i></span><span>{{link.linktekst}}</span></a>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>

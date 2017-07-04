@@ -1,0 +1,14 @@
+﻿<div>
+    <nav class="mycomeos-menu" my-comeos-fixed-menu>
+        <ul>
+            <li ng-repeat-start="item in vm.menu.menuItems track by item.id " ng-if="item.state" ui-sref="{{::item.state.name}}">
+                {{::item.label}}
+                <div class="arrow-up" ng-show="item.state.name==State.current.name"></div>
+            </li>
+            <li ng-if="item.url && !item.state.name" ng-repeat-end>
+                <a ng-href="{{item.url}}">{{::item.label}}</a>
+            </li>
+        </ul>
+    </nav>
+    
+</div>

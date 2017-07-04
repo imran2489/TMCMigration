@@ -1,0 +1,58 @@
+﻿@import "../comeos.config.less";
+
+.altai-theme-content {
+    #bodyView {
+        .rvbcards {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .altai-card.rvbcard {
+            min-height: 250px;
+            height: 250px;
+            width: 250px;
+            align-content: center;
+            align-items: flex-end;
+            justify-content: center;
+            background-color: transparent;
+            box-shadow: none;
+
+            .altai-card-body {
+                display: flex;
+                flex-direction: column;
+                min-height:initial;
+            }
+
+            .altai-card-image-wrapper {
+                height:120px;
+                display:flex;
+                align-items:center;
+                justify-content:center;
+                .altai-card-image {
+                    height: auto;
+                    width: auto;
+                    max-width: 120px;
+                    max-height: 80px;
+                    margin-bottom:0;
+                }
+            }
+
+
+            .altai-card-title {
+                text-align: center;
+
+                h5 {
+                    margin-bottom: 0.625em;
+                }
+            }
+
+            .altai-card-function-title {
+                font-style: italic;
+                font-size: 0.8em;
+                text-align: center;
+                margin-bottom: 5px;
+            }
+        }
+    }
+}

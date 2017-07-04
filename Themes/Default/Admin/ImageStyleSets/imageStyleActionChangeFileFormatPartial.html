@@ -1,0 +1,23 @@
+﻿<altai-toolbar-menu menu-model="$ctrl.toolbar" languages="$ctrl.languages"></altai-toolbar-menu>
+<form class="altai-form" name="contentTypeAttributeUpdate">
+    <div class="altai-admin-section">
+        <h2>{{'imagestyleaction'|translate}} {{'changefileformat'|translate}}</h2>
+        <div class="altai-simple-form">
+            <div class="form-group">
+                <label>{{'order'|translate}}</label>
+                <input type="text" ng-model="$ctrl.imageStyleAction.order" />
+            </div>
+            <div class="form-group">
+                <label>{{'fileformat'|translate}}</label>
+                <select name="repeatSelect" id="repeatSelect" ng-model="$ctrl.imageStyleAction.formatTo">
+                    <option ng-repeat="option in $ctrl.fileFormatList" value="{{option.value}}">{{option.text}}</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>{{'quality'|translate}}</label>
+                <input type="text" ng-model="$ctrl.imageStyleAction.quality" />
+            </div>
+        </div>
+    </div>
+</form>
+

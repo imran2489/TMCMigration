@@ -1,0 +1,11 @@
+﻿<a ng-click="open = ! open; $ctrl.addTreeToDepth()"><i class="tree-indicator mdi" ng-class="{'mdi-chevron-right': !open, 'mdi-chevron-down': open}"></i>{{$ctrl.relationName || $ctrl.contentType.name}}</a>
+<ul class="tree-selector" ng-if='$ctrl.tree && open' ng-init="open = false" >
+    <li ng-repeat='attr in $ctrl.contentTypeAttributes track by $index'>
+        <input type="checkbox" class="tree-indicator" id="{{$ctrl.depth.length == 0 ?  "Attr"+attr.attribute.id : (($ctrl.relationName || $ctrl.contentType.name) + '-' + attr.attribute.id)}}" 
+               ng-model="$ctrl.attributes[attr.attribute.id]" ng-change="$ctrl.addAttr($ctrl.includes.length,$ctrl.attributes[attr.attribute.id], attr.attribute.id, attr.id, attr.attribute.name);"/>
+        <label for="{{($ctrl.relationName || $ctrl.contentType.name) + '-' + $index}}">{{attr.attribute.name}}</label>
+    </li>
+    <li class="tree-branch" ng-repeat='rel in $ctrl.relations track by $index'>
+        <altai-index-tree-selector tree='::$ctrl.getTypeId($index)' relation-id="rel.id" relation-link-id="::$ctrl.getRelationLinkId(rel)" depth='::$ctrl.childDepth' relation-name="::rel.name" includes="$ctrl.includes" add-attribute="$ctrl.addRelationToAttribute(index)"></altai-index-tree-selector>
+    </li>
+</ul>

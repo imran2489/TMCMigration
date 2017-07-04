@@ -1,0 +1,186 @@
+﻿<div analytics analytics-item="$ctrl.data.pageResults[0]" analytics-on-view="true"></div>
+<div print-section class="root theme--square altai-theme-content actu dossier event container-content">
+    <div altai-set-title titletext="{{$ctrl.data.pageResults[0].title}}"></div>
+    <section class="comeos-cover cover-large comeos-bg-green" altai-image-style-set-background imagestyleset="pageheader" image="$ctrl.data.pageResults[0].fileceoevent.file" ng-class="{'highcover':$ctrl.data.pageResults[0].fileceoevent.file}">
+        <div ng-if="$ctrl.data.pageResults[0].fileceoevent.file" class="altai-overlay"></div>
+        <div class="altai-panel">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-10 col-sm-offset-1 text-center">
+                        <div class="title">{{$ctrl.data.pageResults[0].title}}</div>
+                        <div class="subtitle">{{$ctrl.data.pageResults[0].date | localDate}} <span ng-if="$ctrl.data.pageResults[0].locatieceoevent.stad">- {{$ctrl.data.pageResults[0].locatieceoevent.stad}}</span></div>
+                        <div class="contact-buttons">
+                            <div class="contact-buttons">
+                                <comeos-content-item-like-header-component class="like" ng-if="$ctrl.data.pageResults[0] != undefined" content-item="$ctrl.data.pageResults[0]"></comeos-content-item-like-header-component>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="main-container container">
+
+        <section class="blog-post">
+            <div class="pagecontentstart">
+                <div class="row dossier-section">
+                    <div class="col-md-12">
+
+                        <div class="comeos-button-row">
+                            <a href="/ceoeventreg/{{$ctrl.data.pageResults[0].id}}/{{$ctrl.data.pageResults[0].registrationmeetingcommissievergadering.id}}/9454?submit=true" class="comeos-button no-animate">
+                                <i ng-if="$ctrl.data.pageResults[0].registrationmeetingcommissievergadering.registrationstateregistrationmeeting.id == '9454'" class="mdi mdi-check"></i><translate>bevestigaanwezig</translate>
+                            </a>
+                            <a href="/meetingreg/{{$ctrl.data.pageResults[0].id}}/{{$ctrl.data.pageResults[0].registrationmeetingcommissievergadering.id}}/9455?submit=true" class="comeos-button no-animate">
+                                <i ng-if="$ctrl.data.pageResults[0].registrationmeetingcommissievergadering.registrationstateregistrationmeeting.id == '9455'" class="mdi mdi-check"></i> <translate>bevestigafwezig</translate>
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="row dossier-section">
+
+                    <div class="col-md-6 col-xs-12 left-col">
+                        <div class="left-col">
+                            <section ng-if="$ctrl.data.pageResults[0].intro">
+                                <div class="cktext article-body" altai-compile-html="{{$ctrl.data.pageResults[0].intro}}">
+                                </div>
+                            </section>
+
+                            <section class="event-programma" ng-if="$ctrl.data.pageResults[0].programmaitemceoevent.length>0">
+                                <h2 translate>programma</h2>
+                                <table>
+                                    <tr class="programma-item" ng-repeat="item in $ctrl.data.pageResults[0].programmaitemceoevent">
+                                        <td class="time"><i class="mdi mdi-clock"></i> {{item.tijdvan| date:'HH:mm'}}</td>
+                                        <td class="description" altai-compile-html="{{item.inhoud}}"></td>
+                                    </tr>
+                                </table>
+                            </section>
+
+                            <section ng-if="$ctrl.data.pageResults[0].doelpubliek">
+                                <h2 translate>doelpubliek</h2>
+                                <div class="cktext article-body" altai-compile-html="{{$ctrl.data.pageResults[0].doelpubliek}}">
+                                </div>
+                            </section>
+
+                            <section ng-if="$ctrl.data.pageResults[0].prijs">
+                                <h2 translate>deelname</h2>
+                                <div class="cktext article-body" altai-compile-html="{{$ctrl.data.pageResults[0].prijs}}"></div>
+                            </section>
+
+                            <section ng-if="$ctrl.data.pageResults[0].taal">
+                                <h2 translate>taal</h2>
+                                <div class="cktext article-body" altai-compile-html="{{$ctrl.data.pageResults[0].taal}}"></div>
+                            </section>
+                            <section ng-if="$ctrl.data.pageResults[0].fileceoevent2" class="event-fotos">
+                                <h2 translate>gallery</h2>
+                                <altaigallery imagefiles="$ctrl.data.pageResults[0].filenetworkingevent2"></altaigallery>
+                            </section>
+                        </div>
+                    </div>
+
+                    <div class="col-md-5 col-md-offset-1 col-xs-12">
+                        <div class="right-col">
+                            <section class="event-details-tijdstip" ng-if="$ctrl.data.pageResults[0].persoonceoevent">
+                                <div class="dossier-contact-section">
+                                    <div class="profile-picture profile-picture-circle"><img ng-src="{{::$root.staticFileBase}}/{{$ctrl.data.pageResults[0].persoonceoevent.persoon_file.file}}" /></div>
+                                    <div><span class="h6">{{$ctrl.data.pageResults[0].persoonceoevent.voornaam}} {{$ctrl.data.pageResults[0].persoonceoevent.achternaam}}</span></div>
+
+                                </div>
+                            </section>
+
+                            <section class="event-details-tijdstip" ng-if="$ctrl.data.pageResults[0].date">
+                                <h5 translate>{{'tijdstip'|translate}}</h5>
+                                <div><i class="fa fa-calendar"></i>&nbsp;{{$ctrl.data.pageResults[0].date | localDate}} ({{$ctrl.data.pageResults[0].tijdvan | date:'HH:mm'}}<span ng-if="$ctrl.data.pageResults[0].tijdtot"> - {{$ctrl.data.pageResults[0].tijdtot | date:'HH:mm'}}</span>)</div>
+                            </section>
+
+                            <section class="languageselection" ng-if="$ctrl.data.pageResults[0].taalceoevent.length > 0">
+                                <h5 translate>{{'talen'|translate}}</h5>
+                                <span class="attached-file" ng-repeat="taal in $ctrl.data.pageResults[0].taalceoevent track by $index">
+                                    {{taal.title}}<span ng-if="!$last">, </span>
+                                </span>
+                            </section>
+
+                            <section class="languageselection" ng-if="$ctrl.data.pageResults[0].languageusedceoevent.length > 0">
+                                <h5 translate>{{'talen'|translate}}</h5>
+                                <div class="languagespec" ng-repeat="taalspec in $ctrl.data.pageResults[0].languageusedceoevent track by $index">
+                                    <div class="languagetitle">{{taalspec.languagespecifierlanguageused.title}}</div>
+                                    <div><span ng-repeat="taal in taalspec.taallanguageused track by $index">{{taal.title}}<span ng-if="!$last">, </span></span></div>
+                                </div>
+                            </section>
+
+                            <section class="event-details-location" ng-if="$ctrl.data.pageResults[0].locatieceoevent">
+                                <h5 translate>locatie</h5>
+
+                                <div class="naam"><a ui-sref="Root.Detail.Location({id:$ctrl.data.pageResults[0].eventLocatie[0].id})">{{$ctrl.data.pageResults[0].locatieceoevent.title}}</a> <span class="zaal" ng-if="$ctrl.data.pageResults[0].zaalnceoevent">- <span translate>zaal</span> {{$ctrl.data.pageResults[0].zaalceoevent.title}}</span></div>
+
+
+
+                                <div class="contactdetails">
+                                    <p><span altai-compile-html="{{$ctrl.data.pageResults[0].locatieceoevent.contact}}"></span></p>
+                                </div>
+                                <div class="gmap"><span altai-compile-html="{{$ctrl.data.pageResults[0].locatieceoevent.googlemapsembedlink}}"></span></div>
+                            </section>
+
+                            <!--<section ng-if="$ctrl.data.pageResults[0].filenetworkingevent.length > 0 || $ctrl.data.pageResults[0].filenetworkingevent1.length > 0">
+                                <div ng-if="vm.activeLang.code=='fr'" class="dossier-section" ng-show="$ctrl.data.pageResults[0].filenetworkingevent1.length > 0">
+                                    <h5 translate>attachments</h5>
+                                    <div class="attached-file" ng-repeat="doc in $ctrl.data.pageResults[0].filenetworkingevent1">
+                                        <a ng-href="{{::$root.staticFileBase}}/{{doc.file}}" target="_blank"><fileicon doctype="doc.fileextension"></fileicon> <span>{{doc.label}}</span></a>
+                                    </div>
+                                </div>
+                                <div ng-if="vm.activeLang.code=='nl'" class="dossier-section" ng-show="$ctrl.data.pageResults[0].filenetworkingevent.length > 0">
+                                    <h5 translate>attachments</h5>
+                                    <div class="attached-file" ng-repeat="doc in $ctrl.data.pageResults[0].filenetworkingevent">
+                                        <a ng-href="{{::$root.staticFileBase}}/{{doc.file}}" target="_blank"><fileicon doctype="doc.fileextension"></fileicon> <span>{{doc.label}}</span></a>
+                                    </div>
+                                </div>
+                            </section>-->
+
+                            <section class="event-details-links">
+                                <div ng-show="$ctrl.data.pageResults[0].linkceoevent.length > 0">
+                                    <h5 translate>relatedlinks</h5>
+                                    <div class="attached-link" ng-repeat="link in $ctrl.data.pageResults[0].linkceoevent">
+                                        <a ng-if="link.linktarget!=undefined" ng-href="{{link.linkurl}}" target="{{link.linktarget}}"><span class="attached-link-icon"><i class="mdi mdi-link"></i></span><span>{{link.linktekst}}</span></a>
+                                        <a ng-if="link.linktarget==undefined" ng-href="{{link.linkurl}}" target="_blank"><span class="attached-link-icon"><i class="mdi mdi-link"></i></span><span>{{link.linktekst}}</span></a>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <section class="event-details-sponsors">
+                                <div ng-show="$ctrl.data.pageResults[0].sponsororganizationceoevent.length > 0">
+                                    <h5 translate>sponsoredby</h5>
+                                    <div class="text-center">
+                                        <span class="sponsorimage" ng-repeat="sponsor in $ctrl.data.pageResults[0].sponsororganizationceoevent">
+                                            <a class="justclickable" target="_blank" href="{{sponsor.linksponsororganization[0].linkurl}}"><img ng-src="{{::$root.staticFileBase}}/{{sponsor.filesponsororganization.file}}" /></a>
+                                        </span>
+                                    </div>
+
+                                </div>
+                            </section>
+
+                            <section class="event-details-partners">
+                                <div ng-show="$ctrl.data.pageResults[0].sponsororganizationceoevent1.length > 0">
+                                    <h5 translate>incollaborationwithourpartners</h5>
+                                    <div class="text-center">
+                                        <span class="sponsorimage" ng-repeat="partner in $ctrl.data.pageResults[0].sponsororganizationceoevent1">
+                                            <a class="justclickable" target="_blank" href="{{partner.linksponsororganization[0].linkurl}}"><img ng-src="{{::$root.staticFileBase}}/{{partner.filesponsororganization.file}}" /></a>
+                                        </span>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+
+                </div>
+                <div print-remove class="row">
+                    <div class="col-sm-10 col-sm-offset-1  comeos-buttons">
+                        <a class="comeos-button" analytics analytics-item="$ctrl.data.pageResults[0]" analytics-on-click="logprint" print-btn><span translate>print</span></a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </div>
+</div>
+

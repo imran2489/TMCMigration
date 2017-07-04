@@ -1,0 +1,252 @@
+﻿@import "wmConfig";
+@import "contentToolbar.less";
+
+.altai-theme-admin {
+    .action-icon {
+        cursor: pointer;
+    }
+
+    .altaiplatform {
+        .md-icon-button:hover {
+            color: @color-blue;
+        }
+
+        .md-icon-button {
+            border-radius: 0;
+
+            &.active {
+                color: @color-blue;
+            }
+        }
+    }
+
+    .window-container {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .md-toolbar-tools {
+        background-color: #2e394e !important;
+    }
+
+    .window-split-left-right {
+        width: 100%;
+    }
+
+    .window-split-left {
+        width: 600px;
+        overflow-y: auto;
+        float: left;
+    }
+
+    .window-split-right {
+        padding: 0;
+        display: block;
+        overflow-y: auto;
+    }
+
+    .window-container.minimized .window-header {
+        border-bottom: 0;
+        width: 45px;
+
+        .actions-right {
+            justify-content: center;
+        }
+    }
+
+    .window {
+        flex: 1;
+        display: flex;
+        background-color: @window-bgcolor;
+        color: @font-color;
+
+        .windowicon {
+            font-size: 0.8em;
+        }
+
+        .window-inner {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .toolbar-shift {
+            margin-top: @toolbar-height + 4px;
+        }
+
+        .window-header {
+            display: flex;
+            height: 30px;
+            width: 100%;
+            justify-content: space-around;
+            background-color: @color-toolbar-window-lighter;
+            font-size: 16px;
+            /*border-bottom: 4px solid @color-toolbar-window-topborder;*/
+            color: white;
+
+            md-menu-item > .md-button, .md-button {
+                font-size: 16px;
+            }
+
+            .md-button.md-icon-button {
+                margin: 0px 1px;
+                height: 30px;
+                min-width: 0;
+                line-height: 30px;
+                padding: 1px 0 0 0;
+                width: 30px;
+                color: white;
+                min-height: 30px;
+
+                &:hover {
+                    color: @color-blue-contrast-dark;
+                }
+            }
+
+            div {
+                padding: 10px;
+            }
+
+            .top-toolbar-action {
+                padding-right: 10px;
+            }
+
+            .title {
+                text-align: center;
+                flex: 1;
+                font-size: 12px;
+                letter-spacing: 0.1em;
+                line-height: 30px;
+            }
+
+            .actionarea {
+                text-align: right;
+            }
+        }
+
+        .window-innercontainer {
+            /*display: flex;*/
+            flex: 1;
+
+            .window-innercontainer-left {
+                flex: 1;
+                display: flex;
+            }
+        }
+
+        .window-topactions, .window-header {
+            .actions-left {
+                padding: 0px 0 0 10px;
+                /*flex: 1;*/
+            }
+
+            .actions-middle {
+                padding: 0px 10px 0 10px;
+                /*flex: 1;*/
+            }
+
+            .actions-middle {
+                flex: 1;
+            }
+
+            .actions-right {
+                justify-content: flex-end;
+                display: flex;
+                padding: 0px 10px 0 0;
+            }
+
+            .action-icon:focus {
+                outline: none;
+            }
+        }
+
+        .window-topactions {
+            justify-content: space-between;
+            display: flex;
+            width: 100%;
+            font-size: @window-topactions-iconsize;
+            color: @window-topactions-color;
+            background-color: @window-topactions-bgcolor;
+            user-select: none;
+
+            .version {
+                margin-left: @window-margin;
+            }
+
+            .model-menubutton {
+                float: right;
+                margin-left: 20px;
+            }
+        }
+        /*.window-content.sidebar-movement.ng-enter-active.ng-leave-active {
+        overflow: hidden;
+    }*/
+        .window-content {
+            flex: 1;
+            display: flex;
+            overflow: auto;
+            height: 1px;
+
+            .window-include {
+                display: flex;
+                overflow: auto;
+                flex: 1;
+            }
+        }
+
+        .window-footer {
+            padding: 10px;
+            color: @window-footer-color;
+        }
+
+        .dropzone-left, .dropzone-right {
+            z-index: 100;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            background-color: @window-dropzone-bgcolor;
+            border: @window-dropzone-border;
+            width: 50%;
+            margin: 0;
+            pointer-events: none;
+        }
+
+
+        .dropzone-right {
+            left: 50%;
+        }
+    }
+
+
+    .wm-window-dropzone-bottom {
+        min-height: 1px;
+        background-color: @grey-light;
+    }
+
+    .wm-window-dropzone-bottom.dragover {
+        height: @window-dropzone-height;
+        background-color: @window-dropzone-bgcolor;
+        border: @window-dropzone-border;
+    }
+
+    .window-container.minimized {
+
+        .window-header {
+            flex-direction: column-reverse;
+            flex: 1;
+
+            .title {
+                white-space: nowrap;
+                transform: rotate(270deg);
+                transform-origin: top left;
+                margin-left: 5px; /* HACK */
+            }
+
+            .actions-middle {
+                align-items: flex-end;
+            }
+        }
+    }
+}

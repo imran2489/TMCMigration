@@ -1,0 +1,65 @@
+﻿<form class="altai-form">
+
+    <div class="altai-admin-section">
+        <div>
+            <div class="subheader">
+                <h3>{{'filter'|translate}}</h3>
+            </div>
+
+            <div class="altai-simple-form">
+
+                <!-- <div class="form-group">
+                     <label>{{'label'|translate}}</label>
+                     <div altai-translatable-input="newFilter.labelTranslatable" languages="$ctrl.languages" />
+                 </div>-->
+                <div class="form-group">
+                    <label>{{'type'|translate}}</label>
+                    <select ng-model="$ctrl.exposedContentCollectionSorter.scoredQuery" ng-options="item.value as item.label for item in  $ctrl.scoredQuery"></select>
+                </div>
+                <div class="form-group" ng-if="$ctrl.exposedContentCollectionSorter.scoredQuery == 0">
+                    <label>{{'Relevance'|translate}}</label>
+                    <input type="checkbox" ng-model="$ctrl.relevance">
+                </div>
+                <div class="form-group" ng-if="$ctrl.exposedContentCollectionSorter.scoredQuery == 0 && $ctrl.relevance != true">
+                    <label>{{'contenttype'|translate}}</label>
+                    <select ng-model="$ctrl.type" ng-options="c as c.label for c in $ctrl.contentTypes"></select>
+                </div>
+
+                <div class="form-group" ng-if="$ctrl.exposedContentCollectionSorter.scoredQuery == 0 && $ctrl.relevance != true">
+                    <label>{{'field'|translate}}</label>
+                    <select ng-model="$ctrl.exposedContentCollectionSorter.field" ng-options="(c.attribute.name + ((c.attribute.attributeTypeId == 2 || c.attribute.attributeTypeId == 4 || c.attribute.attributeTypeId == 10 || c.attribute.attributeTypeId == 14 || c.attribute.attributeTypeId == 15 || c.attribute.attributeTypeId == 16) ? '.raw' : '')) as c.attribute.label for c in $ctrl.contentTypeAttributes | filter: {contentTypeId:$ctrl.type.id}"></select>
+                </div>
+                <div class="form-group" ng-if="$ctrl.exposedContentCollectionSorter.scoredQuery == 1">
+                    <label>{{'field'|translate}}</label>
+                    <select ng-model="$ctrl.exposedContentCollectionSorter.field" ng-options="c.value as c.label for c in $ctrl.attributes "></select> <!-- | filter: {contentTypeId:$ctrl.type.id} -->
+                </div>
+
+
+                
+
+                <div class="form-group" ng-if="$ctrl.exposedContentCollectionSorter.scoredQuery == 1">
+                    <label>{{'Decay'|translate}}</label>
+                    <input type="number" placeholder="Decay" ng-model="$ctrl.exposedContentCollectionSorter.decay" min="0" max="1" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" step="0.001" />
+                </div>
+
+                <div class="form-group" ng-if="$ctrl.exposedContentCollectionSorter.scoredQuery == 1">
+                    <label>{{'Offset'|translate}}</label>
+                    <input type="number" placeholder="Offset" ng-model="$ctrl.offset" min="0" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" step="1" />{{'days'|translate}}
+                </div>
+                <div class="form-group" ng-if="$ctrl.exposedContentCollectionSorter.scoredQuery == 1">
+                    <label>{{'scale'|translate}}</label>
+                    <input type="number" placeholder="Offset" ng-model="$ctrl.scale" min="0" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" step="1" />{{'days'|translate}}
+                </div>
+                <div class="form-group" ng-if="$ctrl.exposedContentCollectionSorter.scoredQuery >= 0">
+                    <label>{{'Ascending'|translate}}</label>
+                    <input type="checkbox" ng-model="$ctrl.exposedContentCollectionSorter.ascending">
+                </div>
+            </div>
+        </div>
+
+
+        <div class="form-buttons mainbuttonrow" ng-if="$ctrl.exposedContentCollectionSorter.scoredQuery >= 0">
+            <button type="button" class="altai-admin-icon main" ng-click="$ctrl.updateSorter($ctrl.exposedContentCollectionSorter)"><i class="mdi mdi-content-save"></i></button>
+        </div>
+    </div>
+</form>

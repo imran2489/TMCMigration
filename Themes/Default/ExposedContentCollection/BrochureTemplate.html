@@ -1,0 +1,108 @@
+﻿<div analytics analytics-item="$ctrl.data.pageResults[0]" analytics-on-view="true"></div>
+<div print-section class="root theme--square altai-theme-content actu dossier container-content">
+    <div altai-set-title titletext="{{$ctrl.data.pageResults[0].title}}"></div>
+    <section class="comeos-cover cover-large comeos-bg-brochure">
+        <div class="altai-panel">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-10 col-sm-offset-1 text-center">
+                        <div class="title">{{$ctrl.data.pageResults[0].title}}</div>
+                        <div class="contact-buttons">
+                            <!--<div class="mail"><i class="mdi mdi-heart"></i></div>-->
+
+                            <div class="contact-buttons">
+                                <comeos-content-item-like-header-component class="like" ng-if="$ctrl.data.pageResults[0] != undefined" content-item="$ctrl.data.pageResults[0]"></comeos-content-item-like-header-component>
+                                <socialshareheader ng-if="$ctrl.data.pageResults[0] != undefined" item="$ctrl.data.pageResults[0]"></socialshareheader>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="comeos-button comeos-button-cover comeos-button-white" comeos-questions-contact-us itemname="$ctrl.data.pageResults[0].name">
+                    <span translate>questionscontactus</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="main-container container">
+
+        <section class="blog-post">
+            <div class="pagecontentstart">
+                <!--<div class="row text-center">
+                    <div class="col-sm-10 col-sm-offset-1 ">
+                        <div class="breadcrumbs">
+                            <a ui-sref="Root.Content.Library" translate>bibliotheek</a> > <a><span translate>comeos</span> <span translate>brochure</span> {{$ctrl.data.pageResults[0].title}}</a>
+                        </div>
+                    </div>
+                </div>-->
+
+                <div class="row text-center" ng-if="$ctrl.data.pageResults[0].themebrochure.length || $ctrl.data.pageResults[0].sectorbrochure.length || $ctrl.data.pageResults[0].regionbrochure.length || $ctrl.data.pageResults[0].pcbrochure.length">
+
+                    <div class="col-sm-10 col-sm-offset-1 ">
+
+                        <div class="dossier-tags">
+                            <span class="dossier-tags-chip" getlink content-item-id="{{tag.isroot !== false ? tag.id : tag[tag.contentType + '_' + tag.contentType].id}}" content-type-id="{{::tag.contentTypeId}}" theme="{{::tag.id}}" ng-repeat="tag in $ctrl.data.pageResults[0].themebrochure">
+                                {{tag.title}}
+                            </span>
+                            <span class="dossier-tags-chip" getlink content-item-id="{{tag.isroot !== false ? tag.id : tag[tag.contentType + '_' + tag.contentType].id}}" content-type-id="{{::tag.contentTypeId}}" ng-repeat="tag in $ctrl.data.pageResults[0].sectorbrochure">
+                                {{tag.title}}
+                            </span>
+                            <span class="dossier-tags-chip" getlink content-item-id="{{tag.isroot !== false ? tag.id : tag[tag.contentType + '_' + tag.contentType].id}}" content-type-id="{{::tag.contentTypeId}}" ng-repeat="tag in $ctrl.data.pageResults[0].regionbrochure">
+                                {{tag.title}}
+                            </span>
+                            <span class="dossier-tags-chip" getlink content-item-id="{{tag.isroot !== false ? tag.id : tag[tag.contentType + '_' + tag.contentType].id}}" content-type-id="{{::tag.contentTypeId}}" ng-repeat="tag in $ctrl.data.pageResults[0].pcbrochure">
+                                {{tag.title}}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row dossier-section publicationcoverimagerow mobile">
+                    <div class="col-sm-5 col-sm-offset-1">
+                        <div class="publicationcoverimagecontainer">
+                            <img class="publicationcoverimage" ng-src="{{::$root.staticFileBase}}/{{$ctrl.data.pageResults[0].filebrochure4.file}}" ng-if="$ctrl.activeLang.code=='fr' && !$ctrl.data.pageResults[0].member" />
+                            <img class="publicationcoverimage" ng-src="{{::$root.staticFileBase}}/{{$ctrl.data.pageResults[0].filebrochure3.file}}" ng-if="$ctrl.activeLang.code=='nl' && !$ctrl.data.pageResults[0].member" />
+                            <a ng-if="$ctrl.activeLang.code=='fr' && $ctrl.data.pageResults[0].member && $ctrl.data.pageResults[0].filebrochure2 " ng-href="{{::$root.staticFileBase}}/{{$ctrl.data.pageResults[0].filebrochure2.file}}" target="_blank"><img class="publicationcoverimage" ng-src="{{::$root.staticFileBase}}/{{$ctrl.data.pageResults[0].filebrochure4.file}}" /></a>
+                            <a ng-if="$ctrl.activeLang.code=='nl' && $ctrl.data.pageResults[0].member && $ctrl.data.pageResults[0].filebrochure" ng-href="{{::$root.staticFileBase}}/{{$ctrl.data.pageResults[0].filebrochure.file}}" target="_blank"><img class="publicationcoverimage" ng-src="{{::$root.staticFileBase}}/{{$ctrl.data.pageResults[0].filebrochure3.file}}" /></a>
+                        </div>
+                    </div>
+                    <div class="col-sm-5">
+                        <div class="cktext article-introduction" altai-compile-html="{{$ctrl.data.pageResults[0].shortintroduction}}">
+                        </div>
+                        <div class="cktext" altai-compile-html="{{$ctrl.data.pageResults[0].membersintroduction}}">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row dossier-section publicationcoverimagerow desktop">
+                    <div class="col-sm-10 col-sm-offset-1">
+                        <div class="publicationcoverimagecontainer">
+                            <img class="publicationcoverimage" ng-src="{{::$root.staticFileBase}}/{{$ctrl.data.pageResults[0].filebrochure4.file}}" ng-if="$ctrl.activeLang.code=='fr' && !$ctrl.data.pageResults[0].member" />
+                            <img class="publicationcoverimage" ng-src="{{::$root.staticFileBase}}/{{$ctrl.data.pageResults[0].filebrochure3.file}}" ng-if="$ctrl.activeLang.code=='nl' && !$ctrl.data.pageResults[0].member" />
+                            <a ng-if="$ctrl.activeLang.code=='fr' && $ctrl.data.pageResults[0].member && $ctrl.data.pageResults[0].filebrochure2 " ng-href="{{::$root.staticFileBase}}/{{$ctrl.data.pageResults[0].filebrochure2.file}}" target="_blank"><img class="publicationcoverimage" ng-src="{{::$root.staticFileBase}}/{{$ctrl.data.pageResults[0].filebrochure4.file}}" /></a>
+                            <a ng-if="$ctrl.activeLang.code=='nl' && $ctrl.data.pageResults[0].member && $ctrl.data.pageResults[0].filebrochure" ng-href="{{::$root.staticFileBase}}/{{$ctrl.data.pageResults[0].filebrochure.file}}" target="_blank"><img class="publicationcoverimage" ng-src="{{::$root.staticFileBase}}/{{$ctrl.data.pageResults[0].filebrochure3.file}}" /></a>
+                        </div>
+                        <div class="cktext article-introduction" altai-compile-html="{{$ctrl.data.pageResults[0].shortintroduction}}">
+                        </div>
+                        <div class="cktext" altai-compile-html="{{$ctrl.data.pageResults[0].membersintroduction}}">
+                        </div>
+                    </div>
+                </div>
+
+                <div print-remove class="row dossier-section">
+                    <div class="col-sm-10 col-sm-offset-1  comeos-buttons">
+                        <a class="comeos-button" analytics analytics-item="$ctrl.data.pageResults[0]" analytics-on-click="logprint" print-btn><span translate>print</span></a>
+                    </div>
+                </div>
+                <!--<div class="row">
+                    <div class="col-sm-12 text-center">
+                        <div class="blog-post__share">
+                            <link-share class="btn btn--sm bg--twitter"></link-share>
+                            <altai-social-share class="btn btn--sm bg--twitter" provider="twitter" item="$ctrl.data.pageResults[0]"></altai-social-share>
+                            <altai-social-share class="btn btn--sm bg--twitter" provider="linkedin" item="$ctrl.data.pageResults[0]"></altai-social-share>
+                        </div>
+                    </div>
+                </div>-->
+
+            </div>
+        </section>
+    </div>
+</div>

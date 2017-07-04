@@ -1,0 +1,52 @@
+﻿<div class="altai-admin-section">
+        <div ng-if="$ctrl.contenttypebusinessprocessdefinitionlinks.length>1">
+            <div class="subheader">
+                <h2>{{'selectapprovalflow'|translate}}</h2>
+            </div>
+            <div>
+                <select ng-model="$ctrl.selectedBusinessProcessDefinition" ng-change="$ctrl.processUpdated()" ng-options="link.contentFlowProcessDefinition as link.contentFlowProcessDefinition.label for link in $ctrl.contenttypebusinessprocessdefinitionlinks"></select>
+            </div>
+        </div>
+        <div ng-if="$ctrl.contenttypebusinessprocessdefinitionlinks.length==0">
+            <div class="subheader">
+                <h2>{{'approvalflow'|translate}}</h2>
+            </div>
+            <div>{{'noapprovalflowforcontenttype'|translate}}</div>
+        </div>
+        <div class="fullwidthcard" ng-if="$ctrl.selectedBusinessProcessDefinition">
+            <div class="subheader">
+                <h3>{{'selected_process'|translate}} - {{$ctrl.selectedBusinessProcessDefinition.label}}</h3>
+            </div>
+            <form class="altai-form altai-form-no-padding" name="contentTypeAttributeUpdate">
+                <div class="altai-simple-form">
+                    <div class="form-group" ng-repeat="attr in $ctrl.selectedBusinessProcessDefinition.contentFlowProcessStartVariableDefinitions track by attr.id" ng-if="attr.visible">
+                        <label>{{::attr.label}}</label>
+                        <altai-content-flow-attribute-update model="attr.value" content-flow-attribute="::attr"></altai-content-flow-attribute-update>
+                    </div>
+                    <div class="form-group">
+                        <label>{{'publishimmediately'|translate}}</label>
+                        <input type="checkbox" ng-model="$ctrl.publishImmediately" />
+                    </div>
+                    <div class="form-group" ng-show="!$ctrl.publishImmediately">
+                        <label>{{"publishdate"|translate}}</label>
+                        <input date-time class='altai-date-input' format="DD-MM-YYYY HH:mm" ng-model="$ctrl.publishDate" date-change="updateDate" min-view='minutes'>
+                    </div>
+                    <div class="form-group">
+                        <label>{{'donotspecifyunpublishdate'|translate}}</label>
+                        <input type="checkbox" ng-model="$ctrl.doNotSpecifyUnpublishDate" />
+                    </div>
+                    <div class="form-group" ng-show="!$ctrl.doNotSpecifyUnpublishDate">
+                        <label>{{"unpublishdate"|translate}}</label>
+                        <input date-time class='altai-date-input' format="DD-MM-YYYY HH:mm" ng-model="$ctrl.unpublishDate" date-change="updateDate" min-view='minutes'>
+                    </div>
+                </div>
+            </form>
+
+            <div class="task-additions">
+                <button class="btn btn-altai altai-button-secondary" ng-class="{'selected':$ctrl.commentCreation}" ng-click="$ctrl.toggleCommentCreation()"><i class="mdi mdi-comment-plus-outline"></i> {{'add_comment'|translate}}</button>
+            </div>
+            <div ng-show="$ctrl.commentCreation"><altai-content-flow-process-comment-create-parent content-type-id='23' languages='$ctrl.languages'></altai-content-flow-process-comment-create-parent></div>
+        </div>
+
+        
+</div>

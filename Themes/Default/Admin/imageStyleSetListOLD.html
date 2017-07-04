@@ -1,0 +1,42 @@
+﻿<div class="admin-header">
+    <h2><i class="fa fa-magic"></i>&nbsp;{{'imagestylesets'|translate}}</h2>
+</div>
+
+<!--Image Style Sets-->
+<table class="table-admin">
+
+    <tr>
+        <th style="width:75%">{{'name'|translate}}</th>
+        <!--<th>{{'ORIENTATION'|translate}}</th>
+        <th>{{'MIN-WIDTH'|translate}}</th>
+        <th>{{'RETINA'|translate}}</th>-->
+        <th style="width:25%">{{'actions'|translate}}</th>
+    </tr>
+    <tr data-ng-repeat="imageStyleSet in imageStyleSetList">
+        <td><span data-editable-text="imageStyleSet.name" data-e-name="name" data-e-form="rowform" data-e-required data-e-ui-keypress="{13:'rowform.$submit()',esc:'rowform.$hide()'}">{{ imageStyleSet.name || 'empty' }}</span></td>
+         <!--<td>{{imageStyle.orientation}}</td>
+         <td>{{imageStyle.minWidth}}</td>
+         <td>{{imageStyle.retina}}</td>-->
+        <td>
+            <!-- form -->
+            <form editable-form name="rowform" onbeforesave="updateImageStyleSet($data, imageStyleSet.id)" ng-show="rowform.$visible" class="form-buttons form-inline" >
+              <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary"><i class="fa fa-save"></i>&nbsp;{{'save'|translate}}</button>
+              <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default">&nbsp;{{'cancel'|translate}}</button>
+            </form>
+            <div class="buttons" ng-show="!rowform.$visible">
+                <button class="btn btn-success btn-md" data-ng-click="recycleImageCache(imageStyleSet.id)"><i class="fa fa-magic"></i>&nbsp;{{'recycleimagecache'|translate}}</button>
+                <button class="btn btn-primary" ng-click="rowform.$show()"><i class="fa fa-pencil"></i></button>
+                <button class="btn btn-danger btn-md" data-ng-click="removeImageStyleSet(imageStyleSet.id)"><i class="fa fa-trash-o"></i></button>
+            </div> 
+        </td>
+    </tr>
+</table>
+<button type="button" class="btn btn-success btn-md" data-ng-click="recycleEntireImageCache()"><i class="fa fa-magic"></i>&nbsp;{{'recycleentireimagecache'|translate}}</button>
+<a href="#/admin/imagestyleset/create" class="btn btn-primary"><i class="fa fa-plus"></i>&nbsp;{{'createnewimagestyleset'|translate}}</a>
+
+
+<!--Image Styles-->
+
+
+
+<!--Image Actions-->

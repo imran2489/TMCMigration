@@ -1,0 +1,14 @@
+﻿<div ng-repeat="question in $ctrl.questionnaire.questions track by question.id" ng-show="question.visible">
+
+    <tmc-questionnaire-question question="question"></tmc-questionnaire-question>
+
+    <hr />
+</div>
+
+<div ng-show="$ctrl.visibleQuestions > 0">
+   
+    <button ng-click="$ctrl.validateQuestionnaire()">Validate</button>
+    <button ng-click="$ctrl.continueVideo()" ng-if="$ctrl.video && $ctrl.showScore">Continue video</button>
+    <div ng-show="$ctrl.showScore">{{$ctrl.score}}/{{$ctrl.maxScore}}</div>
+
+</div>

@@ -1,0 +1,34 @@
+﻿<div class="altai-list">
+    <div ng-show="$ctrl.displayMode=='grid'" class="file-grid">
+
+        <div ng-repeat="file in $ctrl.results" class="file-grid-item" ng-click="$ctrl.selectFile({id: file.id})" ng-class="{checked:$ctrl.isSelected(file.id)}">
+
+            <span class="check-grid"><i class="mdi mdi-check"></i></span>
+            <div class="file-grid-item-label" ng-if="file.fileextension != 'jpg' && file.fileextension != 'png'"><i class="mdi mdi-file"></i>&nbsp;{{file.name}}</div>
+            <img ng-src="{{$root.staticFileBase}}/{{file.file}}" ng-if="file.fileextension == 'jpg' ||file.fileextension == 'png'" />
+        </div>
+    </div>
+
+    <div ng-show="$ctrl.displayMode=='list'">
+        <div class="row file-list" ng-repeat="file in $ctrl.results" ng-click="$ctrl.selectFile(file)" ng-class="{checked:$ctrl.isSelected(file.id)}">
+            <span class="check-list"><i class="mdi mdi-check"></i></span>
+            <div class="avatar"><i class="mdi mdi-file"></i></div>
+            <div class="text rowtext">
+                <h2>{{file.name}}</h2>
+            </div>
+            <div class="rowactions">
+
+                <button type="button" class="icon" ng-click="$ctrl.updateFile({id:file.id})">
+                    <md-tooltip md-direction="top">{{'edit'|translate}}</md-tooltip>
+                    <i class="mdi mdi-pencil"></i>
+                </button>
+
+                <button type="button" class="icon" ng-click="$ctrl.deleteFile({id:file.id})">
+                    <md-tooltip md-direction="top">{{'delete'|translate}}</md-tooltip>
+                    <i class="mdi mdi-delete"></i>
+                </button>
+
+            </div>
+        </div>
+    </div>
+</div>

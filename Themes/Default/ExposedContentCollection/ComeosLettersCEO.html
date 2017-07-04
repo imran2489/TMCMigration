@@ -1,0 +1,26 @@
+﻿<div class="row">
+    <div class="col-md-4 right-bar">
+        <h2 class="ceotitle"><strong>{{"LastCEOLetters"|translate}}</strong></h2>
+        <div class="altai-card-container-ceo">
+            <comeos-event-card class="letter" ng-repeat="item in $ctrl.data.pageResults" ng-if="$index == 0" item="item" hide-tag="true">
+            </comeos-event-card>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <h2 class="ceotitle"><strong>{{"PastCEOLetters"|translate}}</strong></h2>
+        <div class="altai-card-container-ceo">
+            <comeos-event-card class="letter" ng-repeat="item in $ctrl.data.pageResults" ng-if="$index >= 1" ng-class="{'leftletter': $index == 1, 'rightletter': $index == 2}" item="item" hide-tag="true">
+            </comeos-event-card>
+        </div>
+    </div>
+</div>
+<div class="row" ng-if="$ctrl.data.totalCount > $ctrl.data.pageSize">
+    <div class="col-sm-12">
+        <div class="button-row--centralized">
+            <div class="panel-buttons">
+                <altai-pagination paged-result="$ctrl.data" switch-page="$ctrl.openPage(pageIndex)"></altai-pagination>
+            </div>
+        </div>
+
+    </div>
+</div>

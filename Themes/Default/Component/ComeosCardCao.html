@@ -1,0 +1,37 @@
+﻿<div class="altai-card low" ng-class="{'has-card-label':$ctrl.contenttype}">
+    <div class="altai-card-label no-select comeos-bg-{{$ctrl.contenttypemachinename}}" ng-if="$ctrl.contenttype && !$ctrl.hideTag">{{$ctrl.contenttype}}</div>
+    <div ng-if="$ctrl.link">
+        <a ng-href="{{$ctrl.link}}" target="_blank">
+            <div class="altai-card-image" ng-if="$ctrl.image" ng-style="{'background-image': 'url('+$root.staticFileBase+'/' +$ctrl.image+ ')'}"></div>
+            <div class="altai-card-body low">
+                <div class="altai-card-title">
+                    <h5>{{$ctrl.title}}</h5>
+                </div>
+                <p>
+                    <span ng-if="$ctrl.description!=undefined" altai-compile-html="{{($ctrl.description | crop:145)}}"></span>
+                </p>
+
+            </div>
+        </a>
+    </div>
+    <div ng-if="!$ctrl.link">
+        <div>
+            <div class="altai-card-image" ng-if="$ctrl.image" ng-style="{'background-image': 'url('+$root.staticFileBase+'/' +$ctrl.image+ ')'}"></div>
+            <div class="altai-card-body low">
+                <div class="altai-card-title">
+                    <h5>{{$ctrl.title}}</h5>
+                </div>
+                <p>
+                    <span ng-if="$ctrl.description!=undefined" altai-compile-html="{{($ctrl.description | crop:145)}}"></span>
+                </p>
+
+            </div>
+        </div>
+    </div>
+    <div class="altai-card-pills">
+        <span class="altai-card-pill" getlink content-item-id="{{pill.isroot !== false ? pill.id : pill[pill.contentType + '_' + pill.contentType].id}}" content-type-id="{{::pill.contentTypeId}}" theme="{{::pill.id}}" ng-repeat="pill in $ctrl.pills | limitTo: 6 track by $index">{{pill.title}}</span>
+        <span class="altai-card-pill" ng-if="$ctrl.pills.length>6">...</span>
+    </div>
+    <socialsharecard contenttypemachinename="$ctrl.contenttypemachinename" item="$ctrl.item" target="$ctrl.link"></socialsharecard>
+    <comeos-content-item-like-component class="like comeos-share-{{$ctrl.contenttypemachinename}}" content-item="$ctrl.item"></comeos-content-item-like-component>
+</div>

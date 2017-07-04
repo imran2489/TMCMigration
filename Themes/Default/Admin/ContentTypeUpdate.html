@@ -1,0 +1,147 @@
+﻿<altai-toolbar-menu menu-model="vm.toolbar" languages="vm.languages"></altai-toolbar-menu>
+
+<div class="altai-admin-section">
+
+    <div class="subheader">
+        <h3>{{'attributes'|translate}}</h3>
+    </div>
+
+    <div style="display:block">
+        <table>
+            <thead>
+                <tr>
+                    <th>{{'name'|translate}}</th>
+                    <th>{{'label'|translate}}</th>
+                    <th>{{'type'|translate}}</th>
+                    <th>{{'identifying'|translate}}</th>
+                    <th>{{'required'|translate}}</th>
+                    <th>{{'multiple'|translate}}</th>
+                    <th>{{'translatable'|translate}}</th>
+                    <th>{{'allowedversions'|translate}}</th>
+                    <th style="width:100px; text-align:right">{{'actions'|translate}}</th>
+                </tr>
+            </thead>
+            <tbody ui-sortable="vm.ctaSortOptions" ng-model="contentType.contentTypeAttributes">
+
+                <tr ng-repeat="attr in contentType.contentTypeAttributes track by attr.id">
+                    <td>{{attr.attribute.name}}</td>
+                    <td>{{attr.attribute.label}}</td>
+                    <td>{{attr.attribute.attributeType.name}}</td>
+                    <td>{{attr.identifying|binary}}</td>
+                    <td>{{attr.attribute.required|binary}}</td>
+                    <td>{{attr.attribute.multiple|binary}}</td>
+                    <td>{{attr.attribute.translatable|binary}}</td>
+                    <td>{{attr.allowedVersions}}</td>
+
+                    <td style="width:50px; text-align:right" class="actioncell">
+                        <button class="icon" ng-click="vm.updateContentTypeAttribute(attr)">
+                            <md-tooltip md-direction="top">{{'edit'|translate}}</md-tooltip>
+                            <i class="mdi mdi-pencil"></i>
+                        </button>
+                        <button class="icon" ng-click="deleteCta(attr)">
+                            <md-tooltip md-direction="top">{{'delete'|translate}}</md-tooltip>
+                            <i class="mdi mdi-delete"></i>
+                        </button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="9"><button class="altai-admin-icon main" ng-click="vm.openCreateContentTypeAttributeWindow()"><i class="mdi mdi-plus"></i></button></td>
+                </tr>
+
+            </tbody>
+
+        </table>
+    </div>
+
+    <div class="subheader">
+        <h3>{{'relations'|translate}}</h3>
+    </div>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th style="width:250px;">{{'relationname'|translate}}</th>
+                <th style="width:150px;">{{'contenttype'|translate}}</th>
+                <th style="width:50px;">{{'required'|translate}}</th>
+                <th>{{'multiple'|translate}}</th>
+                <th style="width:100px; text-align:right">{{'actions'|translate}}</th>
+            </tr>
+        </thead>
+        <tbody ui-sortable="vm.ctrlSortOptions" ng-model="contentType.contentTypeRelationLinks">
+            <tr ng-repeat="ctrl in contentType.contentTypeRelationLinks | orderBy:'order'">
+                <td>{{ctrl.label}}</td>
+                <td>{{ctrl.contentType.name}}</td>
+                <td>{{ctrl.required|binary}}</td>
+                <td>{{ctrl.allowMultiple|binary}}</td>
+                <td style="width:100px; text-align:right">
+                    <button class="icon" ng-click="vm.updateContentTypeRelation(ctrl.contentTypeRelation)"><md-tooltip md-direction="top">{{'edit'|translate}}</md-tooltip><i class="mdi mdi-pencil"></i></button>
+                    <button class="icon" ng-click="deleteContentTypeRelation(ctrl)"><md-tooltip md-direction="top">{{'delete'|translate}}</md-tooltip><i class="mdi mdi-delete"></i></button>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="5"><button class="altai-admin-icon main" ng-click="vm.openCreateContentTypeRelationWindow()"><i class="mdi mdi-plus"></i></button></td>
+            </tr>
+
+        </tbody>
+
+    </table>
+
+    <div class="subheader">
+        <h3>{{'settings'|translate}}</h3>
+    </div>
+
+    <table class="table table-striped">
+        <tr>
+            <td>{{'name'|translate}}</td>
+
+            <td>
+                {{::contentType.name}}
+            </td>
+        </tr>
+
+        <tr>
+            <td>{{'label'|translate}}</td>
+            <td>
+                <div altai-translatable-input="contentType.labelTranslatable" languages="vm.languages" />
+            </td>
+        </tr>
+
+        <tr>
+            <td>{{'donotincludeinsearchbydefault'|translate}}</td>
+            <td>
+                <md-checkbox class="smallcheckbox" ng-model="contentType.system" aria-label="Identifying?"></md-checkbox>
+            </td>
+        </tr>
+        <tr>
+            <td>{{'directcreatepossible'|translate}}</td>
+
+            <td>
+                <md-checkbox class="smallcheckbox" ng-model="contentType.directCreatePossible" aria-label="DirectCreate?">
+
+                </md-checkbox>
+            </td>
+        </tr>
+
+        <tr>
+            <td>{{'template'|translate}}</td>
+            <td>
+                <select ng-model="contentType.templateId" ng-options="t.id as t.name for t in vm.templates">
+                    <option value="">-- {{'default'|translate}} --</option>
+                </select>
+            </td>
+        </tr>
+
+        <tr>
+            <td>{{'state'|translate}}</td>
+            <td>
+                <select ng-model="contentType.stateId" ng-options="s.id as s.name for s in vm.states">
+                    <option value="">-- {{'none'|translate}} --</option>
+                </select>
+            </td>
+        </tr>
+
+    </table>
+
+</div>

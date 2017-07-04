@@ -1,0 +1,36 @@
+﻿<div class="altai-list">
+    <div class="search">
+        <input class="query" type="text" placeholder="{{'searchinname'|translate}}" ng-model-options="{ debounce: 300 }" ng-model="vm.searchModel.name" />
+        <!--<button class="add" ng-click="vm.createContentItem()"><i class="mdi mdi-plus"></i></button>-->
+    </div>
+</div>
+
+<div class="altai-admin-section">
+    <div class="subheader">
+        <h2>{{'processes_you_are_involved_in'|translate}}</h2>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>{{'contenttype'|translate}}</th>
+                <th>{{'comments'|translate}}</th>
+                <th>{{'process'|translate}}</th>
+                <th>{{'contentitem'|translate}}</th>
+                <th>{{'starttime'|translate}}</th>
+                <th>{{'publishimmediately'|translate}}</th>
+                <th>{{'publishdate'|translate}}</th>
+                <th>{{'donotspecifyunpublishdate'|translate}}</th>
+                <th>{{'unpublishdate'|translate}}</th>
+                <th>{{'actions'|translate}}</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr altai-content-flow-single-process process="process" ng-repeat="process in vm.processes"></tr>
+
+            <tr ng-if="!vm.processes.length">
+                <td colspan="2">{{'noresults'|translate}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,151 @@
+﻿.altai-theme-admin {
+    .tree-list {
+        font-size: small;
+
+        .tree-item {
+            background-color: #F5F5F5;
+
+            .tree-item-header {
+                display: flex;
+                -ms-flex-direction: row;
+                -webkit-flex-direction: row;
+                flex-direction: row;
+                padding: 10px;
+
+                div {
+                    display: flex;
+                    -ms-flex-direction: column;
+                    -webkit-flex-direction: column;
+                    flex-direction: column;
+
+                    .tree-order-circle {
+                        border: 1px solid #0068ff;
+                        border-radius: 50%;
+                        margin-left: 5px;
+                        width: 10px;
+                        width: 20px;
+                        height: 20px;
+                        text-align: center;
+                        color: #0068ff;
+                        margin-right: 5px;
+                        padding-top: 1px;
+                        -moz-box-sizing: border-box;
+                        -webkit-box-sizing: border-box;
+                        box-sizing: border-box;
+                        cursor: move;
+                    }
+                }
+
+                .tree-item-title {
+                    flex-basis: 90%;
+                    -ms-flex-direction: row;
+                    -webkit-flex-direction: row;
+                    flex-direction: row;
+
+                    .title {
+                        -ms-flex-direction: column;
+                        -webkit-flex-direction: column;
+                        flex-direction: column;
+                    }
+
+                    .chevron {
+                        text-align: center;
+                        width: 15px;
+                        -ms-flex-direction: column;
+                        -webkit-flex-direction: column;
+                        flex-direction: column;
+                    }
+                }
+
+                .tree-item-actions {
+                    display: none;
+                    -ms-flex-direction: row;
+                    -webkit-flex-direction: row;
+                    flex-direction: row;
+                    justify-content: flex-end;
+                    flex-basis: 10%;
+
+                    span {
+                        display: flex;
+                        -ms-flex-direction: column;
+                        -webkit-flex-direction: column;
+                        flex-direction: column;
+                        margin-left: 15px;
+                    }
+
+                    .mdi-chevron-up {
+                        display: block;
+                    }
+                }
+            }
+
+            .tree-item-children {
+                padding-left: 26px;
+                max-height: 0;
+                overflow: hidden;
+                /*-moz-transition: max-height 0.2s ease-out;
+            -o-transition: max-height 0.2s ease-out;
+            -webkit-transition: max-height 0.2s ease-out;
+            transition: max-height 0.2s ease-out;*/
+                .tree-item-children-content {
+                    border-left: 1px solid #2ECC71;
+
+                    .tree-item-header {
+                        padding-left: 15px;
+                    }
+
+                    .tree-order-circle {
+                        border: 1px solid #2ECC71;
+                        color: #2ECC71;
+                    }
+                }
+            }
+
+            .tree-item-children.expanded {
+                display: block;
+                max-height: 350px;
+            }
+
+            .mdi-chevron-up {
+                -webkit-transition: all 0.2s ease;
+                transition: all 0.2s ease;
+            }
+
+            .mdi-chevron-up.expanded {
+                -webkit-transform: rotate(180deg);
+                -moz-transform: rotate(180deg);
+                -ms-transform: rotate(180deg);
+                -o-transform: rotate(180deg);
+                transform: rotate(180deg);
+            }
+        }
+
+        .tree-item-button:hover {
+            cursor: pointer;
+            background-color: #E5E5E5;
+
+            .tree-order-circle {
+                color: white !important;
+                background-color: #0068ff;
+                cursor: pointer;
+            }
+        }
+
+        .tree-item-children .tree-item-button:hover .tree-order-circle {
+            color: white;
+            background-color: #2ECC71 !important;
+        }
+
+        .tree-item:hover > .tree-item-header .tree-item-actions {
+            display: flex;
+        }
+
+        .tree-clickable {
+            cursor: pointer;
+        }
+
+        button {
+            padding: 7px;
+        }
+    }
+}

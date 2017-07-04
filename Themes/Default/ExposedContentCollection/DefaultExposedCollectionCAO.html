@@ -1,0 +1,106 @@
+﻿<section ng-if="$ctrl.titleexp && ($ctrl.data.totalCount || $ctrl.loading || $ctrl.searchRequest.queryField.length)" ng-class="$ctrl.classes">
+    <div class="row">
+        <div class="col-sm-12">
+            <h2 class="text-center">{{$ctrl.titleexp}}</h2>
+        </div>
+    </div>
+</section>
+<section ng-if="$ctrl.data.totalCount || $ctrl.searchRequest.queryField.length || $ctrl.loading"  ng-class="$ctrl.classes">
+    <div>
+        <div class="row">
+            <div class="col-sm-12">
+
+                <!--<div class="card__pills" style="min-height: 25px;">
+                    <div style="display: inline-block;" ng-repeat="filter in $ctrl.activeFilters track by $index">
+                        <div ng-if="filter.FilterType != 'range'"><span class="tag-pill--small" ng-repeat="tag in filter.Values" ng-if="tag.selected"><a ng-click="tag.selected = false; fetch()"><i style="cursor: pointer" class="mdi mdi-close"></i></a> <span>{{filter.Name}}: </span> {{tag.Name}}</span></div>
+                        <div ng-if="filter.FilterType == 'range'"><span class="tag-pill--small" ng-if="filter.Type == 'date' && filter.Values.selected == true"><a ng-click="filter.Values.startValue = undefined; filter.Values.selected = false; fetch()"><i style="cursor: pointer" class="mdi mdi-close"></i></a> <span>{{filter.Name}}: </span> {{vm.moment(filter.Values.startValue).format("Do MMM YY")}} - {{vm.moment(filter.Values.endValue).format("Do MMM YY")}}</span></div>
+                    </div>
+                    <span ng-if="vm.getSelected($ctrl.activeFilters)>0" class="tag-pill--small"><a ng-click="$ctrl.activeFilters = vm.removeallfilters($ctrl.activeFilters); fetch()"><i style="cursor: pointer" class="mdi mdi-close"></i></a></span>
+                </div>-->
+                <div class="header-filter-collection" ng-show="$ctrl.activeFilters.length>0">
+                    <div class="header-filter-section">
+                        <div class="card__pills" style="min-height: 25px;">
+                            <div style="display: inline-block;" ng-repeat="filter in $ctrl.activeFilters track by $index">
+
+                                <span class="tag-pill--small">
+                                    <span>{{filter.label || filter.item.item.contentType}}: </span> {{filter.item.item.key}}
+                                    <a ng-click="$ctrl.removeActiveFilter(filter)"><i class="mdi mdi-close"></i></a>
+                                </span>
+
+                                <div ng-if="filter.FilterType != 'range'">
+                                    <span class="tag-pill--small" ng-repeat="tag in filter.Values" ng-if="tag.selected"><a ng-click="tag.selected = false; fetch()"><i style="cursor: pointer" class="mdi mdi-close"></i></a> <span>{{filter.label}}: </span> {{tag.Name}}</span>
+                                </div>
+
+                                <div ng-if="filter.FilterType == 'range'">
+                                    <span class="tag-pill--small" ng-if="filter.Type == 'date' && filter.Values.selected == true"><a ng-click="filter.Values.startValue = undefined; filter.Values.selected = false; fetch()"><i style="cursor: pointer" class="mdi mdi-close"></i></a> <span>{{filter.Name}}: </span> {{vm.moment(filter.Values.startValue).format("Do MMM YY")}} - {{vm.moment(filter.Values.endValue).format("Do MMM YY")}}</span>
+                                </div>
+                            </div>
+
+                            <span class="tag-pill--small"><a ng-click="$ctrl.removeAllFilters()"><i style="cursor: pointer" class="mdi mdi-close"></i></a></span>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" ng-if="$ctrl.data.totalCount || $ctrl.searchRequest.queryField.length || $ctrl.loading">
+            <div class="comeos-search-bar">
+                <input type="text" ng-model="$ctrl.searchRequest.queryField" ng-model-options="{debounce: 400}" placeholder="{{'search' | translate}}">
+                <i class="mdi mdi-chevron-right chevron"></i>
+            </div>
+        </div>
+        <div class="exposed-collection-aggregations">
+
+            <div class="dropdown" uib-dropdown ng-repeat="(aggregationName, aggregation) in $ctrl.data.aggregations">
+                <div ng-class="{disabled: vm.getTotalCount(filter.Values)<=0}" class="btn-search-filter altai-tooltip" uib-dropdown-toggle>
+                    {{aggregation.label || aggregationName}} <i class="mdi mdi-menu-down"></i>
+                </div>
+                <ul class="dropdown-menu exposed-collection-dropdown" uib-dropdown-menu>
+                    <li class="selectcontainer">
+                        <div class="select select-left" ng-click="$ctrl.selectAggregation(aggregation,true);">{{'selecteeralles' | translate}}</div>
+                        <div class="select select-right" ng-click="$ctrl.selectAggregation(aggregation,false);">{{'selecteerniets' | translate}}</div>
+                    </li>
+                    <li>
+                        <ul class="scroll">
+                            <li class="list-group-item" ng-repeat="item in aggregation.items" ng-click="$ctrl.selectFilterValue(item, aggregation.filterId, aggregation.label)" ng-class="{active: item.selected, child: item.child}"><span class="badge pull-right">{{item.docCount}}</span>{{item.item.key}}</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="dropdown" uib-dropdown style="margin-left: auto;" ng-if="$ctrl.data.totalCount > 1">
+                <div class="btn-search-filter altai-tooltip" uib-dropdown-toggle>
+                   <i class="mdi mdi-sort-variant"></i>
+                </div>
+                <ul class="dropdown-menu exposed-collection-dropdown" style="left: -230px;" uib-dropdown-menu>
+                    <li>
+                        <ul class="scroll">
+                            <li class="list-group-item" ng-click="$ctrl.changeSorting('')" ng-class="{active: ($ctrl.searchRequest.sort.field == '')}"><i class="mdi mdi-sort-variant"></i>{{'relevance'|translate}}</li>
+                            <li class="list-group-item" ng-click="$ctrl.changeSorting('title.raw', 1)" ng-class="{active: ($ctrl.searchRequest.sort.field == 'title.raw' && $ctrl.searchRequest.sort.Asc == true)}"><i class="mdi mdi-sort-ascending"></i>{{'alfabetical'|translate}} {{'ascending'|translate}}</li>
+                            <li class="list-group-item" ng-click="$ctrl.changeSorting('title.raw', 2)" ng-class="{active: ($ctrl.searchRequest.sort.field == 'title.raw' && $ctrl.searchRequest.sort.Asc == false)}"><i class="mdi mdi-sort-descending"></i>{{'alfabetical'|translate}} {{'descending'|translate}}</li>
+                            <li class="list-group-item" ng-click="$ctrl.changeSorting('lastUpdated', 2)" ng-class="{active: ($ctrl.searchRequest.sort.field == 'lastUpdated' && $ctrl.searchRequest.sort.Asc == false)}"><i class="mdi mdi-sort-descending"></i>{{'date'|translate}} {{'descending'|translate}}</li>
+                            <li class="list-group-item" ng-click="$ctrl.changeSorting('lastUpdated', 1)" ng-class="{active: ($ctrl.searchRequest.sort.field == 'lastUpdated' && $ctrl.searchRequest.sort.Asc == true)}"><i class="mdi mdi-sort-ascending"></i>{{'date'|translate}} {{'ascending'|translate}}</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+        
+        <div class="row">
+            <div ng-if="!$ctrl.data.totalCount && !$ctrl.loading" class="no-results">{{'noResults'|translate}}</div>
+            <comeos-masonry ng-if="$ctrl.data.totalCount" items="$ctrl.data.pageResults"></comeos-masonry>
+        </div>
+        <div class="row" ng-if="$ctrl.data && $ctrl.data.totalCount>(($ctrl.loadMorePage + 1)* $ctrl.data.pageSize)">
+            <div class="col-sm-12">
+                <div class="button-row--centralized">
+                    <div class="panel-buttons">
+                        <div ng-click="$ctrl.loadingMore ? '' : $ctrl.loadMore()" class="comeos-button comeos-button-cover"><span ng-hide="$ctrl.loadingMore" translate>LoadMore</span> <span ng-show="$ctrl.loadingMore" translate>Loading..</span></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        
+    </div>
+</section>

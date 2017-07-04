@@ -1,0 +1,29 @@
+﻿<md-dialog class="publish-dialog">
+    <form>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>{{'publishchanges'|translate}}</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="cancel()">
+                    <md-icon md-font-icon="mdi mdi-close"></md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-dialog-content>
+            <div>
+                <p>
+                    {{'description'|translate}}:,
+                </p>
+                <p>
+                    <textarea ng-model="description"></textarea>
+                </p>
+            </div>
+        </md-dialog-content>
+        <div class="md-actions" layout="row">
+            <span flex></span>
+            <md-button ng-click="doPublish(description)" class="md-primary">
+                {{'publish'|translate}}
+            </md-button>
+        </div>
+    </form>
+</md-dialog>

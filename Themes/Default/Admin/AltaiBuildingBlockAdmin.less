@@ -1,0 +1,29 @@
+﻿@import "../config";
+
+.altai-panel.edit-mode {
+    altai-building-block:hover {
+
+        altai-building-block-admin {
+            display: flex;
+        }
+    }
+}
+
+
+altai-building-block-admin {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 999;
+    display: none;
+    color: #fff;
+}
+
+altai-building-block-admin div, .altai-panel .header .button {
+    color: @grey2;
+    text-align: center;
+    padding: 6px;
+    margin: 0 0 0 4px;
+    width: 30px;
+    height: 30px;
+}

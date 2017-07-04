@@ -1,0 +1,154 @@
+﻿@import "../config.less";
+@toolbar-height: 50px;
+@toolbar-background: #EBEBEB;
+@toolbar-dark: #c9c9c9;
+@toolbar-font-color: #fff;
+@toolbar-disabled-font-color: #aaa;
+@toolbar-hover-color: #F5F5F5;
+@toolbar-border-bottom-height: 40px;
+
+.altai-theme-admin {
+    .content-toolbar-container {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .content-toolbar {
+        top: 0;
+        color: @toolbar-font-color;
+        width: 100%;
+        height: @toolbar-height;
+        background-color: @color-toolbar-window-lighter;
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 0px 0px rgba(0, 0, 0, 0);
+        position: absolute;
+        display: flex;
+        top: 29px;
+        z-index: 70;
+        justify-content: space-between;
+        border-bottom: 4px solid @color-blue-contrast-dark;
+
+        .altai-admin-icon, .icon {
+            outline: none;
+            border-radius: 50%;
+            border: 2px solid transparent;
+            height: 20px;
+            width: 20px;
+            background-color: transparent;
+            color: #ffffff;
+            margin-right: 5px;
+            text-transform: uppercase;
+            font-size: 12px;
+            padding: 0;
+            display: inline-block;
+
+            &:hover {
+                border: 2px solid @color-blue;
+                color: @color-blue;
+            }
+        }
+
+        a.md-button.md-default-theme.md-raised[disabled], a.md-button.md-raised[disabled], a.md-button.md-default-theme.md-fab[disabled], a.md-button.md-fab[disabled], .md-button.md-default-theme.md-raised[disabled], .md-button.md-raised[disabled], .md-button.md-default-theme.md-fab[disabled], .md-button.md-fab[disabled] {
+            background-color: #585858;
+            color: #b9b9b9 !important;
+        }
+    }
+
+    .toolbar-languages {
+        padding-right: 0px;
+    }
+
+    .content-toolbar-items {
+        color: @toolbar-font-color;
+        display: flex;
+        -ms-flex-direction: row;
+        -webkit-flex-direction: row;
+        flex-direction: row;
+        padding: 5px 10px 0 10px;
+
+        ul {
+            padding: 0;
+            margin: 0;
+            list-style-type: none;
+            height: @toolbar-height;
+
+            li {
+                padding-left: 20px;
+                padding-right: 20px;
+                display: table-cell;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                -webkit-user-select: none;
+                user-select: none;
+                cursor: pointer;
+                background-color: @toolbar-background;
+                color: @toolbar-font-color;
+                -moz-transition: all 200ms ease-in-out;
+                -o-transition: all 200ms ease-in-out;
+                -webkit-transition: all 200ms ease-in-out;
+                transition: all 200ms ease-in-out;
+                vertical-align: middle;
+                height: @toolbar-height;
+
+                i {
+                    color: @blue;
+                    padding-right: 5px;
+                }
+            }
+
+            li.disabled {
+                cursor: default;
+
+                i {
+                    color: @toolbar-disabled-font-color;
+                }
+
+                color: @toolbar-disabled-font-color;
+            }
+
+            li:hover {
+                background-color: @toolbar-hover-color;
+                color: black;
+            }
+
+            li.disabled:hover {
+                background-color: @toolbar-background;
+                color: @toolbar-disabled-font-color;
+            }
+        }
+
+        .toolbar-items-vertical-center {
+            padding-top: 0px;
+            top: -8px;
+            position: relative;
+        }
+
+        li.separator {
+            cursor: default;
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+        li.separator:hover {
+            background-color: @toolbar-background;
+        }
+
+        .separator-lines {
+            width: 2px;
+            box-shadow: #F9F9F9 -1px 0 inset;
+            height: @toolbar-height;
+            background-color: #c9c9c9;
+        }
+    }
+
+    .right {
+        float: right;
+    }
+
+    .left {
+        float: left;
+    }
+
+    .center {
+        margin: auto;
+    }
+}

@@ -1,0 +1,54 @@
+﻿@sidebar-secondary-bgcolor: #0074DC;
+
+.altai-theme-admin {
+    #altai-admin-sidebar {
+        width: 220px;
+        background-color: #fff;
+        box-shadow: 2px 0 10px -2px rgba(0, 0, 0, 0.3);
+        z-index: 999;
+
+        #admin-sidebar-brand {
+            background-color: #0074DC;
+            color: #fff;
+            font-size: 18px;
+            padding: 17px;
+        }
+
+        #admin-sidebar-brand:hover {
+            cursor: pointer;
+        }
+    }
+
+    #altai-admin-sidebar-secondary {
+        width: 200px;
+        background-color: @sidebar-secondary-bgcolor;
+        margin-right: 50px;
+        color: #fff;
+        box-shadow: 2px 0 10px -2px rgba(0, 0, 0, 0.3);
+        padding: 10px 0;
+
+
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+
+            li {
+                padding: 10px 20px;
+            }
+
+            li:hover {
+                color: rgba(255, 255, 255, 0.3);
+            }
+
+
+            li.heading {
+                font-weight: bold;
+            }
+
+            li.heading:hover {
+                color: inherit;
+            }
+        }
+    }
+}

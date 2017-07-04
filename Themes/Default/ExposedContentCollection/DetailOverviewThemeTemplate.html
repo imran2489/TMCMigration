@@ -1,0 +1,54 @@
+﻿<div analytics analytics-item="$ctrl.data.pageResults[0]" analytics-on-view="true"></div>
+<div print-section class="altai-theme-content comeos-detailoverview comeos-theme">
+    <div altai-set-title titletext="{{$ctrl.data.pageResults[0].title}}"></div>
+    <section class="comeos-cover cover-large highcover" altai-image-style-set-background imagestyleset="pageheader" image="$ctrl.data.pageResults[0].filetheme.file">
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <div class="detailoverviewtype">{{'theme'|translate}}</div>
+                <div class="title">{{$ctrl.data.pageResults[0].title}}</div>
+                <div class="contact-buttons">
+                    <socialshareheader item="$ctrl.data.pageResults[0]"></socialshareheader>
+                </div>
+            </div>
+        </div>
+        <div class="comeos-button comeos-button-cover comeos-button-white" comeos-questions-contact-us itemname="$ctrl.data.pageResults[0].name">
+            <span translate>questionscontactus</span>
+        </div>
+    </section>
+    <section class="bg--white comeos-detailoverview-introduction">
+        <div class="container" style="padding-bottom: 0px">
+            <div class="row">
+                <div class="col-xs-12" style="text-align: left" altai-compile-html="{{::$ctrl.data.pageResults[0].description}}">
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="comeos-bg-grey-light" style="margin: 0; padding: 0">
+        <div class="container" style="padding-bottom: 0px">
+            <div class="row">
+                <div class="col-sm-12" style="min-height: 0px">
+                    <altai-exposed-content-collection template-id="280" exposed-content-collection-id="20" titleexp="('information_on'|translate) + ' ' + $ctrl.data.pageResults[0].title" class="section-comeos"></altai-exposed-content-collection>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="comeos-bg-white" style="margin: 0; padding: 0">
+        <div class="container" style="padding-bottom: 0px">
+            <div class="row">
+                <div class="col-sm-12" style="min-height: 0px">
+                    <altai-exposed-content-collection template-id="280" exposed-content-collection-id="21" titleexp="('tools'|translate) + ' ' + $ctrl.data.pageResults[0].title" class="section-comeos"></altai-exposed-content-collection>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="comeos-bg-grey" style="margin: 0; padding: 0">
+        <div class="container" style="padding-bottom: 0px">
+            <div class="row">
+                <div class="col-sm-12" style="min-height: 0px">
+                    <altai-exposed-content-collection template-id="280" exposed-content-collection-id="108" titleexp="('academyenevents'|translate) + ' ' + $ctrl.data.pageResults[0].title"></altai-exposed-content-collection>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

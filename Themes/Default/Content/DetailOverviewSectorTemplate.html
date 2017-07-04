@@ -1,0 +1,151 @@
+﻿<div print-section class="altai-theme-content comeos-detailoverview comeos-sector" ng-class="vm.item.name">
+    <section class="comeos-cover cover-large sector" ng-style="{'background-image': 'url('+$root.staticFileBase+'/' + vm.item.filesector.file + ')'}">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 text-center">
+                    <div class="detailoverviewtype">{{'sector'|translate}}</div>
+                    <div class="title">{{vm.item.title}}</div>
+                    <div class="contact-buttons">
+                        <div class="mail" altai-social-share item="vm.item"><i class="mdi mdi-share-variant"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="comeos-button comeos-button-cover comeos-button-white" comeos-questions-contact-us>
+            <span translate>questionscontactus</span>
+        </div>
+    </section>
+
+    <section class="section-comeos comeos-bg-grey-light">
+        <div class="container">
+            <div class="row introrow smartphone">
+                <div class="col-sm-4 col-sm-offset-1">
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="dossier-contact-section">
+                                <div class="profile-picture profile-picture-circle"><img ng-src="{{::$root.staticFileBase}}/{{vm.item.persoonsector.persoon_file.file}}" /></div>
+                                <div>
+                                    <span class="h6">
+                                        {{vm.item.persoonsector.voornaam}} {{vm.item.persoonsector.achternaam}}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="two-col-introduction" altai-compile-html="{{vm.item.intro}}">
+                    </div>
+                </div>
+            </div>
+            <div class="row introrow screen">
+                <div class="col-sm-6 col-sm-offset-1">
+                    <div class="two-col-introduction" altai-compile-html="{{vm.item.intro}}">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="dossier-contact-section">
+                                <div ng-show="vm.item.persoonsector.persoon_file.file" class="profile-picture profile-picture-circle"><img ng-src="{{::$root.staticFileBase}}/{{vm.item.persoonsector.persoon_file.file}}" /></div>
+                                <div>
+                                    <span class="h6">
+                                        {{vm.item.persoonsector.voornaam}} {{vm.item.persoonsector.achternaam}}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-comeos comeos-sector-facts comeos-bg-white">
+        <h2>De sector in Belgi&euml;</h2>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-12">
+                            <div class="sector-facts-box">
+                                <h3 class="sector-facts-box-title">{{'kencijfers'|translate}}</h3>
+                                <div class="sector-facts-box-content">
+                                    <div class="sector-facts-fact box-index-{{$index}}" ng-repeat="fact in vm.item.getalfeitsector track by $index">
+
+                                        <span ng-bind-html="fact.tekstvoorfeit"></span>
+                                        <div class="sector-facts-number">{{fact.feitgetal}}</div>
+                                        <span ng-bind-html="fact.tekstnafeit"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <div class="sector-facts-box">
+                                <h3 class="sector-facts-box-title">{{'onzeleden'|translate}}</h3>
+                                <div class="sector-facts-box-content">
+                                    <altai-slideshow-grid-two-by-two items="vm.item.sectorcompany" position-change-per-time="2" gridsize="2"></altai-slideshow-grid-two-by-two>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section-comeos comeos-bg-grey-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h2 class="text-center">{{'information_on'|translate}} {{vm.item.title}} </h2>
+                    <altai-exposed-content-collection template-id="280" exposed-content-collection-id="18"></altai-exposed-content-collection>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section-comeos comeos-bg-grey">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h2 class="text-center">{{'tools'|translate}} {{vm.item.title}} </h2>
+                    <altai-exposed-content-collection template-id="280" exposed-content-collection-id="19"></altai-exposed-content-collection>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-comeos section-comeosvoordesector">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h2 class="text-center bottompaddedtitle" translate>comeosvoordesector</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="text-center section-comeosvoordesector-icon"><i class="mdi mdi-bullhorn"></i></div>
+                    <h3 class="text-center section-comeosvoordesector-keyword">{{'versterkt'|translate}}</h3>
+                    <div class="text-center text-sector-vvv section-comeosvoordesector-text" ng-bind-html="vm.item.tekstversterken"></div>
+
+
+                </div>
+                <div class="col-sm-4">
+                    <div class="text-center section-comeosvoordesector-icon"><i class="mdi mdi-briefcase "></i></div>
+                    <h3 class="text-center section-comeosvoordesector-keyword">{{'vertegenwoordigt'|translate}}</h3>
+                    <div class="text-center text-sector-vvv section-comeosvoordesector-text" ng-bind-html="vm.item.tekstvertegenwoordigen"></div>
+
+
+                </div>
+                <div class="col-sm-4">
+                    <div class="text-center section-comeosvoordesector-icon"><i class="mdi mdi-ubuntu"></i></div>
+                    <h3 class="text-center section-comeosvoordesector-keyword">{{'verenigt'|translate}}</h3>
+                    <div class="text-center text-sector-vvv section-comeosvoordesector-text" ng-bind-html="vm.item.tekstverenigen"></div>
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

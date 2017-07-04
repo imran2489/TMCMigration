@@ -1,0 +1,34 @@
+﻿<div class="altai-admin-section">
+    <div class="subheader">
+        <h3>{{'general_index_actions'|translate}}</h3>
+    </div>
+    <div class="rowactions">
+        <md-button ng-disabled="vm.progress[0] != null" ng-click="vm.indexAll()" class="md-button-altai md-raised"><i class="mdi mdi-plus"></i> {{::'create_all_indexes'|translate}} </md-button>
+        <md-button ng-disabled="vm.progress[0] != null" ng-click="vm.deleteAll()" class="md-button-altai md-raised"><i class="mdi mdi-delete"></i> {{::'delete_all_indexes'|translate}} </md-button>
+    </div>
+
+</div>
+
+<div class="altai-admin-section">
+    <div class="subheader">
+        <h3>{{'index_per_type_actions'|translate}}</h3>
+    </div>
+
+    <div class="altai-list">
+        <div class="row" ng-repeat="contentType in vm.contentTypes | orderBy: 'name'">
+            <div class="avatar"><i class="mdi mdi-google-circles-communities"></i></div>
+            <div class="text rowtext">
+                <h2>{{::contentType.label}}</h2>
+            </div>
+            <div class="rowactions" ng-if="vm.progress[contentType.id] == null">
+                <md-button ng-click="vm.openSettings(contentType.id)" class="md-button-altai md-raised"><i class="mdi mdi-settings"></i> {{::'settings'|translate}} </md-button>
+                <md-button ng-click="vm.indexContentType(contentType.id)" class="md-button-altai md-raised"><i class="mdi mdi-plus"></i> {{::'create_index'|translate}} </md-button>
+                <md-button ng-click="vm.deleteContentTypeIndex(contentType)" class="md-button-altai md-raised"><i class="mdi mdi-delete"></i> {{::'delete_index'|translate}} </md-button>
+            </div>
+            <div class="rowactions" ng-if="vm.progress[contentType.id] != null">
+                <div style="height: 2px; margin-top: 19.5px; margin-bottom: 19.5px;"><md-progress-linear md-mode="determinate" value="{{vm.progress[contentType.id]*100}}" style="width: 200px;">{{vm.progress[contentType.id] * 100}}</md-progress-linear></div>
+               
+            </div>
+        </div>
+    </div>
+</div>

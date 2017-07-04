@@ -1,0 +1,153 @@
+﻿<div analytics analytics-item="$ctrl.data.pageResults[0]" analytics-on-view="true"></div>
+<div print-section class="root theme--square altai-theme-content dossier container-content">
+    <div altai-set-title titletext="{{$ctrl.data.pageResults[0].title}}"></div>
+    <section altai-image-style-set-background imagestyleset="pageheader" image="$ctrl.data.pageResults[0].filecomplexdossier.file" class="comeos-cover cover-large comeos-bg-complexdossier" ng-class="{'highcover':$ctrl.data.pageResults[0].filecomplexdossier}">
+        <div ng-if="$ctrl.data.pageResults[0].filecomplexdossier.file" class="altai-overlay"></div>
+        <div class="altai-panel">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1 text-center">
+                        <div class="title">{{$ctrl.data.pageResults[0].title}}</div>
+                        <div class="contact-buttons">
+                            <div class="contact-buttons">
+                                <comeos-content-item-like-header-component class="like" ng-if="$ctrl.data.pageResults[0] != undefined" content-item="$ctrl.data.pageResults[0]"></comeos-content-item-like-header-component>
+                                <socialshareheader ng-if="$ctrl.data.pageResults[0] != undefined" item="$ctrl.data.pageResults[0]"></socialshareheader>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="blog-post container">
+        <div class="pagecontentstart">
+            <div class="row introrow smartphone">
+                <div class="col-sm-4 col-sm-offset-1">
+
+
+                    <div class="dossier-contact-section">
+                        <div class="profile-picture profile-picture-circle"><img ng-src="{{::$root.staticFileBase}}/{{$ctrl.data.pageResults[0].complexdossier_persoon.persoon_file.file}}" /></div>
+                        <div><span class="h6">{{$ctrl.data.pageResults[0].complexdossier_persoon.voornaam}} {{$ctrl.data.pageResults[0].complexdossier_persoon.achternaam}}</span></div>
+                    </div>
+
+                </div>
+                <div class="col-sm-6">
+                    <div class="two-col-introduction" altai-compile-html="{{$ctrl.data.pageResults[0].membersintroduction}}">
+                    </div>
+                </div>
+            </div>
+            <div class="row introrow screen">
+                <div class="col-sm-6 col-sm-offset-1">
+                    <div class="two-col-introduction" altai-compile-html="{{$ctrl.data.pageResults[0].membersintroduction}}">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+
+
+                    <div class="dossier-contact-section">
+                        <div class="profile-picture profile-picture-circle"><img ng-src="{{::$root.staticFileBase}}/{{$ctrl.data.pageResults[0].complexdossier_persoon.persoon_file.file}}" /></div>
+                        <div><span class="h6">{{$ctrl.data.pageResults[0].complexdossier_persoon.voornaam}} {{$ctrl.data.pageResults[0].complexdossier_persoon.achternaam}}</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center" ng-if="$ctrl.data.pageResults[0].complexdossier_theme || $ctrl.data.pageResults[0].complexdossier_sector || $ctrl.data.pageResults[0].complexdossier_region || $ctrl.data.pageResults[0].complexdossier_pc">
+                <div class="col-sm-12">
+                    <div class="dossier-tags">
+                        <span class="dossier-tags-chip" getlink content-item-id="{{tag.isroot !== false ? tag.id : tag[tag.contentType + '_' + tag.contentType].id}}" content-type-id="{{::tag.contentTypeId}}" theme="{{::tag.id}}" ng-repeat="tag in $ctrl.data.pageResults[0].complexdossier_theme">
+                            {{tag.title}}
+                        </span>
+                        <span class="dossier-tags-chip" getlink content-item-id="{{tag.isroot !== false ? tag.id : tag[tag.contentType + '_' + tag.contentType].id}}" content-type-id="{{::tag.contentTypeId}}" ng-repeat="tag in $ctrl.data.pageResults[0].complexdossier_sector">
+                            {{tag.title}}
+                        </span>
+                        <span class="dossier-tags-chip" getlink content-item-id="{{tag.isroot !== false ? tag.id : tag[tag.contentType + '_' + tag.contentType].id}}" content-type-id="{{::tag.contentTypeId}}" ng-repeat="tag in $ctrl.data.pageResults[0].complexdossier_region">
+                            {{tag.title}}
+                        </span>
+                        <span class="dossier-tags-chip" getlink content-item-id="{{tag.isroot !== false ? tag.id : tag[tag.contentType + '_' + tag.contentType].id}}" content-type-id="{{::tag.contentTypeId}}" ng-repeat="tag in $ctrl.data.pageResults[0].complexdossier_pc">
+                            {{tag.title}}
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="row" ng-if="$ctrl.data.pageResults[0] && !$ctrl.data.pageResults[0].member">
+                <paywall></paywall>
+            </div>
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                    <div class="dossier-section">
+                        <faq class="dossier-vragen" activelang="$ctrl.activeLang" faqmodel="$ctrl.data.pageResults[0].complexdossier_question" answer="$ctrl.data.pageResults[0].member">
+                        </faq>
+                    </div>
+                </div>
+            </div>
+            <div class="row" ng-if="$ctrl.data.pageResults[0].member">
+                <div class="col-md-10 col-md-offset-1 ">
+                    <div ng-if="$ctrl.activeLang.code=='fr'" class="dossier-section" ng-show="$ctrl.data.pageResults[0].complexdossier_file_fr.length > 0">
+                        <h5 translate>attachments</h5>
+                        <div class="attached-file" ng-repeat="doc in $ctrl.data.pageResults[0].complexdossier_file_fr">
+                            <a analytics analytics-item="$ctrl.data.pageResults[0]" analytics-linked-item="doc" analytics-on-click="download" ng-href="{{::$root.staticFileBase}}/{{doc.file}}" target="_blank"><fileicon doctype="doc.fileextension"></fileicon> <span>{{doc.label}}</span></a>
+                        </div>
+
+                    </div>
+                    <div ng-if="$ctrl.activeLang.code=='nl'" class="dossier-section" ng-show="$ctrl.data.pageResults[0].complexdossier_file_nl.length > 0">
+                        <h5 translate>attachments</h5>
+                        <div class="attached-file" ng-repeat="doc in $ctrl.data.pageResults[0].complexdossier_file_nl">
+                            <a analytics analytics-item="$ctrl.data.pageResults[0]" analytics-linked-item="doc" analytics-on-click="download" ng-href="{{::$root.staticFileBase}}/{{doc.file}}" target="_blank"><fileicon doctype="doc.fileextension"></fileicon> <span>{{doc.label}}</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" ng-if="$ctrl.data.pageResults[0].member">
+                <div class="col-md-10 col-md-offset-1 ">
+                    <div class="dossier-section" ng-show="$ctrl.data.pageResults[0].complexdossier_link.length > 0">
+                        <h5 translate>relatedlinks</h5>
+                        <div class="attached-link" ng-repeat="link in $ctrl.data.pageResults[0].complexdossier_link">
+                            <a ng-href="{{link.linkurl}}" target="_blank"><span class="attached-link-icon"><i class="mdi mdi-link"></i></span><span>{{link.linktekst}}</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" ng-if="$ctrl.data.pageResults[0].member">
+                <div class="col-md-10 col-md-offset-1 ">
+                    <div class="actu-section" ng-show="$ctrl.data.pageResults[0].filecomplexdossier.length > 0">
+                        <h5 translate>attachments</h5>
+                        <div class="attached-file" ng-repeat="doc in $ctrl.data.pageResults[0].filecomplexdossier">
+                            <a ng-href="{{::$root.staticFileBase}}/{{doc.file}}" target="_blank"><fileicon doctype="doc.fileextension"></fileicon> <span>{{doc.label}}</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" ng-if="$ctrl.data.pageResults[0].member">
+                <div class="col-md-10 col-md-offset-1 ">
+                    <div class="actu-section" ng-show="$ctrl.data.pageResults[0].linkcomplexdossier.length > 0">
+                        <h5 translate>relatedlinks</h5>
+                        <div class="attached-link" ng-repeat="link in $ctrl.data.pageResults[0].linkcomplexdossier">
+                            <a ng-if="link.linktarget!=undefined" ng-href="{{link.linkurl}}" target="{{link.linktarget}}"><span class="attached-link-icon"><i class="mdi mdi-link"></i></span><span>{{link.linktekst}}</span></a>
+                            <a ng-if="link.linktarget==undefined" ng-href="{{link.linkurl}}" target="_blank"><span class="attached-link-icon"><i class="mdi mdi-link"></i></span><span>{{link.linktekst}}</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" print-remove>
+                <div class="col-md-10 col-md-offset-1  comeos-buttons">
+                    <div class="comeos-button" comeos-questions-contact-us manager="$ctrl.data.pageResults[0].complexdossier_persoon.name" itemname="$ctrl.data.pageResults[0].name">
+                        <span translate>questionscontactus</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="comeos-bg-grey" ng-if="$ctrl.data.pageResults[0].complexdossierdossiermap">
+        <div class="row section dossier-section">
+            <div class="col-sm-12">
+                <h1 class="text-center" translate>otherdossiersinmap</h1>
+                <div class="section">
+                    <comeos-masonry class="section dossier-section" items="$ctrl.data.pageResults[0].complexdossierdossiermap.complexdossierdossiermap"></comeos-masonry>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

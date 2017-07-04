@@ -1,0 +1,12 @@
+﻿<altai-toolbar-menu menu-model="vm.toolbar" languages="vm.languages"></altai-toolbar-menu>
+<form class="altai-form altai-Forum" name="categoryCreateForm" novalidate>
+    <div class="form-group">
+        <label>{{'name'|translate}}</label>
+        <input type="text" ng-model="newCategory.Name" />
+    </div>
+    <div class="form-group">
+        <label>{{'description'|translate}}</label>       
+        <textarea class="category-textArea" rows="4" cols="50" ng-model="newCategory.Description"></textarea>
+    </div>
+
+</form>

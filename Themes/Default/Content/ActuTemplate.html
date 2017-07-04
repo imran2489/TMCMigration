@@ -1,0 +1,48 @@
+<div print-section class="content">
+    <div class="container">
+        <div class="actu-tags">
+            <span class="actu-tags-chip" altai-link content-item-target="{{tag.isroot !== false ? tag.id : tag[tag.contentType + '_' + tag.contentType].id }}" content-type-id="{{tag.contentTypeId}}"  text="{{tag.title}}" ng-repeat="tag in vm.item.themeactumessage">
+                {{tag.name}}
+            </span>
+            <span class="actu-tags-chip" altai-link content-item-target="{{tag.isroot !== false ? tag.id : tag[tag.contentType + '_' + tag.contentType].id }}" content-type-id="{{tag.contentTypeId}}"  text="{{tag.title}}" ng-repeat="tag in vm.item.sectoractumessage">
+                {{tag.name}}
+            </span>
+            <span class="actu-tags-chip" altai-link content-item-target="{{tag.isroot !== false ? tag.id : tag[tag.contentType + '_' + tag.contentType].id }}" content-type-id="{{tag.contentTypeId}}"  text="{{tag.title}}" ng-repeat="tag in vm.item.pcactumessage">
+                {{tag.name}}
+            </span>
+            <span class="actu-tags-chip" altai-link content-item-target="{{tag.isroot !== false ? tag.id : tag[tag.contentType + '_' + tag.contentType].id }}" content-type-id="{{tag.contentTypeId}}"  text="{{tag.title}}" ng-repeat="tag in vm.item.regionactumessage">
+                {{tag.name}}
+            </span>
+</div>
+
+        <div class="actu-title-container">
+            <span class="actu-title-date">{{vm.item.lastUpdated | date:'dd/MM/yyyy'}}</span>
+            <h2 class="actu-title-text">{{vm.item.title}}</h2>
+        </div>
+        <div altai-compile-html="vm.item.publicintroduction" class="actu-content"></div>
+        <div altai-compile-html="vm.item.body" class="actu-content"></div>
+        <div class="actu-section" ng-show="vm.item.fileactumessage.length > 0">
+            <h2 class="actu-section-title">Documenten</h2>
+            <table>
+                <tr ng-repeat="doc in vm.item.fileactumessage">
+                    <td><a ng-href="{{::$root.staticFileBase}}/{{doc.file}}" taget="_blank"><i class="mdi mdi-file-pdf-box actu-pdf"></i></a></td>
+                    <td><a ng-href="{{::$root.staticFileBase}}/{{doc.file}}" taget="_blank">{{doc.name}}</a></td>
+                </tr>
+            </table>
+        </div>
+        <div class="actu-section">
+            <div class="actu-nieuwsbrief-link">Klik <a href="" class="actu-link">hier</a> om de volledige nieuwsbrief te lezen.</div>
+        </div>
+        <div class="actu-section" ng-show="false">
+            <h2 class="actu-section-title">Verantwoordelijke</h2>
+            <table>
+                <tr ng-repeat="verantwoordelijke in vm.item.verantwoordelijke">
+                    <td><img ng-src="{{::$root.staticFileBase}}/{{verantwoordelijke.foto}}" class="actu-person-icon" /></td>
+                    <td>{{verantwoordelijke.voornaam}} {{verantwoordelijke.familienaam}}</td>
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</div>
+

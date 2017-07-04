@@ -1,0 +1,38 @@
+﻿<div class="page-header">
+    <div class="breadcrumb"><a href="#!/admin/localization/list">{{'localization'|translate}}</a> / {{language.name}}</div>
+    <h2><i class="fa fa-flag"></i> {{language.name}}</h2>
+</div>
+
+<table class="table table-striped">
+    <tr>
+        <th style="width:25%">{{'value'|translate}}</th>
+        <th style="width:25%">{{language.name}}</th>
+        <th style="width:50%"></th>
+    </tr>
+
+    <tr data-ng-repeat="translatable in translatables">
+        <td>{{translatable.code}}</td>
+        <td><input type="text" data-ng-model="translatable.translatableValues[0].value" /></td>
+        <td><button class="btn btn-danger" data-ng-click="deleteTranslatable(translatable.id)"><i class="fa fa-trash-o"></i></button></td>
+    </tr>
+
+    <tr class="table-admin-add">
+        <td><input type="text" data-ng-model="newTranslatable.code" /></td>
+        <td><input type="text" data-ng-model="newTranslatable.translatableValues[0].value" /></td>
+        <td><button class="btn btn-success" data-ng-click="createTranslatable()"><i class="fa fa-plus"></i></button></td>
+    </tr>
+
+</table>
+
+<table class="table table-striped">
+    <tr>
+        <th colspan="2">{{'localizationsimportfile'|translate}}</th>
+    </tr>
+    <tr>
+        <td style="width:40%">{{'file'|translate}}</td>
+        <td><input type="text" /></td>
+    </tr>
+
+</table>
+
+<button data-ng-click="updateTranslatableList()" class="btn btn-md btn-primary"><i class="fa fa-save"></i>&nbsp;{{'savelanguage'|translate}}</button>

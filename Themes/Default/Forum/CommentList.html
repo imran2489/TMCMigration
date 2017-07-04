@@ -1,0 +1,26 @@
+﻿
+    <div ng-repeat="comment in vm.comments track by comment.id" class="container content-container  altai-Forum comment-Item post-Container">
+        <div id="topic-title comment-Title" style="border-top: solid 2px lightcoral !important">
+            <div class="container comment-container" >
+                <div class="title-wrapper comment-title-wrapper">
+                    <div class="topic-avatar">
+                        <ng-letter-avatar data="{{comment.userName}}" shape="round" fontsize="15" height="25" width="25"
+                                          avatarcustombgcolor="{{comment.color}}"></ng-letter-avatar>
+                    </div>
+                    <h5>
+                        <span>
+                            {{comment.userName}}
+                        </span>
+                    </h5>
+                    <div id="homeimage" class="comment-date">
+                        {{comment.createdDate| date:'mediumDate'}}
+                    </div>
+                </div>
+               
+            </div>
+        </div>
+        <div class="forum-description">
+            <p style="margin:0px;" ng-bind-html="comment.description"></p>
+        </div>
+       
+    </div>

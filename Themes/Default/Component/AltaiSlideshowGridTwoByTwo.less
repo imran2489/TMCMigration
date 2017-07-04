@@ -1,0 +1,177 @@
+﻿@import "../comeos.config.less";
+
+.altai-theme-content {
+    #bodyView {
+        altai-slideshow-grid-two-by-two{
+            .altai-slideshowgridtwobytwo-outer {
+            overflow: hidden;
+            left: 0;
+            right: 0;
+
+            .altai-slideshowgrid {
+                .altai-slideshowgrid-inner {
+                    -moz-transition: 1s all;
+                    -o-transition: 1s all;
+                    -webkit-transition: 1s all;
+                    transition: 1s all;
+
+                    .altai-slideshowgrid-bucket {
+                        color: #fff;
+                        float: left;
+                        display: inline-flex;
+                        align-content: center;
+                        justify-content: center;
+                        flex-direction:column;
+                        .altai-slideshowgrid-item {
+                            background-size: 100%;
+                            background-repeat: no-repeat;
+                            padding: 20px;
+                            color: #fff;
+                            display:flex;
+                            align-content: center;
+                            justify-content: center;
+                            align-items:center;
+                            .slideshowimage {
+                                width: 100%;
+                                padding-top: 25px;
+                                /*filter: grayscale(100%);
+                                -webkit-filter: grayscale(100%);
+                                -moz-filter: grayscale(100%);
+                                -ms-filter: grayscale(100%);
+                                -o-filter: grayscale(100%);
+                                filter: url(resources.svg#desaturate);
+                                filter: gray;
+                                -webkit-filter: grayscale(1);*/
+                                &:hover {
+                                    /*filter: none;
+                                    -webkit-filter: none;
+                                    -moz-filter: none;
+                                    -ms-filter: none;
+                                    -o-filter: none; 
+                                    filter: none;
+                                    filter: none;
+                                    -webkit-filter: none;*/
+                                    cursor: pointer;
+                                }
+                            }
+
+                            .slideshowtext{
+                                color:black;
+                            }
+
+                            &:hover {
+                                cursor: pointer;
+                            }
+
+                            .altai-badge {
+                                float: left;
+                            }
+
+                            .altai-slideshowgrid-content {
+                                /*margin-top: @grid-item-height/3;*/
+                                .altai-slideshowgrid-item-title {
+                                    font-family: Campton;
+                                    font-weight: 600;
+                                    padding-bottom: 20px;
+                                }
+
+                                .altai-slideshowgrid-item-tagline {
+                                    font-family: Campton;
+                                }
+
+                                .altai-slideshowgrid-item-date {
+                                    font-family: Campton;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .altai-slideshowgrid-left {
+                    left: 50px;
+                }
+
+                .altai-slideshowgrid-right {
+                    right: 50px;
+                }
+
+                .altai-slideshowgrid-left, .altai-slideshowgrid-right {
+                    position: absolute;
+                    background-color: transparent;
+                    color: black;
+                    -moz-user-select: none;
+                    -ms-user-select: none;
+                    -webkit-user-select: none;
+                    user-select: none;
+
+                    &:focus {
+                        outline: none;
+                    }
+                }
+
+                .altai-slideshowgrid-left:hover, .altai-slideshowgrid-right:hover {
+                    color: @comeos-bg-green;
+                    cursor: pointer;
+                }
+
+                .altai-slideshowgrid-indicators {
+                    position: absolute;
+
+                    .altai-slideshowgrid-indicator {
+                        width: 10px;
+                        height: 10px;
+                        border-radius: 50%;
+                        border: 1px solid white;
+                        background-color: transparent;
+                        margin-right: 5px;
+                        display: inline-block;
+
+                        &:focus {
+                            outline: none;
+                        }
+
+                        &.selected {
+                            background-color: white;
+                        }
+                    }
+
+                    .altai-slideshowgrid-pauseplay {
+                        width: 14px;
+                        height: 14px;
+                        border-radius: 50%;
+                        background-color: transparent;
+                        margin-right: 5px;
+                        display: inline-block;
+                        color: white;
+                        font-size: 14px;
+
+                        &:focus {
+                            outline: none;
+                        }
+                    }
+                }
+            }
+        }
+        }
+        
+        /* EVENT GRID */
+        // Default backgrounds
+        .altai-slideshowgrid-item.Avondconferentie {
+            background-color: @comeos-bg-green;
+        }
+
+        .altai-slideshowgrid-item.Cursus {
+            background-color: @comeos-bg-blue;
+        }
+
+        .altai-slideshowgrid-item.Workshop {
+            background-color: @comeos-bg-purple;
+        }
+
+        #altai-slideshowgrid-noresults {
+            padding: 50px;
+            text-align: center;
+            font-size: 28px;
+        }
+    }
+}

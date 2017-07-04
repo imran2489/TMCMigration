@@ -1,0 +1,177 @@
+﻿.node-architecture-header {
+    flex-shrink: 0;
+    align-items: center;
+    padding: 15px 10px 0px 20px;
+}
+
+
+.node-architecture-list {
+
+    md-checkbox {
+        margin-right: 16px !important;
+    }
+
+    .analysis-button {
+        width: 15px !important;
+        height: 15px !important;
+        min-height: 0 !important;
+        min-width: 0 !important;
+        border-radius: 0 !important;
+        margin: 16px 2px !important;
+    }
+
+
+    .node-architecture {
+        border: 2px solid #4FD37E !important;
+        color: #F6F6F9 !important;
+        background-color: #4FD37E !important;
+    }
+
+   
+
+    .bat-architecture-list-counter {
+        font-size: 15px;
+        color: #47506e;
+    }
+
+    .bat-architecture-list-search {
+       
+        font-weight: 300;
+       
+    }
+
+    .md-input-has-placeholder {
+        padding-bottom: 0 !important;
+    }
+
+    input:focus {
+        outline: 0;
+    }
+
+
+
+    .md-subheader-content {
+
+        .add-button {
+            .circle-button();
+            margin-top: -8px;
+            margin-bottom: -10px;
+            font-size: 16px;
+            display: flex;
+
+            .mdi {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+    }
+
+    md-list {
+        padding: 0 0 0 0 !important;
+    }
+
+    .md-avatar {
+        width: 18px !important;
+        height: 18px !important;
+        margin-top: 7px;       
+        display: flex;
+        justify-content: center;
+        align-items: center;       
+        font-size: 10px;
+        font-weight: 700;
+        border-radius: 0 !important;
+        line-height: 15px;
+    }
+
+    .md-avatar.personchip {
+        border-color: #E91E63;
+        color: #E91E63;
+    }
+
+    .md-2-line {
+        min-height: 25px !important;       
+    }
+
+    md-list-item.md-2-line, md-list-item.md-2-line > .md-no-style {
+        min-height: 25px !important;       
+    }
+
+    .md-list-item-text h3 {
+        white-space: inherit !important;
+    }
+
+    .bat-listitem-stat {
+        display: flex;
+        padding: 15px;
+        align-items: center;
+        align-content: center;
+    }
+
+    .md-secondary {
+
+        .mdi:focus {
+            outline: none;
+        }
+    }
+}
+
+.circle-button {
+
+    & {
+        position:relative;
+        color:inherit;
+        display:inline-block;
+        text-align:center;
+        width: 30px;
+        height:30px;
+        line-height: 30px;
+        font-size:22px;
+        cursor:pointer;
+        transition: 0.2s all;
+    }
+
+    &:hover {
+        color: #000;
+    }
+
+    &:before {
+        transform: scale3d(0,0,0);
+        transition: 0.2s all;
+        border-radius: 50%;
+        background-color: rgba(0, 0, 0, 0.1);
+        content: "";
+        height: 100%;
+        width: 100%;
+        left: 0;
+        top: 0;
+        position: absolute;
+        z-index: 0;
+    }
+
+   &:hover:before {
+        transform: scale3d(1,1,1);
+    }
+
+
+   &:active, &:focus {
+        outline: none;
+    }
+
+}
+
+.node-indent {
+    margin-left:30px;  
+     
+}
+.inline{
+    display:inline-block;
+}
+
+.mdicon-Size{
+    font-size: 15px;
+}
+
+.submenu-position{
+   fill: #808080;font-size: 18px;
+}

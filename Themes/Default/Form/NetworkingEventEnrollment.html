@@ -1,0 +1,253 @@
+﻿<div ng-init="$ctrl.formData.content[21]={id:$ctrl.$stateParams.state||9454}"></div>
+<div analytics analytics-item="$ctrl.data" analytics-on-view="eventregistrationstart" analytics-form-data="$ctrl.formData.content"></div>
+<div class="root theme--square altai-theme-content actu dossier event container-content">
+    <section class="comeos-cover cover-large comeos-bg-actumessage" ng-class="{'highcover':$ctrl.data.filenetworkingevent3.file}" ng-style="{'background-image': $ctrl.data.filenetworkingevent3.file ? 'url('+$root.staticFileBase+'/' +$ctrl.data.filenetworkingevent3.file + ')' : 'none'}">
+        <div ng-if="$ctrl.data.filenetworkingevent3.file" class="altai-overlay"></div>
+        <div class="altai-panel">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-10 col-sm-offset-1 text-center">
+                        <div class="title">{{$ctrl.data.title}}</div>
+                        <div class="subtitle">{{$ctrl.data.date | localDate}} <span ng-if="$ctrl.data.locatienetworkingevent.stad">- {{$ctrl.data.locatienetworkingevent.stad}}</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<div data-ng-show='$ctrl.succesMsg'>
+
+    <div ng-show="$ctrl.formData.content[21] && $ctrl.formData.content[21].id && $ctrl.formData.content[21].id==9454">
+        <div class="container inschrijvingheader">
+            <div class="row dossier-section inschrijvingheader">
+                <div class="col-md-12">
+                    <a class="comeos-button no-animate" ui-sref="Root.Detail.Networkingevent({id:$ctrl.data.id})"><span translate>terugnaarnetworkingevent</span></a>
+                </div>
+            </div>
+            <div class="row dossier-section">
+                <div class="col-md-12">
+                    <h1>{{$ctrl.data.title}}</h1>
+                    <div class="details">
+                        <span ng-if="$ctrl.data.date" class="detail moment">{{$ctrl.data.date | localDate}}</span>
+                        <span ng-if="$ctrl.data.singledatetimeselectionworkshop" class="detail moment" ng-repeat="moment in $ctrl.data.singledatetimeselectionworkshop">{{moment.datum | localDate}} ({{moment.tijdvan | date:'HH:mm'}} - {{moment.tijdtot | date:'HH:mm'}})</span> -
+                        <span class="detail location" ng-if="$ctrl.data.locatienetworkingevent">{{$ctrl.data.locatienetworkingevent.stad}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row dossier-section">
+                <div class="col-md-12">
+                    {{'registrationconfirmed'|translate}}
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div ng-show="$ctrl.formData.content[21] && $ctrl.formData.content[21].id && $ctrl.formData.content[21].id==9455">
+        <div class="container inschrijvingheader">
+            <div class="row dossier-section inschrijvingheader">
+                <div class="col-md-12">
+                    <a class="comeos-button no-animate" ui-sref="Root.Detail.Networkingevent({id:$ctrl.data.id})"><span translate>terugnaarnetworkingevent</span></a>
+                </div>
+            </div>
+            <div class="row dossier-section">
+                <div class="col-md-12">
+                    <h1>{{$ctrl.data.title}}</h1>
+                    <div class="details">
+                        <span ng-if="$ctrl.data.date" class="detail moment">{{$ctrl.data.date | localDate}}</span>
+                        <span ng-if="$ctrl.data.singledatetimeselectionworkshop" class="detail moment" ng-repeat="moment in $ctrl.data.singledatetimeselectionworkshop">{{moment.datum | localDate}} ({{moment.tijdvan | date:'HH:mm'}} - {{moment.tijdtot | date:'HH:mm'}})</span> -
+                        <span class="detail location" ng-if="$ctrl.data.locatienetworkingevent">{{$ctrl.data.locatienetworkingevent.stad}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row dossier-section">
+                <div class="col-md-12">
+                    {{'absenceconfirmed'|translate}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="container">
+    <form class='altaiform' id='WorkshopRegistration' name='WorkshopRegistration' ng-hide='$ctrl.succesMsg'>
+        <div class="row dossier-section inschrijvingheader">
+            <div class="col-md-12">
+                <a class="comeos-button no-animate" ui-sref="Root.Detail.Networkingevent({id:$ctrl.data.id})"><span translate>terugnaarnetworkingevent</span></a>
+            </div>
+        </div>
+        <div class='form-group form-row-6'>
+            <label translate>aanspreking</label>
+
+            <select class='form-control' ng-model="$ctrl.formData.content[0]" ng-if="$root.langCode=='nl'">
+                <option>De heer</option>
+                <option>Mevrouw</option>
+            </select>
+
+            <select class='form-control' ng-model="$ctrl.formData.content[0]" ng-if="$root.langCode=='fr'">
+                <option>Monsieur</option>
+                <option>Madame</option>
+            </select>
+
+            <div class='altai-content-form-error' ng-show='WorkshopRegistration.aanhef.$invalid && WorkshopRegistration.aanhef.$touched'><i class='fa fa-warning'></i>&nbsp;{{'RequiredFieldError'|translate}}</div>
+        </div>
+        <div class='form-group form-row-7'>
+            <label>{{'voornaam'|translate}}*</label>
+            <input altai-content-form-firstname attribute-id='49' type='text' name='firstname' class='form-control' data-ng-model='$ctrl.formData.content[1]' required>
+            <div class='altai-content-form-error' ng-show='WorkshopRegistration.firstname.$invalid && WorkshopRegistration.firstname.$touched'>
+                <i class='fa fa-warning'></i>&nbsp;{{'RequiredFieldError'|translate}}
+            </div>
+        </div>
+        <div class='form-group form-row-8'>
+            <label>{{'achternaam'|translate}}*</label>
+            <input altai-content-form-lastname attribute-id='50' type='text' name='lastname' class='form-control' data-ng-model='$ctrl.formData.content[2]' required>
+            <div class='altai-content-form-error' ng-show='WorkshopRegistration.lastname.$invalid && WorkshopRegistration.lastname.$touched'>
+                <i class='fa fa-warning'></i>&nbsp;{{'RequiredFieldError'|translate}}
+            </div>
+        </div>
+        <div class='form-group form-row-9'>
+            <label>{{'functie'|translate}}*</label>
+            <input altai-content-form-functie attribute-id='75' type='text' name='functie' class='form-control' data-ng-model='$ctrl.formData.content[3]' required>
+            <div class='altai-content-form-error' ng-show='WorkshopRegistration.functie.$invalid && WorkshopRegistration.functie.$touched'>
+                <i class='fa fa-warning'></i>&nbsp;{{'RequiredFieldError'|translate}}
+            </div>
+        </div>
+        <div class='form-group form-row-10'>
+            <label translate>organization</label>
+            <input altai-content-form-organization attribute-id='76' type='text' name='organization' class='form-control' data-ng-model='$ctrl.formData.content[4]'>
+            <div class='altai-content-form-error' ng-show='WorkshopRegistration.organization.$invalid && WorkshopRegistration.organization.$touched'>
+                <i class='fa fa-warning'></i>&nbsp;{{'RequiredFieldError'|translate}}
+            </div>
+        </div>
+        <div class='form-group form-row-11'>
+            <label>{{'adres'|translate}}*</label>
+            <input altai-content-form-adres attribute-id='77' type='text' name='adres' class='form-control' data-ng-model='$ctrl.formData.content[5]' required>
+            <div class='altai-content-form-error' ng-show='WorkshopRegistration.adres.$invalid && WorkshopRegistration.adres.$touched'>
+                <i class='fa fa-warning'></i>&nbsp;{{'RequiredFieldError'|translate}}
+            </div>
+        </div>
+        <div class='form-group form-row-34'>
+            <label>{{'postcode'|translate}}*</label>
+            <input altai-content-form-postcode attribute-id='78' type='text' name='postcode' class='form-control' data-ng-model='$ctrl.formData.content[6]' required>
+            <div class='altai-content-form-error' ng-show='WorkshopRegistration.postcode.$invalid && WorkshopRegistration.postcode.$touched'>
+                <i class='fa fa-warning'></i>&nbsp;{{'RequiredFieldError'|translate}}
+            </div>
+        </div>
+        <div class='form-group form-row-36'>
+            <label>{{'stad'|translate}}*</label>
+            <input altai-content-form-stad attribute-id='79' type='text' name='stad' class='form-control' data-ng-model='$ctrl.formData.content[7]' required>
+            <div class='altai-content-form-error' ng-show='WorkshopRegistration.stad.$invalid && WorkshopRegistration.stad.$touched' required>
+                <i class='fa fa-warning'></i>&nbsp;{{'RequiredFieldError'|translate}}
+            </div>
+        </div>
+        <div class='form-group form-row-37'>
+            <label>{{'email'|translate}}*</label>
+            <input altai-content-form-email attribute-id='51' type='text' name='email' class='form-control' ng-model='$ctrl.formData.content[8]' required>
+            <div class='altai-content-form-error' ng-show='WorkshopRegistration.email.$invalid && WorkshopRegistration.email.$touched'>
+                <i class='fa fa-warning'></i>&nbsp;{{'RequiredFieldError'|translate}}
+            </div>
+        </div>
+        <div class='form-group form-row-38'>
+            <label>{{'lidvancomeos'|translate}}*</label>
+            <input type="checkbox" attribute-id='80' name='lidvancomeos' data-ng-init="$ctrl.formData.content[9]=($ctrl.userInfo ? true : false)" data-ng-model='$ctrl.formData.content[9]' />
+            <div class='altai-content-form-error' ng-show='WorkshopRegistration.lidvancomeos.$invalid && WorkshopRegistration.lidvancomeos.$touched'>
+                <i class='fa fa-warning'></i>&nbsp;{{'RequiredFieldError'|translate}}
+            </div>
+        </div>
+        <div class="formsection" ng-if="(($ctrl.formData.content[9]==false||$ctrl.formData.content[9]==undefined || $ctrl.data.eventpricingschemenetworkingevent.id==9378)&&($ctrl.data.eventpricingschemenetworkingevent.id!=9380))">
+
+            <h5><span translate>invoicingdetails</span></h5>
+
+            <div class='form-group form-row-6'>
+                
+                <label translate>aanspreking</label>
+             
+                <select class='form-control' ng-model="$ctrl.formData.content[10]" ng-if="$root.langCode=='nl'">
+                    <option>De heer</option>
+                    <option>Mevrouw</option>
+                </select>
+
+                <select class='form-control' ng-model="$ctrl.formData.content[10]" ng-if="$root.langCode=='fr'">
+                    <option>Monsieur</option>
+                    <option>Madame</option>
+                </select>
+
+                <div class='altai-content-form-error' ng-show='WorkshopRegistration.invoicingtitle.$invalid && WorkshopRegistration.invoicingtitle.$touched'><i class='fa fa-warning'></i>&nbsp;{{'RequiredFieldError'|translate}}</div>
+            </div>
+            <div class='form-group form-row-44'>
+                <label>{{'voornaam'|translate}}*</label>
+                <input altai-content-form-invoicingfirstname attribute-id='82' type='text' name='invoicingfirstname' class='form-control' data-ng-model='$ctrl.formData.content[18]' required>
+                <div class='altai-content-form-error' ng-show='WorkshopRegistration.invoicingfirstname.$invalid && WorkshopRegistration.invoicingfirstname.$touched'><i class='fa fa-warning'></i>&nbsp;{{'RequiredFieldError'|translate}}</div>
+            </div>
+            <div class='form-group form-row-45'>
+                <label>{{'achternaam'|translate}}*</label>
+                <input altai-content-form-invoicinglastname attribute-id='83' type='text' name='invoicinglastname' class='form-control' data-ng-model='$ctrl.formData.content[11]' required>
+                <div class='altai-content-form-error' ng-show='WorkshopRegistration.invoicinglastname.$invalid && WorkshopRegistration.invoicinglastname.$touched'><i class='fa fa-warning'></i>&nbsp;{{'RequiredFieldError'|translate}}</div>
+            </div>
+            <div class='form-group form-row-46'>
+                <label>{{'organization'|translate}}</label>
+                <input altai-content-form-invoicingorganization attribute-id='84' type='text' name='invoicingorganization' class='form-control' data-ng-model='$ctrl.formData.content[12]'>
+                <div class='altai-content-form-error' ng-show='WorkshopRegistration.invoicingorganization.$invalid && WorkshopRegistration.invoicingorganization.$touched'><i class='fa fa-warning'></i>&nbsp;{{'RequiredFieldError'|translate}}</div>
+            </div>
+            <div class='form-group form-row-47'>
+                <label>{{'adres'|translate}}*</label>
+                <input altai-content-form-invoicingaddress attribute-id='85' type='text' name='invoicingaddress' class='form-control' data-ng-model='$ctrl.formData.content[13]' required>
+                <div class='altai-content-form-error' ng-show='WorkshopRegistration.invoicingaddress.$invalid && WorkshopRegistration.invoicingaddress.$touched'><i class='fa fa-warning'></i>&nbsp;{{'RequiredFieldError'|translate}}</div>
+            </div>
+            <div class='form-group form-row-48'>
+                <label>{{'postcode'|translate}}*</label>
+                <input altai-content-form-invoicingpostalcode attribute-id='86' type='text' name='invoicingpostalcode' class='form-control' data-ng-model='$ctrl.formData.content[14]' required>
+                <div class='altai-content-form-error' ng-show='WorkshopRegistration.invoicingpostalcode.$invalid && WorkshopRegistration.invoicingpostalcode.$touched'><i class='fa fa-warning'></i>&nbsp;{{'RequiredFieldError'|translate}}</div>
+            </div>
+            <div class='form-group form-row-49'>
+                <label>{{'stad'|translate}}*</label>
+                <input altai-content-form-invoicingcity attribute-id='87' type='text' name='invoicingcity' class='form-control' data-ng-model='$ctrl.formData.content[15]' required>
+                <div class='altai-content-form-error' ng-show='WorkshopRegistration.invoicingcity.$invalid && WorkshopRegistration.invoicingcity.$touched'><i class='fa fa-warning'></i>&nbsp;{{'RequiredFieldError'|translate}}</div>
+            </div>
+            <div class='form-group form-row-50'>
+                <label>{{'btw'|translate}}*</label>
+                <input altai-content-form-invoicingbtw attribute-id='88' type='text' name='invoicingbtw' class='form-control' data-ng-model='$ctrl.formData.content[16]' required>
+                <div class='altai-content-form-error' ng-show='WorkshopRegistration.invoicingbtw.$invalid && WorkshopRegistration.invoicingbtw.$touched'><i class='fa fa-warning'></i>&nbsp;{{'RequiredFieldError'|translate}}</div>
+            </div>
+            <div class='form-group form-row-51'>
+                <label translate>orderno</label>
+                <input altai-content-form-invoicingorderno attribute-id='89' type='text' name='invoicingorderno' class='form-control' data-ng-model='$ctrl.formData.content[17]'>
+                <div class='altai-content-form-error' ng-show='WorkshopRegistration.invoicingorderno.$invalid && WorkshopRegistration.invoicingorderno.$touched'><i class='fa fa-warning'></i>&nbsp;{{'RequiredFieldError'|translate}}</div>
+            </div>
+            <section ng-if="$ctrl.data.prijs">
+                <h5 translate>deelname</h5>
+                <div class="cktext article-body" altai-compile-html="{{$ctrl.data.prijs}}"></div>
+            </section>
+        </div>
+        <div class='form-group form-row-41' style='display:none' ;>
+            <label class='control-label  ng-hide'>registrationacademynetworkingevent</label>
+            <div class='' ng-hide>
+                <span data-content-select='42' data-content-select-model='$ctrl.formData.content[19]' content-select-multiple='False'></span>
+            </div>
+        </div>
+        <div class='form-group form-row-41' style='display:none' ;>
+            <label class='control-label  ng-hide'>contactpersonregistrationacademy</label>
+            <div class='' ng-hide>
+                <span data-content-select='42' data-content-select-model='$ctrl.formData.content[23]' content-select-multiple='False'></span>
+            </div>
+        </div>
+
+        <input style="display:none;" altai-content-form-invoicinglastname attribute-id='90' type='text' name='languagecode' class='form-control' ng-model='$ctrl.formData.content[21]'>
+
+        <div class='dossier-section form-group form-row-52'>
+            <h5 translate>steljevraag</h5>
+            <p translate>alsjevragenhebt</p>
+            <textarea altai-content-form-opmerkingen attribute-id='112' rows="5" cols="100" name='opmerkingen' class='form-control' data-ng-model='$ctrl.formData.content[22]'></textarea>
+            <div class='altai-content-form-error' ng-show='WorkshopRegistration.opmerkingen.$invalid && WorkshopRegistration.opmerkingen.$touched'><i class='fa fa-warning'></i>&nbsp;{{'RequiredFieldError'|translate}}</div>
+        </div>
+        <div class="row dossier-section">
+            <div class="col-md-12">
+                <div class="comeos-button-row">
+                    <button analytics analytics-item="$ctrl.data" analytics-on-click="eventregistrationend" analytics-form-data="$ctrl.formData.content" type='submit' class="comeos-button no-animate" ng-click='$ctrl.submitForm(WorkshopRegistration)'><span translate>inschrijven</span></button>
+                    <span data-ng-show='$ctrl.loading'>&nbsp;&nbsp;<i class='fa fa-circle-o-notch fa-spin'></i>&nbsp;{{'formSubmitting'|translate}}</span>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

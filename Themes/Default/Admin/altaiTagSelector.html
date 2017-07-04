@@ -1,0 +1,46 @@
+﻿<div class="tag-na" ng-show="!$ctrl.noDefaultNotApplicableButton">
+
+    <div class="checkbox checkbox-info" ng-show="$ctrl.editMode">
+        <input type="checkbox" id="checkbox_{{$id}}" ng-model="$ctrl.isDisabled" aria-label="Geen van toepassing" ng-click="$ctrl.disable()" />
+        <label for="checkbox_{{$id}}">{{'not applicable'|translate}}</label>
+    </div>
+
+</div>
+
+<div class="tag-selector" ng-if="$ctrl.inputModel && $ctrl.inputModel.length>0 && !$ctrl.isDisabled">
+    <span class="tag tag-select-all" ng-if="$ctrl.editMode && $ctrl.multiple" ng-click="$ctrl.selectAll()" ng-class="{'active':$ctrl.everythingIsSelected}">
+
+        <span class="check">
+            <i class="mdi" ng-class="{'mdi-check':$ctrl.everythingIsSelected}"></i>
+        </span>
+        <span ng-show="$ctrl.everythingIsSelected">
+            {{::'deselectall'|translate}}
+        </span>
+
+        <span ng-show="!$ctrl.everythingIsSelected">
+            {{::'selectall'|translate}}
+        </span>
+
+    </span>
+    <div ng-repeat="tag in $ctrl.inputModel" class="tag-container">
+        <div class="tag" ng-click="$ctrl.editMode ? !tag[$ctrl.subRelationName] ? $ctrl.selectTag(tag) : '' : ''" ng-class="{'active':tag.selected,'disabled':$ctrl.isDisabled, 'parent':tag[$ctrl.subRelationName]}">
+            <div class="check" ng-click="$ctrl.editMode ? tag[$ctrl.subRelationName] ? $ctrl.selectTag(tag) : '' : '';" ng-class="{'hasChildren':!tag.selected && tag.selectedChildren  && tag.selectedChildren.length}">
+                <i class="mdi mdi-check" ng-if="tag.selected"></i>
+                <i class="mdi mdi-checkbox-blank-circle " ng-if="!tag.selected && tag.selectedChildren && tag.selectedChildren.length"></i>
+            </div>
+            <div ng-click="tag[$ctrl.subRelationName] ? $ctrl.expand(tag, $event) : ''" class="tag-title-container">
+                <div class="title" ng-if="tag.title!=undefined"> {{::tag.title}}</div>
+                <div class="title" ng-if="tag.title==undefined"> {{::tag.name}}</div>
+                <div class="chevron" ng-class="{'rotated':tag.expand}"><i class="mdi mdi-chevron-down"></i></div>
+            </div>
+        </div>
+        <div class="dropdown" ng-if="tag[$ctrl.subRelationName] && tag.expand" ng-class="{'expanded':tag.expand}">
+            <div ng-repeat="subtag in tag[$ctrl.subRelationName]" class="subtag" ng-click="$ctrl.editMode ? $ctrl.selectTag(subtag, tag): ''" ng-class="{'active':subtag.selected,'disabled':$ctrl.isDisabled}">
+                <span class="check"><i class="mdi mdi-check"></i></span>
+                <span class="title" ng-if="subtag.title!=undefined"> {{::subtag.title}} </span>
+                <span class="title" ng-if="subtag.title==undefined"> {{::subtag.name}} </span>
+            </div>
+        </div>
+    </div>
+
+</div>

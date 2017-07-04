@@ -1,0 +1,17 @@
+﻿<div class="altai-list">
+    <div class="search">
+        <input class="query" type="text" ng-model="searchFilter.name" placeholder="{{'search'|translate}}" />
+        <md-button  ng-click="vm.createExposedContentCollection()" class="md-button-altai md-raised"><i class="mdi mdi-plus"></i> {{'create'|translate}} </md-button>
+    </div>
+
+    <div class="row" ng-repeat="exposedContentCollection in vm.exposedContentCollections | filter: searchFilter track by exposedContentCollection.id">
+        <div class="avatar"><i class="mdi mdi-format-list-bulleted"></i></div>
+        <div class="text rowtext">
+            <h2>{{exposedContentCollection.label}} ({{exposedContentCollection.id}})</h2>
+        </div>
+        <div class="rowactions">
+            
+            <md-button ng-click="vm.openExposedContentCollectionProfile(exposedContentCollection)" class="md-button-altai md-raised"><i class="mdi mdi-pencil"></i> {{::'edit'|translate}} </md-button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+﻿<altai-toolbar-menu menu-model="vm.toolbar" languages="vm.languages"></altai-toolbar-menu>
+
+<div class="altai-list menus-update">
+    <div class="altai-admin-section">
+        <table>
+            <tr>
+                <td>Naam</td>
+                <td>
+                    <input type="text" ng-model="vm.menu.name" />
+                </td>
+            </tr>
+            <tr>
+                <td>Template</td>
+                <td>
+                    <select ng-model="vm.menu.templateId" ng-options="t.id as t.name for t in vm.templates">
+                        <option value="">-- {{'default'|translate}} --</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+        <div class="sub-header">
+            <h3>Menu Items</h3>
+        </div>
+        <altai-menu-item-manager menu-items="vm.menu.menuItems" languages="vm.languages"></altai-menu-item-manager>
+    </div>
+</div>

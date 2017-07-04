@@ -1,0 +1,20 @@
+﻿<div class="altai-list">
+    <div class="search">
+        <input class="query" type="text" ng-model="searchFilter.name" placeholder="{{'search'|translate}}" />
+        <md-button ng-click="vm.createState()" class="md-button-altai md-raised"><i class="mdi mdi-plus"></i> {{'create'|translate}} </md-button>
+    </div>
+
+    <div class="row" ng-repeat="state in vm.states track by state.id">
+        <div class="avatar"><i class="mdi mdi-file"></i></div>
+        <div class="text rowtext">
+            <h2>{{state.name}}</h2>
+        </div>
+        <div class="rowactions">
+            <div class="rowactions">
+                <md-button class="md-button-altai md-raised" ng-click="vm.openState(state)"><i class="mdi mdi-link"></i>&nbsp{{::'open'|translate}}</md-button>
+                <md-button ng-click="vm.openStateProfile(state)" class="md-button-altai md-raised"><i class="mdi mdi-pencil"></i> {{::'edit'|translate}} </md-button>
+                <md-button ng-click="vm.deleteState(state)" class="md-button-altai md-raised"><i class="mdi mdi-delete"></i> {{::'delete'|translate}} </md-button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+﻿<div class="altai-card {{$ctrl.contenttypemachinename}}" ng-class="{'has-card-label':$ctrl.contenttype}">
+
+    <div class="altai-card-label no-select comeos-bg-{{$ctrl.contenttypemachinename}}" ng-if="$ctrl.contenttype && !$ctrl.hideTag">{{$ctrl.contenttype}}</div>
+    <a ui-sref="{{$ctrl.link || 'home'}}">
+
+        <div class="altai-card-image" ng-if="$ctrl.image" altai-image-style-set-background imagestyleset="cardheaders" image="$ctrl.image">
+
+        </div>
+        <div class="altai-card-body" ng-class="{'image': $ctrl.image}">
+            <div class="altai-card-date">{{$ctrl.date | localDate}}</div>
+            <div class="altai-card-title">
+                <h5>{{$ctrl.title}}</h5>
+            </div>
+            <p>
+                <span ng-if="$ctrl.description!=undefined" altai-compile-html="{{($ctrl.description | crop:145)}}"></span>
+            </p>
+            <div class="altai-card-pills-relative" ng-if="$ctrl.contenttypemachinename=='commissievergadering'">
+                <span class="altai-card-pill" getlink name="{{::pill.name}}" content-item-id="{{pill.isroot !== false ? pill.id : pill[pill.contentType + '_' + pill.contentType].id}}" content-type-id="{{::pill.contentTypeId}}" theme="{{::pill.id}}" ng-repeat="pill in $ctrl.pills | limitTo: 3 track by $index">{{pill.title}}</span>
+                <span class="altai-card-pill" ng-if="$ctrl.pills.length>6">...</span>
+            </div>
+        </div>
+    </a>
+    <div class="altai-card-pills" ng-if="$ctrl.contenttypemachinename!='commissievergadering'">
+        <span class="altai-card-pill" getlink name="{{::pill.name}}" content-item-id="{{pill.isroot !== false ? pill.id : pill[pill.contentType + '_' + pill.contentType].id}}" content-type-id="{{::pill.contentTypeId}}" theme="{{::pill.id}}" ng-repeat="pill in $ctrl.pills | limitTo: 3 track by $index">{{pill.title}}</span>
+        <span class="altai-card-pill" ng-if="$ctrl.pills.length>6">...</span>
+    </div>
+    <socialsharecard ng-if="$ctrl.share" contenttypemachinename="$ctrl.contenttypemachinename" item="$ctrl.item" target="$ctrl.link"></socialsharecard>
+    <comeos-content-item-like-component class="like comeos-share-{{$ctrl.contenttypemachinename}}" content-item="$ctrl.item"></comeos-content-item-like-component>
+</div>

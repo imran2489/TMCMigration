@@ -1,0 +1,116 @@
+﻿<div class="altai-list">
+    <div class="search">
+        <input class="query" type="text" placeholder="{{'searchinname'|translate}}" ng-model-options="{ debounce: 300 }" ng-model="vm.searchModel.name" />
+        <!--<button class="add" ng-click="vm.createContentItem()"><i class="mdi mdi-plus"></i></button>-->
+    </div>
+</div>
+
+<div class="altai-admin-section">
+    <div class="subheader">
+        <h2>{{'my_assigned_tasks'|translate}}</h2>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th></th>
+                <th></th>
+                <th>{{'task'|translate}}</th>
+                <th>{{'contentitem'|translate}}</th>
+                <th>{{'assignee'|translate}}</th>
+                <th>{{'candidategroups'|translate}}</th>
+                <th>{{'createtime'|translate}}</th>
+                <th>{{'duedate'|translate}}</th>
+                <th>{{'actions'|translate}}</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr ng-repeat="task in vm.tasks">
+                <td><span class="contentypeletterpill" ng-class="'pill-'+task.contentItem.contentType.name">{{task.contentItem.contentType.label}}</span></td>
+                <td><span ng-if="task.comments.length>0" class="commentpill" ><i class="mdi mdi-comment-account-outline"></i> {{task.comments.length}}</span></td>
+                <td>{{task.contentFlowTaskDefinition.label}}</td>
+                <td>{{task.contentItem.name}}</td>
+
+                <td>
+                    <a href="#" editable-select="task.processTasksResponseData.assignee" e-ng-options="u.id as u.fullName for u in vm.users" onaftersave="vm.updateAssigneeAsString(task);vm.updateAssignee(task)">
+                        {{task.processTasksResponseData.assigneeAsString}}
+                    </a>
+
+                </td>
+                <td>
+                    <a href="#" editable-select="task.processTasksResponseData.candidateGroupsAsListInternal" e-multiple e-ng-options="g.id as g.name for g in vm.groups" onaftersave="vm.updateCandidateGroupsAsString(task);vm.updateCandidateGroups(task)">
+                        {{task.processTasksResponseData.candidateGroupsAsString}}
+                    </a>
+                </td>
+                <td>{{task.processTasksResponseData.createTime | date:"dd/MM/yyyy h:mm:ss"}}</td>
+                <td>{{task.processTasksResponseData.dueDate | date:"dd/MM/yyyy h:mm:ss"}}</td>
+                <td>
+                    <button class="btn btn-altai altai-button-go" ng-click="vm.openTask(task)"><i class="mdi mdi-clipboard-check"></i> {{::'open_task'|translate}}</button>
+                    <button class="btn btn-altai altai-button-back" ng-click="vm.unclaimTask(task)"><i class="mdi mdi-account-remove"></i> {{::'unclaim_task'|translate}}</button>
+                </td>
+
+            </tr>
+
+            <tr ng-if="!vm.tasks.length">
+                <td colspan="2">{{'noresults'|translate}}</td>
+            </tr>
+        </tbody>
+
+    </table>
+
+    <div class="panel-buttons">
+        <altai-pagination paged-result="vm.tasks" switch-page="vm.openPage(pageIndex)"></altai-pagination>
+    </div>
+
+</div>
+
+<div class="altai-admin-section">
+    <div class="subheader">
+        <h2>{{'my_claimable_tasks'|translate}}</h2>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th></th>
+                <th></th>
+                <th>{{'task'|translate}}</th>
+                <th>{{'contentitem'|translate}}</th>
+                <th>{{'candidategroups'|translate}}</th>
+                <th>{{'createtime'|translate}}</th>
+                <th>{{'duedate'|translate}}</th>
+                <th>{{'actions'|translate}}</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr ng-repeat="task in vm.claimabletasks">
+                <td><span class="contentypeletterpill" ng-class="'pill-'+task.contentItem.contentType.name">{{task.contentItem.contentType.label}}</span></td>
+                <td><span ng-if="task.comments.length>0" class="commentpill"><i class="mdi mdi-comment-account-outline"></i> {{task.comments.length}}</span></td>
+                <td>{{task.contentFlowTaskDefinition.label}}</td>
+                <td>{{task.contentItem.name}}</td>
+
+                <td>
+                    <a href="#" editable-select="task.processTasksResponseData.candidateGroupsAsList" e-multiple e-ng-options="g.id as g.name for g in vm.groups" onaftersave="vm.updateCandidateGroupsAsString(task);vm.updateCandidateGroups(task)">
+                        {{task.processTasksResponseData.candidateGroupsAsString}}
+                    </a>
+                </td>
+                <td>{{task.processTasksResponseData.createTime | date:"dd/MM/yyyy h:mm:ss"}}</td>
+                <td>{{task.processTasksResponseData.dueDate | date:"dd/MM/yyyy h:mm:ss"}}</td>
+                <td>
+                    <button class="btn btn-altai altai-button-go" ng-click="vm.claimTask(task)"><i class="mdi mdi-account-check"></i> {{::'claim_task'|translate}}</button>
+                </td>
+
+            </tr>
+
+            <tr ng-if="!vm.tasks.length">
+                <td colspan="2">{{'noresults'|translate}}</td>
+            </tr>
+        </tbody>
+
+    </table>
+
+    <div class="panel-buttons">
+        <altai-pagination paged-result="vm.tasks" switch-page="vm.openPage(pageIndex)"></altai-pagination>
+    </div>
+
+</div>

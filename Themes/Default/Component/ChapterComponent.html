@@ -1,0 +1,85 @@
+﻿<div id="chapter" class="window-split-left-right chapter">
+
+    <div class="chaptersidebar">
+        <div class="toccontent">
+            <div class="title">{{$ctrl.chaptermodel.title}}</div>
+            <div class="chaptertoc" ng-if="$ctrl.chaptermodel.sectionchapter.length>0">
+
+                <div class="tmc-button chaptertoc-chaptertitle" ng-click="$ctrl.activatesection($index)" chaptersectionmodel="section" ng-repeat="section in $ctrl.chaptermodel.sectionchapter track by $index">
+                    {{$index+1}} - {{section.title}}
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div id="chaptercontentcontainer" class="rightbar">
+        <div class="tmc-button tmc-button-icon chaptertopbutton" ng-click="$ctrl.totop();"><i class="mdi mdi-arrow-up"></i></div>
+        <div class="tmc-button tmc-button-icon chapterprintbutton" ng-click="$ctrl.printcurrentchapter();"><i class="mdi mdi-printer"></i></div>
+        <div class="chaptercontentcontainerinner">
+            <!--<div class="tmc-button tmc-button-icon tmc-button-icon-chaptertoc" ng-click="$ctrl.togglesidebar();"><i class="mdi mdi-menu"></i></div>-->
+            <div class="chapter-content container">
+
+                <div class="row">
+                    <div class="col-sm-10 col-sm-offset-1">
+                        <div class="title">{{$ctrl.chaptermodel.title}}</div>
+                    </div>
+                </div>
+                <div class="row text-center" ng-if="$ctrl.chaptermodel.chapter_theme">
+                    <div class="col-sm-10 col-sm-offset-1">
+                        <div class="dossier-tags">
+                            <span class="dossier-tags-chip" ng-repeat="tag in $ctrl.chaptermodel.chapter_theme">
+                                {{tag.name}}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-10 col-sm-offset-1">
+                        <div class="shortintroduction" altai-compile-html="{{$ctrl.chaptermodel.shortdescription}}"></div>
+                        <div class="introduction" altai-compile-html="{{$ctrl.chaptermodel.introduction}}"></div>
+                        <div class="content" altai-compile-html="{{$ctrl.chaptermodel.content}}"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-10 col-sm-offset-1 ">
+                        <div class="filelist" ng-show="$ctrl.chaptermodel.filechapter.length > 0">
+                            <div class="subtitle">{{'files'|translate}}</div>
+                            <div class="attached-file" ng-repeat="doc in $ctrl.chaptermodel.filechapter">
+                                <a ng-href="{{$root.staticFileBase}}/{{doc.file}}" target="_blank"><span class="attached-file-icon"><i class="mdi mdi-file-pdf-box actu-pdf"></i></span> <span>{{doc.label}}</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-10 col-sm-offset-1">
+                        <div class="chapterlist">
+                            <div ng-if="$ctrl.chaptermodel.sectionchapter.length>0">
+
+                                <!--<div class="row tmc-buttons">
+                                    <div class="col-md-12">
+                                        <div class="tmc-button no-animate" ng-click="$ctrl.expandAll()" ng-show="!$ctrl.allexpanded">
+                                            Toon het volledige hoofdstuk
+                                        </div>
+                                        <div class="tmc-button no-animate" ng-click="$ctrl.collapseAll()" ng-show="$ctrl.allexpanded">
+                                            Toon alleen de inhoudstafel
+                                        </div>
+                                    </div>
+                                </div>-->
+                                <chaptersection chaptersectionmodel="section" ng-repeat="section in $ctrl.chaptermodel.sectionchapter">
+
+                                </chaptersection>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+

@@ -1,0 +1,407 @@
+﻿@import "../comeos.config.less";
+
+.altai-theme-content {
+    #bodyView {
+        .my-comeos {
+            .mycomeos-contact-section {
+                margin-top: 30px;
+                margin-bottom: 0px;
+                text-align: center;
+                color: white;
+
+                span.h6 {
+                    color: white !important;
+                }
+
+                .mail {
+                    margin-top: 20px;
+                    display: inline-block;
+                    background-color: white;
+                    color: black;
+                    padding: 6px;
+                    font-size: 20px;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    padding-bottom: 2px;
+                }
+            }
+
+            .profile-picture.profile-picture-circle {
+                width: 140px;
+                height: 140px;
+                overflow: hidden;
+                border-radius: 100%;
+                display: inline-block;
+
+                img {
+                    width: auto;
+                    height: auto;
+                    min-width: 140px;
+                    min-height: 140px;
+                }
+            }
+        }
+
+        .profile {
+             .editmode{
+                 .checkbox-info input[type="checkbox"]:checked + label::before {
+                    background-color: @comeos-bg-blue;
+                    border-color: @comeos-bg-blue;
+                }
+
+                .checkbox-info input[type="checkbox"]:hover + label::before {
+                    background-color: @comeos-bg-blue;
+                    border-color: @comeos-bg-blue;
+                }
+
+                .tag-selector .tag.active .check {
+                    background-color: @comeos-bg-blue;
+                }
+
+                .tag-selector .tag.parent.active:hover .check {
+                    background-color: #d9d9d9;
+                    color: @comeos-bg-blue;
+                }
+
+                .tag-selector .tag.parent:hover .chevron {
+                    color: @comeos-bg-blue;
+                }
+
+                .tag-selector .tag.parent .check:hover {
+                    color: @comeos-bg-blue;
+                }
+
+                .tag-selector .tag:hover .check {
+                    background-color: @comeos-bg-blue;
+                }
+
+                .tag-selector .tag.active:hover .check {
+                    background-color: #d9d9d9;
+                    color: @comeos-bg-blue;
+                }
+
+                .tag-selector .tag-select-all.active .check {
+                    background-color: @comeos-bg-blue;
+                }
+
+                .tag-selector .tag-select-all:hover .check {
+                    background-color: @comeos-bg-blue;
+                }
+
+                .tag-selector .hasChildren {
+                    background-color: @comeos-bg-blue !important;
+                }
+
+                .tag-selector .tag-container .subtag.active {
+                    border-left-color: @comeos-bg-blue;
+                }
+
+                .tag-selector .tag-container .subtag:hover {
+                    border-left-color: @comeos-bg-blue;
+                }
+
+                .tag-selector .tag.parent .check:hover {
+                    background-color: @comeos-bg-blue;
+                    color: @comeos-bg-blue;
+                }
+
+                .tag-container .title {
+                    text-decoration: none;
+                }
+
+                .tag:focus, .tag-title-container:focus {
+                    outline: 0;
+                }
+
+                .tag-selector .tag-container .subtag:focus {
+                    outline: 0;
+                }
+
+                .tag-selector .tag .check:focus {
+                    outline: 0;
+                }
+             }
+             
+             .noneditmode{
+
+                
+             }   
+            
+
+
+
+            .subtitle {
+                padding-top: 10px;
+                padding-bottom: 20px;
+
+                i {
+                    padding-left: 5px;
+                }
+            }
+
+            .buttons {
+                padding-top: 20px;
+                padding-bottom: 20px;
+
+                .altai-pill-button.blue {
+                    margin: 5px;
+                    margin-right: 20px;
+                    display: inline-block;
+
+                    :focus {
+                        outline: none;
+                    }
+                }
+            }
+
+            .profile-info {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                margin: 20px 0;
+
+                .altaiform{
+                    select{
+                        min-width: 250px;
+                        padding: 6px 12px;
+                        height: 34px;
+                        font-size: 14px;
+                        border-radius: 4px;
+                    }
+                }
+
+                .attributes {
+                    .attribute-item {
+                        padding: 10px 0;
+                        display: flex;
+
+                        .info-attribute {
+                            display: flex;
+                            width: 200px;
+                            font-weight: 600;
+                            /* vertical-align: top; */
+                            align-content: center;
+                            align-items: center;
+                        }
+
+                        .info-value {
+                            display: flex;
+                            .vertical-align{
+
+                                md-checkbox{
+                                    margin-bottom: inherit;
+                                }
+                                md-checkbox.md-checked .md-icon{
+                                    background-color: #00B4E1;
+                                }
+                                display: flex;
+                                align-content: center;
+                                align-items: center;
+                                justify-content: center;
+                            }
+                            .info-value-nonedit {
+                                /*display: flex;
+                                align-content: flex-start;
+                                align-items: center;
+                                width: 300px;
+                                overflow: hidden;
+                                padding: 20px;
+                                height: 1em;
+                                font-size: 16px;
+                                border-radius: 0;
+                                line-height: 1em;
+                                color: black;
+                                border: none;
+                                flex: 1;
+                                -webkit-box-shadow: none;
+                                box-shadow: none;*/
+                                height: 34px;
+                                padding: 6px 12px;
+                                border: 2px solid black;
+                                outline: none;
+                                font-size: 14px;
+                                line-height: 1.42857143;
+                                border-radius: 4px;
+                                width: 50%;
+                                min-width: 250px;
+                                background-color: @comeos-bg-grey;
+                            }
+
+
+                            .altai-content-attribute-update-tpl {
+                                height: 1em;
+                                margin: 0;
+                                padding: 0;
+                            }
+
+                            .form-control {
+                                /*width: 300px;
+                                display: inline-block;
+                                box-sizing: border-box;
+                                margin: 0;
+                                padding: 20px;
+                                height: 1em;
+                                font-size: 16px;
+                                border-radius: 0;
+                                line-height: 1em;
+                                color: black;
+                                border: none;
+                                flex: 1;
+                                -webkit-box-shadow: none;
+                                box-shadow: none;*/
+                            }
+
+                            .altai-content-attribute-update-lang {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+
+                .profile-picture {
+                    display: flex;
+                    flex-direction: column;
+
+                    div {
+                        margin: 10px;
+                    }
+                }
+
+                .values {
+                    font-weight: bold;
+                    margin-left: 20px;
+                    margin-right: 20px;
+
+                    .altai-content-attribute-update-item-wrapper {
+                        display: block;
+                    }
+                }
+            }
+
+            .subsubtitle {
+                margin-top: 10px;
+                margin-bottom: 15px;
+                font-size: 1.2em;
+            }
+
+            .settingstilte {
+                font-weight: 600;
+            }
+
+            .altai-content-relation-update {
+                .header {
+                    display: block;
+
+                    label {
+                        color: black;
+                        text-transform: none;
+                        margin-left: 0;
+                        font-size: 1.3em;
+                        margin-bottom: 15px;
+
+                        span {
+                            display: none;
+                        }
+                    }
+                }
+            }
+
+            @bw: 1px;
+            /* Tables
+        ================================== */
+            .Rtable {
+                display: flex;
+                flex-wrap: wrap;
+                //margin: 0 0 3em 0;
+                padding: 0;
+            }
+
+            .Rtable-cell {
+                box-sizing: border-box;
+                //flex-grow: 1;
+                width: 100%; // Default to full width
+                overflow: hidden; // Or flex might break
+                list-style: none;
+                padding-bottom: 5px;
+
+                > h1, > h2, > h3, > h4, > h5, > h6 {
+                    margin: 0;
+                }
+
+                .value {
+                    span {
+                        font-weight: 600;
+                    }
+                }
+            }
+            /* Table column sizing
+        ================================== */
+            .Rtable--2cols > .Rtable-cell {
+                flex-basis: 50%;
+            }
+
+            .Rtable--3cols > .Rtable-cell {
+                flex-basis: 33.33%;
+            }
+
+            .Rtable--4cols > .Rtable-cell {
+                flex-basis: 25%;
+            }
+
+            .Rtable--5cols > .Rtable-cell {
+                flex-basis: 20%;
+            }
+
+            .Rtable--6cols > .Rtable-cell {
+                flex-basis: 16.6%;
+            }
+
+            @breakpoint: 500px;
+
+            /* Responsive
+        ==================================== */
+            @media all and (max-width: @breakpoint) {
+                .Rtable--collapse {
+                    display: block;
+
+                    > .Rtable-cell {
+                        flex-basis: 100% !important;
+                    }
+
+                    > .Rtable-cell--foot {
+                        margin-bottom: 1em;
+                    }
+                }
+            }
+            // Non-Flex modernizer fallback
+            .no-flexbox .Rtable {
+                display: block;
+
+                > .Rtable-cell {
+                    flex-basis: 100%;
+                }
+
+                > .Rtable-cell--foot {
+                    margin-bottom: 1em;
+                }
+            }
+        }
+
+        .altai-pill-button {
+            font-weight: 700;
+            margin-top: 8px;
+            margin: auto;
+            border-radius: 7px;
+            display: inline-block;
+            background-color: #e8e8e8;
+            padding: 8px;
+            font-size: 0.625em !important;
+            letter-spacing: 1px;
+        }
+
+        .altai-pill-button.blue {
+            background-color: @comeos-bg-blue;
+            color: @white;
+        }
+    }
+}

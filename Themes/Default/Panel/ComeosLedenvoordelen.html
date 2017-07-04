@@ -1,0 +1,12 @@
+﻿<div ng-if="!$root.isLoggedIn">
+    <div ng-if="$root.langCode=='fr'">
+        <p style="text-align: center;">Convaincu de notre plus-value ou int&eacute;ress&eacute; par un rendez-vous? Consultez nos <a altai-smooth-scroll="" anchor="onzedienstverlening" offset="350" state="Root.About">avantages membres</a>&nbsp;ou <a ui-sref="Root.Content.ContactFormLidWorden">contactez-nous</a>.</p>
+
+        <p style="text-align: center;">D&eacute;j&agrave; membre, mais pas encore de compte? <a ui-sref="Root.Content.ContactForm">Demandez ici vos acc&egrave;s</a>.</p>
+    </div>
+    <div ng-if="$root.langCode=='nl'">
+        <p style="text-align: center;">Overtuigd van onze meerwaarde of interesse in een gesprek? <a altai-smooth-scroll="" anchor="onzedienstverlening" offset="350" state="Root.About">Bekijk onze ledenvoordelen</a> of <a ui-sref="Root.Content.ContactFormLidWorden">neem contact op</a>.</p>
+
+        <p style="text-align: center;">Al lid maar nog geen account, <a ui-sref="Root.Content.ContactFormMember">vraag hier uw account aan</a>.</p>
+    </div>
+</div>

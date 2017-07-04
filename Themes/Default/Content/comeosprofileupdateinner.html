@@ -1,0 +1,210 @@
+﻿<div class="alert alert-warning alert-warning-comeos ng-cloak" ng-if="vm.updateModel.attribute[282].values[0].value == 0 || vm.updateModel.attribute[282].values[0].value == 1">
+    {{'noactureceiver'|translate}}
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="subtitle" translate>profiel</div>
+        <div class="profile-info">
+            <div class="attributes">
+                <div class="attribute-item">
+                    <div class="info-attribute" translate>voornaam</div>
+                    <div class="info-value altaiform" ng-repeat="attr in ::vm.getAttrByName(vm.contentType.contentTypeAttributes, 'firstname')">
+                        <div class="info-value-nonedit" ng-hide="vm.editMode"><span ng-if="!attr.attribute.translatable">{{vm.updateModel.attribute[attr.id].values[0].value}}</span><span ng-if="attr.attribute.translatable">{{vm.updateModel.attribute[attr.id].values[0].value.nl}}</span></div>
+                        <div ng-show="vm.editMode"><altai-content-attribute-update model="vm.updateModel.attribute[attr.id].values" content-type-attribute="attr" languages="vm.languages"></altai-content-attribute-update></div>
+                    </div>
+                </div>
+                <div class="attribute-item">
+                    <div class="info-attribute altaiform" translate>achternaam</div>
+                    <div class="info-value altaiform" ng-repeat="attr in ::vm.getAttrByName(vm.contentType.contentTypeAttributes, 'lastname')">
+                        <div class="info-value-nonedit" ng-hide="vm.editMode"><span ng-if="!attr.attribute.translatable">{{vm.updateModel.attribute[attr.id].values[0].value}}</span><span ng-if="attr.attribute.translatable">{{vm.updateModel.attribute[attr.id].values[0].value.nl}}</span></div>
+                        <div ng-show="vm.editMode"><altai-content-attribute-update model="vm.updateModel.attribute[attr.id].values" content-type-attribute="attr" languages="vm.languages"></altai-content-attribute-update></div>
+                    </div>
+                </div>
+                <div class="attribute-item">
+                    <div class="info-attribute" translate>aanspreking</div>
+                    <div class="info-value altaiform" ng-repeat="attr in ::vm.getAttrByName(vm.contentType.contentTypeAttributes, 'aanhef')">
+                        <div class="info-value-nonedit" ng-hide="vm.editMode"><span ng-if="!attr.attribute.translatable">{{vm.updateModel.attribute[attr.id].values[0].value}}</span><span ng-if="attr.attribute.translatable">{{vm.updateModel.attribute[attr.id].values[0].value.nl}}</span></div>
+                        <div ng-show="vm.editMode">
+                                               
+                            <select class='form-control' ng-model="vm.updateModel.attribute[attr.id].values[0].value" ng-if="$root.langCode=='nl'">
+                                <option>Baron</option>
+                                <option>De heer</option>
+                                <option>De Heer en Mevrouw</option>
+                                <option>Dr.</option>
+                                <option>Dr. Ing.</option>
+                                <option>Juffrouw</option>
+                                <option>Meester</option>
+                                <option>Mevrouw</option>
+                                <option>Mevrouw ir.</option>
+                                <option>Prof. Dr.</option>
+                                <option>Prof. Dr. Ir.</option>
+                            </select>
+
+                            <select class='form-control' ng-model="vm.updateModel.attribute[attr.id].values[0].value" ng-if="$root.langCode=='fr'">
+                                <option>Madame</option>
+                                <option>Mademoiselle</option>
+                                <option>Monsieur</option>
+                                <option>Professeur</option>
+                            </select>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="attribute-item">
+                    <div class="info-attribute" translate>functie</div>
+                    <div class="info-value altaiform" ng-repeat="attr in ::vm.getAttrByName(vm.contentType.contentTypeAttributes, 'functie')">
+                        <div class="info-value-nonedit" ng-hide="vm.editMode"><span ng-if="!attr.attribute.translatable">{{vm.updateModel.attribute[attr.id].values[0].value}}</span><span ng-if="attr.attribute.translatable">{{vm.updateModel.attribute[attr.id].values[0].value.nl}}</span></div>
+                        <div ng-show="vm.editMode"><altai-content-attribute-update model="vm.updateModel.attribute[attr.id].values" content-type-attribute="attr" languages="vm.languages"></altai-content-attribute-update></div>
+                    </div>
+                </div>
+                <div class="attribute-item">
+                    <div class="info-attribute" translate>email</div>
+                    <div class="info-value altaiform" ng-repeat="attr in ::vm.getAttrByName(vm.contentType.contentTypeAttributes, 'email')">
+                        <div class="info-value-nonedit"><span ng-if="!attr.attribute.translatable">{{vm.updateModel.attribute[attr.id].values[0].value}}</span><span ng-if="attr.attribute.translatable">{{vm.updateModel.attribute[attr.id].values[0].value.nl}}</span></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="col-md-6">
+
+        <div class="subtitle">{{::'password'|translate}}</div>
+
+        {{::'passwordchangeinfo'|translate}}
+
+        <div class="profile-info">
+
+            <div class="attributes">
+
+                <div class="attribute-item">
+                    <div class="info-attribute">{{::'currentpassword'|translate}}</div>
+                    <div class="info-value">
+                        <div class="altai-content-attribute-update">
+                            <div class="altai-content-attribute-update-item-wrapper">
+                                <div class="altai-content-attribute-update">
+                                    <span class="altai-content-attribute-update-tpl altaiform">
+                                        <input type="password" class="form-control" ng-model="$root.password.old">
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="attribute-item">
+                    <div class="info-attribute">{{::'newpassword'|translate}}</div>
+                    <div class="info-value">
+                        <div class="altai-content-attribute-update">
+                            <div class="altai-content-attribute-update-item-wrapper">
+                                <div class="altai-content-attribute-update">
+                                    <span class="altai-content-attribute-update-tpl altaiform">
+                                        <input type="password" class="form-control" ng-model="$root.password.new">
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="attribute-item">
+                    <div class="info-attribute">{{::'newpasswordrepeat'|translate}}</div>
+                    <div class="info-value">
+                        <div class="altai-content-attribute-update">
+                            <div class="altai-content-attribute-update-item-wrapper">
+                                <div class="altai-content-attribute-update">
+                                    <span class="altai-content-attribute-update-tpl altaiform">
+                                        <input type="password" class="form-control" ng-model="$root.password.newrepeated">
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="attribute-item">
+                    <div class="info-attribute">{{::'actureceiver'|translate}}</div>
+                    <div class="info-value">
+                        <div class="altai-content-attribute-update" ng-repeat="attr in ::vm.getAttrByName(vm.contentType.contentTypeAttributes, 'actureceiver')">
+                            <div class="altai-content-attribute-update-item-wrapper">
+                                <div class="altai-content-attribute-update">
+                                    <span class="altai-content-attribute-update-tpl altaiform" ng-init="actureceiver = ((vm.updateModel.attribute[attr.id].values[0].value == '2') ? true : false)">
+                                        <input type="checkbox" ng-model="actureceiver" ng-change="actureceiver ? vm.updateModel.attribute[attr.id].values[0].value = '2' : vm.updateModel.attribute[attr.id].values[0].value = '1'" />
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="subtitle" translate>interesses</div>
+
+        <div class="form-group ng-scope" ng-repeat="ctrl in ::vm.getRelByName(vm.contentType.contentTypeRelationLinks, 'themecontactperson')">
+            <div ng-if="!ctrl.hidden" class="relation-form-group ng-scope" ng-show="vm.originLink.contentTypeRelationId != ctrl.contentTypeRelationId" aria-hidden="false" ng-init="rel = vm.getRelModelIndexById(vm.updateModel.relation, ctrl.contentTypeRelationId) ">
+                <altai-content-relation-update languages="vm.languages" content-type-relation-link="ctrl" existing-model="vm.updateModel.relation[rel].existing" existing-input-model="vm.updateModel.relation[rel].existingIn" new-model="vm.updateModel.relation[rel].new" relation="vm.updateModel.relation[rel]" edit-mode="vm.editMode">
+            </div>
+        </div>
+        <div class="form-group ng-scope" ng-repeat="ctrl in ::vm.getRelByName(vm.contentType.contentTypeRelationLinks, 'pccontactperson')">
+            <div ng-if="!ctrl.hidden" class="relation-form-group ng-scope" ng-show="vm.originLink.contentTypeRelationId != ctrl.contentTypeRelationId" aria-hidden="false" ng-init="rel = vm.getRelModelIndexById(vm.updateModel.relation, ctrl.contentTypeRelationId) ">
+                <altai-content-relation-update languages="vm.languages" content-type-relation-link="ctrl" existing-model="vm.updateModel.relation[rel].existing" existing-input-model="vm.updateModel.relation[rel].existingIn" new-model="vm.updateModel.relation[rel].new" relation="vm.updateModel.relation[rel]" edit-mode="vm.editMode">
+            </div>
+        </div>
+        <div class="form-group ng-scope" ng-repeat="ctrl in ::vm.getRelByName(vm.contentType.contentTypeRelationLinks, 'sectorcontactperson')">
+            <div ng-if="!ctrl.hidden" class="relation-form-group ng-scope" ng-show="vm.originLink.contentTypeRelationId != ctrl.contentTypeRelationId" aria-hidden="false" ng-init="rel = vm.getRelModelIndexById(vm.updateModel.relation, ctrl.contentTypeRelationId) ">
+                <altai-content-relation-update languages="vm.languages" content-type-relation-link="ctrl" existing-model="vm.updateModel.relation[rel].existing" existing-input-model="vm.updateModel.relation[rel].existingIn" new-model="vm.updateModel.relation[rel].new" relation="vm.updateModel.relation[rel]" edit-mode="vm.editMode">
+            </div>
+        </div>
+        <div class="form-group ng-scope" ng-repeat="ctrl in ::vm.getRelByName(vm.contentType.contentTypeRelationLinks, 'regioncontactperson')">
+            <div ng-if="!ctrl.hidden" class="relation-form-group ng-scope" ng-show="vm.originLink.contentTypeRelationId != ctrl.contentTypeRelationId" aria-hidden="false" ng-init="rel = vm.getRelModelIndexById(vm.updateModel.relation, ctrl.contentTypeRelationId) ">
+                <altai-content-relation-update languages="vm.languages" content-type-relation-link="ctrl" existing-model="vm.updateModel.relation[rel].existing" existing-input-model="vm.updateModel.relation[rel].existingIn" new-model="vm.updateModel.relation[rel].new" relation="vm.updateModel.relation[rel]" edit-mode="vm.editMode">
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<!--<div class="row">
+    <div class="col-xs-12">
+        <div class="subtitle" translate>email</div>
+        <div class="profile-info">
+            <div class="attributes">
+                <div class="attribute-item">
+                    <div class="info-attribute" translate>ReceiveActu</div>
+                    <div class="info-value altaiform" ng-repeat="attr in ::vm.getAttrByName(vm.contentType.contentTypeAttributes, 'actureceiver')">
+                        <div class="info-value-nonedit" ng-hide="vm.editMode"><span ng-if="!attr.attribute.translatable">{{vm.updateModel.attribute[attr.id].values[0].value}}</span><span ng-if="attr.attribute.translatable">{{vm.updateModel.attribute[attr.id].values[0].value.nl}}</span></div>
+                        <div ng-show="vm.editMode" class="vertical-align">
+                            <altai-content-attribute-update style="display:inline-block;" class="vertical-align" model="vm.updateModel.attribute[attr.id].values" content-type-attribute="attr" languages="vm.languages"></altai-content-attribute-update><div style="display:inline-block;" class="vertical-align" translate>YesiwanttoreceiveActu</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="attribute-item">
+                    <div class="info-attribute" translate>ReceiveEvent</div>
+                    <div class="info-value altaiform" ng-repeat="attr in ::vm.getAttrByName(vm.contentType.contentTypeAttributes, 'eventreceiver')">
+                        <div class="info-value-nonedit" ng-hide="vm.editMode"><span ng-if="!attr.attribute.translatable">{{vm.updateModel.attribute[attr.id].values[0].value}}</span><span ng-if="attr.attribute.translatable">{{vm.updateModel.attribute[attr.id].values[0].value.nl}}</span></div>
+                        <div ng-show="vm.editMode" class="vertical-align">
+                            <altai-content-attribute-update style="display:inline-block;" class="vertical-align" model="vm.updateModel.attribute[attr.id].values" content-type-attribute="attr" languages="vm.languages"></altai-content-attribute-update><div style="display:inline-block;" class="vertical-align" translate>YesiwanttoreceiveEvents</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="attribute-item">
+                    <div class="info-attribute" translate>ReceiveAcademy</div>
+                    <div class="info-value altaiform" ng-repeat="attr in ::vm.getAttrByName(vm.contentType.contentTypeAttributes, 'academyreceiver')">
+                        <div class="info-value-nonedit" ng-hide="vm.editMode"><span ng-if="!attr.attribute.translatable">{{vm.updateModel.attribute[attr.id].values[0].value}}</span><span ng-if="attr.attribute.translatable">{{vm.updateModel.attribute[attr.id].values[0].value.nl}}</span></div>
+                        <div ng-show="vm.editMode" class="vertical-align">
+                            <altai-content-attribute-update style="display:inline-block;" class="vertical-align" model="vm.updateModel.attribute[attr.id].values" content-type-attribute="attr" languages="vm.languages"></altai-content-attribute-update><div style="display:inline-block;" class="vertical-align" translate>YesiwanttoreceiveAcademy</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>-->

@@ -1,0 +1,25 @@
+﻿<div class="altai-card" ng-class="{'has-card-label':$ctrl.contenttype, 'single':$ctrl.image==undefined, 'double':$ctrl.image!=undefined }">
+    <a ui-sref="{{$ctrl.link || 'home'}}">
+        <div class="altai-card-label comeos-bg-{{$ctrl.contenttypemachinename}}" ng-if="$ctrl.contenttype && !$ctrl.hideTag">{{$ctrl.contenttype}}</div>
+        <div class="altai-card-main">
+            <div class="altai-card-image" ng-if="$ctrl.image" ng-style="{'background-image': 'url('+$root.staticFileBase+'/' +$ctrl.image+ ')'}"></div>
+            <div class="altai-card-body">
+                <div class="altai-card-date">{{$ctrl.date | localDate}}</div>
+                <div class="altai-card-title">
+                    <h5>{{$ctrl.title}}</h5>
+                </div>
+                <p>
+                    <span ng-if="$ctrl.description!=undefined" altai-compile-html="{{($ctrl.description | crop:145)}}"></span>
+                </p>
+                <div class="altai-card-pills">
+                    <span class="altai-card-pill" getlink content-item-id="{{pill.isroot !== false ? pill.id : pill[pill.contentType + '_' + pill.contentType].id}}" content-type-id="{{::pill.contentTypeId}}" ng-repeat="pill in $ctrl.pills | limitTo: 6 track by $index">{{pill.title}}</span>
+                    <span class="altai-card-pill" ng-if="$ctrl.pills.length>6">...</span>
+                </div>
+                <div class="share comeos-share-{{$ctrl.contenttypemachinename}}" altai-social-share item="$ctrl.item" target="$ctrl.link"><i class="mdi mdi-share-variant"></i></div>
+                <comeos-content-item-like-component class="like comeos-share-{{$ctrl.contenttypemachinename}}" content-item="$ctrl.item"></comeos-content-item-like-component>
+            </div>
+        </div>
+
+    </a>
+
+</div>

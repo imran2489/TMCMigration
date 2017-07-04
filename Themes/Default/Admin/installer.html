@@ -1,0 +1,19 @@
+﻿<div class="installer-outer">
+    <div class="installer">
+
+        <h1><b>{{'altai'|translate}}</b>{{'platforminstaller'|translate}}</h1>
+
+        <form ng-init="installData={}">
+
+            <div ng-repeat="installer in vm.installers" ng-include="installer.templateUrl"></div>
+
+            <div class="form-row" ng-hide="vm.installing">
+                <button type="submit" class="btn btn-success" data-ng-click="vm.doInstall(installData)">{{'install'||translate}}</button>
+            </div>
+
+            <div ng-show="vm.installing">Performing the install...</div>
+
+        </form>
+
+    </div>
+</div>

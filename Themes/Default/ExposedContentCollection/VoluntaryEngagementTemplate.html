@@ -1,0 +1,72 @@
+﻿<div analytics analytics-item="$ctrl.data.pageResults[0]" analytics-on-view="true"></div>
+<div print-section class="root theme--square altai-theme-content  dossier container-content">
+    <div altai-set-title titletext="{{$ctrl.data.pageResults[0].title}}"></div>
+    <section altai-image-style-set-background imagestyleset="pageheader" image="$ctrl.data.pageResults[0].fileactumessage.file" class="comeos-cover cover-large comeos-bg-voluntaryengagement" ng-class="{'highcover':$ctrl.data.pageResults[0].filevoluntaryengagement}">
+        <div ng-if="$ctrl.data.pageResults[0].filevoluntaryengagement.file" class="altai-overlay"></div>
+        <div class="altai-panel">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-10 col-sm-offset-1 text-center">
+                        <div class="title">{{$ctrl.data.pageResults[0].title}}</div>
+                        <div class="contact-buttons">
+                            <div class="contact-buttons">
+                                <comeos-content-item-like-header-component class="like" ng-if="$ctrl.data.pageResults[0] != undefined" content-item="$ctrl.data.pageResults[0]"></comeos-content-item-like-header-component>
+                                <socialshareheader ng-if="$ctrl.data.pageResults[0] != undefined" item="$ctrl.data.pageResults[0]"></socialshareheader>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="comeos-button comeos-button-cover comeos-button-white" comeos-questions-contact-us manager="$ctrl.data.pageResults[0].persoonvoluntaryengagement.name" itemname="$ctrl.data.pageResults[0].name">
+                    <span translate>questionscontactus</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="main-container container">
+
+        <section class="blog-post">
+            <div class="pagecontentstart">
+                <div class="row introrow screen">
+                    <div class="col-sm-12">
+                        <div class="dossier-contact-section text-center singlerowcontact">
+                            <div class="profile-picture profile-picture-circle"><img ng-src="{{::$root.staticFileBase}}/{{$ctrl.data.pageResults[0].persoonvoluntaryengagement.persoon_file.file}}"/></div>
+                            <div><span class="h6">{{$ctrl.data.pageResults[0].persoonvoluntaryengagement.voornaam}} {{$ctrl.data.pageResults[0].persoonvoluntaryengagement.achternaam}}</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-10 col-sm-offset-1 ">
+                        <div class="cktext article-body" altai-compile-html="{{$ctrl.data.pageResults[0].content}}">
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-10 col-sm-offset-1 ">
+                        <div ng-if="$ctrl.activeLang.code=='fr'" class="dossier-section" ng-show="$ctrl.data.pageResults[0].filevoluntaryengagement1.length > 0">
+                            <h5 translate>attachments</h5>
+                            <div class="attached-file" ng-repeat="doc in $ctrl.data.pageResults[0].filevoluntaryengagement1">
+                                <a ng-href="{{::$root.staticFileBase}}/{{doc.file}}" target="_blank"><fileicon doctype="doc.fileextension"></fileicon> <span>{{doc.label}}</span></a>
+                            </div>
+                        </div>
+                        <div ng-if="$ctrl.activeLang.code=='nl'" class="dossier-section" ng-show="$ctrl.data.pageResults[0].filevoluntaryengagement.length > 0">
+                            <h5 translate>attachments</h5>
+                            <div class="attached-file" ng-repeat="doc in $ctrl.data.pageResults[0].filevoluntaryengagement">
+                                <a ng-href="{{::$root.staticFileBase}}/{{doc.file}}" target="_blank"><fileicon doctype="doc.fileextension"></fileicon> <span>{{doc.label}}</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" print-remove>
+                    <div class="col-sm-10 col-sm-offset-1  comeos-buttons">
+                        <a class="comeos-button" analytics analytics-item="$ctrl.data.pageResults[0]" analytics-on-click="logprint" print-btn><span translate>print</span></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

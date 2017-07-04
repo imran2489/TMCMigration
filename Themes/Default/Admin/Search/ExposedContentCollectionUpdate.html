@@ -1,0 +1,204 @@
+﻿<altai-toolbar-menu menu-model="vm.toolbar" languages="vm.languages"></altai-toolbar-menu>
+
+<div class="altai-admin-section">
+
+    <h2>{{'settings'|translate}}</h2>
+
+    <panel table="true">
+
+        <table class="table table-striped">
+
+            <tr>
+                <td style="width:10%;">{{'label'|translate}}:</td>
+                <td>
+                    <div altai-translatable-input="vm.exposedContentCollection.labelTranslatable" languages="vm.languages" />
+                </td>
+            </tr>
+
+            <tr>
+                <td>{{'template'|translate}}:</td>
+                <td>
+                    <select ng-options="c.id as c.name for c in vm.templates" ng-model="vm.exposedContentCollection.templateId"></select>
+                </td>
+            </tr>
+
+            <tr>
+                <td>{{'default'|translate}}:</td>
+                <td><input type="checkbox" ng-model="vm.exposedContentCollection.default" /></td>
+            </tr>
+
+            <tr>
+                <td>{{'displaylimit'|translate}}:</td>
+                <td><input type="text" ng-model="vm.exposedContentCollection.displayLimit" /></td>
+            </tr>
+
+            <tr>
+                <td>{{'pagesize'|translate}}:</td>
+                <td><input type="text" ng-model="vm.exposedContentCollection.pageSize" /></td>
+            </tr>
+
+            <tr>
+                <td>{{'failifempty'|translate}}:</td>
+                <td><input type="checkbox" ng-model="vm.exposedContentCollection.failIfEmpty" /></td>
+            </tr>
+
+            <tr>
+                <td>{{'contenttypes'|translate}}:</td>
+                <td>
+                    <div isteven-multi-select input-model="vm.contentTypes" output-model="vm.contentTypesOutput" button-label="icon name" item-label="icon name maker" tick-property="ticked"></div>
+                </td>
+            </tr>
+
+            <tr ng-hide="vm.exposedContentCollection.default">
+                <td>{{'linkedcontenttype'|translate}}:</td>
+                <td>
+                    <select ng-model="vm.exposedContentCollection.linkedContentTypeId" ng-options="c.id as c.label for c in vm.contentTypes">
+                        <option value="">{{'none'|translate}}</option>
+                    </select>
+                </td>
+            </tr>
+
+        </table>
+
+    </panel>
+
+    <h2>{{'filters'|translate}}</h2>
+
+    <panel table="true">
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>{{'label'|translate}}</th>
+                    <th>{{'field'|translate}}:</th>
+                    <th>{{'type'|translate}}</th>
+                    <th>{{'fixed'|translate}}</th>
+                    <th>{{'nested'|translate}}</th>
+                    <th>{{'contenttype'|translate}}</th>
+                    <th>{{'actions'|translate}}</th>
+                </tr>
+            </thead>
+            <tbody ui-sortable="vm.ctaSortOptions" ng-model="vm.exposedContentCollection.exposedContentCollectionFilters">
+                <tr ng-repeat="filter in vm.exposedContentCollection.exposedContentCollectionFilters track by filter.id">
+                    <td>{{filter.label}}</td>
+                    <td>{{filter.field}}</td>
+                    <td>{{filter.filterType}}</td>
+                    <td>{{filter.fixed}}</td>
+                    <td>{{filter.nested}}</td>
+                    <td>{{filter.type}}</td>
+                    <td>
+                        <button class="icon" ng-click="vm.openUpdateFilterWindow(filter)" aria-label="{{'edit'|translate}}"><i class="mdi mdi-pencil"></i></button>
+                        <button class="icon" ng-click="vm.deleteExposedContentCollectionFilter(filter)" aria-label="{{'delete'|translate}}"><i class="mdi mdi-delete"></i></button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="6"><button class="altai-admin-icon main" ng-click="vm.openCreateFilterWindow()"><i class="mdi mdi-plus"></i></button></td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+
+
+    </panel>
+
+    <h2>{{'sorter'|translate}}</h2>
+
+    <panel table="true">
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>{{'field'|translate}}:</th>
+                    <th>{{'type'|translate}}</th>
+                    <th>{{'Ascending'|translate}}</th>
+                    <th>{{'actions'|translate}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="sort in vm.exposedContentCollection.exposedContentCollectionSorters | orderBy: 'order' track by sort.id">
+                    <td>{{sort.field}}</td>
+                    <td>{{sort.scoredQuery}}</td>
+                    <td>{{sort.ascending}}</td>
+                    <td>
+                        <button class="icon" ng-click="vm.sortPositionUp(sort)" aria-label="{{'up'|translate}}"><i class="mdi mdi-arrow-up"></i></button>
+                        <button class="icon" ng-click="vm.sortPositionDown(sort)" aria-label="{{'down'|translate}}"><i class="mdi mdi-arrow-down"></i></button>
+                        <button class="icon" ng-click="vm.openUpdateSorterWindow(sort)" aria-label="{{'edit'|translate}}"><i class="mdi mdi-pencil"></i></button>
+                        <button class="icon" ng-click="vm.deleteExposedContentCollectionSorter(sort)" aria-label="{{'delete'|translate}}"><i class="mdi mdi-delete"></i></button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="6"><button class="altai-admin-icon main" ng-click="vm.openCreateSorterWindow()"><i class="mdi mdi-plus"></i></button></td>
+                </tr>
+
+            </tbody>
+
+        </table>
+    </panel>
+    <h2>{{'range'|translate}}</h2>
+
+    <panel table="true">
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>{{'type'|translate}}</th>
+                    <th>{{'field'|translate}}:</th>
+                    <th>{{'startValue'|translate}}</th>
+                    <th>{{'endValue'|translate}}</th>
+                    <th>{{'actions'|translate}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="range in vm.exposedContentCollection.exposedContentCollectionRanges | orderBy: 'order' track by range.id">
+                    <td>{{range.type}}</td>
+                    <td>{{range.field}}</td>
+                    <td>{{range.startValue}}</td>
+                    <td>{{range.endValue}}</td>
+                    <td>
+                        <button class="icon" ng-click="vm.openUpdateRangeWindow(range)" aria-label="{{'edit'|translate}}"><i class="mdi mdi-pencil"></i></button>
+                        <button class="icon" ng-click="vm.deleteExposedContentCollectionRange(range)" aria-label="{{'delete'|translate}}"><i class="mdi mdi-delete"></i></button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="6"><button class="altai-admin-icon main" ng-click="vm.openCreateRangeWindow()"><i class="mdi mdi-plus"></i></button></td>
+                </tr>
+
+            </tbody>
+
+        </table>
+    </panel>
+    <h2>{{'projection'|translate}}</h2>
+
+    <panel table="true">
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>{{'field'|translate}}:</th>
+                    <th width="20%">{{'actions'|translate}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="attr in vm.exposedContentCollection.expContCollAttributes | orderBy: 'expContCollFields[0].field' track by attr.id">
+                    <td>{{attr.expContCollFields[0].field}}</td>
+                    <td>
+                        <button class="icon" ng-click="vm.openUpdateAttributeWindow(attr)" aria-label="{{'edit'|translate}}"><i class="mdi mdi-pencil"></i></button>
+                        <button class="icon" ng-click="vm.deleteExposedContentCollectionAttribute(attr)" aria-label="{{'delete'|translate}}"><i class="mdi mdi-delete"></i></button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="6"><button class="altai-admin-icon main" ng-click="vm.openUpdateAttributeWindow()"><i class="mdi mdi-pencil"></i></button></td>
+                </tr>
+
+            </tbody>
+
+        </table>
+    </panel>
+
+</div>

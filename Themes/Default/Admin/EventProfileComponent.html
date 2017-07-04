@@ -1,0 +1,12 @@
+﻿<altai-toolbar-menu menu-model="$ctrl.toolbar" use-default-langs="true" languages="$ctrl.languages"></altai-toolbar-menu>
+<div class="window-split-left-right">
+    <div ui-layout="{flow : 'column'}" class="stretch-outer">
+        <div ui-layout-container class="sidebar">
+            <event-profile-details content-type-id="$ctrl.contentTypeId" content-item-id="$ctrl.contentItemId" itemprofile="$ctrl.itemprofile" itemdata="$ctrl.itemdata" templateurl="$ctrl.templateurl" languages="$ctrl.languages"></event-profile-details>
+        </div>
+        <div ui-layout-container class="rightbar">
+            <event-profile-preview style="zoom: 75%;" content-type-id="$ctrl.contentTypeId" itemprofile="$ctrl.itemprofile" templateurl="$ctrl.templateurl" itemdata="$ctrl.itemdata" languages="$ctrl.languages"></event-profile-preview>
+        </div>
+    </div>
+</div>
+

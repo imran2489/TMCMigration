@@ -1,0 +1,44 @@
+﻿<div class="menu-bar">
+    <div class="mobile-toggle" ng-click="$ctrl.openMobileMenu()">
+        <i class="mdi mdi-menu"></i>
+    </div>
+    <div class="mobile-toggle">
+        <div class="mC" ng-click="$ctrl.openLink({state:{name:'Root.MyComeos.Dashboard'}})">m<span class="c">C</span></div>
+    </div>
+    <div class="mobile-toggle" ng-click="$ctrl.openSearcher()">
+        <i class="mdi mdi-magnify"></i>
+    </div>
+    <div class="mobile-toggle" ng-if="$ctrl.$rootScope.showAdmin" ng-click="$ctrl.openAdmin()">
+        <i class="mdi mdi-settings"></i>
+    </div>
+    <div class="mobile-toggle">
+        <div class="altai-spinner-outer" ng-show="$ctrl.loading">
+            <div class="altai-spinner"></div>
+        </div>
+    </div>
+    <div class="mobile-logo" ng-click="$ctrl.openLink({state:{name:'Root.Home'}})">
+        <img src="https://static.comeos.be/Themes/comeos/img/Comeos_Logo_Pos_SmallMenuBar.png" />
+    </div>
+</div>
+<div class="searcher" ng-show="$ctrl.searcher">
+    <form ng-submit="$ctrl.search()">
+        <input type="text" ng-model="$ctrl.searchQuery" placeholder="{{'search'|translate}}" />
+    </form>
+
+</div>
+<ul class="comeos-menu-mobile" ng-show="$ctrl.visible" ng-class="{'comeos-mobile-visible':$ctrl.visible}">
+    <li>
+        <div class="language" ng-repeat="lang in ::$ctrl.languages" class="language-selector" ng-click="$ctrl.selectLang(lang)" ng-class="{'selected':$ctrl.activeLang == lang.code}">{{::lang.code}}</div>
+        <span style="float: right" ng-if="$ctrl.isLoggedIn" ng-click="$ctrl.logout()"><i class="mdi mdi-logout-variant"></i></span>
+    </li>
+    <li ng-repeat="item in $ctrl.menuItems" ng-click="$ctrl.openLink(item);$event.stopPropagation();" style="position: relative">
+        {{item.label}}
+        <div class="submenu-chevron" ng-if="item.childMenuItems.length" ng-init="item.open = false"
+             ng-click="item.open = !item.open; $event.stopPropagation();"><i class="mdi" ng-class="{'mdi-chevron-left': !item.open, 'mdi-chevron-down': item.open}"></i></div>
+        <ul ng-if="item.open">
+            <li class="subitem" ng-repeat="subitem in item.childMenuItems" ng-click="$ctrl.openLink(subitem); $event.stopPropagation();">
+                {{subitem.label}}
+            </li>
+        </ul>
+    </li>
+</ul>

@@ -1,0 +1,26 @@
+﻿<div class="menu-preview-content">
+
+    <div class="nav-module menu-module left">
+        <ul class="menu">
+            <li ng-repeat="item in vm.menu.menuItems">
+                <a ng-href="{{item.url}}">{{item.label}}</a>
+                <ul class="multi-column" ng-repeat="subitem in item.childMenuItems" ng-if="item.childMenuItems">
+                    <li>
+                        <ul>
+                            <li>
+                                <span class="multi-column__title">
+                                    <a href="{{subitem.url}}">{{subitem.label}}</a>
+                                </span>
+                            </li>
+                            <li ng-href="{{subsubitem.url}}" ng-repeat="subsubitem in subitem.childMenuItems">
+                                <a href="{{subsubitem.url}}">
+                                    {{subsubitem.label}}
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>

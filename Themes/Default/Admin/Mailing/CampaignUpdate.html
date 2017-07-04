@@ -1,0 +1,77 @@
+﻿<altai-toolbar-menu menu-model="$ctrl.toolbar" languages="$ctrl.languages" use-default-langs="true"></altai-toolbar-menu>
+
+<div class="altai-tabs-header">
+    <div ng-click="activeTab='audience'" ng-class="{'active':(activeTab=='audience' || !activeTab)}">1. Audience</div>
+    <div ng-click="activeTab='content'" ng-class="{'active':activeTab=='content'}">2. Content</div>
+    <div ng-click="activeTab='send'" ng-class="{'active':activeTab=='send'}">3. Send</div>
+</div>
+
+<div class="altai-tabs-content" ng-switch on="activeTab">
+
+    <div ng-switch-default>
+
+        <h1 class="md-display-2">Audience</h1>
+        <p>Select the mailinglists you want to target:</p>
+        <p>
+            <div isteven-multi-select input-model="$ctrl.mailingLists" output-model="$ctrl.mailingCampaign.mailingCampaignLists" button-label="icon label" item-label="icon label maker" tick-property="ticked"></div>
+        </p>
+        <p>Or <md-button wm-ref="mailingListCreate">create a new list</md-button> first</p>
+
+    </div>
+
+    <div ng-switch-when="content">
+
+        <h1 class="md-display-2">Content</h1>
+
+        <form class="altai-form">
+            <div class="form-group">
+                <label>{{'subject'|translate}}</label>
+                <div altai-translatable-input="$ctrl.mailingCampaign.subjectTranslatable" class="wide-inputfield" languages="$ctrl.languages" />
+            </div>
+        </form>
+
+        <h1 class="md-display-2">ContentItem selection</h1>
+
+        <form class="altai-form">
+
+            <div class="form-group">
+                <label>{{'contenttype'|translate}}</label>
+                <select ng-options="ct.id as ct.label for ct in $ctrl.contentTypes" ng-model="$ctrl.selectedContentTypeId"></select>
+            </div>
+
+            <div class="form-group" ng-show="$ctrl.contentItems">
+                <label>{{'item'|translate}}</label>
+                <select ng-options="c as c.name for c in $ctrl.contentItems" ng-model="$ctrl.selectedContentItem"></select>
+            </div>
+
+            <div class="form-group">
+                <label>{{'template'|translate}}</label>
+                <select ng-options="tpl.id as tpl.name for tpl in $ctrl.contentTemplates" ng-model="$ctrl.selectedContentTemplateId"></select>
+            </div>
+
+        </form>
+
+        <h1 class="md-display-2">Message</h1>
+        <p>
+            <div altai-translatable-input="$ctrl.mailingCampaign.contentTranslatable" input-type="email" languages="$ctrl.languages"></div>
+        </p>
+
+        <div id="preview"></div>
+    </div>
+
+    <div ng-switch-when="send">
+
+        <h1 class="md-display-2">
+            Send mailing
+        </h1>
+
+        <p>
+            <md-button ng-click="$ctrl.sendMailing()" ng-show="!$ctrl.mailingCampaign.sent" class="md-button-altai md-raised"><i class="mdi mdi-mail-ru"></i> {{::'send'|translate}} </md-button>
+        </p>
+
+        <p ng-show="$ctrl.mailingCampaign.sent">
+            Campaign has been sent previously
+        </p>
+
+    </div>
+</div>

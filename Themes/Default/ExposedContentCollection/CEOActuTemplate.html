@@ -1,0 +1,141 @@
+﻿<div analytics analytics-item="$ctrl.data.pageResults[0]" analytics-on-view="true"></div>
+<div print-section class="root theme--square altai-theme-content actu dossier container-content" data-reveal-selectors="section:not(.masonry):not(:first-of-type):not(.parallax)">
+    <section altai-image-style-set-background imagestyleset="pageheader" image="$ctrl.data.pageResults[0].fileceoactu2.file" class="comeos-cover cover-large comeos-bg-green" ng-class="{'highcover':$ctrl.data.pageResults[0].fileceoactu2}">
+        <div ng-if="$ctrl.data.pageResults[0].fileceoactu2.file" class="altai-overlay"></div>
+            <div class="row">
+                <div class="col-sm-10 col-sm-offset-1 text-center">
+                    <div class="title">{{$ctrl.data.pageResults[0].title}}</div>
+                    <div class="contact-buttons">
+                        <!--<div class="mail"><i class="mdi mdi-heart"></i></div>-->
+
+                        <div class="contact-buttons">
+                            <comeos-content-item-like-header-component class="like" ng-if="$ctrl.data.pageResults[0] != undefined" content-item="$ctrl.data.pageResults[0]"></comeos-content-item-like-header-component>
+                            <socialshareheader ng-if="$ctrl.data.pageResults[0] != undefined" item="$ctrl.data.pageResults[0]"></socialshareheader>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <div class="comeos-button comeos-button-cover comeos-button-white" comeos-questions-contact-us  itemname="$ctrl.data.pageResults[0].name">
+            <span translate>questionscontactus</span>
+        </div>
+    </section>
+
+   
+
+
+    <div id="printActu" class="main-container container">
+
+        <section class="blog-post">
+            <div class="pagecontentstart">
+                <!--<div class="row text-center">
+                    <div class="col-sm-10 col-sm-offset-1 ">
+                        <div class="breadcrumbs">
+                            <a ui-sref="Root.Content.Library" translate>bibliotheek</a> > <a>{{$ctrl.data.pageResults[0].title}}</a>
+                        </div>
+                    </div>
+                </div>-->
+
+
+
+                <div class="row introrow smartphone">
+                    <div class="col-sm-4 col-sm-offset-1">
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="dossier-contact-section">
+                                    <div class="profile-picture profile-picture-circle"><img ng-src="{{::$root.staticFileBase}}/{{$ctrl.data.pageResults[0].persoonceoactu.persoon_file.file}}" /></div>
+                                    <div><span class="h6">{{$ctrl.data.pageResults[0].persoonceoactu.voornaam}} {{$ctrl.data.pageResults[0].persoonceoactu.achternaam}}</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="two-col-introduction cktext article-body" altai-compile-html="{{$ctrl.data.pageResults[0].publicintroduction}}">
+                        </div>
+                    </div>
+                </div>
+                <div class="row introrow screen">
+                    <div class="col-sm-6 col-sm-offset-1">
+                        <div class="two-col-introduction cktext article-body" altai-compile-html="{{$ctrl.data.pageResults[0].publicintroduction}}">
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="dossier-contact-section">
+                                    <div class="profile-picture profile-picture-circle"><img ng-src="{{::$root.staticFileBase}}/{{$ctrl.data.pageResults[0].persoonceoactu.persoon_file.file}}" /></div>
+                                    <div><span class="h6">{{$ctrl.data.pageResults[0].persoonceoactu.voornaam}} {{$ctrl.data.pageResults[0].persoonceoactu.achternaam}}</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" ng-if="$ctrl.data.pageResults[0].themeceoactu.length || $ctrl.data.pageResults[0].sectorceoactu.length || $ctrl.data.pageResults[0].regionceoactu.length || $ctrl.data.pageResults[0].pcceoactu.length">
+
+                    <div class="col-sm-12">
+
+                        <div class="dossier-tags">
+                            <span class="dossier-tags-chip" getlink content-item-id="{{tag.isroot !== false ? tag.id : tag[tag.contentType + '_' + tag.contentType].id}}" content-type-id="{{::tag.contentTypeId}}" theme="{{::tag.id}}" ng-repeat="tag in $ctrl.data.pageResults[0].themeceoactu">
+                                {{tag.title}}
+                            </span>
+                            <span class="dossier-tags-chip" getlink content-item-id="{{tag.isroot !== false ? tag.id : tag[tag.contentType + '_' + tag.contentType].id}}" content-type-id="{{::tag.contentTypeId}}" ng-repeat="tag in $ctrl.data.pageResults[0].sectorceoactu">
+                                {{tag.title}}
+                            </span>
+                            <span class="dossier-tags-chip" getlink content-item-id="{{tag.isroot !== false ? tag.id : tag[tag.contentType + '_' + tag.contentType].id}}" content-type-id="{{::tag.contentTypeId}}" ng-repeat="tag in $ctrl.data.pageResults[0].regionceoactu">
+                                {{tag.title}}
+                            </span>
+                            <span class="dossier-tags-chip"getlink content-item-id="{{tag.isroot !== false ? tag.id : tag[tag.contentType + '_' + tag.contentType].id}}" content-type-id="{{::tag.contentTypeId}}" ng-repeat="tag in $ctrl.data.pageResults[0].pcceoactu">
+                                {{tag.title}}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-10 col-sm-offset-1 ">
+                        <div class="cktext article-body" altai-compile-html="{{$ctrl.data.pageResults[0].content}}">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-10 col-sm-offset-1 ">
+                        <div ng-if="$ctrl.activeLang.code=='fr'" class="dossier-section" ng-show="$ctrl.data.pageResults[0].fileceoactu.length > 0">
+                            <h5 translate>attachments</h5>
+                            <div class="attached-file" ng-repeat="doc in $ctrl.data.pageResults[0].fileceoactu">
+                                <a ng-href="{{::$root.staticFileBase}}/{{doc.file}}" target="_blank"><fileicon doctype="doc.fileextension"></fileicon> <span>{{doc.label}}</span></a>
+                            </div>
+                        </div>
+                        <div ng-if="$ctrl.activeLang.code=='nl'" class="dossier-section" ng-show="$ctrl.data.pageResults[0].fileceoactu1.length > 0">
+                            <h5 translate>attachments</h5>
+                            <div class="attached-file" ng-repeat="doc in $ctrl.data.pageResults[0].fileceoactu1">
+                                <a ng-href="{{::$root.staticFileBase}}/{{doc.file}}" target="_blank"><fileicon doctype="doc.fileextension"></fileicon> <span>{{doc.label}}</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-10 col-sm-offset-1 ">
+                        <div class="actu-section" ng-show="$ctrl.data.pageResults[0].linkceoactu.length > 0">
+                            <h5 translate>relatedlinks</h5>
+                            <div class="attached-link" ng-repeat="link in $ctrl.data.pageResults[0].linkceoactu">
+                                <a ng-if="link.linktarget!=undefined" ng-href="{{link.linkurl}}" target="{{link.linktarget}}"><span class="attached-link-icon"><i class="mdi mdi-link"></i></span><span>{{link.linktekst}}</span></a>
+                                <a ng-if="link.linktarget==undefined" ng-href="{{link.linkurl}}" target="_blank"><span class="attached-link-icon"><i class="mdi mdi-link"></i></span><span>{{link.linktekst}}</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div print-remove class="row">
+                    <div class="col-sm-10 col-sm-offset-1  comeos-buttons">
+                        <a class="comeos-button" analytics analytics-item="$ctrl.data.pageResults[0]" analytics-on-click="logprint" print-btn><span translate>print</span></a>
+                    </div>
+                </div>
+               
+
+            </div>
+        </section>
+    </div>
+</div>

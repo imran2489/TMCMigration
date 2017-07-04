@@ -1,0 +1,49 @@
+﻿@import "../comeos.config.less";
+
+altai-cookie-bar {
+
+    .altai-cookie-bar-inner {
+        display: block;
+        position: fixed;
+        bottom: 10px;
+        left: 10px;
+        right: 10px;
+        background-color: @comeos-bg-green;
+        padding: 10px 15px;
+        opacity: 0.95;
+        z-index: 1101;
+        line-height: 150%;
+        color: white;
+        border-radius: 10px;
+
+        .cookiebartext {
+            margin-bottom: 20px;
+        }
+
+        .cookiebarbuttons {
+            .comeos-button {
+                color: #000;
+                display: inline-block;
+                background-color: transparent;
+                padding: 10px;
+                min-height: 40px;
+                max-height: 80px;
+                border-radius: 40px;
+                border: 2px solid #fff;
+                text-align: center;
+                cursor: pointer;
+                justify-content: center;
+                transition: background-color 100ms ease-in-out;
+                -webkit-touch-callout: none;
+                -webkit-user-select: none;
+                -khtml-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+                margin-right: 20px;
+                margin-bottom:20px;
+                color:white;
+            }
+        }
+    }
+}

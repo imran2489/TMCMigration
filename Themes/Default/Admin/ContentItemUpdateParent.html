@@ -1,0 +1,13 @@
+﻿<altai-toolbar-menu menu-model="vm.toolbar" languages="vm.languages" use-default-langs="true"></altai-toolbar-menu>
+
+<form class="altai-form" novalidate name="contentItemCreateForm" ng-class="{'published':vm.published}">
+
+    <div class="alert alert-warning" ng-hide="vm.contentItem.published">
+        <i class="fa fa-warning"></i>&nbsp;{{::'notpublished'|translate}}
+    </div>
+
+    <altai-content-item-update linked-content-types="vm.linkedContentTypes" update-model="vm.updateModel" content-type="vm.contentType" content-item="vm.contentItem" content-item-id="vm.contentItemId" languages="vm.languages"></altai-content-item-update>
+
+</form>
+
+<div class="spacer-vertical-200"></div>

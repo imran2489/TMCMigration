@@ -1,0 +1,12 @@
+﻿<div ng-class="{'loggedin':$root.user.authorized, 'adminmenu':$root.user.adminmenu}" class="comeos-root-container container">
+    <div class="row top-menu-view" ui-view="topMenuView"></div>
+    <div class="row header-view" altai-header-height-calculator ng-style="{'height':$ctrl.slideheight}" ui-view="headerView"></div>
+
+    <div class="row mid-menu-view" ui-view="midMenuView"></div>
+
+    <div class="contentView row container-content" ui-view="contentView"></div>
+
+    <div class="footerView row" ui-view="footerView">
+
+    </div>
+</div>

@@ -1,0 +1,42 @@
+﻿<div class="altai-list">
+    <div class="search">
+        <input class="query" type="text" placeholder="{{'searchinname'|translate}}" ng-model-options="{ debounce: 300 }" ng-model="$ctrl.searchModel.name" />
+        <md-button ng-click="$ctrl.createContact()" class="md-button-altai md-raised"><i class="mdi mdi-plus"></i> {{::'create'|translate}} </md-button>
+    </div>
+</div>
+
+<div class="altai-admin-section">
+
+    <table>
+        <thead>
+            <tr>
+                <th></th>
+                <th><a ng-click="$ctrl.setSorting('Name')">{{'name'|translate}}</a></th>
+                <th><a ng-click="$ctrl.setSorting('LifecycleState')">{{'lifecyclestate'|translate}}</a></th>
+                <th><a ng-click="$ctrl.setSorting('LastInteraction')">{{'lastinteraction'|translate}}</a></th>
+                <th>{{'actions'|translate}}</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr ng-repeat="contentRow in $ctrl.contentItems.pageResults track by contentRow.id">
+                <td><i class="mdi mdi-google-circles-extended"></i></td>
+                <td>{{contentRow.name|altaicutoff:50}}</td>
+                <td>Lead</td>
+                <td>{{contentRow.lastUpdated| date:'dd-MM-yyyy HH:mm'}}</td>
+                <td>
+                    <md-button ng-click="$ctrl.openContactTimeline(contentRow)" class="md-button-altai md-raised"><i class="mdi mdi-clock-start"></i> {{::'timeline'|translate}} </md-button>
+                    <md-button ng-click="$ctrl.openContentItemProfile(contentRow)" class="md-button-altai md-raised"><i class="mdi mdi-view-list"></i> {{::'open_list_view'|translate}} </md-button>
+                    <md-button ng-click="$ctrl.updateContentItem(contentRow)" class="md-button-altai md-raised"><i class="mdi mdi-pencil"></i> {{::'open_edit'|translate}} </md-button>
+                    <md-button ng-click="$ctrl.deleteContentItem(contentRow)" class="md-button-altai md-raised"><i class="mdi mdi-delete"></i> {{::'delete'|translate}} </md-button>
+                </td>
+            </tr>
+        </tbody>
+
+    </table>
+
+    <div class="panel-buttons">
+        <altai-pagination paged-result="$ctrl.contentItems" switch-page="$ctrl.openPage(pageIndex)"></altai-pagination>
+    </div>
+
+</div>

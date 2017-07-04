@@ -1,0 +1,26 @@
+﻿<div>
+ <div class="admin-header">
+    <h4>{{"changefileformatsettings"|translate}}</h4>
+</div>
+ <form editable-form name="editableForm" onbeforesave="updateImageStyleAction($data, imageStyleAction.id)" shown="true">
+    <div class="simpleformdatarow clearfix">
+          <span class="simpleformlabel">{{"fileformat"|translate}}</span>
+          <span data-editable-select="imageStyleAction.formatTo" data-e-name="formatTo" data-e-form="editableForm" e-ng-options="o.value as o.text for o in fileFormatList">{{ imageStyleAction.formatTo }}</span>
+    </div>
+    <div class="simpleformbuttonrow clearfix">
+      <!-- button to show form -->
+      <button type="button" class="btn btn-default" ng-click="editableForm.$show()" ng-show="!editableForm.$visible">
+        {{"edit"|translate}}
+      </button>
+      <!-- buttons to submit / cancel form -->
+      <span ng-show="editableForm.$visible">
+        <button type="submit" class="btn btn-primary" ng-disabled="editableForm.$waiting">
+          {{"save"|translate}}
+        </button>
+        <button type="button" class="btn btn-default" ng-disabled="editableForm.$waiting" ng-click="editableForm.$cancel()">
+          {{"cancel"|translate}}
+        </button>
+      </span>
+    </div>
+  </form>  
+</div>

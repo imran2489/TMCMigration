@@ -1,0 +1,88 @@
+﻿<div class="dossier-vragen">
+    <div ng-if="$ctrl.convertedSummarySheet.length>0">
+        <div class="row">
+            <div class="col-md-12 comeos-buttons">
+                <div class="comeos-button no-animate" ng-click="$ctrl.expandAll()" ng-show="!$ctrl.allexpanded" translate>
+                    Klapalledomeinenuit
+                </div>
+                <div class="comeos-button no-animate" ng-click="$ctrl.collapseAll()" ng-show="$ctrl.allexpanded" translate>
+                    Klapalledomeinentoe
+                </div>
+                <div class="comeos-button no-animate" ng-click="$ctrl.toggleShowAllThemes()" ng-show="!$ctrl.showAllThemes" translate>
+                    Toonookdelegedomeinen
+                </div>
+                <div class="comeos-button no-animate" ng-click="$ctrl.toggleShowAllThemes()" ng-show="$ctrl.showAllThemes" translate>
+                    Toonenkeldedomeinenmetinhoud
+                </div>
+                <!--<a class="comeos-button" ng-click="$ctrl.printFile()" translate>
+                    Printdesamenvattendefiche
+                </a>-->
+                <!-- add buttons for limiting the domains-->
+            </div>
+        </div>
+        <div class="row">
+            <div ng-repeat="theme in $ctrl.convertedSummarySheet track by $index" ng-if="theme.hasContent || theme.hasThemeContent || $ctrl.showAllThemes">
+
+
+                <div class="dossier-vraag-item tables" ng-class="{opened:theme.expanded}">
+                    <div class="dossier-vraag-item-vraag sf" ng-click="$ctrl.toggleItem($index)">
+                        <!--{{theme.theme.rangorde}} {{theme.theme.title}} <i class="mdi mdi-chevron-right collapseicon"></i>-->
+                        {{theme.theme.title}} <i class="mdi mdi-chevron-right collapseicon"></i>
+                    </div>
+                    <div class="answers" ng-show="theme.expanded">
+                        <div>
+                            <div class="dossier-vraag-item-antwoord">
+                               
+                                <table ng-if="theme.hasThemeContent">
+                                    <thead>
+                                        <tr>
+                                            <th ng-repeat="pc in $ctrl.pcNameList track by $index">
+                                                <!-- iterate over sheets and get pc name-->
+                                                {{pc}}
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td ng-style="{ 'width' : $ctrl.percentageWidth +'%' }" ng-repeat="item in theme.ssItems track by $index">
+                                                <!-- iterate over items-->
+                                                <div ng-if="!item.empty" altai-compile-html="{{item.item.description}}"></div>
+                                                <div ng-if="item.empty" altai-compile-html="-"></div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <table ng-if="theme.subthemeWithContentCount>0 || ($ctrl.showAllThemes &&  theme.ssSubthemes.length>0)">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                
+                                            </th>
+                                            <th ng-repeat="pc in $ctrl.pcNameList track by $index"><!-- iterate over sheets and get pc name-->
+                                                {{pc}}
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="subtheme in theme.ssSubthemes track by $index"  ng-if="subtheme.hasContent || $ctrl.showAllThemes">
+                                            <td class="tablerowheader">
+                                                <!--{{theme.theme.rangorde}}.{{subtheme.subtheme.rangorde}} {{subtheme.subtheme.title}}-->
+                                                {{subtheme.subtheme.title}}
+                                            </td>
+                                            <td ng-style="{ 'width' : $ctrl.percentageWidth +'%' }" ng-repeat="item in subtheme.ssItems track by $index"><!-- iterate over items-->
+                                                <div ng-if="!item.empty" altai-compile-html="{{item.item.description}}"> </div>
+                                                <div ng-if="item.empty">-</div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

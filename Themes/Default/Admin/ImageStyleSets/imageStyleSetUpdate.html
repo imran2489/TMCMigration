@@ -1,0 +1,50 @@
+﻿<altai-toolbar-menu menu-model="$ctrl.toolbar" languages="$ctrl.languages"></altai-toolbar-menu>
+<form class="altai-form" name="contentTypeAttributeUpdate">
+    <div class="altai-admin-section">
+        <h2>{{'imagestyleset'|translate}}</h2>
+        <div class="altai-simple-form">
+            <div class="form-group">
+                <label>{{'name'|translate}}</label>
+                <input type="text" ng-model="$ctrl.imageStyleSet.name" />
+            </div>
+        </div>
+    </div>
+    <div class="altai-admin-section">
+        <h2>{{$ctrl.imageStyleSet.name}}</h2>
+
+        <table class="table table-striped">
+            <thead>
+            <th>{{"name"|translate}}</th>
+            <th>{{"minwidth"|translate}}</th>
+            <th>{{"orientation"|translate}}</th>
+            <th>{{"retina"|translate}}</th>
+            <th>{{"actions"|translate}}</th>
+            <th></th>
+            </thead>
+            <tbody>
+                <tr ng-repeat="imageStyle in $ctrl.imageStyleSet.imageStyles">
+                    <td>
+                        {{imageStyle.name}}
+                    </td>
+                    <td>
+                        {{imageStyle.minWidth}}
+                    </td>
+                    <td>
+                        {{imageStyle.orientation}}
+                    </td>
+                    <td>
+                        {{imageStyle.retina}}
+                    </td>
+                    <td>
+                        <span ng-repeat="action in imageStyle.imageStyleActions track by $index">{{action.name}}<span ng-if="!$last">, </span></span>
+                    </td>
+                    <td>
+                        <md-button type="button" class="md-button-altai md-raised" ng-click="$ctrl.openImageStyle(imageStyle)"><i class="mdi mdi-pencil"></i> {{'edit'|translate}} </md-button>
+                        <md-button type="button" class="md-button-altai md-raised" ng-click="$ctrl.deleteImageStyle(imageStyle.id)"><i class="mdi mdi-delete"></i> {{'delete'|translate}} </md-button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <md-button type="button" class="md-button-altai md-raised" ng-click="$ctrl.addImageStyle()"><i class="mdi mdi-plus"></i> {{'create'|translate}} </md-button>
+    </div>
+</form>

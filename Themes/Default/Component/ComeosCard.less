@@ -1,0 +1,508 @@
+﻿@import "../comeos.config.less";
+
+.altai-card-container {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+
+    .altai-card {
+        margin-bottom: 40px;
+    }
+}
+
+.altai-card-container-ceo {
+    //display: flex;
+    //justify-content: space-between;
+    margin-bottom: 0px;
+    margin: 0px;
+    //flex-wrap: wrap;
+    .altai-card-ceo {
+        margin-bottom: 0px;
+    }
+
+    width: 100%;
+    //margin-left: 5px;
+}
+
+.ceotitle {
+    margin-left: 5px !important;
+}
+
+.altai-theme-content #bodyView .loggedin .altai-card .like {
+    display: inherit;
+}
+
+.altai-card {
+    background-color: white;
+    min-height: 400px;
+    color: black;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
+    transition: box-shadow 200ms ease-in-out;
+    position: relative;
+    width: 360px;
+    display: inline-block;
+    float: left;
+    margin: 15px;
+
+    &.low {
+        min-height: 0px;
+    }
+
+    .altai-card-image {
+        height: 230px;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .share {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        cursor: pointer;
+        //color: @comeos-bg-green;
+    }
+
+    .like {
+        display: none;
+        position: absolute;
+        bottom: 20px;
+        right: 40px;
+        cursor: pointer;
+        i {
+            font-size: 1.2em;
+        }
+    }
+
+    .altai-card-body {
+        padding: 20px;
+        min-height: 330px;
+
+        &.low {
+            min-height: 0;
+        }
+    }
+
+    &.commissievergadering {
+        min-height: 0;
+
+        .altai-card-body {
+            min-height: 0;
+        }
+    }
+
+    .altai-card-date {
+        margin-bottom: 15px;
+        color: black;
+    }
+
+    .altai-card-title {
+        color: black;
+    }
+
+    p {
+        color: black;
+    }
+
+    .altai-card-pills {
+        color: #666;
+        display: inline;
+        position: absolute;
+        bottom: 20px;
+        left: 10px;
+        margin-right: calc(~"40px + 1.5em");
+        cursor: pointer;
+
+        .altai-card-pill {
+            background-color: #f1f1f1;
+            padding: 8px 12px 8px 12px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 6px;
+            cursor: pointer;
+            line-height: 1em;
+            font-size: 0.625em;
+            color: #949494;
+            margin-left: 6px;
+        }
+    }
+
+    .altai-card-pills-relative {
+        color: #666;
+        display: inline;
+        margin-right: calc(~"40px + 1.5em");
+        cursor: pointer;
+
+        .altai-card-pill {
+            background-color: #f1f1f1;
+            padding: 8px 12px 8px 12px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 6px;
+            cursor: pointer;
+            line-height: 1em;
+            font-size: 0.625em;
+            color: #949494;
+            margin-left: 6px;
+        }
+    }
+
+    .altai-card-label {
+        background-color: @comeos-bg-light-grey;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        top: -30px;
+        left: 0px;
+        padding-left: 15px;
+        padding-right: 15px;
+        padding-top: 2px;
+        width: auto;
+        color: @comeos-white;
+        position: absolute;
+        height: 30px;
+        font-size: 0.8em;
+        line-height: 2.6em;
+        text-align: center;
+    }
+
+    .comeos-sub-menu {
+        background-color: black;
+        height: 200px;
+    }
+}
+
+.letter .altai-card-ceo {
+    margin: 15px 7.5px;
+}
+
+.letter.leftletter .altai-card-ceo {
+    //margin: 15px 7.5px;
+    //margin-left: 0px;
+    //margin-right: 15px;
+}
+
+.letter.rightletter .altai-card-ceo {
+    //margin: 15px 7.5px;
+    //margin-left: 15px;
+    //margin-right: 0px;
+}
+
+.altai-card-ceo {
+    background-color: white;
+    min-height: 400px;
+    color: black;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
+    transition: box-shadow 200ms ease-in-out;
+    position: relative;
+    width: 358px;
+    max-width: 100%;
+    display: inline-block;
+    float: left;
+    //margin: 15px 7.5px;
+    min-height: 415px;
+
+    .altai-card-body {
+        padding: 25px;
+        margin-bottom: calc(30px + 1.5em);
+    }
+
+    .like {
+        position: absolute;
+        bottom: 20px;
+        right: 40px;
+
+        i {
+            font-size: 1.2em;
+        }
+    }
+
+    .altai-card-date {
+        margin-bottom: 15px;
+        color: black;
+    }
+
+    .altai-card-title {
+        color: black;
+    }
+
+    p {
+        color: black;
+    }
+
+    .social {
+        position: absolute;
+        bottom: 0px; //25px;
+        left: 0px; //25px;
+        padding: 25px;
+        width: 100%;
+
+        i {
+            color: #00E5FF !important;
+            margin-right: 15px;
+            font-size: 1.5em;
+        }
+    }
+
+    .altai-card-image {
+        height: 200px;
+        background-size: cover;
+        background-position: center;
+        display: flex;
+
+        .img {
+            display: block;
+            height: 100%;
+            width: 100%;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            /*img{
+            max-width:100%;
+            max-height:100%;
+            width:auto;
+            height: auto;
+            display: block;
+            overflow: hidden;
+        }*/
+        }
+
+        h2 {
+            position: absolute;
+            color: #FFF !important;
+            max-width: 200px;
+            white-space: normal;
+            font-size: 140% !important;
+            left: 20px;
+            align-self: center;
+        }
+    }
+
+    .altai-card-pills {
+        color: #666;
+        display: inline;
+        position: absolute;
+        bottom: 20px;
+        left: 10px;
+
+        .altai-card-pill {
+            margin-left: 6px;
+            margin-top: 8px;
+            border-radius: 7px;
+            display: inline-block;
+            background-color: #e8e8e8;
+            padding: 8px;
+            font-size: 0.625em !important;
+            letter-spacing: 1px;
+        }
+    }
+
+    .altai-card-label {
+        background-color: @comeos-bg-light-grey;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        top: -30px;
+        left: 0px;
+        padding-left: 15px;
+        padding-right: 15px;
+        padding-top: 5px;
+        width: auto;
+        color: @comeos-white;
+        position: absolute;
+        height: 30px;
+        font-size: 0.575em;
+        line-height: 2.6em;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        text-align: center;
+    }
+
+    .comeos-sub-menu {
+        background-color: black;
+        height: 200px;
+    }
+}
+
+
+
+
+.altai-theme-content #bodyView .comeos-bg-press .altai-card .altai-card-pills {
+    .altai-card-pill a {
+        color: #333;
+    }
+}
+
+
+.altai-theme-content #bodyView .altai-card .altai-card-pills {
+    .altai-card-pill {
+    }
+
+    .altai-card-pill:hover {
+        background-color: #080808;
+        color: #FFF;
+
+        a {
+            color: #FFF;
+        }
+    }
+}
+
+.altai-card.has-card-label {
+    margin-top: 30px;
+}
+
+.altai-card-favourite-likedislike {
+    float: right !important;
+    font-size: 20px;
+    color: #eaeaea;
+    font-weight: 100;
+    padding: 20px;
+}
+
+.altai-card:hover {
+    box-shadow: 0 14px 28px rgba(0,0,0,0.1);
+}
+
+.altai-theme-content #bodyView .container-content {
+    .altai-card {
+        span a, p a, table a, ul a, ol a, .cktext a {
+            text-decoration: none;
+            border-bottom: none;
+        }
+
+        span a:hover, p a:hover, table a:hover, ul a:hover, ol a:hover, .cktext a:hover {
+            text-decoration: none;
+            background-color: inherit;
+        }
+    }
+}
+
+@media (max-width:768px) {
+    .altai-theme-content #bodyView .loggedin .altai-card .like {
+        display: none;
+    }
+
+    .altai-theme-content #bodyView .altai-card .altai-card-body p {
+        margin: 0;
+    }
+
+    .altai-theme-content #bodyView .grid-item {
+        margin-bottom: 15px !important;
+    }
+
+    .altai-theme-content #bodyView .altai-card .altai-card-body .altai-card-title h5 {
+        margin-bottom: 5px;
+        padding: 5px 5px 15px 5px;
+        font-size: 0.9em;
+    }
+
+    .altai-card {
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto;
+        min-height: 0;
+        position: relative;
+        border-radius: 10px;
+
+        .altai-card-image {
+            height: 100%;
+            width: auto;
+            display: inline-block;
+            border-radius: 10px 10px 0 0;
+        }
+
+        
+
+        .altai-card-label {
+            position: absolute;
+            left: 0px;
+            bottom: 0px;
+            top: inherit;
+            border-radius: 0 10px 0 10px;
+        }
+
+        &.low {
+            min-height: 80px;
+        }
+
+        .altai-card-image {
+            width: 100%;
+            height: 200px;
+            display: block;
+            background-size: cover;
+            background-position: center;
+            float: left;
+        }
+
+        &.whoiswhocard {
+            .altai-card-image {
+                height: 250px;
+                width: auto;
+                display: inline-block;
+                border-radius: 10px;
+            }
+        }
+
+        .altai-card-pills {
+            display: none;
+        }
+        .altai-card-pills-relative{
+            display: none;
+        }
+
+        .altai-card-body {
+            display: inline-block;
+            min-height: 0;
+            height: 100%;
+            padding: 10px;
+            padding-bottom: 20px;
+            //min-width: calc(~"100% - 100px");
+            width: 100%;
+            //width: calc(~"100% - 100px");
+            max-width: 100%;
+            float: right;
+            position: relative;
+            border-radius: 0 0 10px 10px;
+
+            .altai-card-date {
+                position: absolute;
+                bottom: 5px;
+                right: 8px;
+                margin-bottom: 0px;
+                color: lightgrey;
+                font-size: 0.8em;
+            }
+
+            .altai-card-title {
+                h5 {
+                    width: 100%;
+                    margin-bottom: 5px;
+                    font-size: 1em;
+                    padding: 0;
+                }
+            }
+
+            p {
+                display: none;
+                width: 100%;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                margin: 0;
+            }
+        }
+
+        .share {
+            display: none;
+            //color: @comeos-bg-green;
+        }
+
+        .like {
+            display: none;
+        }
+    }
+
+    .altai-card-ceo {
+        width: 100%;
+        margin: 0 auto;
+    }
+}

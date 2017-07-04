@@ -1,0 +1,20 @@
+﻿<div class="content content-form">
+    <form novalidate>
+        <div layout="row">
+            <h1 flex>{{vm.form.name}}</h1>
+        </div>
+        <div layout="row" ng-repeat="row in vm.form.contentFormRows" class="form-row">
+            <div flex="20" layout-align="center" class="form-col">
+                {{row.label}}
+            </div>
+            <div flex="80" class="form-col">
+                <input type="text" />
+            </div>
+        </div>
+        <div layout="row" class="form-row">
+            <button>
+                {{vm.form.buttonLabel}}
+            </button>
+        </div>
+    </form>
+</div>

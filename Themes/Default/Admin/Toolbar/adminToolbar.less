@@ -1,0 +1,239 @@
+﻿@import "../../config";
+
+.altai-theme-admin {
+    .toolbaricon {
+        outline: none;
+        height: 30px;
+        width: 30px;
+        color: white;
+        margin-right: 5px;
+        display: inline-block;
+        background-color: transparent;
+
+        &:hover {
+            color: @color-blue;
+        }
+    }
+}
+
+.altai-content-attribute-update-item-wrapper {
+    display: flex;
+}
+
+.altai-admin-toolbar {
+    font-family: 'Roboto', sans-serif;
+    position: fixed;
+    background-color: @color-toolbar-window-lighter;
+    border-bottom: 4px solid @blue;
+    z-index: 1000;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    color: white;
+    user-select: none;
+    -webkit-user-select: none;
+    font-size: 14px;
+    top: 0;
+    height: 44px;
+
+
+    .altai-admin-toolbar-left {
+        display: flex;
+        align-content: flex-start;
+        justify-content: flex-start;
+    }
+
+    .altai-admin-toolbar-right {
+        display: flex;
+        flex: 1;
+        align-content: flex-end;
+        justify-content: flex-end;
+    }
+
+    md-switch.md-default-theme .md-bar, md-switch .md-bar {
+        background-color: @blue;
+    }
+
+    md-switch {
+        margin: 0;
+    }
+
+    md-menu-bar.md-default-theme md-menu.md-open > button, md-menu-bar md-menu.md-open > button, md-menu-bar.md-default-theme md-menu > button:focus, md-menu-bar md-menu > button:focus {
+        outline: none;
+        background: @color-toolbar-form-element-bg;
+    }
+
+    .language-selector, .logout, .state-selector, altai-admin-toolbar-mode-selector {
+        display: flex;
+        align-items: center;
+        margin-left: 10px;
+    }
+
+    button {
+        border: 0;
+        background-color: #ececec;
+    }
+
+    .altai-admin-icon {
+        color: white;
+    }
+
+    altai-admin-toolbar-state-selector {
+        select {
+            min-width: 200px;
+            background-color: @blue;
+            border: 0 solid @grey-light;
+            border-radius: 3px;
+        }
+    }
+}
+
+.menuicon {
+    position: absolute;
+    padding: 0;
+    width: 24px;
+    top: 9px;
+    left: 24px;
+}
+
+.menuicontoolbar {
+    position: absolute;
+    padding: 0;
+    width: 24px;
+    top: 14px;
+    left: 6px;
+}
+
+.menutextoolbar {
+    padding-left: 25px;
+    letter-spacing: 0.1em;
+}
+
+.admin-logo.desktop {
+    position: fixed;
+    padding: 0 10px 0 18px;
+    top: 8px;
+    height: 19px;
+    cursor: pointer;
+}
+
+.admin-logo.relative {
+    padding: 0 10px 0 18px;
+    top: 8px;
+    height: 19px;
+    cursor: pointer;
+}
+
+.admin-logo.mobile {
+    position: fixed;
+    padding: 0 10px 0 18px;
+    top: 8px;
+    height: 19px;
+    cursor: pointer;
+    display: none;
+}
+
+.admin-logo.micro {
+    position: fixed;
+    padding: 0 10px 0 18px;
+    top: 8px;
+    height: 19px;
+    cursor: pointer;
+    display: none;
+}
+
+.language-selector {
+    .active {
+        background-color: @highlight-color;
+        color: #fff;
+    }
+}
+
+md-menu button {
+    min-width: 40px;
+}
+
+
+
+
+@media all and (max-width: 1920px) {
+}
+
+@media all and (max-width: 1440px) {
+    .altai-admin-toolbar md-menu-bar {
+        padding: 0 20px 0 100px !important;
+    }
+
+    .altai-admin-toolbar .taskcenter md-menu-bar {
+        padding: 0 0 0 0 !important;
+    }
+
+    .altai-admin-toolbar altai-admin-toolbar-state-selector select {
+        min-width: 100px !important;
+        width: 100px !important;
+    }
+
+    .admin-logo.mobile {
+        display: block;
+    }
+
+    .admin-logo.desktop {
+        display: none;
+    }
+
+    .menutextoolbar {
+        display: none;
+    }
+
+    .md-button.md-button-altai {
+        min-width: 30px;
+    }
+}
+
+@media all and (max-width: 990px) {
+}
+
+@media all and (max-width: 767px) {
+    .altai-language-bar.language-bar-main {
+        display: none !important;
+    }
+
+    .taskcenter {
+        display: none !important;
+    }
+
+    altai-admin-toolbar-mode-selector {
+        display: none !important;
+    }
+
+    .md-button.md-button-altai span {
+        display: none;
+    }
+}
+
+@media all and (max-width: 500px) {
+    .altai-admin-toolbar md-menu-bar {
+        padding: 0 0 0 40px !important;
+    }
+
+    altai-admin-toolbar-state-selector {
+        display: none !important;
+    }
+
+    .admin-logo.mobile {
+        display: none !important;
+    }
+
+    .admin-logo.micro {
+        display: block !important;
+    }
+
+    md-menu button {
+        min-width: 35px;
+    }
+
+
+    .altai-spinner-outer {
+        display: none !important;
+    }
+}

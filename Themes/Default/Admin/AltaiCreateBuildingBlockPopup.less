@@ -1,0 +1,101 @@
+﻿.altai-create-building-block-popup {
+    background-color: red;
+    position: fixed;
+    top: 25%;
+    left: 25%;
+    width: 50%;
+    min-height: 50%;
+    z-index: 9999;
+    box-shadow: rgba(0, 0, 0, 0.117647) 5px 1px 12px, rgba(0, 0, 0, 0.239216) 0px 4px 15px;
+    background-color: rgb(236, 236, 236);
+    display: flex;
+    flex-direction: row;
+    color: #5D5D5D;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Chrome/Safari/Opera */
+    -khtml-user-select: none; /* Konqueror */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none;
+    cursor: move;
+
+    &.opened {
+        display: flex;
+    }
+
+    .buildingblocks-grid {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+
+        .buildingblocks-grid-header {
+            padding: 10px;
+            text-align: center;
+            text-transform: uppercase;
+            align-content: center;
+            background-color: #333;
+            color: #f1f1f1;
+            font-size: 0.7em;
+            font-weight: 600;
+            -webkit-touch-callout: none; /* iOS Safari */
+            -webkit-user-select: none; /* Chrome/Safari/Opera */
+            -khtml-user-select: none; /* Konqueror */
+            -moz-user-select: none; /* Firefox */
+            -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none;
+
+            .close {
+                float: right;
+                cursor: pointer;
+            }
+        }
+
+        .buildingblocks-selection {
+            display: flex;
+            flex-direction: column;
+
+            .buildingblocks-grid-container {
+                display: flex;
+                flex-wrap: wrap;
+                padding: 30px;
+                vertical-align: central;
+                align-content: center;
+
+                .bb {
+                    cursor: pointer;
+                    width: 75px;
+                    display: flex;
+                    align-items: center;
+                    flex-direction: column;
+                    justify-content: center;
+                    margin: 5px;
+
+                    .bb-icon {
+                        font-size: 22px;
+                    }
+
+                    .label {
+                        font-size: 12px;
+                        text-align: center;
+                    }
+                }
+
+                .bb:hover .bb-icon {
+                    color: #2e53ff;
+                }
+            }
+        }
+
+        .inline-component {
+            margin-top: 40px;
+
+            .altai-translatable-input {
+                padding: 10px;
+
+                .input-container {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

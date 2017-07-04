@@ -1,0 +1,84 @@
+﻿<div print-section class="altai-theme-content comeos-detailoverview comeos-region">
+    <section class="comeos-cover cover-large comeos-bg-region">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 text-center">
+                    <div class="detailoverviewtype">{{'region'|translate}}</div>
+                    <div class="title">{{vm.item.title}}</div>
+                    <div class="contact-buttons">
+                        <div class="mail" altai-social-share item="vm.item"><i class="mdi mdi-share-variant"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="comeos-button comeos-button-cover comeos-button-white" comeos-questions-contact-us>
+            <span translate>questionscontactus</span>
+        </div>
+    </section>
+    <section class="section-comeos comeos-bg-grey-light">
+        <div class="container">
+            <div class="row introrow smartphone">
+                <div class="col-sm-4 col-sm-offset-1">
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="dossier-contact-section">
+                                <div class="profile-picture profile-picture-circle"><img ng-src="{{$root.staticFileBase+'/'+vm.item.persoonregion.persoon_file.file}}" /></div>
+                                <div>
+                                    <span class="h6">
+                                        {{vm.item.persoonregion.voornaam}} {{vm.item.persoonregion.achternaam}}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="two-col-introduction" altai-compile-html="{{vm.item.intro}}">
+                    </div>
+                </div>
+            </div>
+            <div class="row introrow screen">
+                <div class="col-sm-6 col-sm-offset-1">
+                    <div class="two-col-introduction" altai-compile-html="{{vm.item.intro}}">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="dossier-contact-section">
+                                <div ng-show="vm.item.persoonregion.persoon_file.file" class="profile-picture profile-picture-circle"><img ng-src="{{'Uploads/'+vm.item.persoonregion.persoon_file.file}}" /></div>
+                                <div>
+                                    <span class="h6">
+                                        {{vm.item.persoonregion.voornaam}} {{vm.item.persoonregion.achternaam}}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section-comeos comeos-bg-grey-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h2 class="text-center">{{'information_on'|translate}} {{vm.item.title}} </h2>
+                    <altai-exposed-content-collection template-id="280" exposed-content-collection-id="24" ></altai-exposed-content-collection>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section-comeos comeos-bg-grey">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h2 class="text-center">{{'tools'|translate}} {{vm.item.title}} </h2>
+                    <altai-exposed-content-collection template-id="280" exposed-content-collection-id="25"></altai-exposed-content-collection>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

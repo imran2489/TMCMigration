@@ -1,0 +1,57 @@
+﻿<!--<form class="altai-form">
+
+    <div class="altai-admin-section">
+        <div>
+            <div class="subheader">
+                <h3>{{'Attribute'|translate}}</h3>
+            </div>
+
+            <div class="altai-simple-form">
+                <div class="form-group" ng-repeat="relation in $ctrl.relation track by $index">
+                    <label>{{ $index == 0 ? ('path'|translate) : ''}}</label>
+                    <select ng-model="$ctrl.relation[$index]" ng-options="item as item.name for item in $ctrl.relations"> 
+                        <option value="">None</option>
+                    </select>
+                </div>
+                <button class="altai-admin-icon main" ng-click="$ctrl.relation[$ctrl.relation.length] = {}"><i class="mdi mdi-plus"></i></button>
+                <div class="form-group">
+                    <label>{{'field'|translate}}</label>
+                    <select ng-model="$ctrl.field" ng-options="c.attribute as c.attribute.label for c in $ctrl.contentTypeAttributes "></select>
+                </div>
+
+
+                <div class="form-group">
+                    <label>{{'field'|translate}}</label>
+                    <input type="text" ng-model="$ctrl.resultField" disabled />
+                </div>
+                
+                <div class="form-group">
+                    <label>{{'included'|translate}}</label>
+                    <input type="checkbox" ng-model="$ctrl.included" />
+                </div>         
+            </div>
+        </div>
+
+
+        <div class="form-buttons mainbuttonrow" ng-if="$ctrl.resultField">
+            <button type="button" class="altai-admin-icon main" ng-click="$ctrl.createNewAttribute()"><i class="mdi mdi-content-save"></i></button>
+        </div>
+    </div>
+</form>-->
+
+<form class="altai-form">
+    <div class="altai-admin-section">
+        <div class="subheader">
+            <h3>{{'Projection'|translate}}</h3>
+        </div>
+
+        <div class="altai-simple-form">
+            <ul class="treeview" ng-repeat="contentType in $ctrl.contentTypeIds">
+                <li><altai-tree-selector tree="contentType" depth="[]" add-attribute="" includes="$ctrl.includes" first-Level="$ctrl.firstLevel"></altai-tree-selector></li>
+            </ul>
+        </div>
+        <div class="form-buttons mainbuttonrow">
+            <button type="button" class="altai-admin-icon main" ng-click="$ctrl.update()"><i class="mdi mdi-content-save"></i></button>
+        </div>
+    </div>
+</form>

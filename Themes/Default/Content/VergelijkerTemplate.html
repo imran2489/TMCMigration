@@ -1,0 +1,134 @@
+﻿<!--<h3>{{vm.item.titel}}</h3>
+<h4>{{vm.item.ondertitel}}</h4>
+
+<div altai-html="vm.item.inhoud"></div>
+
+<div>{{vm.item.bron}}</div>
+<div>{{vm.item.databron}}</div>-->
+
+
+<div print-section class="root theme--square altai-theme-content actu dossier container-content">
+    <div altai-set-title titletext="{{vm.item.title}}"></div>
+    <section class="comeos-cover cover-large comeos-bg-vergelijker1">
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-1 text-center">
+                <div class="title">{{vm.item.titel}}</div>
+                <div class="contact-buttons">
+                    <!--<div class="mail"><i class="mdi mdi-heart"></i></div>-->
+
+                    <div class="contact-buttons">
+                        <comeos-content-item-like-header-component class="like" ng-if="vm.item != undefined" content-item="vm.item"></comeos-content-item-like-header-component>
+                        <socialshareheader ng-if="vm.item != undefined" item="vm.item"></socialshareheader>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="comeos-button comeos-button-cover comeos-button-white" comeos-questions-contact-us itemname="vm.item.name">
+            <span translate>questionscontactus</span>
+        </div>
+    </section>
+    <div class="main-container container">
+
+        <section class="blog-post">
+            <div class="pagecontentstart">
+                <!--<div class="row text-center">
+                    <div class="col-sm-10 col-sm-offset-1 ">
+                        <div class="breadcrumbs">
+                            <a ui-sref="Root.Content.Tools" translate>tools</a> > <a>{{vm.item.titel}}</a>
+                        </div>
+                    </div>
+                </div>-->
+
+                <div class="row text-center" ng-if="vm.item.themevergelijker1.length || vm.item.sectorvergelijker1.length || vm.item.regionvergelijker1.length || vm.item.pcvergelijker1.length">
+
+                    <div class="col-sm-10 col-sm-offset-1 ">
+
+                        <div class="dossier-tags center">
+                            <span class="dossier-tags-chip" getlink content-item-id="{{tag.isroot !== false ? tag.id : tag[tag.contentType + '_' + tag.contentType].id}}" content-type-id="{{::tag.contentTypeId}}" theme="{{::tag.id}}" ng-repeat="tag in vm.item.themevergelijker1">
+                                {{tag.title}}
+                            </span>
+                            <span class="dossier-tags-chip" getlink content-item-id="{{tag.isroot !== false ? tag.id : tag[tag.contentType + '_' + tag.contentType].id}}" content-type-id="{{::tag.contentTypeId}}" ng-repeat="tag in vm.item.sectorvergelijker1">
+                                {{tag.title}}
+                            </span>
+                            <span class="dossier-tags-chip" getlink content-item-id="{{tag.isroot !== false ? tag.id : tag[tag.contentType + '_' + tag.contentType].id}}" content-type-id="{{::tag.contentTypeId}}" ng-repeat="tag in vm.item.regionvergelijker1">
+                                {{tag.title}}
+                            </span>
+                            <span class="dossier-tags-chip" getlink content-item-id="{{tag.isroot !== false ? tag.id : tag[tag.contentType + '_' + tag.contentType].id}}" content-type-id="{{::tag.contentTypeId}}" ng-repeat="tag in vm.item.pcvergelijker1">
+                                {{tag.title}}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row introrow smartphone">
+                    <div class="col-sm-4 col-sm-offset-1">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="dossier-contact-section">
+                                    <div class="profile-picture profile-picture-circle"><img ng-src="{{::$root.staticFileBase}}/{{vm.item.persoonvergelijker1.persoon_file.file}}" /></div>
+                                    <div><span class="h6">{{vm.item.persoonvergelijker1.voornaam}} {{vm.item.persoonvergelijker1.achternaam}}</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="two-col-introduction cktext article-body" altai-compile-html="{{vm.item.membersintroduction}}">
+                        </div>
+                    </div>
+                </div>
+                <div class="row introrow screen">
+                    <div class="col-sm-6 col-sm-offset-1">
+                        <div class="two-col-introduction cktext article-body" altai-compile-html="{{vm.item.membersintroduction}}">
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="dossier-contact-section">
+                                    <div class="profile-picture profile-picture-circle"><img ng-src="{{::$root.staticFileBase}}/{{vm.item.persoonvergelijker1.persoon_file.file}}" /></div>
+                                    <div><span class="h6">{{vm.item.persoonvergelijker1.voornaam}} {{vm.item.persoonvergelijker1.achternaam}}</span></div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                    <div class="dossier-section" ng-show="vm.item.linkvergelijker1">
+                        <!--external link-->
+                        <div class="attached-link">
+                            <a class="comeos-button comeos-button-white comeos-button-fullwidth" ng-href="{{vm.item.linkvergelijker1.linkurl}}" target="{{vm.item.linkvergelijker1.linktarget}}">{{vm.item.linkvergelijker1.linktekst}}</a>
+                        </div>
+                    </div>
+                    <div class="dossier-section" ng-show="vm.item.linkvergelijker11">
+                        <!--internal link-->
+                        <div class="attached-link">
+                            <a class="comeos-button comeos-button-white comeos-button-fullwidth" ng-href="{{vm.item.linkvergelijker11.linkurl}}">{{vm.item.linkvergelijker11.linktekst}}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!--<div class="row">
+                <div class="col-sm-10 col-sm-offset-1">
+                    <div class="cktext article-body" altai-compile-html="{{vm.item.membersintroduction}}"></div>
+                </div>
+            </div>-->
+            <!--<div class="row" ng-if="vm.item.member">-->
+            <div class="row">
+                <div class="col-sm-10 col-sm-offset-1 ">
+                    <div class="cktext article-body">
+                        <div ng-if="vm.item.bron!=undefined && vm.item.bron!=''"><span translate>source</span>: {{vm.item.bron}}</div>
+                        <div ng-if="vm.item.databron!=undefined && vm.item.databron!=''"><span translate>source</span>: {{vm.item.databron}}</div>
+                        <div ng-if="vm.item.date!=undefined"><span translate>lastupdate</span>: {{vm.item.date | localDate}}</div>
+                        <div ng-if="vm.item.updatefrequencyvergelijker1"><span translate>updatefrequency</span>: {{vm.item.updatefrequencyvergelijker1.title}}</div>
+                    </div>
+                </div>
+            </div>
+            <!--</div>-->
+        </section>
+    </div>
+</div>

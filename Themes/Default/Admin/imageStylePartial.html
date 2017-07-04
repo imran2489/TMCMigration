@@ -1,0 +1,85 @@
+﻿<div class="SPCMSdivgridsecondlevelmaster clearfix" data-ng-class="{'SPCMSdivgridsecondlevelselected':imageStyle.showDetails}">
+    <div class="SPCMSdivgridsecondlevelrowdata" style="width:25%"><span  data-editable-text="imageStyle.minWidth" data-e-name="minWidth" data-e-form="secondlevelform" data-e-required data-e-ui-keypress="{13:'secondlevelform.$submit()',esc:'secondlevelform.$hide()'}">{{imageStyle.minWidth}}</span></div>
+    <div class="SPCMSdivgridsecondlevelrowdata" style="width:25%"><span data-editable-select="imageStyle.orientation" data-e-name="orientation" data-e-form="secondlevelform" e-ng-options="o.value as o.text for o in orientationList" data-e-ui-keypress="{13:'secondlevelform.$submit()',esc:'secondlevelform.$hide()'}">{{imageStyle.orientation}}</span></div>
+    <div class="SPCMSdivgridsecondlevelrowdata" style="width:25%"><span data-editable-select="imageStyle.retina" data-e-name="retina" data-e-form="secondlevelform" e-ng-options="o.value as o.text for o in retinaList" data-e-ui-keypress="{13:'secondlevelform.$submit()',esc:'secondlevelform.$hide()'}">{{imageStyle.retina}}</span></div>
+    <div class="SPCMSdivgridsecondlevelrowbuttons" style="width:25%">
+        <!-- form actions -->
+        <form editable-form name="secondlevelform" onbeforesave="updateImageStyle($data, imageStyle.id)" ng-show="secondlevelform.$visible" class="form-buttons form-inline" shown="imageStyle==lastInsertedImageStyle" >
+            <button type="submit" ng-disabled="secondlevelform.$waiting" class="btn btn-primary"><i class="fa fa-save"></i>&nbsp;{{'save'|translate}}</button>
+            <button type="button" ng-disabled="secondlevelform.$waiting" ng-click="secondlevelform.$cancel()" class="btn btn-default">&nbsp;{{'cancel'|translate}}</button>
+        </form>
+        <div class="buttons" ng-show="!secondlevelform.$visible">
+            <button class="btn btn-primary" ng-click="secondlevelform.$show()"><i class="fa fa-pencil"></i></button>
+            <button class="btn btn-alert" ng-click="imageStyle.showDetails=!imageStyle.showDetails"><i class="fa fa-ellipsis-v"></i></button>
+            <button class="btn btn-danger btn-md" data-ng-click="removeImageStyle(imageStyle)"><i class="fa fa-trash-o"></i></button>
+        </div> 
+    </div>
+</div>
+<!--THIRD LEVEL-->
+<div class="SPCMSdivgridthirdlevel clearfix" data-ng-show="imageStyle.showDetails">
+    <div class="SPCMSdivgridthirdlevelleft">
+        <div class="SPCMSdivgridthirdleveltable">
+            <div class="SPCMSdivgridthirdleveltableheader clearfix">
+                <div class="SPCMSdivgridthirdleveltableheaderitem" style="width:25%">{{"order"|translate}}</div>
+                <div class="SPCMSdivgridthirdleveltableheaderitem" style="width:50%">{{"stylename"|translate}}</div>
+                <div class="SPCMSdivgridthirdleveltableheaderitem" style="width:25%">
+                    <span class="floatleft">{{"actions"|translate}}</span>
+                    <span class="floatright">
+
+                                <div class="dropdown" uib-dropdown>
+                                  <a class="btn btn-success dropdown-toggle" uib-dropdown-toggle>
+                                    <i class="fa fa-plus"></i>
+                                  </a>
+                                  <ul class="dropdown-menu" uib-dropdown-menu>
+                                    <li ng-repeat="choice in imageStyleActionTypeList">
+                                      <a ng-click="addImageStyleAction(choice, imageStyle)">{{choice.text}}</a>
+                                    </li>
+                                  </ul>
+                                </div>
+                    </span>
+                </div>
+            </div>
+            <div ui-sortable="sortableOptions" ng-model="imageStyleActions">
+                <div class="SPCMSdivgridthirdlevelrow clearfix" data-ng-repeat="imageStyleAction in imageStyleActions">
+                    <div class="SPCMSdivgridthirdlevelrowdata" style="width:20%">{{imageStyleAction.order}}</div>
+                    <div class="SPCMSdivgridthirdlevelrowdata" style="width:50%">{{imageStyleAction.name}}</div>
+                    <div class="SPCMSdivgridthirdlevelrowbuttons" style="width:30%">
+                        <button class="btn btn-alert" data-ng-click="loadSelectedAction(imageStyleAction)"><i class="fa fa-ellipsis-h"></i></button>
+                        <button class="btn btn-primary" data-ng-click="cloneImageStyleAction(imageStyleAction)"><i class="fa fa-copy"></i></button>
+                        <button class="btn btn-danger btn-md" data-ng-click="removeImageStyleAction(imageStyleAction)"><i class="fa fa-trash-o"></i></button>
+                    </div> 
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="SPCMSdivgridsthirdlevelright">
+        <div data-ng-if="selectedImageStyleAction.name=='ScaleAndCircle'">
+
+            <div data-imagestyleactionscaleandcircle="" image-style-action="selectedImageStyleAction"></div>
+        </div>
+        <div data-ng-if="selectedImageStyleAction.name=='ChangeFileFormat'">
+            <div data-imagestyleactionchangefileformat="" image-style-action="selectedImageStyleAction"></div>
+        </div>
+        <div data-ng-if="selectedImageStyleAction.name=='ScaleAndCrop'">
+            <div data-imagestyleactionscaleandcrop="" image-style-action="selectedImageStyleAction"></div>
+        </div>
+        <div data-ng-if="selectedImageStyleAction.name=='RoundedCorners'">
+            <div data-imagestyleactionroundedcorners="" image-style-action="selectedImageStyleAction"></div>
+        </div>
+        <div data-ng-if="selectedImageStyleAction.name=='GrayScale'">
+            <div data-imagestyleactiongrayscale="" image-style-action="selectedImageStyleAction"></div>
+        </div>
+        <div data-ng-if="selectedImageStyleAction.name=='Verge'">
+            <div data-imagestyleactionverge="" image-style-action="selectedImageStyleAction"></div>
+        </div>
+        <div data-ng-if="selectedImageStyleAction.name=='Vignette'">
+            <div data-imagestyleactionvignette="" image-style-action="selectedImageStyleAction"></div>
+        </div>
+        <div data-ng-if="selectedImageStyleAction.name=='Polaroid'">
+            <div data-imagestyleactionpolaroid="" image-style-action="selectedImageStyleAction"></div>
+        </div>
+        <div data-ng-if="selectedImageStyleAction.name=='Border'">
+            <div data-imagestyleactionborder="" image-style-action="selectedImageStyleAction"></div>
+        </div>
+    </div>
+</div>

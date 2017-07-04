@@ -1,0 +1,72 @@
+﻿<div class="editor-style">
+    <md-list-item md-no-ink class="md-2-line" ng-click="toggleSelection()">
+       
+        <div class="md-avatar node-architecture" ng-click="expandCollapse(node)" ng-show="!node.isTemplate ">
+            <md-icon ng-if="!node.showChildren" md-font-icon="mdi mdi-chevron-down" class="mdicon-Size"></md-icon>
+            <md-icon ng-if="node.showChildren" md-font-icon="mdi mdi-chevron-up" class="mdicon-Size"></md-icon>
+        </div>
+        <div  class="md-avatar" ng-if="node.isTemplate ">
+            <md-icon  md-font-icon="mdi mdi-file" class="mdicon-Size"></md-icon>
+           
+        </div>
+
+        <div class="md-list-item-text" flex ng-click="expandCollapse(node)">
+            <h3>{{node.label}}</h3>                    
+        </div>
+
+        
+        <div class="md-secondary" >
+           
+            <md-menu class="inline" >
+                <md-button aria-label="Open Trigger Interaction Menu" class="md-icon-button" style="min-width:75px"  ng-click="openMenu($mdOpenMenu, $event)">
+                    <md-icon class="dots" md-font-icon="mdi mdi-dots-horizontal"></md-icon>
+                </md-button>
+                <md-menu-content width="4">
+                    <md-menu-item>
+                        <md-button aria-label="menu">
+                            <md-icon class="searchsubsection" md-font-icon="mdi mdi-dots-horizontal" style="font-size: 25px;"></md-icon>
+                        </md-button>
+                    </md-menu-item>
+                    <md-menu-item ng-if="!node.isTemplate">
+                        <md-button ng-click="createSubfolder(node)" aria-label="edit trigger">
+                            <md-icon class="textRight submenu-position" md-font-icon="mdi mdi-plus" > </md-icon>
+                            <span class="menuitem">{{'createSubfolderCaps'|translate}}</span>
+                        </md-button>
+                    </md-menu-item>
+                    <md-menu-item ng-if="!node.isTemplate">
+                        <md-button ng-click="deleteSubfolder(node)" aria-label="remove trigger">
+                            <md-icon class="textRight submenu-position" md-font-icon="mdi mdi-delete" ></md-icon>
+                            <span class="menuitem">{{'deleteCaps'|translate}}</span>
+                        </md-button>
+                    </md-menu-item>
+                    <md-menu-item ng-if="node.isTemplate">
+                        <md-button ng-click="editNode(node)" aria-label="edit trigger">
+                            <md-icon class="textRight submenu-position" md-font-icon="mdi mdi-pencil" > </md-icon>
+                            <span class="menuitem">{{'editCaps'|translate}}</span>
+                        </md-button>
+                    </md-menu-item>
+                    <md-menu-item ng-if="node.isTemplate">
+                        <md-button ng-click="updateTemplateName(node)" aria-label="edit trigger">
+                            <md-icon class="textRight submenu-position" md-font-icon="mdi mdi-pencil" > </md-icon>
+                            <span class="menuitem">{{'renameCaps'|translate}}</span>
+                        </md-button>
+                    </md-menu-item>
+                   
+                    <md-menu-item ng-if="node.isTemplate">
+                        <md-button ng-click="deleteFile(node)" aria-label="remove trigger">
+                            <md-icon class="textRight submenu-position" md-font-icon="mdi mdi-delete" ></md-icon>
+                            <span class="menuitem">{{'deleteCaps'|translate}}</span>
+                        </md-button>
+                    </md-menu-item>
+                </md-menu-content>
+            </md-menu>
+        </div>
+
+    </md-list-item>
+    <md-list flex class='node-indent'  ng-cloak ng-if="node.showChildren">
+
+        <div ng-repeat='child in node.children' node-element node='child'  showchildren="node.showChildren"></div>
+    </md-list>
+</div>
+
+

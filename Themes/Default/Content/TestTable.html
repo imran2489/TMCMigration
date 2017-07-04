@@ -1,0 +1,19 @@
+﻿<table>
+    <tr ng-repeat="contentItem in $ctrl.data.pageResults">
+        <td>{{contentItem.name}}</td>
+    </tr>
+</table>
+
+<hr />
+
+<table>
+
+    <tr>
+        <td ng-repeat="prop in $ctrl.properties">{{prop}}</td>
+    </tr>
+
+    <tr ng-repeat="result in $ctrl.data.pageResults">
+        <td ng-repeat="prop in $ctrl.properties"><span ng-if="!prop.id && !prop[0].id">{{result[prop]}}</span></td>
+    </tr>
+
+</table>

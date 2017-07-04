@@ -1,0 +1,51 @@
+﻿<div class="altai-theme-admin">
+
+    <div class="altaiplatform">
+
+
+        <altai-toolbar-menu menu-model="$ctrl.toolbar" languages="$ctrl.languages"></altai-toolbar-menu>
+
+        <div class="altai-admin-section">
+
+            <div class="content altai-form">
+
+                <div class="altai-form-group">
+
+                    <label>{{'template'|translate}}</label>
+
+                    <select ng-options="t as t.name for t in $ctrl.panelTemplates track by t.id" ng-model="$ctrl.selectedPanelTemplate">
+
+                        <option value="">{{::'none'|translate}}</option>
+
+                    </select>
+
+                </div>
+
+            </div>
+            <div>
+                <div class="altai-form-group" ng-repeat="panelProperty in $ctrl.panel.panelProperties">
+                    <label>{{panelProperty.type|translate}}</label>
+                    <input type="text" ng-model="panelProperty.value"/>
+                </div>
+            </div>
+            <div ng-repeat="zone in $ctrl.zones track by zone.name">
+
+                <div class="subheader" ng-if="zone.name">
+                    <h3>{{zone.name}}</h3>
+                </div>
+                <table cellpadding="5">
+                    <tbody ui-sortable ng-model="zone.blocks">
+                        <tr ng-repeat="block in zone.blocks track by block.id">
+                            <td>{{block.buildingBlockType.name}}</td>
+                            <td>
+                                <button class="md-button-altai md-raised md-button md-ink-ripple" type="button" ng-click="$ctrl.deleteBuildingBlock(block)"><i class="mdi mdi-delete"></i> {{::'delete'|translate}}</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,85 @@
+﻿<altai-toolbar-menu menu-model="$ctrl.toolbar" languages="$ctrl.languages"></altai-toolbar-menu>
+
+<div class="altai-admin-section">
+    <div class="subheader">
+        <h3 class="ng-binding">{{'ROLES'|translate}}</h3>
+    </div>
+
+    <div style="display:block">
+        <table>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th ng-repeat="securable in ::$ctrl.securables track by securable.name">
+                        <div class="altai-tooltip">
+                            {{::securable.name}}
+                            <div class="altai-tooltip-text">{{::securable.label}}</div>
+                        </div>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="role in ::$ctrl.roles track by role.name">
+                    <td>{{::role.name}}</td>
+                    <td ng-repeat="securable in ::$ctrl.securables track by securable.name">
+
+                        <select ng-model="::$ctrl.roleAccesses[securable.name][role.name]">
+                            <option value="1">{{'allow'|translate}}</option>
+                            <option value="0">{{'deny'|translate}}</option>
+                            <option></option>
+                        </select>
+
+                    </td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+</div>
+
+<div class="altai-admin-section">
+    <div class="subheader">
+        <h3 class="ng-binding">{{'USERS'|translate}}</h3>
+    </div>
+    <div style="display:block">
+        <table>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th ng-repeat="securable in ::$ctrl.securables track by securable.name">
+                        <div class="altai-tooltip">
+                            {{::securable.name}}
+                            <div class="altai-tooltip-text">{{::securable.label}}</div>
+                        </div>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="user in $ctrl.selectedUsers track by user.id">
+                    <td>{{::user.userName}}</td>
+                    <td ng-repeat="securable in ::$ctrl.securables track by securable.name">
+
+                        <select ng-model="::$ctrl.userAccesses[securable.name][user.id]">
+                            <option value="1">{{'allow'|translate}}</option>
+                            <option value="0">{{'deny'|translate}}</option>
+                            <option></option>
+                        </select>
+
+                    </td>
+                </tr>
+
+                <tr ng-show="$ctrl.users.length >0">
+                    <td colspan="{{::$ctrl.securables.length}}">
+                        <select ng-options="user as user.userName for user in $ctrl.users track by user.id" ng-model="newSelectedUser"></select>
+                        <button ng-click="$ctrl.selectUser(newSelectedUser)">+</button>
+                    </td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+</div>

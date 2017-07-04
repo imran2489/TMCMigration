@@ -1,0 +1,22 @@
+﻿<div style="padding-top:50px;">
+    <h1>DEBUG CONSOLE</h1>
+
+    <div>
+        SecurableKey: <input type="text" ng-model="debug.securableKey" />
+    </div>
+    <div>
+        SecurableName: <input type="text" ng-model="debug.securableName" />
+    </div>
+
+    <button ng-click="$ctrl.test(debug)">TEST</button>
+
+    <h1>USER INFO</h1>
+
+    <ul>
+        <li ng-repeat="item in $ctrl.userInfo">{{item}}</li>
+    </ul>
+
+    <button ui-sref="admin.security.user">User management</button>
+    <button ng-click="$ctrl.refreshToken()">Refresh token</button>
+
+</div>

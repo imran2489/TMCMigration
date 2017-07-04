@@ -1,0 +1,141 @@
+﻿
+<div class="Elasticsearch defaultadminexposedcollection">
+    <div class="search">
+        <input class="query" type="text" placeholder="{{'search'|translate}}" ng-model="$ctrl.searchRequest.queryField" ng-model-options="{debounce: 400}" />
+    </div>
+    <!--<div id="piethemes" class="insightchart"><svg></svg></div>-->
+    <div class="header-filter-collection" ng-show="$ctrl.activeFilters.length>0">
+        <div class="header-filter-section">
+            <div class="card__pills" style="min-height: 25px;">
+                <div style="display: inline-block;" ng-repeat="filter in $ctrl.activeFilters track by $index">
+                    <span class="tag-pill--small">
+                        <span>{{filter.label || filter.item.item.contentType}}: </span> {{filter.item.item.key}}
+                        <a ng-click="$ctrl.removeActiveFilter(filter)"><i class="mdi mdi-close"></i></a>
+                    </span>
+
+                    <div ng-if="filter.FilterType != 'range'">
+                        <span class="tag-pill--small" ng-repeat="tag in filter.Values" ng-if="tag.selected"><a ng-click="tag.selected = false; fetch()"><i style="cursor: pointer" class="mdi mdi-close"></i></a> <span>{{filter.label}}: </span> {{tag.Name}}</span>
+                    </div>
+
+                    <div ng-if="filter.FilterType == 'range'">
+                        <span class="tag-pill--small" ng-if="filter.Type == 'date' && filter.Values.selected == true"><a ng-click="filter.Values.startValue = undefined; filter.Values.selected = false; fetch()"><i style="cursor: pointer" class="mdi mdi-close"></i></a> <span>{{filter.Name}}: </span> {{vm.moment(filter.Values.startValue).format("Do MMM YY")}} - {{vm.moment(filter.Values.endValue).format("Do MMM YY")}}</span>
+                    </div>
+                </div>
+
+                <span class="tag-pill--small"><a ng-click="$ctrl.removeAllFilters()"><i style="cursor: pointer" class="mdi mdi-close"></i></a></span>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="exposed-collection-aggregations">
+
+        <div class="dropdown" uib-dropdown ng-repeat="(aggregationName, aggregation) in $ctrl.data.aggregations">
+            <div ng-class="{disabled: vm.getTotalCount(filter.Values)<=0}" class="btn-search-filter altai-tooltip" uib-dropdown-toggle>
+                {{aggregation.label || aggregationName}}<i class="mdi mdi-menu-down"></i>
+            </div>
+            <ul class="dropdown-menu" uib-dropdown-menu>
+                <li class="selectcontainer">
+                    <div class="select select-left" ng-click="$ctrl.selectAggregation(aggregation,true);">{{'selecteeralles' | translate}}</div>
+                    <div class="select select-right" ng-click="$ctrl.selectAggregation(aggregation,false);">{{'selecteerniets' | translate}}</div>
+                </li>
+                <li>
+                    <ul class="scroll">
+
+                        <li class="list-group-item" ng-repeat="item in aggregation.items" ng-click="$ctrl.selectFilterValue(item, aggregation.filterId, aggregation.label)" ng-class="{active: item.selected, child: item.child}"><span class="badge pull-right">{{item.docCount}}</span>{{item.item.key}}</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+    <!--<div class="exposed-collection-aggregations">
+        <div class="insightchart" ng-repeat="aggregation in $ctrl.aggregationsForCharts">
+            <nvd3 options="aggregation.options" data="aggregation.data" class="with-3d-shadow with-transitions"></nvd3>
+        </div>
+    </div>-->
+
+    <div class="exposed-collection-aggregations">
+        <div class="insightchart" ng-repeat="aggregation in $ctrl.aggregationArray">
+            <altai-insight-dashboard-aggregation-component ng-if="aggregation.value.label=='Item'" aggregation="aggregation" enablechart="true" enabletable="true" charttype="discreteBarChart" class="with-3d-shadow with-transitions"></altai-insight-dashboard-aggregation-component>
+            <altai-insight-dashboard-aggregation-component ng-if="aggregation.value.label!='Item'" aggregation="aggregation" enablechart="true" enabletable="false" charttype="pieChart" class="with-3d-shadow with-transitions"></altai-insight-dashboard-aggregation-component>
+        </div>
+    </div>
+
+</div>
+
+<!--<div class="altai-admin-section">
+
+    <table>
+        <thead>
+            <tr>
+                <th></th>
+                <th><altai-content-table-header-sorter field-name="timestamp.raw" search-request="$ctrl.searchRequest">{{'timestamp' | translate }}</altai-content-table-header-sorter></th>
+                <th><altai-content-table-header-sorter field-name="sessionid.raw" search-request="$ctrl.searchRequest">{{'sessionid' | translate }}</altai-content-table-header-sorter></th>
+                <th><altai-content-table-header-sorter field-name="ipaddress.raw" search-request="$ctrl.searchRequest">{{'ipaddress' | translate }}</altai-content-table-header-sorter></th>
+                <th><altai-content-table-header-sorter field-name="itemcontenttypeid.raw" search-request="$ctrl.searchRequest">{{'contentTypeId' | translate }} </altai-content-table-header-sorter></th>
+                <th><altai-content-table-header-sorter field-name="itemcontenttype.raw" search-request="$ctrl.searchRequest">{{'contentType' | translate }} </altai-content-table-header-sorter></th>
+                <th><altai-content-table-header-sorter field-name="useragent.raw" search-request="$ctrl.searchRequest">{{'useragent' | translate }}</altai-content-table-header-sorter></th>
+                <th><altai-content-table-header-sorter field-name="fromname.raw" search-request="$ctrl.searchRequest">{{'fromname' | translate }}</altai-content-table-header-sorter></th>
+                <th><altai-content-table-header-sorter field-name="fromtitle.raw" search-request="$ctrl.searchRequest">{{'fromtitle' | translate }}</altai-content-table-header-sorter></th>
+                <th><altai-content-table-header-sorter field-name="fromurl.raw" search-request="$ctrl.searchRequest">{{'fromurl' | translate }}</altai-content-table-header-sorter></th>
+                <th><altai-content-table-header-sorter field-name="fromparams.raw" search-request="$ctrl.searchRequest">{{'fromparams' | translate }}</altai-content-table-header-sorter></th>
+                <th><altai-content-table-header-sorter field-name="url.raw" search-request="$ctrl.searchRequest">{{'url' | translate }}</altai-content-table-header-sorter></th>
+                <th><altai-content-table-header-sorter field-name="languagecode.raw" search-request="$ctrl.searchRequest">{{'languagecode' | translate }}</altai-content-table-header-sorter></th>
+                <th><altai-content-table-header-sorter field-name="contentitemid.raw" search-request="$ctrl.searchRequest">{{'contentitemid' | translate }}</altai-content-table-header-sorter></th>
+                <th><altai-content-table-header-sorter field-name="contentitemname.raw" search-request="$ctrl.searchRequest">{{'contentitemname' | translate }}</altai-content-table-header-sorter></th>
+                <th><altai-content-table-header-sorter field-name="host.raw" search-request="$ctrl.searchRequest">{{'host' | translate }}</altai-content-table-header-sorter></th>
+                <th><altai-content-table-header-sorter field-name="eventtype.raw" search-request="$ctrl.searchRequest">{{'eventtype' | translate }}</altai-content-table-header-sorter></th>
+                <th><altai-content-table-header-sorter field-name="userid.raw" search-request="$ctrl.searchRequest">{{'userid' | translate }}</altai-content-table-header-sorter></th>
+                <th><altai-content-table-header-sorter field-name="email.raw" search-request="$ctrl.searchRequest">{{'email' | translate }}</altai-content-table-header-sorter></th>
+                <th><altai-content-table-header-sorter field-name="theme.raw" search-request="$ctrl.searchRequest">{{'theme' | translate }}</altai-content-table-header-sorter></th>
+                <th><altai-content-table-header-sorter field-name="sector.raw" search-request="$ctrl.searchRequest">{{'sector' | translate }}</altai-content-table-header-sorter></th>
+                <th><altai-content-table-header-sorter field-name="pc.raw" search-request="$ctrl.searchRequest">{{'pc' | translate }}</altai-content-table-header-sorter></th>
+                <th><altai-content-table-header-sorter field-name="region.raw" search-request="$ctrl.searchRequest">{{'region' | translate }}</altai-content-table-header-sorter></th>
+                <th><altai-content-table-header-sorter field-name="form.raw" search-request="$ctrl.searchRequest">{{'form' | translate }}</altai-content-table-header-sorter></th>
+
+                <th>{{'actions' | translate }}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="contentRow in $ctrl.data.pageResults">
+                <td><i class="mdi mdi-google-circles-extended" ng-if="!$ctrl.selection"></i><altai-content-selection-checkbox ng-if="$ctrl.selection" content-item="contentRow" selection-key="$ctrl.selection"></altai-content-selection-checkbox></td>
+                <td>{{contentRow.timestamp | date:'dd-MM-yyyy HH:mm:ss:sss'}}</td>
+                <td>{{contentRow.sessionid}}</td>
+                <td>{{contentRow.ipaddress}}</td>
+                <td>{{contentRow.itemcontenttypeid}}</td>
+                <td>{{contentRow.itemcontenttype}}</td>
+                <td>{{contentRow.useragent}}</td>
+                <td>{{contentRow.fromname}}</td>
+                <td>{{contentRow.fromtitle}}</td>
+                <td>{{contentRow.fromurl}}</td>
+                <td>{{contentRow.fromparams}}</td>
+                <td>{{contentRow.url}}</td>
+                <td>{{contentRow.languagecode}}</td>
+                <td>{{contentRow.contentitemid}}</td>
+                <td>{{contentRow.contentitemname}}</td>
+                <td>{{contentRow.host}}</td>
+                <td>{{contentRow.eventtype}}</td>
+                <td>{{contentRow.userid}}</td>
+                <td>{{contentRow.email}}</td>
+                <td><span ng-repeat="item in contentRow.themeanalyticslogevent"><span>{{item.title}}</span><span ng-if="!$last">, </span></span></td>
+                <td><span ng-repeat="item in contentRow.sectoranalyticslogevent"><span>{{item.title}}</span><span ng-if="!$last">, </span></span></td>
+                <td><span ng-repeat="item in contentRow.pcanalyticslogevent"><span>{{item.title}}</span><span ng-if="!$last">, </span></span></td>
+                <td><span ng-repeat="item in contentRow.regionanalyticslogevent"><span>{{item.title}}</span><span ng-if="!$last">, </span></span></td>
+                <td>{{contentRow.form}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="panel-buttons">
+        <altai-pagination paged-result="$ctrl.data" switch-page="$ctrl.openPage(pageIndex)"></altai-pagination>
+    </div>
+    <div class="altai-admin-section">
+        <div class="panel-buttons">
+            <md-button ng-click="$ctrl.export()" class="md-button-altai md-raised"><i class="mdi mdi-file-excel"></i> {{::'export'|translate}} </md-button>
+            <md-button ng-click="$ctrl.exportTree()" class="md-button-altai md-raised"><i class="mdi mdi-file-excel"></i> {{::'exportTree'|translate}} </md-button>
+            <md-button ng-click="$ctrl.exportAccompany()" class="md-button-altai md-raised"><i class="mdi mdi-file-excel"></i> {{::'exportAccompany'|translate}} </md-button>
+        </div>
+    </div>
+</div>-->

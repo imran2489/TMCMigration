@@ -1,0 +1,26 @@
+﻿<md-menu-bar class="smallbar">
+    <md-menu class="taskcenter">
+        <button class="taskcentericon" ng-click="$mdOpenMenu();vm.toggleData()">
+            <i class="mdi mdi-clock-fast"></i>
+            <span ng-if="vm.jobcount" class="iconcounter">{{vm.jobcount}}</span>
+        </button>
+        <md-menu-content class="taskcenterlist">
+            <md-menu-item class="md-center">
+                {{::'erzijn'|translate}} {{vm.jobcount}} {{::'jobsbezig'|translate}}
+            </md-menu-item>
+            
+            <!--<md-menu-item ng-repeat="job in vm.jobs | orderBy:-job.key | limitTo:20" class="md-indent taskcenterrow assignedtask">
+
+                <span class="taskcenterfield field-contenttype"><span class="contenttypeletterpill">{{job.key}}</span></span>
+                <span class="taskcenterfield field-taskname">{{job.type|translate}}</span>
+                <span class="taskcenterfield field-contentitemname">{{job.value[0].subject}}</span>
+                <span class="taskcenterfield field-contentitemname">{{job.value[0].destination}}</span>
+                <span class="taskcenterfield field-date">{{job.date}}</span>
+            </md-menu-item>-->
+            <md-menu-item class="md-center taskcenterrow">
+                <a class="btn btn-altai altai-button-go" href="http://localhost:5000/hf">{{::'see_all_tasks'|translate}}</a>
+            </md-menu-item>
+        </md-menu-content>
+    </md-menu>
+
+</md-menu-bar>

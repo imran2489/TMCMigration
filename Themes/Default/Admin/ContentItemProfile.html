@@ -1,0 +1,77 @@
+﻿<altai-toolbar-menu menu-model="vm.toolbar" languages="vm.languages"></altai-toolbar-menu>
+
+<div class="altai-admin-section">
+
+    <table>
+        <tr>
+            <td>{{'id'|translate}}:</td>
+            <td colspan="2">{{vm.contentItem.id}}</td>
+        </tr>
+
+        <tr>
+            <td style="width: 20%">{{'name'|translate}}:</td>
+            <td colspan="2">{{vm.contentItem.name}}</td>
+        </tr>
+
+        <tr>
+            <td>{{'created'|translate}}:</td>
+            <td colspan="2">{{vm.contentItem.created|date}}</td>
+        </tr>
+
+        <tr>
+            <td>{{'lastupdated'|translate}}:</td>
+            <td colspan="2">{{vm.contentItem.lastUpdated|date}}</td>
+        </tr>
+
+        <tr>
+            <td>{{'published'|translate}}:</td>
+            <td colspan="2"><span class="label" data-ng-class="{'label-success':content.published,'label-danger':!content.published}">{{vm.contentItem.published|binary}}</span></td>
+        </tr>
+
+        <tr ng-repeat="cta in vm.contentItem.contentItemAttributes">
+            <td>{{cta.contentTypeAttribute.attribute.name}}:</td>
+            <td>
+                <span ng-bind-html="cta.value"></span>
+
+                <div ng-if="cta.contentTypeAttribute.attribute.attributeType.name=='Image' && cta.value">
+                    <a href="{{$root.staticFileBase}}/{{cta.value}}" target="_blank"><img ng-src="{{::$root.staticFileBase}}/{{cta.value}}" style="height: 150px;" /></a>
+                </div>
+
+                <div ng-if="cta.contentTypeAttribute.attribute.attributeType.name=='Location'">
+                    <div data-location-display="cta.value" style="width:450px;height:250px"></div>
+                </div>
+
+                <div ng-if="cta.contentTypeAttribute.attribute.attributeType.name=='File' && cta.value">
+                    <a href="{{$root.staticFileBase}}/{{cta.value}}" target="_blank">{{cta.value}}</a>
+                </div>
+
+            </td>
+            <td style="width: 25%"></td>
+        </tr>
+
+    </table>
+
+    <div ng-repeat="relation in vm.relations">
+
+        <div class="subheader">
+            <h3>{{relation.name}}</h3>
+        </div>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th style="width:20px;">{{'id'|translate}}</th>
+                    <th>{{'name'|translate}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="contentItem in relation.content | orderBy:'name' track by contentItem.id" ng-click="vm.openContentItem(contentItem)">
+                    <td>{{contentItem.id}}</td>
+                    <td>{{contentItem.name}}</td>
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+
+</div>

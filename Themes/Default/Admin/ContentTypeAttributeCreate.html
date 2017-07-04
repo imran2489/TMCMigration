@@ -1,0 +1,110 @@
+﻿<altai-language-bar  languages="$ctrl.languages" allow-multiple="true"></altai-language-bar>
+
+<form class="altai-form">
+    <div class="altai-admin-section">
+        <md-radio-group ng-model="mode">
+            <md-radio-button value="existing" class="md-primary">{{'existing'|translate}}</md-radio-button>
+            <md-radio-button value="new"> {{'new'|translate}} </md-radio-button>
+        </md-radio-group>
+        </div>
+
+        <div ng-show="mode=='existing'" class="altai-admin-section">
+            <div class="subheader">
+                <h3>{{'chooseexistingattribute'|translate}}</h3>
+            </div>
+            <select ng-options="a.id as a.name for a in $ctrl.existingAttributes" ng-model="attributeId"></select>
+
+            <div class="form-buttons mainbuttonrow">
+
+                <button class="icon" ng-click="$ctrl.createExCta(attributeId)">                    
+                    <i class="mdi mdi-plus"></i>
+                </button>
+            </div>
+        </div>
+
+
+        <div ng-show="mode=='new'" class="altai-admin-section">
+            <div>
+                <div class="subheader">
+                    <h3>{{'sitewideattributeproperties'|translate}}</h3>
+                </div>
+                <div class="altai-simple-form">
+                    <div class="form-group">
+                        <label>{{'name'|translate}}</label>
+                        <input type="text" disabled ng-model="newCta.attribute.name" altai-machine-name="newCta.attribute.labelTranslatable" />
+                    </div>
+
+                    <div class="form-group">
+                        <label>{{'label'|translate}}</label>
+                        <div altai-translatable-input="newCta.attribute.labelTranslatable" languages="$ctrl.languages" />
+                    </div>
+
+                    <div class="form-group">
+                        <label>{{'type'|translate}}</label>
+                        <select ng-model="newCta.attribute.attributeTypeId" ng-options="c.id as c.name for c in $ctrl.attributeTypes track by c.id"></select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>{{'required'|translate}}</label>
+                        <input type="checkbox" ng-model="newCta.attribute.required" />
+                    </div>
+
+                    <div class="form-group">
+                        <label>{{'multiple'|translate}}</label>
+                        <input type="checkbox" ng-model="newCta.attribute.multiple" />
+                    </div>
+
+                    <div class="form-group">
+                        <label>{{'translatable'|translate}}</label>
+                        <input type="checkbox" ng-model="newCta.attribute.translatable" />
+                    </div>
+
+                    <div class="form-group">
+                        <label>{{'minlength'|translate}}</label>
+                        <input type="number" ng-model="newCta.attribute.minLength" />
+                    </div>
+
+                    <div class="form-group">
+                        <label>{{'maxlength'|translate}}</label>
+                        <input type="number" ng-model="newCta.attribute.maxLength" />
+                    </div>
+
+                    <div class="form-group">
+                        <label>{{'pattern'|translate}}</label>
+                        <input type="text" ng-model="newCta.attribute.pattern" />
+                    </div>
+
+                </div>
+            </div>
+            <div>
+                <div class="subheader">
+                    <h3>{{'contenttypespecificattributeproperties'|translate}}</h3>
+                </div>
+                <div class="altai-simple-form">
+                    <div class="form-group">
+                        <label>{{'identifying'|translate}}</label>
+                        <input type="checkbox" ng-model="newCta.identifying" />
+                    </div>
+
+                    <div class="form-group">
+                        <label>{{'readonly'|translate}}</label>
+                        <input type="checkbox" ng-model="newCta.readOnly" />
+                    </div>
+
+                    <div class="form-group">
+                        <label>{{'defaultvalue'|translate}}</label>
+                        <div ng-if="newCta.attribute.translatable" altai-translatable-input="newCta.defaultValueTranslatable" languages="$ctrl.languages" />
+                        <input ng-if="!newCta.attribute.translatable" type="text" ng-model="newCta.defaultValue" />
+                    </div>
+
+                    <div class="form-group">
+                        <label>{{'allowedversions'|translate}}</label>
+                        <input type="number" ng-model="newCta.allowedVersions" />
+                    </div>
+                </div>
+            </div>
+            <div class="form-buttons mainbuttonrow">
+                <button type="button" class="altai-admin-icon main" ng-click="$ctrl.createNewCta(newCta)"><i class="mdi mdi-content-save"></i></button>
+            </div>
+        </div>
+</form>

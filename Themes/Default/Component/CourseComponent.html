@@ -1,0 +1,54 @@
+﻿<div id="course" class="course">
+    <!--<div ng-if="$ctrl.currentchapter==undefined">
+        <div class="coursefrontpage">
+            <div class="content">
+                <div class="title">{{$ctrl.coursemodel.title}}</div>
+                <div class="list" ng-if="$ctrl.partlist.length>0">
+
+                    <div class="toccoursepart" ng-repeat="part in $ctrl.partlist" ng-init="parentIndex = $index">
+                        <div class="parttitle">
+                            {{part.title}}
+                        </div>
+                        <div class="partchapterlist">
+                            <div class="toccoursechapter tmc-button" ng-if="part.chaptercoursepart!=undefined" ng-click="$ctrl.activatechapter(parentIndex, $index)" ng-repeat="chapter in part.chaptercoursepart track by $index">
+                                {{chapter.title}}
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        
+    </div>-->
+
+        <pageslide ps-open="$ctrl.coursetocopen" ps-side="top" ps-push="true" class="coursetoc" ps-click-outside="true" ps-size="400px" ps-zindex="1000">
+            <div class="content">
+                <div class="title">{{$ctrl.coursemodel.title}}</div>
+                <div class="list" ng-if="$ctrl.partlist.length>0">
+
+                    <div class="toccoursepart" ng-repeat="part in $ctrl.partlist" ng-init="parentIndex = $index">
+                        <div class="parttitle">
+                            {{part.title}}
+                        </div>
+                        <div class="partchapterlist">
+                            <div class="toccoursechapter tmc-button" ng-if="part.chaptercoursepart!=undefined" ng-click="$ctrl.activatechapter(parentIndex, $index)" ng-repeat="chapter in part.chaptercoursepart track by $index">
+                                {{$index+1}}. {{chapter.title}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </pageslide>
+        <div class="tmc-button tmc-button-icon coursetocbutton" ng-click="$ctrl.toggletopbar();"><i class="mdi mdi-menu"></i></div>
+    <div ng-if="$ctrl.currentchapter!=undefined">
+        <chapter chaptermodel="$ctrl.currentchapter"></chapter>
+    </div>
+
+</div>
+
+
+
+
+

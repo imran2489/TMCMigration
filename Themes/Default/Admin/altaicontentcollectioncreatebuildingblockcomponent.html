@@ -1,0 +1,9 @@
+﻿<div>
+    <select ng-options="c as c.name for c in $ctrl.contentCollections track by c.id" ng-model="$ctrl.selectedContentCollection"></select>
+</div>
+<div>
+    <select ng-options="t as t.name for t in $ctrl.contentTemplates track by t.id" ng-model="$ctrl.selectedContentTemplate"></select>
+</div>
+<div>
+    <button ng-click='$ctrl.createBuildingBlock(selectedContentCollection, selectedTemplate)'>{{'create'|translate}}</button>
+</div>

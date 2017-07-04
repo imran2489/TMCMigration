@@ -1,0 +1,40 @@
+﻿<form class="altai-form">
+
+    <div class="altai-admin-section">
+        <div>
+            <div class="subheader">
+                <h3>{{'range'|translate}}</h3>
+            </div>
+
+            <div class="altai-simple-form">
+                <div class="form-group">
+                    <label>{{'type'|translate}}</label>
+                    <select ng-model="newRange.type" ng-options="item.value as item.label for item in  $ctrl.rangeTypes"></select>
+                </div>
+                <div class="form-group" ng-if="newRange.type == 'date'">
+                    <label>{{'Fixed'|translate}}</label>
+                    <input type="checkbox" ng-model="newRange.fixed">
+                </div>
+                <div class="form-group" ng-if="newRange.type == 'date'">
+                    <label>{{'field'|translate}}</label>
+                    <input type="text" ng-model="newRange.field" />
+                </div>
+
+                <div class="form-group" ng-if="newRange.type == 'date'">
+                    <label>{{'from'|translate}}</label>
+                    <input type="text" ng-model="newRange.startValue" />
+                </div>
+
+                <div class="form-group" ng-if="newRange.type == 'date'">
+                    <label>{{'to'|translate}}</label>
+                    <input type="text" ng-model="newRange.endValue" /> <!-- | filter: {contentTypeId:$ctrl.type.id} -->
+                </div>                
+            </div>
+        </div>
+
+
+        <div class="form-buttons mainbuttonrow" ng-if="newRange.type == 'date' && newRange.endValue && newRange.startValue && newRange.field">
+            <button type="button" class="altai-admin-icon main" ng-click="$ctrl.createNewRange(newRange)"><i class="mdi mdi-content-save"></i></button>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,18 @@
+﻿<md-button ng-click="$ctrl.openSelectWindow()" class="md-button-altai md-raised"><i class="mdi mdi-view-list"></i> {{::'openselect'|translate}}</md-button>
+
+<div class="content-relation-file-list">
+    <table>
+        <tbody ui-sortable="$ctrl.sortingOptions" ng-model="$ctrl.model">
+
+            <tr ng-repeat="item in $ctrl.model">
+                <td style="width:initial">
+                    <i class="mdi mdi-cursor-move file-sort-handle ui-sortable-handle drag-handle"></i>
+                    {{item.name}}
+                </td>
+                <td class="hide-when-dragging" style="width: 20px;">
+                    <a ng-click="$ctrl.deleteSelection(item)"><i class="mdi mdi-delete"></i></a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

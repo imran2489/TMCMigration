@@ -1,0 +1,62 @@
+﻿<div print-section class="root theme--square altai-theme-content actu dossier container-content" data-reveal-selectors="section:not(.masonry):not(:first-of-type):not(.parallax)">
+    <section class="comeos-cover cover-large comeos-bg-grafiek">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-10 col-sm-offset-1 text-center">
+                    <div class="title">{{vm.item.title}}</div>
+                    <div class="dossier-contact-section">
+                   
+                        <div class="text-center"><span><em translate>by</em></span> <span class="h6">{{vm.item.persoonvoluntaryengagement.voornaam}} {{vm.item.persoonvoluntaryengagement.achternaam}}</span></div>
+                        <div class="contact-buttons text-center">
+                            <div class="contact-buttons text-center">
+                                <comeos-content-item-like-component class="like" ng-if="vm.item != undefined" content-item="vm.item"></comeos-content-item-like-component>
+                                <div class="mail" altai-social-share item="vm.item"><i class="mdi mdi-share-variant"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="comeos-button comeos-button-cover comeos-button-white" comeos-questions-contact-us>
+            <span translate>questionscontactus</span>
+        </div>
+    </section>
+    <div class="main-container container">
+
+        <section class="blog-post">
+            <div class="pagecontentstart">
+                <!--<div class="row text-center">
+                    <div class="col-sm-10 col-sm-offset-1 ">
+                        <div class="breadcrumbs">
+                            <a ui-sref="Root.Home"><span translate>home</span></a> > <a>{{vm.item.title}}</a>
+                        </div>
+                    </div>
+                </div>-->
+                <div class="row">
+                    <div class="col-sm-10 col-sm-offset-1">
+                        <div class="cktext article-body" altai-compile-html="{{vm.item.content}}"></div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1 ">
+                        <div ng-if="vm.activeLang.code=='fr'" class="dossier-section" ng-show="vm.item.filevoluntaryengagement1.length > 0">
+                            <h5 translate>attachments</h5>
+                            <div class="attached-file" ng-repeat="doc in vm.item.filevoluntaryengagement1">
+                                <a ng-href="{{::$root.staticFileBase}}/{{doc.file}}" target="_blank"><fileicon doctype="doc.fileextension"></fileicon> <span>{{doc.label}}</span></a>
+                            </div>
+
+                        </div>
+                        <div ng-if="vm.activeLang.code=='nl'" class="dossier-section" ng-show="vm.item.filevoluntaryengagement.length > 0">
+                            <h5 translate>attachments</h5>
+                            <div class="attached-file" ng-repeat="doc in vm.item.filevoluntaryengagement">
+                                <a ng-href="{{::$root.staticFileBase}}/{{doc.file}}" target="_blank"><fileicon doctype="doc.fileextension"></fileicon> <span>{{doc.label}}</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+    </div>
+</div>

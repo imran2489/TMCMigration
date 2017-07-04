@@ -1,0 +1,103 @@
+﻿<div class="Elasticsearch defaultadminexposedcollection">
+    <div class="search">
+        <input class="query" type="text" placeholder="{{'search'|translate}}" ng-model="vm.search" /> <!-- ng-model-options="{ debounce: 300 }"-->
+        <!--<md-button ng-click="vm.createContentItem()" class="md-button-altai md-raised"><i class="mdi mdi-plus"></i> {{::'create'|translate}} </md-button>-->
+    </div>
+    <div class="header-filter-collection" ng-if="vm.getSelected(vm.filters)>0">
+        <div class="header-filter-section">
+            <div class="card__pills" style="min-height: 25px;">
+                <div style="display: inline-block;" ng-repeat="filter in vm.filters">
+                    <div ng-if="filter.FilterType != 'range'"><span class="tag-pill--small" ng-repeat="tag in filter.Values" ng-if="tag.selected"><a ng-click="tag.selected = false; fetch()"><i style="cursor: pointer" class="mdi mdi-close"></i></a> <span>{{filter.label}}: </span> {{tag.Name}}</span></div>
+                    <div ng-if="filter.FilterType == 'range'"><span class="tag-pill--small" ng-if="filter.Type == 'date' && filter.Values.selected == true"><a ng-click="filter.Values.startValue = undefined; filter.Values.selected = false; fetch()"><i style="cursor: pointer" class="mdi mdi-close"></i></a> <span>{{filter.Name}}: </span> {{vm.moment(filter.Values.startValue).format("Do MMM YY")}} - {{vm.moment(filter.Values.endValue).format("Do MMM YY")}}</span></div>
+                </div>
+                <span ng-if="vm.getSelected(vm.filters)>0" class="tag-pill--small"><a ng-click="vm.filters = vm.removeallfilters(vm.filters); vm.fetch(1)"><i style="cursor: pointer" class="mdi mdi-close"></i></a></span>
+            </div>
+        </div>
+    </div>
+    <div class="header-filter-collection">
+        <div class="header-filter-section">
+            <table class="table table-borderless filter">
+                <tr>
+                    <td ng-repeat="filter in vm.filters">
+                        <div ng-if="filter.FilterType == 'relation' || filter.FilterType == 'contenttype' || filter.FilterType == 'term'" class="dropdown" uib-dropdown>
+                            <div ng-class="{disabled: vm.getTotalCount(filter.Values)<=0}" class="btn-search-filter altai-tooltip" uib-dropdown-toggle>
+                                {{filter.Name | translate}} <i class="mdi mdi-menu-down"></i>
+                                <div ng-if="vm.getTotalCount(filter.Values)<=0" class="altai-tooltip-text">{{'noitemsofthistype' | translate}}</div>
+                            </div>
+                            <ul class="dropdown-menu" uib-dropdown-menu>
+                                <li class="selectcontainer">
+                                    <div class="select select-left" ng-click="filter.Values = vm.selectarray(filter.Values,true); fetch()">{{'selecteeralles' | translate}}</div>
+                                    <div class="select select-right" ng-click="filter.Values = vm.selectarray(filter.Values,false); fetch()">{{'selecteerniets' | translate}}</div>
+                                </li>
+                                <li>
+                                    <ul class="scroll">
+                                        <li class="list-group-item" ng-repeat="item in filter.Values" ng-click="item.selected = !item.selected; fetch()" ng-if="item.count>0" ng-class="{active: item.selected, child: item.child}"><span class="badge pull-right">{{item.count}}</span>{{item.Name}}</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div ng-if="filter.FilterType == 'range'">
+                            <div ng-if="filter.Type == 'date'" class="dropdown" uib-dropdown>
+                                <a ng-click="vm.toggledropdown($event)">
+                                    <div class="btn-search-filter">
+                                        {{filter.Name | translate}} <i class="mdi mdi-menu-down"></i>
+                                    </div>
+                                </a>
+                                <div class="daterange dropdown-menu" style="left: -100px" uib-dropdown-menu>
+                                    <su-datepicker-range-default start-date="filter.Values.calendarDate"
+                                                                 on-date-select="vm.onDateSelect(date, filter.Values)"
+                                                                 cheap-mouseenter-callback="vm.setPotentialDate(date, filter.Values)"
+                                                                 cheap-mouseout-callback="vm.clearPotentialDate(date, filter.Values)"
+                                                                 custom-class="vm.getDateClass(date, filter.Values)"></su-datepicker-range-default>
+                                    <div class="rangebutton" ng-click="vm.toggledropdown($event); filter.Values.selected = true; fetch()">{{'submit' | translate}}</div>
+                                    <div class="rangebutton" ng-click="vm.setdate(undefined,undefined, filter.Values); vm.toggledropdown($event); fetch()">{{'clear' | translate}}</div>
+                                    <table class="rangestable">
+                                        <tr>
+                                            <td><div class="range" ng-click="vm.setdate(vm.moment().startOf('day'),vm.moment().endOf('day'), filter.Values); filter.Values.selected = true; vm.toggledropdown($event); fetch()">{{'today' | translate}}</div></td>
+                                            <td><div class="range" ng-click="vm.setdate(vm.moment().subtract(1,'days').startOf('day'),vm.moment().subtract(1,'days').endOf('day'), filter.Values); filter.Values.selected = true; vm.toggledropdown($event); fetch()">{{'yesterday' | translate}}</div></td>
+                                            <td><div class="range" ng-click="vm.setdate(vm.moment().startOf('week'),vm.moment().endOf('week'), filter.Values); filter.Values.selected = true; vm.toggledropdown($event); fetch()">{{'thisweek' | translate}}</div></td>
+                                            <td><div class="range" ng-click="vm.setdate(vm.moment().subtract(1,'weeks').startOf('week'),vm.moment().subtract(1,'weeks').endOf('week'), filter.Values); filter.Values.selected = true; vm.toggledropdown($event); fetch()">{{'lastweek' | translate}}</div></td>
+                                        </tr>
+                                        <tr>
+                                            <td><div class="range" ng-click="vm.setdate(vm.moment().startOf('month'),vm.moment().endOf('month'), filter.Values); filter.Values.selected = true; vm.toggledropdown($event); fetch()">{{'thismonth' | translate}}</div></td>
+                                            <td><div class="range" ng-click="vm.setdate(vm.moment().subtract(1,'months').startOf('month'),vm.moment().subtract(1,'months').endOf('month'), filter.Values); filter.Values.selected = true; vm.toggledropdown($event); fetch()">{{'lastmonth' | translate}}</div></td>
+                                            <td><div class="range" ng-click="vm.setdate(vm.moment().startOf('year'),vm.moment().endOf('year'), filter.Values); filter.Values.selected = true; vm.toggledropdown($event); fetch()">{{'thisyear' | translate}}</div></td>
+                                            <td><div class="range" ng-click="vm.setdate(vm.moment().subtract(1,'years').startOf('year'),vm.moment().subtract(1,'years').endOf('year'), filter.Values); filter.Values.selected = true; vm.toggledropdown($event); fetch()">{{'lastyear' | translate}}</div></td>
+                                        </tr>
+                                    </table>
+
+                                </div>
+                            </div>
+
+                            <div ng-if="filter.Type == 'term'" class="dropdown" uib-dropdown>
+                                <div class="btn-search-filter" uib-dropdown-toggle>
+                                    {{filter.Name | translate}} <i class="mdi mdi-menu-down"></i>
+                                </div>
+                                <div class="dropdown-menu" uib-dropdown-menu>
+                                    <rzslider rz-slider-model="filter.Values.startValue"
+                                              rz-slider-high="filter.Values.endValue"
+                                              rz-slider-options="filter.Values.options"></rzslider>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+<div class="altai-admin-section">
+
+    <altai-content-item-table results="vm.results" selection="vm.selection"></altai-content-item-table>
+    <nav class="altai-pagination" ng-if="vm.data.pages > 0">
+        <pagination ng-model="vm.page"
+                    total-items="vm.data.pages*vm.data.pageSize"
+                    max-size="10"
+                    items-per-page="12"
+                    boundary-links="true"
+                    previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;">
+        </pagination>
+    </nav>
+</div>

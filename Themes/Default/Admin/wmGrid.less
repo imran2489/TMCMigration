@@ -1,0 +1,65 @@
+﻿@import "wmConfig";
+@import "../config";
+
+.altai-theme-admin {
+    .wm-grid {
+        width: 100%;
+    }
+
+    .wm-grid-row {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+
+        .wm-grid-row-inner {
+            flex: 1;
+            display: flex;
+            flex-direction: row;
+            overflow: auto;
+            padding-left: 25px;
+            padding-right: 25px;
+        }
+    }
+
+    .wm-grid-col {
+        display: flex;
+        margin: 25PX 0 25px 0;
+    }
+
+    .wm-grid-col.maximized {
+       
+    }
+
+    .wm-grid-hdivider {
+        clear: both;
+        min-height: 1px;
+    }
+
+    .wm-grid-hdivider.dragover {
+        height: @window-dropzone-height;
+        background-color: @window-dropzone-bgcolor;
+        border: @window-dropzone-border;
+    }
+
+    .wm-resize-handler {
+        width: 25px;
+        cursor: ew-resize;
+    }
+
+    .wm-resize-handler:hover {
+        background-color: transparent;
+    }
+
+    .wm-grid-col-windows {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+        transition: all 0.2s ease-in-out;
+        /*border-top: 3px solid @color-toolbar-window-topborder;*/
+    }
+
+    .wm-grid-col-windows:hover {
+        box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    }
+}

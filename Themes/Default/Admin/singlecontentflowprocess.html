@@ -1,0 +1,14 @@
+﻿
+    <td><span class="contentypeletterpill" ng-class="'pill-'+vm.process.contentItem.contentType.name">{{vm.process.contentItem.contentType.label}}</span></td>
+    <td><span ng-if="vm.process.processComments.length>0" class="commentpill"><i class="mdi mdi-comment-account-outline"></i> {{vm.process.processComments.length}}</span></td>
+    <td>{{vm.process.contentFlowProcessDefinition.label}}</td>
+    <td>{{vm.process.contentItem.name}}</td>
+    <td>{{vm.process.processInstanceResponseData.startTime | date:"dd/MM/yyyy h:mm:ss"}}</td>
+    <td><md-checkbox class="smallcheckbox" ng-model="vm.process.contentItemBusinessProcessLink.publishImmediately" aria-label="publish immediately"></md-checkbox></td>
+    <td><input date-time class='altai-date-input' format="DD-MM-YYYY HH:mm" ng-model="vm.process.contentItemBusinessProcessLink.publishDate" date-change="updateDate" min-view='minutes'></td>
+    <td><md-checkbox class="smallcheckbox" ng-model="vm.process.contentItemBusinessProcessLink.doNotSpecifyUnpublishDate" aria-label="publish immediately"></md-checkbox></td>
+    <td><input date-time class='altai-date-input' format="DD-MM-YYYY HH:mm" ng-model="vm.process.contentItemBusinessProcessLink.unpublishDate" date-change="updateDate" min-view='minutes'></td>
+
+    <td>
+        <button class="btn btn-altai altai-button-go" ng-click="vm.update()"><i class="mdi mdi-account-check"></i> {{::'update_process_instance'|translate}}</button>
+    </td>

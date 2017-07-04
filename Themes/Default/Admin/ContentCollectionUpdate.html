@@ -1,0 +1,176 @@
+﻿<altai-toolbar-menu menu-model="vm.toolbar" languages="{}"></altai-toolbar-menu>
+
+<div class="altai-admin-section">
+
+    <h2>{{'settings'|translate}}</h2>
+
+    <panel table="true">
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th style="width:10%;">{{'name'|translate}}:</th>
+                    <th>
+                        <input type="text" ng-model="vm.contentCollection.name" />
+                    </th>
+                </tr>
+            </thead>
+            <tr>
+                <td>{{'template'|translate}}:</td>
+                <td>
+                    <select ng-options="c.id as c.name for c in vm.templates" ng-model="vm.contentCollection.templateId"></select>
+                </td>
+            </tr>
+
+            <tr>
+                <td>{{'displaylimit'|translate}}:</td>
+                <td><input type="text" ng-model="vm.contentCollection.displayLimit" /></td>
+            </tr>
+
+            <tr>
+                <td>{{'pagesize'|translate}}:</td>
+                <td><input type="text" ng-model="vm.contentCollection.pageSize" /></td>
+            </tr>
+        </table>
+        
+    </panel>
+
+    <panel table="true">
+
+        <h2>{{'filters'|translate}}</h2>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th style="width:150px;">{{'relation'|translate}}</th>
+                    <th>{{'attribute'|translate}}</th>
+                    <th>{{'operator'|translate}}</th>
+                    <th>{{'value'|translate}}</th>
+                    <th style="width:100px; text-align:right">{{'actions'|translate}}</th>
+                </tr>
+            </thead>
+
+            <tr ng-repeat="filter in vm.contentCollection.contentViewFilters">
+                <td>{{filter.contentTypeRelation.name}}</td>
+                <td>
+                    {{filter.attribute.name}}
+                </td>
+                <td>
+                    {{filter.operator}}
+
+                </td>
+                <td>{{filter.value}}</td>
+                <td style="width:100px; text-align:right">
+
+                    <button class="icon" ng-click="vm.deleteContentCollectionFilter(filter)"><i class="mdi mdi-delete"></i></button>
+                </td>
+            </tr>
+
+            <tr class="table table-striped-add">
+                <td><select ng-options="r.id as r.name for r in vm.contentRelations" ng-model="newFilter.contentTypeRelationId"></select></td>
+                <td><select ng-options="c.id as c.name for c in vm.contentAttributes" ng-model="newFilter.attributeId"></select></td>
+                <td>
+                    <select ng-model="newFilter.operator">
+                        <option value="1">=</option>
+                        <option value="2">></option>
+                        <option value="3"><</option>
+                    </select>
+                </td>
+                <td>
+                    <input type="text" ng-model="newFilter.value" />
+                </td>
+                <td style="width:100px; text-align:right"><button class="icon" ng-click="vm.createContentCollectionFilter(newFilter)"><i class="mdi mdi-plus"></i></button></td>
+            </tr>
+
+        </table>
+
+    </panel>
+
+    <panel table="true">
+
+        <h2>{{'sorters'|translate}}</h2>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th style="width:25px;">{{'order'|translate}}</th>
+                    <th style="width:200px;">{{'attribute'|translate}}</th>
+                    <th>{{'type'|translate}}</th>
+                    <th style="width:100px; text-align:right">{{'actions'|translate}}</th>
+                </tr>
+            </thead>
+
+            <tr ng-repeat="sorter in vm.contentCollection.contentViewSorters">
+                <td>{{sorter.order}}</td>
+                <td>{{sorter.attribute.name}}</td>
+                <td><span ng-show="sorter.ascending">{{'ascending'|translate}}</span><span ng-show="!sorter.ascending">{{'descending'|translate}}</span></td>
+                <td><button class="icon" ng-click="vm.deleteContentCollectionSorter(sorter)"><i class="mdi mdi-delete"></i></button></td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td><select ng-options="c.id as c.name for c in vm.contentAttributes" ng-model="newSorter.attributeId"></select></td>
+                <td><select ng-model="newSorter.ascending"><option value="true">{{'ascending'|translate}}</option><option value="false">{{'descending'|translate}}</option></select></td>
+                <td style="width:100px; text-align:right"><button class="icon" ng-click="vm.createContentCollectionSorter(newSorter)"><i class="mdi mdi-plus"></i></button></td>
+            </tr>
+
+        </table>
+
+    </panel>
+
+    <h2>{{'attributes'|translate}}</h2>
+
+    <panel table="true">
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th style="width:25px;"></th>
+                    <th>{{'name'|translate}}</th>
+                </tr>
+            </thead>
+
+            <tr ng-repeat="attr in vm.contentAttributes">
+                <td>
+                    <md-checkbox class="smallcheckbox" ng-model="attr.selected" aria-label="Finished?">
+
+                    </md-checkbox>
+                    <!--<input type="checkbox" ng-model="attr.selected" />-->
+                </td>
+                <td>{{attr.name}}</td>
+            </tr>
+
+        </table>
+
+        <div class="panel-buttons">
+            <button type="button" class="altai-admin-icon main" ng-click="vm.saveAttributes(attributes)"><i class="mdi mdi-content-save"></i></button>
+        </div>
+
+    </panel>
+
+    <h2>{{'relations'|translate}}</h2>
+
+    <panel table="true">
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th style="width:25px;"></th>
+                    <th>{{'name'|translate}}</th>
+                </tr>
+            </thead>
+            <tr ng-repeat="relation in vm.contentRelations">
+                <td>
+                    <md-checkbox class="smallcheckbox" ng-model="relation.selected" aria-label="Finished?">
+
+                    </md-checkbox>
+                    <!--<input type="checkbox" ng-model="relation.selected" />-->
+                </td>
+                <td>{{relation.name}}</td>
+            </tr>
+
+        </table>
+
+    </panel>
+
+</div>

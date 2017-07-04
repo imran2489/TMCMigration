@@ -1,0 +1,37 @@
+﻿<div class="page-header">
+    <h2><i class="fa fa-envelope-o"></i>&nbsp;{{'updatemailinglist'|translate}}</h2>
+</div>
+
+<panel table="true" title="Newsletter">
+    <table class="table table-striped">
+
+        <tr>
+            <td class="table-admin-col1">{{'name'|translate}}:</td>
+            <td>
+                <input type="text" data-ng-model="mailinglist.name" />
+            </td>
+        </tr>
+
+        <tr>
+            <td>{{'contentcollection'|translate}}:</td>
+            <td>
+                <select ng-options="c.id as c.name for c in contentCollections" ng-model="mailinglist.contentCollectionId">
+                    <option value="">-- none --</option>
+                </select>
+
+                <a ui-sref="admin.content.view.edit({id:newNewsletter.contentCollectionId})">{{'settings'|translate}}</a>
+            </td>
+        </tr>
+
+        <tr>
+            <td>{{'public'|translate}}</td>
+            <td><input type="checkbox" ng-model="mailinglist.public" /></td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td><altai-button type="save" ng-click="update()">{{'save'|translate}}</altai-button></td>
+        </tr>
+
+    </table>
+</panel>

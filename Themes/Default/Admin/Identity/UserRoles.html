@@ -1,0 +1,24 @@
+﻿<altai-toolbar-menu menu-model="$ctrl.toolbar" languages="$ctrl.languages"></altai-toolbar-menu>
+
+<div class="altai-admin-section">
+
+    <table>
+        <thead>
+            <tr>
+                <th style="width:1%"></th>
+                <th>{{'rolename'|translate}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr data-ng-repeat="role in $ctrl.userRoles track by role.roleName">
+                <td><input type="checkbox" data-ng-model="role.active" /></td>
+                <td>{{role.roleName}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="actions">
+        <button class="btn btn-primary" data-ng-click="$ctrl.selectAll()">{{'selectall'|translate}}</button>
+    </div>
+
+</div>

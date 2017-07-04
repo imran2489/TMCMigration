@@ -1,0 +1,45 @@
+﻿<div class="window-container" ng-class="{'minimized':vm.window.state===2}">
+    <div class="window" md-theme="altTheme">
+
+        <div class="window-inner" wm-window-inner >
+
+            <div class="dropzone-left" style="display:none;"></div>
+            <div class="dropzone-right" style="display:none;"></div>
+
+            <div class="window-header" draggable="true">
+
+                <div class="actions-middle">
+                    <span class="title" ng-show="window.title">{{window.title|translate}}</span>
+                </div>
+
+                <div class="actions-right">
+
+                    <md-button class="md-icon-button" aria-label="Refresh" ng-click="vm.refresh()">
+                        <i class="action-icon mdi mdi-refresh"></i>
+                    </md-button>
+
+                    <md-button class="md-icon-button" aria-label="More" ng-click="vm.toggleMaximize()" ng-if="vm.window.state===0||vm.window.state===2||vm.window.state===3">
+                        <i class="action-icon mdi mdi-window-maximize"></i>
+                    </md-button>
+                    <md-button class="md-icon-button" aria-label="More" ng-click="vm.toggleHalf()" ng-if="vm.window.state===0||vm.window.state===1||vm.window.state===2">
+                        <span class="windowicon">1/2</span>
+                    </md-button>
+                    <md-button class="md-icon-button" aria-label="More" ng-click="vm.toggleMaximize()" ng-if="vm.window.state===1||vm.window.state===3">
+                        <i class="action-icon mdi mdi-window-restore"></i>
+                    </md-button>
+                    <md-button class="md-icon-button" aria-label="More" ng-click="vm.close()">
+                        <i class="action-icon mdi mdi-window-close" ng-click="vm.close()"></i>
+                    </md-button>
+                </div>
+
+            </div>
+
+            <div class="window-content" ng-if="vm.window.state!==2" ng-class="{'toolbar-shift':vm.toolbarShift}">
+                <div class="window-innercontainer" wm-window-inner-content></div>
+            </div>
+        </div>
+
+    </div>
+
+    <div wm-window-dropzone class="wm-window-dropzone-bottom" ng-if="vm.window.state!==2"></div>
+</div>

@@ -1,0 +1,36 @@
+﻿<div class="dossier-vraag-item" ng-class="{opened:$ctrl.expanded}">
+    <div class="dossier-vraag-item-vraag" ng-click="$ctrl.toggle()">
+        {{$ctrl.subsectionmodel.subtitle1}} <i class="mdi mdi-chevron-right collapseicon"></i>
+    </div>
+    <div class="answers" ng-show="$ctrl.expanded">
+        <div>
+            <div class="dossier-vraag-item-antwoord">
+                <div altai-compile-html="{{$ctrl.subsectionmodel.content}}"> </div>
+
+                <div class="dossier-section" ng-show="$ctrl.subsectionmodel.filefrsubsection.length > 0">
+                    <h5>Documenten FR</h5>
+                    <div class="attached-file" ng-repeat="doc in $ctrl.subsectionmodel.filefrsubsection">
+                        <a ng-href="{{::$root.staticFileBase}}/{{doc.file}}" target="_blank"><span class="attached-file-icon"><i class="mdi mdi-file-pdf-box actu-pdf"></i></span><span>{{doc.label}}</span></a>
+                    </div>
+                </div>
+
+                <div class="dossier-section" ng-show="$ctrl.subsectionmodel.filenlsubsection.length > 0">
+                    <h5>Documenten NL</h5>
+                    <div class="attached-file" ng-repeat="doc in $ctrl.subsectionmodel.filenlsubsection.length">
+                        <a ng-href="{{::$root.staticFileBase}}/{{doc.file}}" target="_blank"><span class="attached-file-icon"><i class="mdi mdi-file-pdf-box actu-pdf"></i></span><span>{{doc.label}}</span></a>
+                    </div>
+                </div>
+
+
+                <div class="dossier-section" ng-show="$ctrl.subsectionmodel.linksubsection.length > 0">
+                    <h5>{{'relatedlinks'|translate}}</h5>
+                    <div class="attached-link" ng-repeat="link in $ctrl.subsectionmodel.linksubsection">
+                        <a ng-href="{{link.linkurl}}" target="{{link.linktarget}}"><span class="attached-link-icon"><i class="mdi mdi-link"></i></span><span>{{link.linktekst}}</span></a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>

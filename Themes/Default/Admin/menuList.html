@@ -1,0 +1,36 @@
+﻿<div class="page-header">
+    <h2><i class="fa fa-link"></i>&nbsp;{{'navigation'|translate}}</h2>
+</div>
+
+
+<panel title="navigation" table="true">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th style="width: 75%">{{'name'|translate}}</th>
+                <th style="width: 25%">{{'actions'|translate}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr data-ng-repeat="menu in vm.menus">
+
+                <td>
+                    <a ui-sref="admin.menu.detail({id:menu.id})">{{menu.name}}</a>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-danger btn-md" ng-click="vm.deleteMenu(menu)"><i class="fa fa-trash-o"></i></button>
+                </td>
+            </tr>
+
+            <tr class="table-admin-add">
+                <td>
+                    <input type="text" class="form-control" data-ng-model="newMenu.Name" />
+                </td>
+                <td>
+                    <button class="btn btn-primary" data-ng-click="vm.createMenu(newMenu)"><i class="fa fa-plus"></i>&nbsp;{{'createmenu'|translate}}</button>
+                </td>
+            </tr>
+        </tbody>
+
+    </table>
+</panel>

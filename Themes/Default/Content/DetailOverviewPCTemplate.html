@@ -1,0 +1,52 @@
+﻿<div print-section class="altai-theme-content comeos-detailoverview comeos-pc">
+    <section class="comeos-cover cover-large comeos-bg-pc">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 text-center">
+                    <!--<div class="detailoverviewtype">{{'pc'|translate}}</div>-->
+                    <div class="title">{{vm.item.title}}</div>
+                    <div class="contact-buttons">
+                        <div class="mail" altai-social-share item="vm.item"><i class="mdi mdi-share-variant"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="comeos-button comeos-button-cover comeos-button-white" comeos-questions-contact-us>
+            <span translate>questionscontactus</span>
+        </div>
+    </section>
+    <section class="container comeos-detailoverview-introduction" altai-compile-html="{{::vm.item.intro}}"></section>
+    <section class="section-comeos comeos-bg-grey-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h2 class="text-center">{{'information_on'|translate}} {{vm.item.title}} </h2>
+                    <altai-exposed-content-collection template-id="280" exposed-content-collection-id="22"></altai-exposed-content-collection>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section-co                                                                                                                                                                                                                meos comeos-bg-grey">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h2 class="text-center">{{'tools'|translate}} {{vm.item.title}} </h2>
+                    <altai-exposed-content-collection template-id="280" exposed-content-collection-id="23"></altai-exposed-content-collection>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section-comeos comeos-bg-grey-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h2 class="text-center">{{'summarysheet'|translate}} {{vm.item.title}}</h2>
+                    TO DO
+                    <summarysheet class="summarysheet" summarysheetmodel="vm.item.pcsummarysheet">
+                        
+                    </summarysheet>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

@@ -1,0 +1,29 @@
+﻿<div class="dashboardcomponent" ng-class="$ctrl.state">
+    <div class="dashboardcomponentheader">
+        <div class="dashboardcomponentheadertitle">
+            {{$ctrl.label}}
+        </div>
+        <div class="dashboardcomponentheaderbuttons">
+
+            <span ng-class="{'active':$ctrl.enabletable}" class="dashboardcomponentheaderbutton" ng-click="$ctrl.toggleTable()"><i class="mdi mdi-table"></i></span>
+            <span ng-class="{'active':$ctrl.enablechart}" class="dashboardcomponentheaderbutton" ng-click="$ctrl.toggleChart()"><i class="mdi mdi-camera"></i></span>
+            <span ng-if="$ctrl.enablechart">
+                <span class="dashboardcomponentdivider"></span>
+                <span ng-class="{'active':$ctrl.charttype=='pieChart'}" class="dashboardcomponentheaderbutton" ng-click="$ctrl.setChartType('pieChart')"><i class="mdi mdi-chart-pie"></i></span>
+                <span ng-class="{'active':$ctrl.charttype=='discreteBarChart'}" class="dashboardcomponentheaderbutton" ng-click="$ctrl.setChartType('discreteBarChart')"><i class="mdi mdi-chart-bar"></i></span>
+            </span>
+            <span class="dashboardcomponentdivider"></span>
+            <span class="dashboardcomponentheaderbutton" ng-click="$ctrl.refresh()"><i class="mdi mdi-refresh"></i></span>
+            <span class="dashboardcomponentheaderbutton" ng-click="$ctrl.minimize()"><i class="mdi mdi-window-minimize"></i></span>
+            <span class="dashboardcomponentheaderbutton" ng-click="$ctrl.maximize()"><i class="mdi mdi-window-maximize"></i></span>
+        </div>
+    </div>
+    <div ng-if="$ctrl.state!='minimized'">
+        <div ng-if="$ctrl.enablechart">
+            <nvd3 options="$ctrl.options" data="$ctrl.chartdata" class="with-3d-shadow with-transitions"></nvd3>
+        </div>
+        <div ng-if="$ctrl.enabletable">
+            <div ui-grid="{ data: $ctrl.tabledata }" class="myGrid"></div>
+        </div>
+    </div>
+</div>

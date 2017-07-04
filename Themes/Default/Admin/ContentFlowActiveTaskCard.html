@@ -1,0 +1,27 @@
+﻿<div class="fullwidthcard">
+    <div class="subheader">
+        <h2><i class="mdi mdi-clipboard-outline"></i> {{$ctrl.contentFlowTask.contentFlowTaskDefinition.label}}</h2>
+    </div>
+    <form class="altai-form altai-form-no-padding" name="contentTypeAttributeUpdate">
+        <div class="altai-simple-form">
+            <div class="form-group" ng-repeat="attr in ::$ctrl.contentFlowTask.contentFlowTaskDefinition.contentFlowProcessVariableDefinitionsToSet track by attr.id" ng-if="attr.visible">
+                <label>{{::attr.label}}</label>
+                <altai-content-flow-attribute-update model="attr.value" content-flow-attribute="::attr"></altai-content-flow-attribute-update>
+            </div>
+        </div>
+    </form>
+    <div class="task-additions">
+        <button class="btn btn-altai altai-button-secondary" ng-class="{'selected':$ctrl.commentView}" ng-if="$ctrl.contentFlowTask.comments.length>0" ng-click="$ctrl.toggleCommentView()"><i class="mdi mdi-comment-text-outline"></i> <span class="iconcounter">{{$ctrl.contentFlowTask.comments.length}}</span> {{'view_comments'|translate}}</button>
+        <button class="btn btn-altai altai-button-secondary" ng-class="{'selected':$ctrl.commentCreation}" ng-click="$ctrl.toggleCommentCreation()"><i class="mdi mdi-comment-plus-outline"></i> {{'add_comment'|translate}}</button>
+    </div>
+
+    <div ng-show="$ctrl.commentCreation"><altai-content-flow-task-comment-create-parent content-type-id='23' task-instance-id="$ctrl.contentFlowTask.id" languages='$ctrl.languages'></altai-content-flow-task-comment-create-parent></div>
+
+    <div class="commentlist" ng-show="$ctrl.commentView">
+        <altai-content-flow-comment content-flow-comment="comment" ng-repeat="comment in $ctrl.contentFlowTask.comments track by comment.id">
+
+        </altai-content-flow-comment>
+    </div>
+
+
+</div>

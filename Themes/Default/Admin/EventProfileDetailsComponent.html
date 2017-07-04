@@ -1,0 +1,58 @@
+﻿<altai-toolbar-menu menu-model="$ctrl.toolbar" languages="$ctrl.languages"></altai-toolbar-menu>
+
+<div class="altai-admin-section">
+
+    <md-button ng-click="$ctrl.previewEventItem()" class="md-button-altai md-raised"><i class="mdi mdi-eye"></i> {{::'preview'|translate}} </md-button>
+    <md-button ng-click="$ctrl.createInvitations($ctrl.itemdata.contentTypeId)" ng-show="!$ctrl.creatingInvitations" class="md-button-altai md-raised"><i class="mdi mdi-eye"></i> {{::'createinvitations'|translate}} </md-button>
+
+    <div class="alert alert-warning" ng-show="$ctrl.creatingInvitations">
+        <i class="fa fa-warning"></i>&nbsp;Creating invitations...
+    </div>
+
+    <div class="subheader">
+        <h3>{{'registrations'|translate}}</h3>
+    </div>
+
+    <!-- workshops -->
+    <div ng-if="$ctrl.itemdata.contentTypeId==42">
+
+        <altai-exposed-content-collection ng-if="!$ctrl.creatingInvitations" template-id="484" selection="$ctrl.selectionKey" exposed-content-collection-id="52" parameters="{id: $ctrl.contentItemId}"></altai-exposed-content-collection>
+
+        <div class="row actions">
+            <select ng-options="type.mailingCampaignType as type.mailingCampaignType.label for type in $ctrl.mailingCampaignTypes" ng-model="selectedMailingCampaignType"></select>
+            <md-button ng-show="selectedMailingCampaignType" ng-click="$ctrl.send(selectedMailingCampaignType,52)" class="md-button-altai md-raised"><i class="mdi mdi-send"></i> {{::'send'|translate}} </md-button>
+        </div>
+
+    </div>
+
+    <!-- networking -->
+    <div ng-if="$ctrl.itemdata.contentTypeId==55">
+        <altai-exposed-content-collection ng-if="!$ctrl.creatingInvitations" template-id="484" selection="$ctrl.selectionKey" exposed-content-collection-id="49" parameters="{id: $ctrl.contentItemId}"></altai-exposed-content-collection>
+
+        <div class="row actions">
+            <select ng-options="type.mailingCampaignType as type.mailingCampaignType.label for type in $ctrl.mailingCampaignTypes" ng-model="selectedMailingCampaignType"></select>
+            <md-button ng-show="selectedMailingCampaignType" ng-click="$ctrl.send(selectedMailingCampaignType,49)" class="md-button-altai md-raised"><i class="mdi mdi-send"></i> {{::'send'|translate}} </md-button>
+        </div>
+
+    </div>
+
+    <!-- comissies -->
+    <div ng-if="$ctrl.itemdata.contentTypeId==62">
+        <altai-exposed-content-collection ng-if="!$ctrl.creatingInvitations" template-id="507" selection="$ctrl.selectionKey" exposed-content-collection-id="32" parameters="{id: $ctrl.contentItemId}"></altai-exposed-content-collection>
+
+        <div class="row actions">
+
+            <select ng-options="type.mailingCampaignType as type.mailingCampaignType.label for type in $ctrl.mailingCampaignTypes" ng-model="selectedMailingCampaignType"></select>
+            <md-button ng-show="selectedMailingCampaignType" ng-click="$ctrl.send(selectedMailingCampaignType,32)" class="md-button-altai md-raised"><i class="mdi mdi-send"></i> {{::'send'|translate}} </md-button>
+
+        </div>
+
+    </div>
+
+</div>
+<div class="altai-admin-section">
+    <div class="subheader">
+        <h3>{{'history'|translate}}</h3>
+    </div>
+    <altai-mailing-campaign-list content-item-id="$ctrl.contentItemId"></altai-mailing-campaign-list>
+</div>

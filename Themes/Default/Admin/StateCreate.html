@@ -1,0 +1,93 @@
+﻿<altai-toolbar-menu menu-model="toolbar" languages="vm.languages"></altai-toolbar-menu>
+
+<div class="altai-admin-section">
+    <h2>{{'statetype'|translate}}</h2>
+    <panel table="true">
+        <table class="table table-striped">
+            <tr>
+                <td>{{'statetype'|translate}}:</td>
+                <td>
+                    <select data-ng-model="stateType">
+                        <option value="root">{{'rootstate'|translate}}</option>
+                        <option value="sub">{{'substate'|translate}}</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+    </panel>
+
+    <panel table="true">
+        <div ng-if="stateType=='root'">
+            <h2>{{'newrootstate'|translate}}</h2>
+            <table class="table table-striped">
+                <tr>
+                    <td style="width: 25%">{{'name'|translate}}:</td>
+                    <td>
+                        <input type="text" data-ng-model="state.name" name="stateName" data-tml-focus-out-input="" data-ng-required="true" data-ng-minlength="3" data-ng-maxlength="30" />
+                        <div class="error" data-ng-show="newStateForm.stateName.$focusOut && newStateForm.stateName.$error.required">{{'statenameisrequired'|translate}}</div>
+                        <div class="error" data-ng-show="newStateForm.stateName.$focusOut && newStateForm.stateName.$error.minlength">{{'statenamemustbeatleast3charslong'|translate}} </div>
+                        <div class="error" data-ng-show="newStateForm.stateName.$focusOut && newStateForm.stateName.$error.maxlength">{{'statenameistoolong'|translate}}</div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td style="width: 25%">{{'pagetitle'|translate}}:</td>
+                    <td>
+                        <div altai-translatable-input="state.titleTranslatable" languages="vm.languages" />
+                        <altai-translatble-input></altai-translatble-input>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 25%">{{'url'|translate}}:</td>
+                    <td>
+                        <input type="text" name="url" data-tml-focus-out-input="" data-ng-model="state.url" data-ng-pattern="/^\/[a-zA-Z0-9:/]+$/" />
+                        <div class="error" data-ng-show="newStateForm.url.$focusOut && newStateForm.url.$error.required">{{'urlisrequired'|translate}}</div>
+                        <div class="error" data-ng-show="newStateForm.url.$focusOut && newStateForm.url.$error.pattern">{{'urlmuststartwithaforwardslash'|translate}}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 25%">{{'template'|translate}}:</td>
+                    <td>
+                        <select data-ng-model="state.templateId" data-ng-options="t.id as t.name for t in stateTemplates"></select>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div ng-if="stateType=='sub'">
+            <h2>{{'newrootstate'|translate}}</h2>
+            <table class="table table-striped">
+                <tr>
+                    <th colspan="2">{{'newsubstate'|translate}}</th>
+                </tr>
+                <tr>
+                    <td style="width: 25%">{{'name'|translate}}:</td>
+                    <td>
+                        <input type="text" data-ng-model="state.name" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td style="width: 25%">{{'pagetitle'|translate}}:</td>
+                    <td>
+                        <div altai-translatable-input="state.titleTranslatable" languages="vm.languages" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>{{'parentstate'|translate}}:</td>
+                    <td>
+                        <select data-ng-model="state.parentStateId" data-ng-options="state.id as state.name for state in states">
+                            <option value="">--</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 25%">{{'url'|translate}}:</td>
+                    <td>
+                        <input type="text" data-ng-model="state.url" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </panel>
+</div>

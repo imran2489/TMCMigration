@@ -1,0 +1,14 @@
+﻿<div class="menu-preview-content">
+    <div class="nav-module menu-module right">
+        <ul class="menu">
+            <li ng-repeat="item in vm.menu.menuItems">
+                <a ng-href="{{item.url}}">{{item.label}}</a>
+                <ul  ng-if="item.childMenuItems">
+                    <li ng-repeat="subitem in item.childMenuItems">
+                        <a href="{{subitem.url}}">{{subitem.label}}</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>

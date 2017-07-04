@@ -1,0 +1,57 @@
+﻿
+<div class="content">
+    <div class="container">
+        <div class="dossier-section dossier-header">
+            <p class="dossier-name">Dossier</p>
+            <h1 class="dossier-titel">{{vm.item.title}}</h1>
+        </div>
+        <div class="dossier-tags">
+            <span class="dossier-tags-chip" ng-repeat="tag in vm.item.themedossier">
+                {{tag.title}}
+            </span>
+            <span class="dossier-tags-chip" ng-repeat="tag in vm.item.sectordossier">
+                {{tag.title}}
+            </span>
+            <span class="dossier-tags-chip" ng-repeat="tag in vm.item.regiondossier">
+                {{tag.title}}
+            </span>
+            <span class="dossier-tags-chip" ng-repeat="tag in vm.item.pcdossier">
+                {{tag.title}}
+            </span>
+        </div>
+        <div class="dossier-contact-section">
+            <div class="dossier-contact">Vragen? Contacteer ons</div>
+        </div>
+        <div class="dossier-section">
+            <h2 class="dossier-titel">Introductie</h2>
+            <div altai-compile-html="{{vm.item.publicintroduction}}" class="dossier-summary">
+            </div>
+            <div altai-compile-html="{{vm.item.membersintroduction}}" class="dossier-summary">
+            </div>
+        </div>
+        <div class="dossier-tags">
+            <span class="dossier-tags-chip">
+                Toon het volledige dossier
+            </span>
+            <span class="dossier-tags-chip">
+                Print het volledige dossier
+            </span>
+        </div>
+        <div class="dossier-section">
+            <div class="dossier-vragen" ng-repeat="question in vm.item.questionresponsedossier">
+                <input type='checkbox' id="question{{$index}}">
+                <label for="question{{$index}}" class="label">
+                    <div class="dossier-vraag-item">
+                        {{question.question}} <i class="mdi mdi-chevron-right"></i>
+                    </div>
+                </label>
+                <div class="antwoord">
+                    <p ng-bind-html="question.answer"> </p>
+                </div>
+            </div>
+        </div>
+        <div class="dossier-contact-section">
+            <div class="dossier-contact">Vragen? Contacteer ons</div>
+        </div>
+    </div>
+</div>

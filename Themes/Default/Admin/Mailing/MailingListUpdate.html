@@ -1,0 +1,30 @@
+﻿<altai-toolbar-menu menu-model="$ctrl.toolbar" languages="$ctrl.languages"></altai-toolbar-menu>
+
+<form class="altai-form">
+
+    <div class="form-group">
+        <label>{{'label'|translate}}</label>
+        <div altai-translatable-input="$ctrl.mailingList.labelTranslatable" languages="$ctrl.languages" />
+    </div>
+
+    <div ng-if="$ctrl.mailingList.contentCollectionId">
+
+        <div class="form-group">
+            <label>{{'contentcollection'|translate}}</label>
+
+            <select ng-options="c.id as c.label for c in $ctrl.collections" ng-model="$ctrl.mailingList.contentCollectionId"></select>
+        </div>
+
+        <div class="form-group">
+            <label>{{'contentcollectionemailattribute'|translate}}</label>
+            <select ng-options="a.id as a.name for a in $ctrl.attributes" ng-model="$ctrl.mailingList.contentCollectionEmailAttributeId"></select>
+        </div>
+
+        <div class="form-group">
+            <label>{{'contentcollectionlanguagecodeattribute'|translate}}</label>
+            <select ng-options="a.id as a.name for a in $ctrl.attributes" ng-model="$ctrl.mailingList.contentCollectionLanguageCodeAttributeId"></select>
+        </div>
+
+    </div>
+
+</form>

@@ -1,0 +1,10 @@
+﻿<altai-toolbar-menu menu-model="vm.toolbar" languages="vm.languages"></altai-toolbar-menu>
+
+<div ng-show='!vm.templateUrl && !vm.loading' style='padding:10px;'><i class='mdi mdi-information-outline'></i>&nbsp;{{'notemplateselected'|translate}}</div>
+<div ng-show="vm.loading" style='padding:10px;'><div class="altai-spinner-outer"><div class="altai-spinner"></div></div></div>
+
+<div ng-class="{'altai-theme-content':vm.enableRootCssContainer}" translate-language="{{vm.activeLang.code}}">
+    <div id="bodyView">
+        <div ng-include='vm.templateUrl' style="zoom:0.75;"></div>
+    </div>
+</div>

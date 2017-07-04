@@ -1,0 +1,26 @@
+﻿<div class="fullwidthcard historictask">
+    <div class="task-details">
+        <div class="task-detail-header">
+            <span class="task-detail detail-taskname"><i class="mdi mdi-clipboard-check"></i>{{$ctrl.contentFlowTask.contentFlowTaskDefinition.label}}</span>
+            <span class="task-detail detail-by">{{'by'|translate}} {{$ctrl.contentFlowTask.assignee.firstName}} {{$ctrl.contentFlowTask.assignee.lastName}} ({{$ctrl.contentFlowTask.assignee.email}})</span>
+        </div>
+        <div class="task-detail-detail">
+            <!--<div class="task-detail detail-starttime"><i class="mdi mdi-clock-start"></i>  {{$ctrl.contentFlowTask.processTasksResponseData.startTime | date:'d MMM yyyy - HH:mm:ss'}}</div>-->
+            <div class="task-detail detail-endtime"><i class="mdi  mdi-clock-end"></i>  {{$ctrl.contentFlowTask.processTasksResponseData.endTime | date:'d MMM yyyy - HH:mm:ss'}}</div>
+        </div>
+    </div>
+    <div class="task-additions" ng-if="$ctrl.contentFlowTask.comments.length>0">
+        <button class="btn btn-altai altai-button-secondary" ng-class="{'selected':$ctrl.commentView}" ng-click="$ctrl.toggleCommentView()"><i class="mdi mdi-comment-text-outline"></i> <span class="iconcounter">{{$ctrl.contentFlowTask.comments.length}}</span> {{'view_comments'|translate}}</button>
+        <!--<button class="btn btn-altai altai-button-secondary" ng-class="{'selected':$ctrl.commentCreation}" ng-click="$ctrl.toggleCommentCreation()"><i class="mdi mdi-comment-plus-outline"></i> {{'add_comment'|translate}}</button>-->
+    </div>
+
+    <div ng-show="$ctrl.commentCreation"><altai-content-flow-task-comment-create-parent content-type-id='23' task-instance-id="$ctrl.contentFlowTask.id" languages='$ctrl.languages'></altai-content-flow-task-comment-create-parent></div>
+
+    <div class="commentlist" ng-show="$ctrl.commentView">
+        <altai-content-flow-comment content-flow-comment="comment" ng-repeat="comment in $ctrl.contentFlowTask.comments track by comment.id">
+
+        </altai-content-flow-comment>
+    </div>
+
+
+</div>

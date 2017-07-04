@@ -1,0 +1,36 @@
+﻿<div class="page-header">
+    <h2>{{'sendcontent'|translate}}</h2>
+</div>
+
+
+<panel title="sendcontent" table="true">
+    <table class="table table-striped">
+        <tr>
+            <td style="width:25%">{{'mailinglist'|translate}}:</td>
+            <td><select ng-options="m as m.name for m in vm.mailingLists" ng-model="newNewsletter.selectedMailingList"></select></td>
+        </tr>
+        <tr>
+            <td>{{'subject'|translate}}:</td>
+            <td><input type="test" ng-model="newNewsletter.title" /></td>
+        </tr>
+
+        <tr>
+            <td>{{'scheduled'|translate}}:</td>
+            <td>
+                <input type="checkbox" ng-model="scheduled" /> <input ng-if="scheduled" type="datetime" date-time ng-model="newNewsletter.scheduledDateTime" />
+            </td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td><altai-button type="send" ng-click="vm.sendMailing(newNewsletter)">{{'send'|translate}}</altai-button></td>
+        </tr>
+    </table>
+
+    <textarea id="mailingContent" style="display:none;"></textarea>  
+
+</panel>
+
+<panel title="preview">
+    <div id="preview"></div>
+</panel>

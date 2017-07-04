@@ -1,0 +1,27 @@
+﻿
+<section ng-if="$ctrl.data.totalCount>0">
+
+    <h1 style="text-align: center;" class="ng-scope">{{'relatedItems'|translate}}</h1>
+
+    <section>
+        <div class="container">
+            <div class="row exposed-collection-aggregations">
+                <div class="col-xs-12">
+                    <div class="row aggregationrow" ng-repeat="(aggregationName, aggregation) in $ctrl.data.aggregations">
+
+                    <md-checkbox class="aggregationcheckbox" ng-click="$ctrl.selectAggregation(aggregation,$ctrl.allSelected == undefined ? true: !$ctrl.allSelected);" ng-model="$ctrl.allSelected">{{::"selectall"|translate}}</md-checkbox>
+                    <md-checkbox class="aggregationcheckbox" ng-repeat="item in aggregation.items" ng-click="$ctrl.selectFilterValue(item, aggregation.filterId, aggregation.label)" ng-model="item.selected" ng-class="{active: item.selected, child: item.child}">{{item.item.key}}</md-checkbox>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <comeos-masonry items="$ctrl.data.pageResults"></comeos-masonry>
+        </div>
+        <div class="row" ng-if="($ctrl.data.totalCount - $ctrl.data.pageSize) > 0">
+            <div class="panel-buttons">
+                <altai-pagination paged-result="$ctrl.data" switch-page="$ctrl.openPage(pageIndex)"></altai-pagination>
+            </div>
+            </div>
+        </div>
+    </section>
+</section>

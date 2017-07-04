@@ -1,0 +1,68 @@
+﻿<div class="admin-header">
+    <h2><i class="fa fa-magic"></i>{{"imagestylesets"|translate}}</h2>
+</div>
+
+<!--Image Style Sets-->
+<div class="SPCMSdivgrid">
+    <div class="SPCMSdivgridheader clearfix">
+        <div class="SPCMSdivgridheaderitem" style="width:75%" ng-click="predicateimagestyleset = 'name'; reverseimagestyleset=!reverseimagestyleset">{{"name"|translate}}</div>
+        <div class="SPCMSdivgridheaderitem" style="width:25%">
+            <span class="floatleft">{{"actions"|translate}}</span>
+            <span class="floatright">
+                 <button type="button" class="btn btn-success btn-md" data-ng-click="recycleEntireImageCache()"><i class="fa fa-magic"></i></button>
+                 <a data-ng-click="addImageStyleSet()" class="btn btn-primary"><i class="fa fa-plus"></i></a>
+            </span>
+        </div>
+       
+    </div>
+
+
+
+    <div class="SPCMSdivgridtoplevel clearfix" data-ng-repeat="imageStyleSet in imageStyleSetList | orderBy:predicateimagestyleset:reverseimagestyleset">
+        <div class="SPCMSdivgridtoplevelmaster clearfix" data-ng-class="{'SPCMSdivgridtoplevelselected':imageStyleSet.showDetails}">
+            <div class="SPCMSdivgridtopleveldata" style="width:75%"><span data-editable-text="imageStyleSet.name" data-e-name="name" data-e-form="firstlevelform" data-e-required data-e-ui-keypress="{13:'firstlevelform.$submit()',esc:'firstlevelform.$hide()'}">{{ imageStyleSet.name || 'empty' }}</span></div>
+            <div class="SPCMSdivgridtoplevelbuttons" style="width:25%">
+                <!-- form actions -->
+                <form editable-form name="firstlevelform" onbeforesave="updateImageStyleSet($data, imageStyleSet.id)" ng-show="firstlevelform.$visible" class="form-buttons form-inline" shown="lastInsertedImageStyleSet == imageStyleSet" >
+                    <button type="submit" ng-disabled="firstlevelform.$waiting" class="btn btn-primary"><i class="fa fa-save"></i>&nbsp;{{'save'|translate}}</button>
+                    <button type="button" ng-disabled="firstlevelform.$waiting" ng-click="firstlevelform.$cancel()" class="btn btn-default">&nbsp;{{'cancel'|translate}}</button>
+                </form>
+                <div class="buttons" ng-show="!firstlevelform.$visible">
+                    <button class="btn btn-success btn-md" data-ng-click="recycleImageCache(imageStyleSet.id)"><i class="fa fa-magic"></i></button>
+                    <button class="btn btn-primary" ng-click="firstlevelform.$show()"><i class="fa fa-pencil"></i></button>
+                    <button class="btn btn-alert" ng-click="imageStyleSet.showDetails=!imageStyleSet.showDetails"><i class="fa fa-ellipsis-v"></i></button>
+                    <button class="btn btn-danger btn-md" data-ng-click="removeImageStyleSet(imageStyleSet.id)"><i class="fa fa-trash-o"></i></button>
+                </div> 
+           </div>
+        </div> 
+        <div class="SPCMSdivgridsecondlevel clearfix" data-ng-show="imageStyleSet.showDetails">
+            <!--SECOND LEVEL-->
+            <div class="SPCMSdivgridsecondleveltable">
+                <div class="SPCMSdivgridsecondleveltableheader clearfix">
+                    <div class="SPCMSdivgridsecondleveltableheaderitem" style="width:25%" ng-click="predicateimagestyle = 'minWidth'; reverseimagestyle=!reverseimagestyle">{{"minwidth"|translate}}</div>
+                    <div class="SPCMSdivgridsecondleveltableheaderitem" style="width:25%" ng-click="predicateimagestyle = 'orientation'; reverseimagestyle=!reverseimagestyle">{{"orientation"|translate}}</div>
+                    <div class="SPCMSdivgridsecondleveltableheaderitem" style="width:25%" ng-click="predicateimagestyle = 'retina'; reverseimagestyle=!reverseimagestyle">{{"retina"|translate}}</div>
+                    <div class="SPCMSdivgridsecondleveltableheaderitem" style="width:25%">
+                        <span class="floatleft">{{'actions'|translate}}</span>
+                        <span class="floatright">
+                             <a data-ng-click="addImageStyle(imageStyleSet.id)" class="btn btn-primary"><i class="fa fa-plus"></i></a>
+                        </span>
+                    </div>
+                </div>
+                <div class="SPCMSdivgridsecondlevelrow clearfix" data-ng-repeat="imageStyle in imageStyleSet.imageStyles | orderBy:predicateimagestyle:reverseimagestyle">
+                    <div data-imagestyle="" image-style="imageStyle" last-inserted-image-style="lastInsertedImageStyle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<!--Image Styles-->
+
+
+
+<!--Image Actions-->

@@ -1,0 +1,12 @@
+﻿<altai-toolbar-menu menu-model="vm.toolbar" use-default-langs="true" languages="vm.languages"></altai-toolbar-menu>
+<div class="window-split-left-right">
+    <div ui-layout="{flow : 'column'}" class="stretch-outer">
+        <div ui-layout-container size="550px" class="sidebar">
+            <altai-content-flow-sidebar-create content-type-id="vm.contentTypeId" content-item="vm.newContent" languages="vm.languages"></altai-content-flow-sidebar-create>
+        </div>
+        <div ui-layout-container class="rightbar">
+            <altai-content-item-create content-type-id="vm.contentTypeId" content-item="vm.newContent" languages="vm.languages"></altai-content-item-create>
+        </div>
+    </div>
+</div>
+

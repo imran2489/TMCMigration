@@ -1,0 +1,31 @@
+﻿<div class="header-top-menu">
+    <div class="comeos-menu-zone">
+        <div class="nav-bar">
+            <div class="nav-module menu-module left">
+                <ul class="menu">
+                    <li ng-repeat="lang in ::$ctrl.languages">
+                        <a class="language-selector" ng-click="$ctrl.selectLang(lang)" ng-class="{'selected':$ctrl.activeLang == lang.code}">{{::lang.code}}</a>
+                    </li>
+                    <li ng-repeat="item in ::vm.menu.menuItems" class="ng-scope">
+                        <a ui-sref="Root.Content.Jobs" class="ng-binding" href="/jobs">Vacatures</a>
+                    </li>
+                    <li>
+                        <div class="altai-spinner-outer" ng-show="$ctrl.loading">
+                            <div class="altai-spinner"></div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="comeos-menu-zone">
+        <ul class="menu">
+            <li class="header-circle" ng-if="$ctrl.showCircle" ng-click="$ctrl.login()">my Comeos</li>
+            <li class="userinfo userinfoname" ng-if="$ctrl.$rootScope.isLoggedIn" uib-tooltip="{{'visitprofile'|translate}}" tooltip-placement="bottom"><a ui-sref="Root.MyComeos.Profile"><span translate>welcome</span> {{$ctrl.$rootScope.userinfo.firstname}} {{$ctrl.$rootScope.userinfo.lastname}}</a></li>
+            <li class="userinfo userinfoicon" ng-if="$ctrl.$rootScope.isLoggedIn" uib-tooltip="{{'visitprofile'|translate}}" tooltip-placement="bottom"><a ui-sref="Root.MyComeos.Profile"><span class="mdi mdi-account"></span></a></li>
+            <li ng-if="$ctrl.$rootScope.showAdmin" class="userinfo logout" tooltip-placement="bottom" uib-tooltip="{{'admin'|translate}}" ng-click="$ctrl.openAdmin()"><i class="mdi mdi-settings"></i></li>
+            <li class="userinfo logout" ng-if="$ctrl.$rootScope.isLoggedIn && $ctrl.showCircle" ng-click="$ctrl.logout()" uib-tooltip="{{'logout'|translate}}" tooltip-placement="bottom"><i class="mdi mdi-logout-variant"></i></li>
+        </ul>
+    </div>
+</div>
+

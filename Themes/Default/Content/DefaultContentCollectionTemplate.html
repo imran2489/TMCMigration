@@ -1,0 +1,22 @@
+﻿
+
+<div class="altai-admin-section">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <td ng-if="!prop.id && !prop[0].id && prop != 'created' && prop != 'name' && prop != 'lastUpdated' && prop != 'machineName'" ng-repeat="prop in $ctrl.properties">{{prop}}</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="result in $ctrl.data.pageResults">
+                <td ng-repeat="prop in $ctrl.properties" ng-if="prop != null && !prop.id && !prop[0].id && prop != 'created' && prop != 'name' && prop != 'lastUpdated' && prop != 'machineName'">
+                    <span ng-if="!result[prop].id && !result[prop][0].id" ng-hide="!result[prop][0].id && result[prop][0] == null && result[prop][1] != null">{{result[prop]}}</span>
+                    <span ng-if="result[prop].id || result[prop][0].id">
+                        <md-checkbox ng-disabled="true" class="smallcheckbox" ng-model="value" ng-init="value = true" aria-label="Finished?"></md-checkbox>
+                    </span>
+                    <ul ng-if="!result[prop][0].id && result[prop][0] == null && result[prop][1] != null"><li ng-repeat="el in result[prop]" ng-hide="el == null">{{el}}</li></ul>
+                </td>
+            </tr>           
+        </tbody>
+    </table>
+</div>

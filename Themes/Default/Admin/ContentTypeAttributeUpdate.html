@@ -1,0 +1,126 @@
+﻿<altai-language-bar   languages="vm.languages" allow-multiple="true"></altai-language-bar>
+
+
+<form class="altai-form" name="contentTypeAttributeUpdate">
+    <div class="altai-admin-section">
+        <div class="subheader">
+            <h3>{{'sitewideattributeproperties'|translate}}</h3>
+        </div>
+        <div class="altai-simple-form">
+            <div class="form-group">
+                <label>{{'name'|translate}}</label>
+                <input type="text" disabled ng-model="vm.contentTypeAttribute.attribute.name" />
+            </div>
+
+            <div class="form-group">
+                <label>{{'label'|translate}}</label>
+                <div altai-translatable-input="vm.contentTypeAttribute.attribute.labelTranslatable" languages="vm.languages" />               
+            </div>
+
+            <div class="form-group">
+                <label>{{'type'|translate}}</label>
+                <select ng-model="vm.contentTypeAttribute.attribute.attributeTypeId" ng-options="c.id as c.name for c in vm.attributeTypes" required></select>
+            </div>
+
+            <div class="form-group">
+                <label>{{'required'|translate}}</label>
+                <input type="checkbox" ng-model="vm.contentTypeAttribute.attribute.required" />
+            </div>
+
+            <div class="form-group">
+                <label>{{'multiple'|translate}}</label>
+                <input type="checkbox" ng-model="vm.contentTypeAttribute.attribute.multiple" />
+            </div>
+
+            <div class="form-group">
+                <label>{{'translatable'|translate}}</label>
+                <input type="checkbox" ng-model="vm.contentTypeAttribute.attribute.translatable" />
+            </div>
+
+            <div class="form-group">
+                <label>{{'minlength'|translate}}</label>
+                <input type="number" ng-model="vm.contentTypeAttribute.attribute.minLength" />
+            </div>
+
+            <div class="form-group">
+                <label>{{'maxlength'|translate}}</label>
+                <input type="number" ng-model="vm.contentTypeAttribute.attribute.maxLength" />
+            </div>
+
+            <div class="form-group">
+                <label>{{'pattern'|translate}}</label>
+                <input type="text" ng-model="vm.contentTypeAttribute.attribute.pattern" />
+            </div>
+
+        </div>
+    </div>
+    <div class="altai-admin-section">
+        <div class="subheader">
+            <h3>{{'contenttypespecificattributeproperties'|translate}}</h3>
+        </div>
+        <div class="altai-simple-form">
+            <div class="form-group">
+                <label>{{'identifying'|translate}}</label>
+                <input type="checkbox" ng-model="vm.contentTypeAttribute.identifying" />
+            </div>
+
+            <div class="form-group">
+                <label>{{'readonly'|translate}}</label>
+                <input type="checkbox" ng-model="vm.contentTypeAttribute.readOnly" />
+            </div>
+
+            <div class="form-group">
+                <label>{{'searchable'|translate}}</label>
+                <input type="checkbox" ng-model="vm.contentTypeAttribute.searchable" />
+            </div>
+
+            <div class="form-group">
+                <label>{{'defaultvalue'|translate}}</label>
+                <div ng-if="vm.contentTypeAttribute.attribute.translatable" altai-translatable-input="vm.contentTypeAttribute.defaultValueTranslatable" languages="vm.languages" />
+                <input ng-if="!vm.contentTypeAttribute.attribute.translatable" type="text" ng-model="vm.contentTypeAttribute.defaultValue" />
+            </div>
+
+            <div class="form-group">
+                <label>{{'allowedversions'|translate}}</label>
+                <input type="number" ng-model="vm.contentTypeAttribute.allowedVersions" />
+            </div>
+        </div>
+    </div>
+
+
+    <div ng-if="vm.contentTypeAttribute.attribute.attributeType.name=='Select'" class="altai-admin-section">
+        <div class="subheader">
+            <h3>{{'options'|translate}}</h3>
+        </div>
+
+        <table style="width:100%">
+            <tr>
+                <td>{{'name'|translate}}</td>
+                <td>{{'value'|translate}}</td>
+                <td>{{'actions'|translate}}</td>
+            </tr>
+
+            <tr ng-repeat="option in vm.contentTypeAttribute.attribute.options">
+                <td>{{option.label}}</td>
+                <td>{{option.value}}</td>
+                <td><button class="altai-admin-icon" ng-click="vm.deleteOption(option)"><i class="mdi mdi-delete"></i></button></td>
+            </tr>
+
+            <tr>
+                <td>
+                    <div altai-translatable-input="vm.newOption.labelTranslatable" languages="vm.languages" />
+                </td>
+                <td><input type="text" ng-model="vm.newOption.value" placeholder="{{'value'|translate}}" /></td>
+                <td><button ng-click="vm.createOption(vm.newOption)" class="altai-admin-icon"><i class="mdi mdi-plus"></i></button></td>
+            </tr>
+
+        </table>
+
+    </div>
+    <div class="altai-admin-section">
+        <div class="form-buttons mainbuttonrow">
+            <button type="button" ng-disabled="contentTypeAttributeUpdate.$invalid" class="altai-admin-icon main" ng-click="vm.update()"><i class="mdi mdi-content-save"></i></button>
+        </div>
+    </div>
+
+</form>

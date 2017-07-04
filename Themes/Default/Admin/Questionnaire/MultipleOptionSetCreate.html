@@ -1,0 +1,35 @@
+﻿<altai-toolbar-menu menu-model="vm.toolbar" languages="vm.languages"></altai-toolbar-menu>
+<div class="altai-admin-section">
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th style="width:25%">{{'name'|translate}}:</th>
+            <td><input type="text" ng-model="vm.newOptionset.name" /></td>
+        </tr>
+        <tr>
+            <th style="width:25%">{{'options'|translate}}:</th>
+            <td>
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>{{'description'|translate}}</th>
+                        <th>{{'score'|translate}}</th>
+                        <th></th>
+                    </tr>
+                    <tr ng-repeat="option in vm.newOptionset.options">
+                        <td>{{option.description}}</td>
+                        <td>{{option.score}}</td>
+                        <td>
+                            <md-button ng-click="vm.newOptionset.options.splice($index,1)" class="btn btn-danger btn-md"><i class="mdi mdi-minus"></i> {{'remove'|translate}} </md-button>
+                       </td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" ng-model="vm.newOption.description" /></td>
+                        <td><input type="text" ng-model="vm.newOption.score" /></td>
+                        <td>
+                            <md-button ng-click="vm.addOption()" class="btn btn-danger btn-md"><i class="mdi mdi-plus"></i> {{'add'|translate}} </md-button>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</div>

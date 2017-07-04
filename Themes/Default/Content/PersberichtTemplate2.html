@@ -1,0 +1,135 @@
+﻿<div print-section class="root theme--square altai-theme-content dossier container-content">
+    <div altai-set-title titletext="{{vm.item.title}}"></div>
+    <section altai-image-style-set-background imagestyleset="pageheader" image="vm.item.filepressrelease.file" class="comeos-cover cover-large comeos-bg-pressrelease" ng-class="{'highcover':vm.item.filepressrelease}">
+        <div ng-if="vm.item.filepressrelease.file" class="altai-overlay"></div>
+
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-1 text-center">
+                <div class="title">{{vm.item.title}}</div>
+                <div class="subtitle">{{vm.item.subtitle}}</div>
+                <div class="contact-buttons">
+                    <!--<div class="mail"><i class="mdi mdi-heart"></i></div>-->
+
+                    <div class="contact-buttons">
+                        <comeos-content-item-like-header-component class="like" ng-if="vm.item != undefined" content-item="vm.item"></comeos-content-item-like-header-component>
+                        <socialshareheader ng-if="vm.item != undefined" item="vm.item"></socialshareheader>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <div  class="main-container container">
+
+        <section class="blog-post">
+            <div class="pagecontentstart">
+                <!--<div class="row text-center">
+                    <div class="col-sm-10 col-sm-offset-1 ">
+                        <div class="breadcrumbs">
+                            <a ui-sref="Root.Content.Press" translate>Pers</a> > <a>{{vm.item.title}}</a>
+                        </div>
+                    </div>
+                </div>-->
+
+                <div class="row text-center" ng-if="vm.item.pressrelease_theme || vm.item.pressrelease_sector || vm.item.pressrelease_region || vm.item.pressrelease_pc">
+                    <div class="col-sm-10 col-sm-offset-1">
+                        <div class="dossier-tags centered">
+                            <span class="dossier-tags-chip" getlink content-item-id="{{tag.isroot !== false ? tag.id : tag[tag.contentType + '_' + tag.contentType].id}}" content-type-id="{{::tag.contentTypeId}}" theme="{{::tag.id}}" ng-repeat="tag in vm.item.pressrelease_theme">
+                                {{tag.name}}
+                            </span>
+                            <span class="dossier-tags-chip" getlink content-item-id="{{tag.isroot !== false ? tag.id : tag[tag.contentType + '_' + tag.contentType].id}}" content-type-id="{{::tag.contentTypeId}}" ng-repeat="tag in vm.item.pressrelease_sector">
+                                {{tag.name}}
+                            </span>
+                            <span class="dossier-tags-chip" getlink content-item-id="{{tag.isroot !== false ? tag.id : tag[tag.contentType + '_' + tag.contentType].id}}" content-type-id="{{::tag.contentTypeId}}" ng-repeat="tag in vm.item.pressrelease_region">
+                                {{tag.name}}
+                            </span>
+                            <span class="dossier-tags-chip" getlink content-item-id="{{tag.isroot !== false ? tag.id : tag[tag.contentType + '_' + tag.contentType].id}}" content-type-id="{{::tag.contentTypeId}}" ng-repeat="tag in vm.item.pressrelease_pc">
+                                {{tag.name}}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row text-center">
+                    <div class="col-sm-10 col-sm-offset-1">
+                        <div class="event-data-item">{{vm.item.date | localDate}}</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-10 col-sm-offset-1">
+                        <div class="cktext article-introduction" altai-compile-html="{{vm.item.publicintroduction}}">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-10 col-sm-offset-1">
+                        <div class="cktext article-body" altai-compile-html="{{vm.item.body}}">
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="row">
+                    <div class="col-sm-10 col-sm-offset-1">
+                        <div ng-if="vm.activeLang.code=='fr'" class="dossier-section" ng-show="vm.item.pressrelease_file_fr.length > 0">
+                            <h5 translate>attachments</h5>
+                            <div class="attached-file" ng-repeat="doc in vm.item.pressrelease_file_fr">
+                                <a ng-href="{{::$root.staticFileBase}}/{{doc.file}}" target="_blank"><fileicon doctype="doc.fileextension"></fileicon> <span>{{doc.label}}</span></a>
+                            </div>
+                        </div>
+                        <div ng-if="vm.activeLang.code=='nl'" class="dossier-section" ng-show="vm.item.pressrelease_file_nl.length > 0">
+                            <h5 translate>attachments</h5>
+                            <div class="attached-file" ng-repeat="doc in vm.item.pressrelease_file_nl">
+                                <a ng-href="{{::$root.staticFileBase}}/{{doc.file}}" target="_blank"><fileicon doctype="doc.fileextension"></fileicon> <span>{{doc.label}}</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-10 col-sm-offset-1">
+                        <div class="actu-section" ng-show="vm.item.pressrelease_link.length > 0">
+                            <h5 translate>relatedlinks</h5>
+                            <div class="attached-link" ng-repeat="link in vm.item.pressrelease_link">
+                                <a ng-if="link.linktarget!=undefined" ng-href="{{link.linkurl}}" target="{{link.linktarget}}"><span class="attached-link-icon"><i class="mdi mdi-link"></i></span><span>{{link.linktekst}}</span></a>
+                                <a ng-if="link.linktarget==undefined" ng-href="{{link.linkurl}}" target="_blank"><span class="attached-link-icon"><i class="mdi mdi-link"></i></span><span>{{link.linktekst}}</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-10 col-sm-offset-1">
+                        <div class="actu-section">
+                            <h5>
+                                Contact
+                            </h5>
+                            <p><a href="mailto:press@comeos.be">press@comeos.be</a> - 0492 729 370</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-10 col-sm-offset-1  comeos-buttons">
+                        <a class="comeos-button" print-btn translate>
+                            print
+                        </a>
+                    </div>
+                </div>
+                <!--<div class="row">
+                    <div class="col-sm-12 text-center">
+                        <div class="blog-post__share">
+                            <link-share class="btn btn--sm bg--twitter"></link-share>
+                            <altai-social-share class="btn btn--sm bg--twitter" provider="twitter" item="vm.item"></altai-social-share>
+                            <altai-social-share class="btn btn--sm bg--twitter" provider="linkedin" item="vm.item"></altai-social-share>
+                        </div>
+                    </div>
+                </div>-->
+
+            </div>
+        </section>
+    </div>
+</div>

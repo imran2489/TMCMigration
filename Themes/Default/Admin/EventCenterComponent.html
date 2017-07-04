@@ -1,0 +1,75 @@
+﻿<div class="altai-admin-section">
+    <md-tabs md-dynamic-height md-border-bottom md-selected="0">
+        <md-tab md-on-select="$ctrl.selectedTab = 0">
+            <md-tab-label><span translate>meetings</span></md-tab-label>
+            <md-tab-body>
+                <div class="altai-admin-section altai-list">
+                    <div class="subheader">
+                        <h2>{{'create'|translate}}</h2>
+                    </div>
+                    <div class="row">                                 
+                        <div class="rowactions">
+                            <md-button ng-click="$ctrl.createContentItemForContentType('meeting',62)" class="md-button-altai md-raised"><i class="mdi mdi-plus"></i> {{::'addnewitem'|translate}} </md-button>
+                        </div>
+                    </div>
+                </div>
+                <div class="altai-admin-section">
+                    <div class="subheader">
+                        <h2>{{'search'|translate}}</h2>
+                    </div>
+                    <div>
+                        <altai-exposed-content-collection ng-if="$ctrl.selectedTab == 0" template-id="483" exposed-content-collection-id="33"></altai-exposed-content-collection>
+                    </div>
+                </div>
+            </md-tab-body>
+        </md-tab>
+        <md-tab md-on-select="$ctrl.selectedTab = 1">
+            <md-tab-label><span translate>academy</span></md-tab-label>
+            <md-tab-body>
+                <div class="altai-admin-section altai-list">
+                    <div class="subheader">
+                        <h2>{{'create'|translate}}</h2>
+                    </div>
+                    <div class="row">                                     
+                        <div class="rowactions">
+                            <md-button ng-click="$ctrl.createContentItemForContentType('workshop',42)" class="md-button-altai md-raised"><i class="mdi mdi-plus"></i> {{::'addnewitem'|translate}} </md-button>
+                        </div>
+                    </div>
+                </div>
+                <div class="altai-admin-section">
+                    <div class="subheader">
+                        <h2>{{'search'|translate}}</h2>
+                    </div>
+                    <div>
+                        <altai-exposed-content-collection ng-if="$ctrl.selectedTab == 1" template-id="483" exposed-content-collection-id="30"></altai-exposed-content-collection>
+                    </div>
+                </div>
+            </md-tab-body>
+        </md-tab>
+
+        <md-tab md-on-select="$ctrl.selectedTab = 2">
+            <md-tab-label><span translate>networking</span></md-tab-label>
+            <md-tab-body>
+                <div class="altai-admin-section altai-list">
+                    <div class="subheader">
+                        <h2>{{'create'|translate}}</h2>
+                    </div>
+                    <div class="row">
+                        <div class="rowactions">
+                            <md-button ng-click="$ctrl.createContentItemForContentType('networking event',55)" class="md-button-altai md-raised"><i class="mdi mdi-plus"></i> {{::'addnewitem'|translate}} </md-button>
+                        </div>
+                    </div>
+                </div>
+                <div class="altai-admin-section">
+                    <div class="subheader">
+                        <h2>{{'search'|translate}}</h2>
+                    </div>
+                    <div>
+                        <altai-exposed-content-collection ng-if="$ctrl.selectedTab == 2" template-id="483" exposed-content-collection-id="48"></altai-exposed-content-collection>
+                    </div>
+                </div>
+            </md-tab-body>
+
+        </md-tab>
+    </md-tabs>
+</div>

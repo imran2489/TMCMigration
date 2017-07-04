@@ -1,0 +1,52 @@
+﻿<div class="altai-list">
+    <div class="search">
+        <input class="query" type="text" placeholder="{{'searchinname'|translate}}" ng-model-options="{ debounce: 300 }" ng-model="vm.searchModel.name" />
+        <md-button ng-click="vm.createContentItem()" class="md-button-altai md-raised"><i class="mdi mdi-plus"></i> {{::'create'|translate}} </md-button>
+    </div>
+    <div class="header-filter-collection">
+        <div class="header-filter-section">
+            <div class='header-filter-item'>
+                <div isteven-multi-select input-model="vm.contentTypes" output-model="vm.searchModel.chosenContentTypeModel" button-label="icon label" item-label="icon label maker" tick-property="ticked"></div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="altai-admin-section">
+    <table>
+
+        <thead>
+            <tr>
+                <th></th>
+                <th><a ng-click="vm.setSorting('Id')">{{'id'|translate}}<span ng-if="vm.searchModel.sorterAttr =='Id'"><span ng-if="vm.searchModel.sorterDesc"><i class="mdi mdi-menu-down"></i></span><span ng-if="!vm.searchModel.sorterDesc"><i class="mdi mdi-menu-up"></i></span></span></a></th>
+                <th><a ng-click="vm.setSorting('ContentTypeName')">{{'type'|translate}}<span ng-if="vm.searchModel.sorterAttr =='ContentTypeName'"><span ng-if="vm.searchModel.sorterDesc"><i class="mdi mdi-menu-down"></i></span><span ng-if="!vm.searchModel.sorterDesc"><i class="mdi mdi-menu-up"></i></span></span></a></th>
+                <th><a ng-click="vm.setSorting('Name')">{{'name'|translate}}<span ng-if="vm.searchModel.sorterAttr =='Name'"><span ng-if="vm.searchModel.sorterDesc"><i class="mdi mdi-menu-down"></i></span><span ng-if="!vm.searchModel.sorterDesc"><i class="mdi mdi-menu-up"></i></span></span></a></th>
+                <th><a ng-click="vm.setSorting('LastUpdated')">{{'lastedited'|translate}}<span ng-if="vm.searchModel.sorterAttr =='LastUpdated'"><span ng-if="vm.searchModel.sorterDesc"><i class="mdi mdi-menu-down"></i></span><span ng-if="!vm.searchModel.sorterDesc"><i class="mdi mdi-menu-up"></i></span></span></a></th>
+                <th><a ng-click="vm.setSorting('Published')">{{'published'|translate}}<span ng-if="vm.searchModel.sorterAttr =='Published'"><span ng-if="vm.searchModel.sorterDesc"><i class="mdi mdi-menu-down"></i></span><span ng-if="!vm.searchModel.sorterDesc"><i class="mdi mdi-menu-up"></i></span></span></a></th>
+                <th>{{'actions'|translate}}</th>
+                
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr ng-repeat="contentRow in vm.contentItems.pageResults track by contentRow.id">
+                <td><i class="mdi mdi-google-circles-extended" ng-if="!vm.selection"></i><altai-content-selection-checkbox ng-if="vm.selection" content-item="contentRow" selection-key="vm.selection"></altai-content-selection-checkbox></td>
+                <td>{{contentRow.id}}</td>
+                <td>{{contentRow.contentType.name}}</td>
+                <td>{{contentRow.name|removeHtmlMarkupFilter|altaicutoff:50}}</td>
+                <td>{{contentRow.lastUpdated| date:'dd-MM-yyyy HH:mm'}}</td>
+                <td><span data-ng-show="contentRow.published">{{'yes'|translate}}</span><span data-ng-hide="contentRow.published">{{'no'|translate}}</span></td>
+                <td>
+                    <altai-content-item-buttons content-item="contentRow"></altai-content-item-buttons>
+                </td>
+                
+            </tr>
+        </tbody>
+
+    </table>
+
+    <div class="panel-buttons">
+        <altai-pagination paged-result="vm.contentItems" switch-page="vm.openPage(pageIndex)"></altai-pagination>
+    </div>
+
+</div>

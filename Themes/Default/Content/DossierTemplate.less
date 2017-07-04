@@ -1,0 +1,466 @@
+﻿@import "../comeos.config.less";
+
+.altai-theme-content {
+    width: 100%;
+    height: 100%;
+    background-color: @background-color;
+
+    #bodyView .dossier .btn .icon {
+        border: 0px solid #000;
+        font-size: 1.5em;
+        vertical-align: middle;
+    }
+
+    #bodyView {
+        h1, h2, h3, h4, h5 {
+            text-transform: none;
+        }
+
+        .cktext div, p, .two-col-introduction div {
+            line-height: 1.7em;
+            text-align: justify;
+            margin-top: 0;
+            margin-bottom: 1.625em;
+        }
+
+        .introrow.smarthpone {
+            display: block;
+        }
+
+        .introrow.screen {
+            display: none;
+        }
+
+        .dossier-contact-section {
+            margin-top: 0px;
+            margin-bottom: 30px;
+            color: #000;
+            text-align: center;
+
+            span.h6 {
+                color: #000 !important;
+                text-transform: none;
+                font-weight: 600;
+            }
+
+            .by {
+                font-size: 0.8em;
+            }
+        }
+
+        @media only screen and (min-width: 768px) {
+            .introrow.smartphone {
+                display: none;
+            }
+
+            .introrow.screen {
+                display: block;
+            }
+
+            .two-col-introduction {
+                padding-right: 40px !important;
+                border-right: 5px solid #e1e1e1;
+            }
+
+            .dossier-contact-section {
+                text-align: left;
+                margin-top: 30px;
+                margin-bottom: 0px;
+            }
+        }
+
+        .introrow {
+            margin-top: 30px;
+
+            p {
+                padding: 0 0 0 0;
+            }
+        }
+
+        .text-center p {
+            text-align: center;
+        }
+
+        .container-content .dossier-tags span.dossier-tags-chip a {
+            border: none;
+            background-color: none;
+
+            &:hover {
+                border: none !important;
+                background-color: transparent !important;
+                color: white !important;
+            }
+        }
+
+        .container-content .dossier-tags span.dossier-tags-chip:hover a {
+            border: none !important;
+            background-color: transparent !important;
+            color: white;
+        }
+    }
+
+
+
+    .container {
+        /*width: 75%;
+        margin: auto;*/
+        padding-bottom: 20px;
+    }
+
+    .dossier-header {
+        text-align: center;
+    }
+
+    .dossier-name {
+        margin-bottom: 20px;
+        color: @red-2;
+        font-weight: 700;
+    }
+
+    h1.dossier-titel {
+        text-align: center;
+        margin-top: 0;
+        font-size: 35px;
+        font-weight: 800;
+    }
+
+    h2.dossier-titel {
+        text-align: center;
+        margin-top: 0;
+        font-size: 25px;
+        font-weight: 800;
+    }
+
+    .contact-buttons {
+        .mail {
+            margin-top: 20px;
+            display: inline-block;
+            background-color: white;
+            color: black;
+            padding: 6px;
+            font-size: 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            padding-bottom: 2px;
+        }
+
+        .like {
+            display: none; //inline-block;
+        }
+    }
+
+    #bodyView .loggedin .contact-buttons .like {
+        display: inline-block;
+        margin-right: 5px;
+    }
+
+
+
+    .dossier-contact {
+        background-color: @red-3;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 20px;
+        padding-right: 20px;
+        font-size: 22px;
+        color: @white;
+        margin: auto;
+        border-radius: 10px;
+        font-weight: 600;
+        display: inline;
+        margin-top: 40px;
+    }
+
+    .profile-picture img {
+        border-radius: 10px;
+        width: 50px;
+        text-align: center;
+    }
+
+    .profile-picture.profile-picture-circle {
+        width: 70px;
+        height: 70px;
+        overflow: hidden;
+        border-radius: 100%;
+        display: inline-block;
+
+        img {
+            width: 70px;
+        }
+    }
+
+    .blog-post__author {
+    }
+
+    .dossier-vragen label {
+    }
+
+
+
+    .dossier-vragen {
+        .dossier-vraag-item {
+            &.opened {
+                padding-bottom: 20px;
+                background-color: #fbfbfb;
+
+                i.questionicon {
+                    -ms-transform: rotate(45deg); /* IE 9 */
+                    -webkit-transform: rotate(45deg); /* Chrome, Safari, Opera */
+                    transform: rotate(45deg);
+                }
+            }
+
+            &.tables.opened {
+                background-color: white;
+            }
+            /*padding: 0 20px;*/
+            .dossier-vraag-item-vraag {
+                /*padding: 0 20px;*/
+                color: @comeos-color-dark;
+                text-align: left;
+                background-color: @comeos-bg-light-grey;
+                padding: 15px 20px;
+                font-weight: 100;
+                font-size: 1em;
+                width: 100%;
+                font-weight: 900;
+                margin-bottom: 10px;
+
+                .dossier-actual-question.ng-binding {
+                    display: inline-block;
+                    width: 80%;
+                }
+            }
+
+            .dossier-vraag-item-antwoord {
+                text-align: justify;
+                padding: 10px 20px;
+                font-size: 1em;
+                width: 100%;
+            }
+
+            &.tables {
+                .dossier-vraag-item-antwoord {
+                    /*padding: 0 20px;*/
+                    text-align: justify;
+                    padding: 20px 30px;
+                }
+            }
+
+            i.collapseicon {
+                float: right;
+            }
+
+            i.questionicon {
+                width: 25px;
+                height: 25px;
+                border-radius: 50%;
+                background-color: white;
+                color: black;
+                padding: 4px 0 0 3px;
+                font-size: 1.2em;
+                -webkit-transition-duration: 0.5s; /* Safari */
+                transition-duration: 0.5s;
+            }
+        }
+    }
+
+    .dossier-vragen-yellow {
+
+        .dossier-vraag-item .dossier-vraag-item-vraag {
+            background-color: @comeos-yellow;
+        }
+    }
+
+    .dark {
+        background-color: @grey-2;
+        color: @white;
+        font-weight: 600;
+    }
+
+    .dossier-chip {
+        background-color: #eee;
+        padding-left: 15px;
+        padding-right: 15px;
+        border-radius: 5px;
+        padding-bottom: 0px;
+        padding-top: 0px;
+        display: inline-block;
+        margin-bottom: 10px;
+        cursor: pointer;
+    }
+
+    .dossier-chip:not(:first-child) {
+        margin-right: 20px;
+    }
+
+    #bodyView {
+        .dossier-section {
+            margin-top: 40px;
+            word-wrap: break-word;
+
+            section, .section {
+                padding-top: 0;
+            }
+        }
+    }
+
+    .dossier-vraag-item-vraag {
+        -webkit-user-select: none;
+        cursor: pointer;
+        width: 100%;
+        line-height: 1.6;
+    }
+
+    .dossier-summary {
+        text-align: justify;
+    }
+
+    .label .dossier-vraag-item i {
+        -webkit-transition: all 0.2s ease;
+    }
+
+    .dossier-vraag-item.opened i {
+        -webkit-transform: rotate(90deg);
+    }
+
+
+
+    .dossier-tags {
+        text-align: center;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        line-height: 2.5em;
+        /* text-transform: uppercase; */
+        font-size: 0.8em;
+
+        &.center {
+            text-align: center;
+        }
+
+        a {
+            border: none;
+
+            &:hover {
+                background-color: none;
+            }
+        }
+
+        .dossier-tags-chip {
+            background-color: #f1f1f1;
+            padding: 10px 15px 10px 15px;
+            border-radius: 10px;
+            display: inline-block;
+            margin-bottom: 10px;
+            cursor: pointer;
+            line-height: 1em;
+            font-size: 0.9em;
+            color: #656565;
+
+            &.active {
+                background-color: #080808;
+                color: white;
+            }
+        }
+
+        .dossier-tags-chip:hover {
+            background-color: #333;
+            color: white;
+        }
+
+        .dossier-tags-chip:not(:last-child) {
+            margin-right: 10px;
+        }
+    }
+
+    @media only screen and (max-width: 768px) {
+        #bodyView {
+            .contentView .container {
+                padding-top: 20px;
+            }
+
+            .dossier-tags {
+                padding-top: 10px;
+                padding-bottom: 10px;
+                line-height: 2em;
+                /* text-transform: uppercase; */
+                font-size: 0.7em;
+
+                &.center {
+                    text-align: center;
+                }
+            }
+
+            .dossier-section {
+                margin-top: 20px;
+            }
+
+            .event .left-col {
+                margin: 0;
+            }
+        }
+    }
+
+    @media only screen and (min-width: 768px) {
+        .dossier-tags {
+            padding-top: 10px;
+            padding-bottom: 10px;
+            line-height: 2.5em;
+            /* text-transform: uppercase; */
+            font-size: 0.8em;
+
+            &.center {
+                text-align: center;
+            }
+        }
+    }
+
+    .dossier-tags-xs {
+        -webkit-touch-callout: none; /* iOS Safari */
+        -webkit-user-select: none; /* Chrome/Safari/Opera */
+        -khtml-user-select: none; /* Konqueror */
+        -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+        user-select: none;
+        padding-top: 10px;
+        padding-bottom: 0px;
+        text-align: center;
+        line-height: 2.5em;
+        /* text-transform: uppercase; */
+        font-size: 0.5em;
+
+        .dossier-tags-chip {
+            background-color: @grey-1;
+            padding-left: 15px;
+            padding-right: 15px;
+            padding-bottom: 3px;
+            padding-top: 3px;
+            border-radius: 5px;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .dossier-tags-chip:hover {
+            background-color: @grey-3;
+        }
+
+        .dossier-tags-chip:not(:first-child) {
+            margin-left: 10px;
+        }
+    }
+
+    .dossier-tags-chip.selected {
+        background-color: #666;
+        color: white;
+    }
+
+    .nomargin {
+        margin-bottom: 0 !important;
+    }
+
+
+    .no-animate {
+        -webkit-transition: none !important;
+        transition: none !important;
+    }
+}

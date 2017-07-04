@@ -1,0 +1,37 @@
+﻿<div id="admin-sidebar" ng-class="{'open':$root.mode=='manager' || $root.mode=='edit'}" ng-if="hasAccess">
+
+    <div id="admin-sidebar-brand">
+        <div style="float:right;"><label class="switch" ng-click="changeMode()"><input type="checkbox"><i></i></label></div>
+        <span>{{'altaiplatform'|translate}} {{$root.mode}}</span>
+    </div>
+
+    <div id="admin-sidebar-content">
+
+        <ul id="sidebar-manager">
+            <li class="item"><select ng-model="selectedState" ng-options="s as s.name for s in states" ng-change="$state.go(selectedState.name)"></select></li>
+        </ul>
+
+        <altai-sidebar ng-if="$root.mode=='manager'"></altai-sidebar>        
+
+        <div data-ng-if="$root.mode=='edit'">
+            <ul id="sidebar-manager">
+
+                <li class="title">{{'createbuildingblock'|translate}}</li>
+                <li class="item" data-ng-repeat="buildingBlockType in buildingBlockTypes" altai-drag="setActiveDrag('newBuildingBlock',buildingBlockType,0)" draggable="true">{{buildingBlockType.name}}</li>
+                <li class="title">{{'existing'|translate}}</li>
+                <li><input data-ng-model="bbFilter.name" /></li>
+                <li class="item" data-ng-repeat="buildingBlock in buildingBlockInstances |  filter: bbFilter | limitTo: 10" altai-drag="setActiveDrag('exBuildingBlock',buildingBlock,0)" draggable="true">{{buildingBlock.name}}</li>
+            </ul>
+        </div>
+
+        <ul class="altai-sidebar altai-sidebar-collection">
+            <li>
+                <div class="altai-sidebar-itemlabel ng-binding" ui-sref="logout">
+                    <i class="altai-sidebar-itemlabel-icon fa fa-sign-out"></i>&nbsp;{{'logout'|translate}}
+                </div>
+            </li>
+        </ul>
+
+    </div>
+
+</div>

@@ -1,0 +1,8 @@
+﻿<table class="table table-bordered">
+    <tr ng-repeat="module in $ctrl.data.pageResults">
+        <td>
+            <b>{{$index+1}}. {{module.title}}</b>
+            <div ng-repeat="nugget in module.nuggets" course-content-history-class course-id="$root.$stateParams.courseId" content-id="nugget.id"><a href="/course/{{$root.$stateParams.courseId}}/nugget/{{nugget.id}}">{{$parent.$index+1}}.{{$index+1}}. {{nugget.title}}</a></div>
+        </td>
+    </tr>
+</table>

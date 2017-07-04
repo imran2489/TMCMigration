@@ -1,0 +1,93 @@
+﻿<div analytics analytics-item="$ctrl.data.pageResults[0]" analytics-on-view="true"></div>
+<div print-section class="altai-theme-content comeos-detailoverview comeos-region">
+    <div altai-set-title titletext="{{$ctrl.data.pageResults[0].title}}"></div>
+    <section class="comeos-cover cover-large comeos-bg-region highcover" altai-image-style-set-background imagestyleset="pageheader" image="$ctrl.data.pageResults[0].fileregion.file">
+            <div class="row">
+                <div class="col-sm-12 text-center">
+                    <div class="detailoverviewtype">{{'region'|translate}}</div>
+                    <div class="title">{{$ctrl.data.pageResults[0].title}}</div>
+                    <div class="contact-buttons">
+                        <socialshareheader ng-if="$ctrl.data.pageResults[0] != undefined" item="$ctrl.data.pageResults[0]"></socialshareheader>
+                    </div>
+                </div>
+            </div>
+        <div class="comeos-button comeos-button-cover comeos-button-white" comeos-questions-contact-us  itemname="$ctrl.data.pageResults[0].name">
+            <span translate>questionscontactus</span>
+        </div>
+    </section>
+
+    <section class="section-comeos comeos-bg-white">
+        <div class="container">
+            <div class="row introrow smartphone">
+                <div class="col-sm-4 col-sm-offset-1">
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="dossier-contact-section">
+                                <div ng-show="$ctrl.data.pageResults[0].persoonregion.persoon_file.file" class="profile-picture profile-picture-circle"><img ng-src="{{::$root.staticFileBase}}/{{$ctrl.data.pageResults[0].persoonregion.persoon_file.file}}" /></div>
+                                <div>
+                                    <span class="h6">
+                                        {{$ctrl.data.pageResults[0].persoonregion.voornaam}} {{$ctrl.data.pageResults[0].persoonregion.achternaam}}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="two-col-introduction" altai-compile-html="{{$ctrl.data.pageResults[0].description}}">
+                    </div>
+                </div>
+            </div>
+            <div class="row introrow screen">
+                <div class="col-sm-6 col-sm-offset-1">
+                    <div class="two-col-introduction" altai-compile-html="{{$ctrl.data.pageResults[0].description}}">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="dossier-contact-section">
+                                <div ng-show="$ctrl.data.pageResults[0].persoonregion.persoon_file.file" class="profile-picture profile-picture-circle"><img ng-src="{{::$root.staticFileBase}}/{{$ctrl.data.pageResults[0].persoonregion.persoon_file.file}}" /></div>
+                                <div>
+                                    <span class="h6">
+                                        {{$ctrl.data.pageResults[0].persoonregion.voornaam}} {{$ctrl.data.pageResults[0].persoonregion.achternaam}}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="comeos-bg-grey-light" style="margin: 0; padding: 0">
+        <div class="container" style="padding-bottom: 0px">
+            <div class="row">
+                <div class="col-sm-12" style="min-height: 0px">
+                    <altai-exposed-content-collection template-id="280" exposed-content-collection-id="24" titleexp="('information_on'|translate) + ' ' + $ctrl.data.pageResults[0].title"></altai-exposed-content-collection>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="comeos-bg-grey" style="margin: 0; padding: 0">
+        <div class="container" style="padding-bottom: 0px">
+            <div class="row">
+                <div class="col-sm-12" style="min-height: 0px">
+                    <altai-exposed-content-collection template-id="280" exposed-content-collection-id="25" titleexp="('tools'|translate) + ' ' + $ctrl.data.pageResults[0].title"></altai-exposed-content-collection>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="comeos-bg-grey-light" style="margin: 0; padding: 0">
+        <div class="container" style="padding-bottom: 0px">
+            <div class="row">
+                <div class="col-sm-12" style="min-height: 0px">
+                    <altai-exposed-content-collection template-id="280" exposed-content-collection-id="111" titleexp="('academyenevents'|translate) + ' ' + $ctrl.data.pageResults[0].title"></altai-exposed-content-collection>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

@@ -1,0 +1,39 @@
+﻿
+<form class="altai-form">
+    <h2>{{'questionnaires'|translate}}</h2>
+</form>
+
+<div class="altai-list">
+    <div class="search">
+        <md-button ng-click="vm.createQuestionnaire()" class="md-button-altai md-raised"><i class="mdi mdi-plus"></i> {{'create'|translate}} </md-button>
+    </div>
+
+    <div class="row" ng-repeat="questionnaire in vm.questionnaires | orderBy: 'name' | filter: searchFilter track by questionnaire.name">
+        <div class="avatar"><i class="mdi mdi-google-circles-communities"></i></div>
+        <div class="text rowtext">
+            <h2>{{::questionnaire.name}}</h2>
+        </div>
+        <div class="rowactions">
+            <md-button ng-click="vm.createQuestionForQuestionnaire(questionnaire)" class="md-button-altai md-raised"><i class="mdi mdi-plus"></i> {{::'addnewquestion'|translate}} </md-button>
+            <md-button ng-click="vm.openQuestions(questionnaire)" class="md-button-altai md-raised"><i class="mdi mdi-google-circles-extended"></i> {{::'showallquestions'|translate}} </md-button>
+        </div>
+    </div>
+</div>
+<form class="altai-form">
+    <h2>{{'questionOptionSets'|translate}}</h2>
+</form>
+
+<div class="altai-list">
+    <div class="search">
+        <md-button ng-click="vm.createQuestionOptionSet()" class="md-button-altai md-raised"><i class="mdi mdi-plus"></i> {{'create'|translate}} </md-button>
+    </div>
+
+    <div class="row" ng-repeat="option in vm.multipleOptions | orderBy: 'name' | filter: searchFilter track by option.name">
+        <div class="avatar"><i class="mdi mdi-google-circles-communities"></i></div>
+        <div class="text rowtext">
+            <h2>{{::option.name}}</h2>
+        </div>
+
+    </div>
+</div>
+

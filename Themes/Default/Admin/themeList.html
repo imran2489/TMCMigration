@@ -1,0 +1,18 @@
+﻿<div class="page-header">
+    <h2>{{'themes'|translate}}</h2>
+</div>
+
+<panel title="Themes" table="true">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>{{'name'|translate}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="theme in vm.themes">
+                <td><a ui-sref="admin.theme.read({id:theme.id})">{{theme.name}}</a></td>
+            </tr>
+        </tbody>
+    </table>
+</panel>

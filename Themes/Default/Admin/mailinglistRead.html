@@ -1,0 +1,73 @@
+﻿<div class="page-header">
+    <h2><i class="fa fa-envelope-o"></i>&nbsp;{{mailinglist.name}}</h2>
+</div>
+
+<h2>{{'subscribers'|translate}} ({{mailinglist.subscriptionsPage.totalCount}})</h2>
+
+<panel title="Subscribers" table="true">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>{{'email'|translate}}</th>
+                <th>{{'confirmed'|translate}}</th>
+                <th>{{'source'|translate}}</th>
+                <th>{{'actions'|translate}}</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr ng-if="!mailinglist.subscriptionsPage.totalCount">
+                <td colspan="3">{{'noresults'|translate}}</td>
+            </tr>
+
+            <tr ng-repeat="s in mailinglist.subscriptionsPage.pageResults">
+                <td>{{s.email}}</td>
+                <td>{{s.confirmed|binary}}</td>
+                <td>{{s.source == 0 ? 'Registration' : s.source == 1 ? 'ContentCollection' : 'User'}}</td>
+                <td><altai-button type="delete" size="xs" confirm="deleteSubscription(s)" ng-if="s.source==0">{{'delete'|translate}}</altai-button></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="panel-buttons">
+        <altai-pagination result-count="mailinglist.subscriptionsPage.totalCount"></altai-pagination>
+    </div>
+
+</panel>
+
+<div class="panel panel-default">
+
+    <div class="panel-heading">{{'roles'|translate}}</div>
+
+
+    <table class="table table-striped">
+        <tr ng-repeat="role in roles">
+            <td style="width:1%"><input type="checkbox" ng-model="roleSubscription[role.id]" /></td>
+            <td>{{role.name}}</td>
+        </tr>
+    </table>
+
+    <div class="panel-buttons">
+        <altai-button type="save" ng-click="saveRoleSubscriptions(roleSubscription)">{{'save'|translate}}</altai-button>
+    </div>
+
+</div>
+
+<div class="panel panel-default">
+
+    <div class="panel-heading">{{'add'|translate}}</div>
+    <table class="table table-striped">
+        <tr>
+            <td>{{'email'|translate}}:</td>
+            <td><input type="text" ng-model="newSubscriber.email" /></td>
+        </tr>
+        <tr>
+            <td>{{'confirmed?'|translate}}</td>
+            <td><input type="checkbox" ng-model="newSubscriber.confirmed" /></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><altai-button type="add" ng-click="addSubscriber(newSubscriber)">{{'add'|translate}}</altai-button></td>
+        </tr>
+    </table>
+</div>

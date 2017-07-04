@@ -1,0 +1,9 @@
+﻿<div ng-show='!vm.existingMode'>
+    <altai-content-create-item ng-if="!hideItem" content-item='vm.model' content-type-id='vm.contentTypeRelationLink.contentTypeId' languages='vm.languages' origin-link='vm.contentTypeRelationLink'></altai-content-create-item>
+    <div ng-show="hideItem" altai-content-id-field="vm.model" model-visibility="hideItem"></div>
+    <div>
+        <button ng-click="hideItem=!hideItem" ng-show="!hideItem" type="button" class="icon"><i class="mdi mdi-arrow-up"></i></button>
+        <button ng-click="hideItem=!hideItem" ng-show="hideItem" type="button" class="icon"><i class="mdi mdi-arrow-down"></i></button>
+        <div class="drag-handle"><i class="mdi mdi-arrow-all"></i></div>
+    </div>
+</div>

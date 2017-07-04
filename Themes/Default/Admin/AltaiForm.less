@@ -1,0 +1,155 @@
+﻿@import "../config";
+
+.altai-theme-admin {
+    form {
+        /*padding: 0 5px 0 5px;*/
+        padding: 10px 10px 10px 10px;
+        font-size: 14px;
+    }
+
+    .altai-form-no-padding {
+        padding: 0;
+    }
+
+    .altai-form {
+
+        .altai-simple-form {
+            background-color: #f3f3f3;
+            padding: 5px;
+            border-top: 4px solid #eee;
+        }
+
+        .form-group, .form-buttons, h2 {
+            margin: 10px 5px 5px 5px;
+            display: flex;
+            flex: 1;
+            flex-direction: row;
+        }
+
+        .form-buttons.mainbuttonrow {
+            margin-top: 10px;
+        }
+
+        h2 {
+                font-size: 14px;
+                font-weight: bold;
+                margin: 0;
+                padding: 10px 5px 10px 5px;
+        }
+
+        .form-group {
+
+            .add-item, .remove-item {
+                color: #fff;
+                border-radius: 50%;
+                height: 20px;
+                width: 20px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border: 0;
+            }
+
+            altai-content-item-update-inner {
+                width: 100%;
+            }
+
+            .add-item {
+                background-color: @highlight-color;
+            }
+
+            .remove-item {
+                background-color: @danger-color;
+            }
+
+            label {
+                display: block;
+                /*padding-top: 7px;*/
+                padding-top: 0;
+                color: @grey4;
+                font-size: 12px;
+                flex: 0 0 125px;
+            }
+
+            input[type=text], input[type=number], .altai-date-input, select {
+                padding: 7px;
+                /*max-width: 500px;*/
+                width: 100%;
+                background-color: @grey6;
+                border: 1px solid #e3e3e3;
+                border-left: 4px solid #e3e3e3;
+            }
+
+            input[disabled] {
+                background-color: @grey7;
+            }
+
+            .altai-content-attribute-update-item.Text {
+                max-width: 100%;
+            }
+
+            .altai-content-attribute-update-item {
+                margin-bottom: @padding-normal-single;
+                /*max-width: 600px;*/
+                width: 100%;
+                display: flex;
+                margin-left: 10px;
+
+                .altai-content-attribute-update-lang {
+                    width: 30px;
+                    height: 30px;
+                    margin-right: 10px;
+                    border-radius: 15px;
+                    background-color: @grey3;
+                    justify-content: center;
+                    align-items: center;
+                    display: flex;
+                    text-transform: uppercase;
+                    font-size: 12px;
+                }
+
+                .altai-content-attribute-update-tpl {
+                    flex: 1;
+                    display: flex;
+                }
+            }
+        }
+
+        .altai-content-relation-update-item-wrapper {
+            background-color: @grey5;
+
+
+            .form-buttons {
+                margin: 0;
+                margin-bottom: 10px;
+            }
+
+            .remove-item {
+                margin-top: 10px;
+            }
+        }
+
+        .form-buttons {
+            display: flex;
+            /*button, button.toggle-button.active {
+                background-color: transparent;
+                padding: 2px 10px;
+                color: @highlight-color;
+                border: 2px solid @highlight-color;
+                text-transform: uppercase;
+                margin-right: 5px;
+        }
+
+        button.toggle-button {
+            color: @highlight-color;
+            background-color: white;
+            border: 3px solid @highlight-color;
+        }
+
+        .right-button {
+            flex: 1;
+            text-align: right;
+        }*/
+        }
+    }
+}

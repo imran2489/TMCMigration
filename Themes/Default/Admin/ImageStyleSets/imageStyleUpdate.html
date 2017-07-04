@@ -1,0 +1,57 @@
+﻿<altai-toolbar-menu menu-model="$ctrl.toolbar" languages="$ctrl.languages"></altai-toolbar-menu>
+<form class="altai-form" name="contentTypeAttributeUpdate">
+    <div class="altai-admin-section">
+            <h2>{{'imagestyle'|translate}}</h2>
+            <div class="altai-simple-form">
+                <div class="form-group">
+                    <label>{{'name'|translate}}</label>
+                    <input type="text" ng-model="$ctrl.imageStyle.name" />
+                </div>
+                <div class="form-group">
+                    <label>{{'minwidth'|translate}}</label>
+                    <input type="text" ng-model="$ctrl.imageStyle.minWidth" />
+                </div>
+                <div class="form-group">
+                    <label>{{'orientation'|translate}}</label>
+                    <select ng-model="$ctrl.imageStyle.orientation" ng-options="c.value as c.text for c in $ctrl.orientationList" required></select>
+                </div>
+
+                <div class="form-group">
+                    <label>{{'retina'|translate}}</label>
+                    <select ng-model="$ctrl.imageStyle.retina" ng-options="c.value as c.text for c in $ctrl.retinaList" required></select>
+                </div>
+            </div>
+        </div>
+    <div class="altai-admin-section">
+            <h2>Image Style Actions</h2>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>{{"order"|translate}}</th>
+                        <th>{{"name"|translate}}</th>
+                        <th>{{"actions"|translate}}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="imageStyleAction in $ctrl.imageStyle.imageStyleActions">
+                        <td>
+                            {{imageStyleAction.order}}
+                        </td>
+                        <td>
+                            {{imageStyleAction.name}}
+                        </td>
+                        <td>
+                            <md-button type="button" class="md-button-altai md-raised" ng-click="$ctrl.openImageStyleAction(imageStyleAction)"><i class="mdi mdi-pencil"></i> {{'edit'|translate}} </md-button>
+                            <md-button type="button" class="md-button-altai md-raised" ng-click="$ctrl.removeImageStyleAction(imageStyleAction.id)"><i class="mdi mdi-delete"></i> {{'delete'|translate}} </md-button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="selectadder">
+                <select name="repeatSelect" id="repeatSelect" ng-model="$ctrl.selectedImageStyleActionType">
+                    <option ng-repeat="option in $ctrl.imageStyleActionTypeList" value="{{option.value}}">{{option.text}}</option>
+                </select>
+                <md-button type="button" class="md-button-altai md-raised" ng-click="$ctrl.addImageStyleAction()"><i class="mdi mdi-plus"></i> {{'create'|translate}} </md-button>
+            </div>
+    </div>
+    </form>

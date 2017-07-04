@@ -1,0 +1,61 @@
+﻿<div class="comeos-menu-zone comeos-collection-menu">
+    <div class="nav-bar" data-fixed-at="700">
+
+        <div class="nav-module menu-module right">
+            <ul class="menu">
+                <li ng-repeat="item in $ctrl.menuItems" ng-class="{'hover':item.hovered}">
+                    <a altai-hover-intent="item.hovered=true" altai-un-hover-intent="item.hovered=false" ng-class="{'hover':item.hovered}" hover-intent-delay="300" un-hover-intent-delay="500" ui-sref="{{item.link}}">{{item.label | translate}}</a>
+                    <div class="comeos-sub-menu">
+  
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="comeos-subitem-description" ng-show="$ctrl.hoveredItem!=undefined">
+                                    <div class="menupic" ng-if="$ctrl.hoveredItem.filesector1" ng-style="{'background-image':'url('+$root.staticFileBase+'/'+$ctrl.hoveredItem.filesector1.file+')'}"></div>
+                                    <div class="menupic" ng-if="$ctrl.hoveredItem.filepc3" ng-style="{'background-image':'url('+$root.staticFileBase+'/'+$ctrl.hoveredItem.filepc3.file+')'}"></div>
+                                    <div class="menupic" ng-if="$ctrl.hoveredItem.filetheme1" ng-style="{'background-image':'url('+$root.staticFileBase+'/'+$ctrl.hoveredItem.filetheme1.file+')'}"></div>
+                                    <div class="menupic" ng-if="$ctrl.hoveredItem.fileregion1" ng-style="{'background-image':'url('+$root.staticFileBase+'/'+$ctrl.hoveredItem.fileregion1.file+')'}"></div>
+                                    <div class="title" ng-if="$ctrl.hoveredItem.title!=undefined">
+                                        {{$ctrl.hoveredItem.title}}
+                                    </div>
+
+                                    <div class="menusidetext">
+                                        <p ng-if="$ctrl.hoveredItem.description!=undefined" altai-compile-html="{{$ctrl.hoveredItem.description|crop:200:true}}"></p>
+                                        <p ng-if="$ctrl.hoveredItem.intro!=undefined" altai-compile-html="{{$ctrl.hoveredItem.intro|crop:200:true}}"></p>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="row sub-items">
+                                    <div class="col-xs-12">
+                                        <div ng-if="$ctrl.loading">{{"loadingmenuitems"}}</div>                                 
+                                        <div class="row">
+                                            <div ng-repeat="subitem in item.items | orderBy: 'title'">
+                                                <div ng-class="{'mySelection': subitem.mySelection}" class="col-xs-3 col-lg-3 subitemmenurow menu-sub-item" style="padding-left: 15px" ui-sref="{{subitem.link}}" ui-sref-opts="{reload: true, inherit: false}" ng-mouseleave="$ctrl.onHoverSubOut(subitem)" ng-mouseenter="$ctrl.onHoverSub(subitem)">{{subitem.title}}</div>
+                                                <div class="clearfix" ng-if="$index % 4 == 0"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </li>
+                <li class="comeos-divider">|</li>
+                <li class="comeos-menu-search">
+                    <i class="mdi mdi-magnify search-icon" ng-click="$ctrl.toggleSearch()"></i>
+                    <div class="searcher" ng-show="$ctrl.showSearch">
+                        <form ng-submit="$ctrl.search()">
+                            <input type="text" ng-model="$ctrl.searchQuery" placeholder="{{'search'|translate}}" />
+                            <i class="mdi mdi-close close" ng-click="$ctrl.toggleSearch()"></i>
+                            <i class="mdi mdi-magnify search" ng-click="$ctrl.search()"></i>
+                        </form>
+
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

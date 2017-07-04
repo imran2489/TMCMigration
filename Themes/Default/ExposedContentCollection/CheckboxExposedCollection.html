@@ -1,0 +1,89 @@
+﻿<section class="checkbox-exposed-collection">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <table class="table table-borderless filter">
+                    <tr>
+                        <td ng-repeat="filter in vm.filters">
+                            <div ng-if="filter.FilterType == 'relation' || filter.FilterType == 'contenttype' || filter.FilterType == 'term'">
+
+                                <div class="filter-container">
+
+                                    <div class="filter-container-item" ng-repeat="item in filter.Values" ng-click="item.selected = !item.selected; fetch()" ng-if="item.count>0" ng-class="{active: item.selected, child: item.child}">
+                                        <div class="filter-container-item-inner">
+                                            <md-checkbox ng-model="item.Selected" aria-label="Checkbox 2" ng-true-value="'yup'" ng-false-value="'nope'">
+                                                {{item.Name}}
+                                            </md-checkbox>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="row" style="min-height: 600px;">
+            <div class="masonry masonry-blog">
+                <div class="masonry__container masonry--active">
+                    <div ng-repeat="item in vm.results track by item.Id">
+                        <div class="col-lg-12 visible-lg" ng-if="$index % 3 == 0"></div>
+                        <div class="col-md-12 visible-md" ng-if="$index % 3 == 0"></div>
+                        <div class="col-sm-12 visible-sm" ng-if="$index % 2 == 0"></div>
+                        <div class="col-xs-12 visible-xs" ng-if="$index % 2 == 0"></div>
+                        <div class="col-md-4 col-sm-6 masonry__item">
+                            <a href="{{item.ContentType}}/{{item.Id}}">
+                                <div class="card card-1 card-with-image box-shadow" style="min-height: 300px">
+                                    <div class="content-type-label">{{item.ContentType}}</div>
+                                    <div class="card__image">
+                                        <div class="mycomeos-label">mC</div>
+                                    </div>
+                                    <div class="card__body boxed boxed--sm bg--white">
+                                        <div class="card__like">
+                                            <i class="icon icon-Heart"></i>
+                                        </div>
+                                        <div class="card__pills">
+                                            <span class="tag-pill--small" ng-repeat="tag in item.complexdossier_theme">{{tag.Name}}</span>
+                                            <span class="tag-pill--small" ng-repeat="tag in item.complexdossier_sector">{{tag.Name}}</span>
+                                            <span class="tag-pill--small" ng-repeat="tag in item.complexdossier_region">{{tag.Name}}</span>
+                                            <span class="tag-pill--small" ng-repeat="tag in item.complexdossier_pc">{{tag.Name}}</span>
+                                        </div>
+                                        <div class="card__title">
+                                            <h5>{{item.title}}</h5>
+                                        </div>
+                                        <div class="card__event-data">
+                                            <div class="event-data-item"><i class="icon icon-Calendar-2"></i>{{item.LastUpdated | localDate}}</div>
+                                        </div>
+                                        <div ng-if="item.membersintroduction" altai-compile-html="{{item.membersintroduction | crop:100}}"></div>
+                                        <div ng-if="!item.membersintroduction" altai-compile-html="{{item.publicintroduction | crop:100}}"></div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" ng-if="vm.data.pages > 0">
+                <div class="col-sm-12">
+                    <div class="button-row--centralized">
+                        <div class="panel-buttons">
+                            <nav class="altai-pagination ng-isolate-scope">
+                                <pagination ng-model="vm.page"
+                                            total-items="vm.data.pages*vm.data.pageSize"
+                                            max-size="10"
+                                            items-per-page="12"
+                                            boundary-links="true"
+                                            previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;">
+                                </pagination>
+                            </nav>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

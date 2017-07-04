@@ -1,0 +1,58 @@
+﻿@import "../config";
+
+
+.altai-admin-toolbar {
+    md-menu-bar {
+        padding: 0 20px 0 180px;
+        color: white;
+    }
+
+    md-toolbar {
+        min-height: 0;
+        background-color: transparent;
+    }
+
+    md-menu-bar button {
+        font-size: 12px;
+        padding: 0 10px;
+        margin: 0;
+        border: 0;
+        background-color: transparent;
+        height: 40px;
+    }
+
+    md-menu-bar button:hover {
+        background-color: @color-toolbar-form-element-bg;
+    }
+
+    a.md-button.md-default-theme:not([disabled]):hover, a.md-button:not([disabled]):hover, .md-button.md-default-theme:not([disabled]):hover, .md-button:not([disabled]):hover {
+        background-color: lighten(@color-toolbar-menu-dropdown-bg, 20%);
+    }
+}
+
+md-menu-item > .md-button, .md-button {
+    font-size: 12px;
+}
+
+md-menu-content.md-menu-bar-menu.md-dense .md-menu > .md-button {
+
+}
+
+
+md-menu-content.md-default-theme, md-menu-content {
+    background-color: @color-toolbar-menu-dropdown-bg;
+    color: @color-toolbar-menu-dropdown-color;
+}
+
+md-menu-content.md-default-theme, md-menu-item, md-menu-content md-menu-item {
+    background-color: @color-toolbar-menu-dropdown-bg;
+    color: @color-toolbar-menu-dropdown-color;
+}
+
+md-menu-item:hover .menuicon {
+   
+}
+
+select, button, textarea, input {
+    font-size: 14px;
+}

@@ -1,0 +1,73 @@
+﻿<altai-toolbar-menu menu-model="vm.toolbar" languages="vm.languages"></altai-toolbar-menu>
+
+<form class="altai-form">
+
+    <div class="form-group">
+        <label>{{'contenttype'|translate}}</label>
+        <select ng-model="vm.selectedContentTypeId" ng-options="c.id as c.name for c in vm.contentTypes"></select>
+    </div>
+
+    <div ng-repeat="link in vm.newCtr.contentTypeRelationLinks">
+
+        <h2><span ng-show="$index == 0">{{vm.newCtr.contentTypeRelationLinks[1].contentType.name}}</span><span ng-show="$index == 1">{{vm.newCtr.contentTypeRelationLinks[0].contentType.name}}</span> &nbsp;-> {{link.contentType.name}}</h2>
+
+        <div class="form-group">
+            <label>{{'label'|translate}}</label>
+            <div altai-translatable-input="link.labelTranslatable" languages="vm.languages" />
+        </div>
+
+        <div class="form-group">
+            <label>{{'name'|translate}}</label>
+            <input type="text" ng-model="link.name" />
+        </div>
+
+        <div class="form-group">
+            <label>{{'multiple'|translate}}</label>
+            <input type="checkbox" ng-model="link.allowMultiple" />
+        </div>
+
+        <div class="form-group">
+            <label>{{'required'|translate}}</label>
+            <input type="checkbox" ng-model="link.required" />
+        </div>
+
+        <div class="form-group">
+            <label>{{'allowcreatelink'|translate}}</label>
+            <input type="checkbox" ng-model="link.allowCreateLink" />
+        </div>
+
+        <div class="form-group">
+            <label>{{'allowcreatenew'|translate}}</label>
+            <input type="checkbox" ng-model="link.allowCreateNew" />
+        </div>
+
+        <div class="form-group">
+            <label>{{'inlinecreate'|translate}}</label>
+            <input type="checkbox" ng-model="link.inlineCreate" />
+        </div>
+
+        <div class="form-group">
+            <label>{{'hide'|translate}}</label>
+            <input type="checkbox" ng-model="link.hidden" />
+        </div>
+
+        <div class="form-group">
+            <label>{{'includebydefault'|translate}}</label>
+            <input type="checkbox" ng-model="link.includeByDefault" />
+        </div>
+
+        <div class="form-group">
+            <label>{{'template'|translate}}</label>
+            <select ng-model="link.editTemplate" ng-options="t.name as t.name for t in vm.contentRelationTemplates">
+                <option value="">-- {{'default'|translate}} --</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>{{'collections'|translate}}</label>
+            <select ng-model="link.editContentCollectionId" ng-options="t.id as t.name for t in vm.contentCollections">
+                <option value="">-- {{'default'|translate}} --</option>
+            </select>
+        </div>
+    </div>
+
+</form>

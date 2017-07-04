@@ -1,0 +1,13 @@
+﻿<div class="chaptersection" ng-class="{opened:$ctrl.expanded}">
+    <div id="{{$ctrl.hash}}" class="chaptersection-title" ng-click="$ctrl.toggle()">
+        {{$ctrl.chaptersectionmodel.title}} <i class="mdi mdi-chevron-right collapseicon"></i>
+    </div>
+    <div class="chaptersection-content" ng-show="$ctrl.expanded">
+        <div>
+            <div class="dossier-vraag-item-antwoord">
+                <div altai-compile-html="{{$ctrl.chaptersectionmodel.content}}"> </div>
+            </div>
+
+        </div>
+    </div>
+</div>

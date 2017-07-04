@@ -1,0 +1,56 @@
+﻿<div class="dossier-vragen">
+    <div print-section id="printFaq" ng-if="$ctrl.sectionList.length>0">
+
+        <div print-remove class="row">
+
+            <div print-section class="col-md-12 comeos-buttons">
+                <div class="comeos-button no-animate" ng-click="$ctrl.expandAll()" ng-show="!$ctrl.allexpanded" translate>
+                    showall
+                </div>
+                <div class="comeos-button no-animate" ng-click="$ctrl.collapseAll()" ng-show="$ctrl.allexpanded" translate>
+                    hideall
+                </div>
+                <a class="comeos-button" analytics analytics-item="$ctrl.data.pageResults[0]" analytics-on-click="logprint" print-btn><span translate>print</span></a>
+            </div>
+        </div>
+
+        <div ng-repeat="section in $ctrl.sectionList track by $index">
+
+            <div class="dossier-vraag-item" ng-class="{opened:section.expanded}">
+                <div class="dossier-vraag-item-vraag comeos-bg-pc" ng-click="section.toggle()">
+                    <span class="dossier-actual-question">{{section.section.subtitle1}}</span><i class="questionicon mdi mdi-plus collapseicon"></i>
+                </div>
+
+                <div ng-if="!$ctrl.answer" class="answers" ng-show="section.expanded">
+                    <paywall></paywall>
+                </div>
+                <div ng-if="section.section.content" class="answers" ng-show="section.expanded">
+                    <div class="dossier-vraag-item-antwoord cktext">
+                        <div altai-compile-html="{{section.section.content}}"> </div>
+                    </div>
+                    <div ng-if="$ctrl.activelang.code=='fr'" class="dossier-section dossier-vraag-item-antwoord" ng-show="section.section.filesubsection.length > 0">
+                        <h5 translate>attachments</h5>
+                        <div class="attached-file" ng-repeat="doc in section.section.filesubsection">
+                            <a ng-href="{{$root.staticFileBase}}/{{doc.file}}" target="_blank"><fileicon doctype="doc.fileextension"></fileicon> <span>{{doc.label}}</span></a>
+                        </div>
+                    </div>
+                    <div ng-if="$ctrl.activelang.code=='nl'" class="dossier-section dossier-vraag-item-antwoord" ng-show="section.section.filesubsection2.length > 0">
+                        <h5 translate>attachments</h5>
+                        <div class="attached-file" ng-repeat="doc in section.section.filesubsection2">
+                            <a ng-href="{{$root.staticFileBase}}/{{doc.file}}" target="_blank"><fileicon doctype="doc.fileextension"></fileicon> <span>{{doc.label}}</span></a>
+                        </div>
+                    </div>
+
+                    <div class="dossier-section" ng-show="section.section.linksubsection.length > 0">
+                        <h5 translate>relatedlinks</h5>
+                        <div class="attached-link" ng-repeat="link in section.section.linksubsection">
+                            <a ng-if="link.linktarget!=undefined" ng-href="{{link.linkurl}}" target="{{link.linktarget}}"><span class="attached-link-icon"><i class="mdi mdi-link"></i></span><span>{{link.linktekst}}</span></a>
+                            <a ng-if="link.linktarget==undefined" ng-href="{{link.linkurl}}" target="_blank"><span class="attached-link-icon"><i class="mdi mdi-link"></i></span><span>{{link.linktekst}}</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

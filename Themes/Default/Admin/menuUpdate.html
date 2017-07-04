@@ -1,0 +1,131 @@
+﻿<div class="page-header">
+
+    <h2><i class="fa fa-link"></i>&nbsp;{{'menu'|translate}}</h2>
+</div>
+
+<div class='panel panel-default'>
+    <div class='panel-heading'>{{'settings'|translate}}</div>
+    <table class="table table-striped">
+        <tr>
+            <td style="width: 25%">{{'name'|translate}}:</td>
+            <td>
+                <input type="text" data-ng-model="menu.name" />
+            </td>
+        </tr>
+
+        <tr>
+            <td>{{'template'|translate}}:</td>
+            <td>
+                <select data-ng-model="menu.templateId" data-ng-options="t.id as t.name for t in templates"></select>
+            </td>
+        </tr>
+
+
+        <tr>
+            <td></td>
+            <td>
+                <button class="btn btn-success" data-ng-click="updateMenu()"><i class="fa fa-save"></i>&nbsp;{{'save'|translate}}</button>
+            </td>
+        </tr>
+
+    </table>
+</div>
+
+
+<div class='panel panel-default'>
+    <div class='panel-heading'>{{'menuitems'|translate}}</div>
+    <table class="table table-striped">
+        <tr>
+            <th style="width: 25%">{{'name'|translate}}</th>
+            <th>{{'location'|translate}}</th>
+            <th>{{'target'|translate}}</th>
+            <th>{{'actions'|translate}}</th>
+        </tr>
+
+        <tbody data-ng-repeat="menuItem in menu.menuItems">
+            <tr>
+                <td>{{menuItem.name}}</td>
+                <td>{{menuItem.url}}</td>
+                <td>{{menuItem.target}}</td>
+                <td>
+                    <button class="btn btn-danger" data-ng-click="deleteMenuItem(menuItem)"><i class="fa fa-trash-o"></i></button>
+                    <button class="btn btn-default"><i class="fa fa-crosshairs"></i></button>
+                </td>
+            </tr>
+
+            <tr data-ng-repeat="child in menuItem.childMenuItems">
+                <td><span style="background-color:#ccc;width:15px;">&nbsp;</span> {{child.name}}</td>
+                <td>{{child.url}}</td>
+                <td>{{child.target}}</td>
+                <td>
+                    <button class="btn btn-danger" data-ng-click="deleteMenuItem(child)"><i class="fa fa-trash-o"></i></button>
+                    <button class="btn btn-default"><i class="fa fa-crosshairs"></i></button>
+                </td>
+            </tr>
+
+        </tbody>
+
+    </table>
+</div>
+
+<div class='panel panel-default'>
+    <div class='panel-heading'>{{'createmenuitem'|translate}}</div>
+    <table class="table table-striped">
+
+
+        <tr>
+            <td style="width: 25%">{{'name'|translate}}</td>
+            <td>
+                <input type="text" data-ng-model="newMenuItem.name" />
+            </td>
+        </tr>
+        <tr>
+            <td>{{'state'|translate}}:</td>
+            <td>
+                <select data-ng-options="s.id as s.name for s in states" data-ng-model="newMenuItem.stateId">
+                    <option value="">--</option>
+                </select>
+            </td>
+        </tr>
+
+        <tr>
+            <td>{{'url'|translate}}:</td>
+            <td>
+                <input type="text" data-ng-model="newMenuItem.url" />
+            </td>
+        </tr>
+
+        <tr>
+            <td>{{'target'|translate}}:</td>
+            <td>
+                <select data-ng-model="newMenuItem.target">
+                    <option value="self">{{'samewindow'|translate}}</option>
+                    <option value="blank">{{'newwindow'|translate}}</option>
+                    <option value="popup">{{'popup'|translate}}</option>
+                    <option value="modal">{{'modal'|translate}}</option>
+                </select>
+
+            </td>
+        </tr>
+
+        <tr>
+            <td>{{'parentmenuitem'|translate}}:</td>
+            <td>
+                <select data-ng-model="newMenuItem.parentMenuItemId" data-ng-options="m.id as m.name for m in menu.menuItems">
+
+                    <option value="">--</option>
+
+                </select>
+            </td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td>
+                <button class="btn btn-primary" data-ng-click="createMenuItem()"><i class="fa fa-plus"></i>&nbsp;{{'addmenuitem'|translate}}</button>
+            </td>
+        </tr>
+
+
+    </table>
+</div>

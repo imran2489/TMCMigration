@@ -1,0 +1,29 @@
+﻿<div  class="altai-card whoiswhocard highcard" ng-mouseenter="$ctrl.onHoverIn()" ng-mouseleave="$ctrl.onHoverOut()" >
+    <div>
+        <div class="altai-card-body">
+            <img class="altai-card-image" ng-src="{{::$root.staticFileBase}}/{{$ctrl.imagelink}}"/>
+            <div class="altai-card-title">
+                <h5>{{$ctrl.item.voornaam}} {{$ctrl.item.achternaam}}</h5>
+            </div>
+            <div class="altai-card-function-titles">
+                <div class="altai-card-function-title" ng-repeat="title in $ctrl.item.comeostitlepersoon">
+                    {{title.title}}
+                </div>
+                <div class="contactdata">
+                    <div ng-if="$ctrl.item.email" class="altai-card-contact-item">
+                        <i class="mdi mdi-at"></i> {{$ctrl.item.email}}
+                    </div>
+                    <div ng-if="$ctrl.item.phone1" class="altai-card-contact-item">
+                        <i class="mdi mdi-phone"></i> {{$ctrl.item.phone1}}
+                    </div>
+                    <div ng-if="$ctrl.item.phone2" class="altai-card-contact-item">
+                        <i class="mdi mdi-cellphone-iphone"></i> {{$ctrl.item.phone2}}
+                    </div>
+                </div>
+            </div>
+            <p>
+                <span ng-if="$ctrl.description!=undefined" altai-compile-html="{{($ctrl.description | crop:145)}}"></span>
+            </p>
+        </div>
+    </div>
+</div>

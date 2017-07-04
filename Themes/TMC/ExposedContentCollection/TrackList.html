@@ -1,0 +1,14 @@
+﻿<div class="row">
+
+    <h2>Tracks</h2>   
+    
+
+    <div style="border:5px solid lightblue;padding:20px;" ng-repeat="track in $ctrl.data.pageResults track by track.id">
+
+        <h1><a href="/track/{{track.id}}">{{track.title}}</a></h1>
+
+        <p>{{track.description}}</p>
+
+    </div>
+
+</div>

@@ -1,0 +1,26 @@
+﻿<div class="page-header">
+    <h2><i class="fa fa-envelope-o"></i>&nbsp;{{'newsletters'|translate}}</h2>
+</div>
+
+<div class="panel panel-default">
+
+    <div class="panel-heading">{{'create'|translate}}</div>
+
+    <form name="addMailinglistForm">
+        <table class="table table-striped">
+            <tr>
+                <td style="width:25%">{{'name'|translate}}</td>
+                <td><input type="text" class="form-control" name="name" ng-model="newMailinglist.name" /></td>
+            </tr>
+            <tr>
+                <td>{{'public'|translate}}</td>
+                <td><input type="checkbox" ng-model="newMailinglist.public" /></td>
+            </tr>
+        </table>
+
+        <div class="panel-buttons">
+            <altai-button type="add" ng-click="createMailinglist(newMailinglist)">{{'create'|translate}}</altai-button>
+        </div>
+    </form>
+
+</div>

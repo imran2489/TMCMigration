@@ -1,0 +1,107 @@
+﻿<altai-language-bar languages="$ctrl.languages" allow-multiple="true"></altai-language-bar>
+
+<form class="altai-form">
+
+    <div class="altai-admin-section">
+        <div>
+            <div class="subheader">
+                <h3>{{'filter'|translate}}</h3>
+            </div>
+
+            <div class="altai-simple-form">
+
+                <div class="form-group">
+                    <label>{{'label'|translate}}</label>
+                    <div altai-translatable-input="$ctrl.exposedContentCollectionFilter.labelTranslatable" languages="$ctrl.languages" />
+                </div>
+
+                <div class="form-group">
+                    <label>{{'type'|translate}}</label>
+                    <select ng-model="$ctrl.exposedContentCollectionFilter.filterType" ng-options="item.value as item.label for item in $ctrl.filterTypes"></select>
+                </div>
+
+                <div class="form-group" ng-if="$ctrl.exposedContentCollectionFilter.filterType && ($ctrl.exposedContentCollectionFilter.filterType == 'relation' || $ctrl.exposedContentCollectionFilter.filterType == 'term')">
+                    <label>{{'fixed'|translate}}</label>
+                    <input type="checkbox" ng-model="$ctrl.exposedContentCollectionFilter.fixed" />
+                </div>
+
+                <div class="form-group" ng-if="$ctrl.exposedContentCollectionFilter.filterType && ($ctrl.exposedContentCollectionFilter.filterType == 'relation' || $ctrl.exposedContentCollectionFilter.filterType == 'term')">
+                    <label>{{'nested'|translate}}</label>
+                    <input type="checkbox" ng-model="$ctrl.exposedContentCollectionFilter.nested" />
+                </div>
+
+                <div class="form-group"  ng-if="$ctrl.exposedContentCollectionFilter.filterType == 'relation' || $ctrl.exposedContentCollectionFilter.filterType == 'MoreLikeThis'">
+                    <label>{{'contenttype'|translate}}</label>
+                    <select ng-model="$ctrl.exposedContentCollectionFilter.type" ng-options="c as c.label for c in $ctrl.contentTypes"></select>
+                </div>
+
+                <!--<div class="form-group" ng-if="false">
+                    <label>{{'relation'|translate}}</label>
+                    <select ng-model="$ctrl.exposedContentCollectionFilter.contentTypeRelationId" ng-options="c.id as c.name for c in $ctrl.relations"></select>
+                </div>-->
+
+                <div class="form-group" ng-if="($ctrl.exposedContentCollectionFilter.filterType == 'relation' || $ctrl.exposedContentCollectionFilter.filterType == 'term')">
+                    <label>{{'field'|translate}}</label>
+                    <select ng-model="$ctrl.exposedContentCollectionFilter.field" ng-options="c as c.attribute.label for c in $ctrl.contentTypeAttributes | filter: {contentTypeId:$ctrl.exposedContentCollectionFilter.type.id}"></select>
+                </div>
+
+                <div class="form-group" ng-if="(($ctrl.exposedContentCollectionFilter.filterType == 'relation')  && $ctrl.exposedContentCollectionFilter.field)  && ($ctrl.valueParameter.length == 0 || $ctrl.valueParameter == undefined)">
+                    <!--  || newFilter.filterType == 'contenttype' -->
+                    <label>{{'values'|translate}}</label>
+                    <div isteven-multi-select input-model="$ctrl.valueOptions" output-model="$ctrl.valueOptionsOutput" button-label="icon name" item-label="icon name maker" tick-property="ticked"></div>
+                </div>
+
+                <div class="form-group" ng-if="(($ctrl.exposedContentCollectionFilter.filterType == 'relation' || ($ctrl.exposedContentCollectionFilter.filterType == 'term'  && $ctrl.exposedContentCollectionFilter.fixed))  && $ctrl.exposedContentCollectionFilter.field) && ($ctrl.valueOptionsOutput.length == 0 || $ctrl.valueOptionsOutput == undefined) && ($ctrl.values.length == 0)">
+                    <!--  || newFilter.filterType == 'contenttype' -->
+                    <label>{{'valueParameter'|translate}}</label>
+                    <input ng-model="$ctrl.valueParameter" placeholder="{{'parameter'|translate}}"/>
+                </div>
+                <div class="form-group" ng-if="(($ctrl.exposedContentCollectionFilter.filterType == 'term'  && $ctrl.exposedContentCollectionFilter.fixed)  && $ctrl.exposedContentCollectionFilter.field) && ($ctrl.valueOptionsOutput.length == 0 || $ctrl.valueOptionsOutput == undefined) && ($ctrl.valueParameter.length == 0 || !$ctrl.valueParameter)">
+                    <!--  || newFilter.filterType == 'contenttype' -->
+                    <label>{{'values'|translate}}</label>
+                    <input ng-model="$ctrl.values" placeholder="{{'values seperated by ,'|translate}}" />
+                </div>
+            </div>
+        </div>
+        <panel table="true" ng-if="$ctrl.exposedContentCollectionFilter.filterType == 'MoreLikeThis'">
+
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>{{'Field'|translate}}</th>
+                        <th>{{'boost'|translate}}:</th>
+                        <th>{{'mTF'|translate}}</th>
+                        <th>{{'mQT'|translate}}</th>
+                        <th>{{'filter'|translate}}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="Criterium in $ctrl.exposedContentCollectionFilter.expContCollFilMLTCriteria track by Criterium.id">
+                        <td>{{Criterium.expContCollFields[0].field}}</td>
+                        <td>{{Criterium.boost}}</td>
+                        <td>{{Criterium.filter ? '' :  Criterium.minTermFreq}}</td>
+                        <td>{{Criterium.filter ? '' : Criterium.maxQueryTerms}}</td>
+                        <td>{{Criterium.filter}}</td>
+                        <td>
+                            <!--<button class="icon"  aria-label="{{'edit'|translate}}"><i class="mdi mdi-pencil"></i></button><!-- ng-click="vm.openUpdateFilterWindow(filter)" -->
+                            <button class="icon" ng-click="$ctrl.deleteMLTCriteria(Criterium)"  aria-label="{{'delete'|translate}}"><i class="mdi mdi-delete"></i></button><!--  ng-click="vm.deleteExposedContentCollectionFilter(filter)" -->
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="6"><button class="altai-admin-icon main" ng-click="$ctrl.openCreateMLTCriteriumWindow()"><i class="mdi mdi-plus"></i></button></td> <!-- ng-click="vm.openCreateFilterWindow()" -->
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+
+
+        </panel>
+
+        <div class="form-buttons mainbuttonrow"  ng-if="$ctrl.exposedContentCollectionFilter.filterType == 'relation' || $ctrl.exposedContentCollectionFilter.filterType == 'term' || $ctrl.exposedContentCollectionFilter.filterType == 'contenttype' || $ctrl.exposedContentCollectionFilter.filterType == 'MoreLikeThis'">
+            <button type="button" class="altai-admin-icon main" ng-click="$ctrl.updateFilter()"><i class="mdi mdi-content-save"></i></button>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,120 @@
+﻿@import "../config";
+
+.altai-theme-admin {
+    .smallbar {
+        padding: 0;
+    }
+
+    .taskcenterlist {
+                overflow:hidden;
+        color:white;
+        .md-center {
+            background-color: transparent;
+            text-align: center;
+            justify-content: center;
+            text-align: center;
+            align-items: center;
+            font-size: 12px;
+            text-transform: none;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            margin: 10px;
+        }
+
+        .contenttypeletterpill {
+            display: inline;
+            border-radius: 12px;
+            padding: 4px 10px 4px 10px;
+            color: #f9f9f9;
+        }
+
+        .notificationcenterbutton {
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            align-items: center;
+            padding-top: 5px;
+        }
+
+        .commentpill {
+                        color: #fff;
+            display: inline;
+            min-width: 45px;
+            text-align: center;
+            border-radius: 12px;
+            padding: 4px 10px 4px 10px;
+            background-color: transparent;
+            
+    white-space: nowrap;
+        }
+
+        .commentpill.interesting {
+
+            background-color:@color-raspberry;
+        }
+
+        .taskcenterrow {
+            height: 40px;
+            font-size: 10px;
+
+            .field-contenttype {
+                flex: 1;
+            }
+
+            .field-taskname {
+                flex: 4;
+            }
+
+            .field-contentitemname {
+                flex: 4;
+            }
+
+            .field-date {
+                flex: 3;
+            }
+
+            .field-commentpill {
+                flex: 2;
+                
+    white-space: nowrap;
+            }
+        }
+
+        .taskcenterfield {
+            justify-content: flex-start;
+            align-items: flex-start;
+            text-align: left;
+        }
+    }
+
+    .taskcenter {
+
+        .taskcentericon {
+            width: 40px;
+            display: flex;
+            background-color: transparent;
+            height: 40px;
+            /* padding: 10px; */
+            flex: 1;
+            font-size: 16px;
+            justify-content: center;
+            align-items: center;
+            margin: 0 10px 0 10px;
+        }
+
+        .iconcounter {
+            position: absolute;
+            top: 4px;
+            margin-left: 11px;
+            background-color: @color-raspberry;
+            display:inline-block;
+            padding:  0 5px;
+            border-radius: 8px;
+            font-size: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+    }
+}

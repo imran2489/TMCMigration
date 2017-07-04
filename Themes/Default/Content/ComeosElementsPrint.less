@@ -1,0 +1,32 @@
+﻿@import "../comeos.config.less";
+
+@media print {
+    .print-span {
+        background-color: @comeos-bg-green !important;
+        color: @comeos-color-light !important;
+
+        a {
+            color: @comeos-color-light !important;
+            cursor: pointer;
+        }
+    }
+
+    .print-span-color {
+        color: @comeos-color-light !important;
+    }
+
+    .print-entire-pages {
+        position: absolute !important;
+    }
+
+    .print-comeos-bg-actumessage {
+        background-color: @comeos-bg-yellow !important;
+        color: @comeos-color-light !important;
+        a {
+            color: @comeos-color-light;
+            cursor: pointer;
+        }
+    }   
+}
+
+

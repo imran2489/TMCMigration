@@ -1,0 +1,29 @@
+﻿<div class="altai-admin-section">
+    <div class="page-header">
+        <h2>{{vm.group.name}}</h2>
+    </div>
+
+    <table class="table table-bordered table-striped">
+
+        <thead>
+            <tr>
+                <th class="checkbox"></th>
+                <th>{{'role'|translate}}</th>
+            </tr>
+        </thead>
+
+        <tr ng-repeat="role in vm.group.identityGroupRoles">
+            <td><input type="checkbox" /></td>
+            <td>{{role.name}}</td>
+        </tr>
+
+    </table>
+
+    <div class="actions">
+        <button ng-click="vm.createGroupRole()" class="altai-admin-icon main">
+            <md-tooltip md-direction="top">{{'createrole'|translate}}</md-tooltip>
+            <i class="mdi mdi-plus"></i>
+        </button>
+    </div>
+
+</div>

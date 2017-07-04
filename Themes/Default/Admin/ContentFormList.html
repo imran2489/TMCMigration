@@ -1,0 +1,19 @@
+﻿<div class="altai-list">
+    <div class="search">
+        <input class="query" type="text" ng-model="searchFilter.name" placeholder="{{'search'|translate}}" />
+        <md-button ng-click="vm.createContentForm()" class="md-button-altai md-raised"><i class="mdi mdi-plus"></i> {{'create'|translate}} </md-button>
+    </div>
+
+    <div class="row" ng-repeat="contentForm in vm.contentForms | filter: searchFilter track by contentForm.id" ng-click="vm.updateContentForm(contentForm)">
+        <div class="avatar"><i class="mdi mdi-content-paste"></i></div>
+        <div class="text rowtext">
+            <h2>{{contentForm.name}}</h2>
+            <h3>{{contentForm.contentType.name}}</h3>
+        </div>
+        <div class="rowactions">
+            <a href="/api/contentForm/{{contentForm.id}}/html" target="_blank">{{'template'|translate}}</a>
+            <md-button ng-click="vm.updateContentForm(contentForm)" class="md-button-altai md-raised"><i class="mdi mdi-pencil"></i> {{::'edit'|translate}} </md-button>
+        </div>
+    </div>
+
+</div>

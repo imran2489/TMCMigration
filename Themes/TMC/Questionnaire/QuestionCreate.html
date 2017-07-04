@@ -1,0 +1,26 @@
+﻿<altai-toolbar-menu menu-model="vm.toolbar" languages="vm.languages"></altai-toolbar-menu>
+
+<form name="QuestionCreateForm" class="altai-form">
+   
+        <div class="form-group">
+            <label for="description">{{'description'|translate}}</label>
+            <input type="text" id="description" class="form-control" ng-model="newQuestion.description" />
+
+        </div>
+        <div class="form-group">
+            <label for="weight">{{'weight'|translate}}</label>
+            <input type="text" id="weight" class="form-control" ng-model="newQuestion.weight" />
+        </div>
+
+        <div class="form-group">
+            <label for="questionGroupId">{{'group'|translate}}</label>
+            <select id="questionGroupId" class="form-control" data-ng-options="g.id as g.name for g in vm.questionGroups" ng-model="newQuestion.questionGroupId"></select>
+        </div>
+
+        <div class="form-group">
+            <label for="optionSet">{{'optionSet'|translate}}</label>
+            <select id="optionSet" class="form-control" data-ng-options="g.id as g.name for g in vm.multipleChoiceOptionSet" ng-model="newQuestion.questionMultipleChoiceOptionSetId"></select>
+        </div>
+
+       
+</form>

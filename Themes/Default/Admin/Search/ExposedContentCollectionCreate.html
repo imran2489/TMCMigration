@@ -1,0 +1,15 @@
+﻿<altai-toolbar-menu menu-model="$ctrl.toolbar" languages="$ctrl.languages"></altai-toolbar-menu>
+
+<form class="altai-form">
+
+    <div class="form-group">
+        <label>{{'label'|translate}}</label>
+        <div altai-translatable-input="newExposedContentCollection.labelTranslatable" languages="$ctrl.languages" />
+    </div>
+
+    <div class="form-group">
+        <label>{{'template'|translate}}</label>
+        <select ng-options="c.id as c.name for c in $ctrl.templates" ng-model="newExposedContentCollection.templateId"></select>
+    </div>
+
+</form>

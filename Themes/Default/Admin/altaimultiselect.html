@@ -1,0 +1,23 @@
+﻿<div class="altai-multi-select">
+    <div class="query">
+        <div><input type="text" ng-model="search" placeholder="Zoeken"></div>
+    </div>
+    <div class="collection">
+        <div ng-repeat="(key,value) in $ctrl.inputModel | filter:search | limitTo:$ctrl.pageSize : $ctrl.currentPage*$ctrl.pageSize | groupBy:'contentTypeName'"  >
+            <div class="group">{{key}}</div>
+            <div ng-repeat="item in value" class="item" ng-click="$ctrl.select(item)">
+                <div class="check"><i class="mdi mdi-check" ng-show="item.selected" ></i></div>
+                <div>{{item.name}}</div>
+            </div>
+        </div>
+    </div>
+    <div class="panel-buttons">
+        <nav class="altai-pagination ng-isolate-scope" paged-result="vm.contentItems" switch-page="vm.openPage(pageIndex)">
+            <ul class="pagination">
+                <li ng-click="$ctrl.openPage($ctrl.currentPage-1)" role="button" tabindex="0">«</li>
+                <li ng-repeat="page in $ctrl.pages" ng-class="{'active':page.active}" ng-click="$ctrl.openPage($index)" role="button" tabindex="0">{{page.pageNumber+1}}</li>
+                <li ng-click="$ctrl.openPage($ctrl.currentPage+1)" role="button" tabindex="0">»</li>
+            </ul>
+        </nav>    
+    </div>
+</div>

@@ -1,0 +1,19 @@
+﻿<div class="paddedcontainer comeos-bg-grey-mid">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="dossier-vragen">
+                    <h1 class="text-center">{{$ctrl.item.title}}</h1>
+                    <p class="description text-center" altai-compile-html="{{$ctrl.item.description}}"></p>
+                    <div class="row">
+                        <comeos-masonry items="$ctrl.items"></comeos-masonry>
+                    </div>
+                    <div ng-if="$ctrl.itemcount>3" class="col-md-12 text-center button-container">
+                        <div ng-if="!$ctrl.completeHotTopic" class="comeos-button ng-scope" ng-click="$ctrl.toggleCompleteHotTopic()" translate>openvolledighottheme</div>
+                        <div ng-if="$ctrl.completeHotTopic" class="comeos-button last ng-scope" ng-click="$ctrl.toggleCompleteHotTopic()" translate>sluitvolledighottheme</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,28 @@
+﻿<div class="installer-outer-container">
+    <div class="installer-outer">
+        <div class="installer">
+            <img src="img/admin/altaicmsheaderbarfulltextwhite.png" class="admin-logo relative mdi" />
+
+            <form>
+
+                <div style="margin-bottom:30px;">
+                    <div class="form-group">
+                        <div class="label">{{'email'|translate}}:</div>
+                        <input type="email" class="form-control" ng-model="loginData.identifier">
+                    </div>
+                    <div class="form-group">
+                        <div class="label">{{'password'|translate}}:</div>
+                        <input type="password" class="form-control" ng-model="loginData.password">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <button type="submit" class="btn btn-success altai-button-go" data-ng-click="doLogin(loginData)">{{'LOGIN'|translate}}</button>
+                    <div class="link">
+                        <a ui-sref="lostpassword">{{::'lostpassword'|translate}}</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

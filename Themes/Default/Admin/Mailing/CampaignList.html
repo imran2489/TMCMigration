@@ -1,0 +1,38 @@
+﻿<div class="altai-list">
+
+    <div class="search" ng-if="!$ctrl.contentItemId">
+        <input class="query" type="text" ng-model="searchFilter.name" placeholder="{{'search'|translate}}" />
+        <md-button ng-click="$ctrl.manageLists()" class="md-button-altai md-raised"><i class="mdi mdi-view-list"></i> {{'managelists'|translate}} </md-button>
+        <md-button ng-click="$ctrl.createCampaign()" class="md-button-altai md-raised"><i class="mdi mdi-plus"></i> {{'create'|translate}} </md-button>
+    </div>
+
+    <div id="hack" style="display:none">
+
+        <div translate-language="fr">
+            <h3 translate>datum</h3>
+        </div>
+
+        <div translate-language="nl">
+            <h3 translate>datum</h3>
+        </div>
+
+    </div>
+
+    <div class="row" ng-repeat="mailingCampaign in $ctrl.mailingCampaigns | orderBy: '-id' | filter: searchFilter track by mailingCampaign.id">
+        <div class="avatar"><i class="mdi mdi-contact-mail"></i></div>
+        <div class="text rowtext">
+            <h2>{{mailingCampaign.sentDateTime|date:'dd-MM-yyyy HH:mm'}} |  {{::mailingCampaign.label}}</h2>
+        </div>
+        <div class="rowstats">
+            <div ng-if="mailingCampaign.sent">
+                {{mailingCampaign.openedRate*100|number:0}}% {{'opens'|translate}}
+                <md-progress-linear md-mode="determinate" value="{{mailingCampaign.openedRate*100}}"></md-progress-linear>
+            </div>
+        </div>
+        <div class="rowactions">
+            <md-button ng-if="!mailingCampaign.sent" ng-click="$ctrl.deleteCampaign(mailingCampaign)" class="md-button-altai md-raised"><i class="mdi mdi-delete"></i> {{::'delete'|translate}} </md-button>
+            <md-button ng-if="!mailingCampaign.sent" ng-click="$ctrl.updateCampaign(mailingCampaign)" class="md-button-altai md-raised"><i class="mdi mdi-pencil"></i> {{::'edit'|translate}} </md-button>
+            <!--<md-button ng-if="mailingCampaign.sent" ng-click="$ctrl.viewCampaignReport(mailingCampaign)" class="md-button-altai md-raised"><i class="mdi mdi-google-circles-extended"></i> {{::'report'|translate}} </md-button>-->
+        </div>
+    </div>
+</div>

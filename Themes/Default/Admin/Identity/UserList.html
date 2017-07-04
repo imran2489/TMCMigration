@@ -1,0 +1,22 @@
+﻿<altai-toolbar-menu menu-model="vm.toolbar" languages="vm.languages"></altai-toolbar-menu>
+
+<div class="altai-admin-section">
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>{{'username'|translate}}</th>
+                <th>{{'actions'|translate}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="user in vm.users">
+                <td>{{user.userName}}</td>
+                <td>
+                    <md-button ng-click="vm.openRoles(user)" class="md-button-altai md-raised"><i class="mdi mdi-key"></i> {{::'roles'|translate}} </md-button>
+                    <md-button ng-click="vm.editUser(user)" class="md-button-altai md-raised"><i class="mdi mdi-pencil"></i> {{::'edit'|translate}} </md-button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

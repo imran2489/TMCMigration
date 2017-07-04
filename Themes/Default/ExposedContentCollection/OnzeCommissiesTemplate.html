@@ -1,0 +1,22 @@
+﻿<section>
+    <div class="dossier-vragen">
+        <div ng-repeat="section in $ctrl.data.pageResults track by $index">
+
+
+            <!--SECTION START-->
+
+            <div class="dossier-vraag-item" ng-class="{opened:section.expanded}">
+                <div class="dossier-vraag-item-vraag comeos-bg-pc" ng-click="section.expanded=!section.expanded">
+                    <span class="dossier-actual-question">{{section.title}}</span><i class="questionicon mdi mdi-plus collapseicon"></i>
+                </div>
+
+                <div ng-if="section.description" class="answers" ng-show="section.expanded">
+                    <div class="dossier-vraag-item-antwoord cktext">
+                        <div altai-compile-html="{{section.description}}"> </div>
+                    </div>
+                </div>
+            </div>
+            <!--SECTION END-->
+        </div>
+        </div>
+</section>

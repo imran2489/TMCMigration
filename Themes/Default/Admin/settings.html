@@ -1,0 +1,17 @@
+﻿<div class="page-header">
+    <h2>{{'settings'|translate}}</h2>
+</div>
+
+<panel table="true" title="Settings">
+
+    <table class="table table-striped">
+        <tr ng-repeat="(key, value) in vm.settings">
+            <td>{{'key'|translate}}}}</td>
+            <td><input type="text" ng-model="vm.settings[key]"/></td>
+        </tr>
+    </table>
+
+    <div class="panel-buttons">
+        <altai-button type="save" ng-click="vm.updateSettings(vm.settings)">{{'save'|translate}}</altai-button>
+    </div>
+</panel>

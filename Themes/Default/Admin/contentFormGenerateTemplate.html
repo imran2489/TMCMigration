@@ -1,0 +1,26 @@
+﻿<div class="page-header">
+    <h2><i class="fa fa-list-alt"></i>&nbsp;{{'generatetemplate'|translate}}</h2>
+</div>
+
+
+<div class="panel panel-default">
+
+    <div class="panel-heading">
+        {{'generatetemplate'|translate}}
+    </div>
+
+    <table class="table">
+
+        <tr>
+            <td style="width:25%">{{'name'|translate}}</td>
+            <td><input type="text" data-ng-model="newTemplateName" /></td>
+        </tr>       
+
+        <tr>
+            <td></td>
+            <td><altai-button type="save" data-ng-click="generateTemplate(newTemplateName)">{{'create'|translate}}</altai-button></td>
+        </tr>
+
+    </table>
+
+</div>

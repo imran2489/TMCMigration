@@ -1,0 +1,9 @@
+﻿<div class="commentcard" >
+    <div class="created"><i class="detailicon mdi mdi-clock"></i>  {{$ctrl.contentFlowComment.created | date:'d MMM yyyy - HH:mm:ss'}} - {{'by'|translate}} {{$ctrl.contentFlowComment.userFirstName}} {{$ctrl.contentFlowComment.userLastName}} ({{$ctrl.contentFlowComment.userEmail}})</div>
+    <div class="title">{{::$ctrl.contentFlowComment.taskcommenttitle}}</div>
+    <div class="message" altai-compile-html="{{::$ctrl.contentFlowComment.taskcommentmessage}}"></div>
+    <div class="comment-additions">
+        <button class="btn btn-altai altai-button-secondary" ng-class="{'selected':$ctrl.commentEdit}" ng-click="$ctrl.toggleEditComment()"><i class="mdi mdi-pencil"></i></button>
+    </div>
+    <div ng-show="$ctrl.commentEdit"><altai-content-flow-task-comment-update-parent content-flow-comment="$ctrl.contentFlowComment" languages='$ctrl.languages'></altai-content-flow-task-comment-update-parent></div>
+</div>

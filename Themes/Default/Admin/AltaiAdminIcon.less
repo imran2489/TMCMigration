@@ -1,0 +1,82 @@
+﻿@import "../config";
+
+.altai-theme-admin {
+    // USE altai-admin-icon instead of .icon
+    .altai-admin-icon, .icon {
+        outline: none;
+        border-radius: 50%;
+        border: 2px solid transparent;
+        height: 30px;
+        width: 30px;
+        background-color: transparent;
+        color: #232323;
+        margin-right: 5px;
+        text-transform: uppercase;
+        display: inline-block;
+
+        &:hover {
+            border: 2px solid @color-button-general;
+            color: @color-button-general;
+        }
+    }
+
+    .altai-admin-icon.danger {
+        border-color: red;
+        color: red;
+    }
+
+    .altai-admin-icon.main {
+        border: 2px solid @color-button-general;
+        color: @color-button-general;
+    }
+
+    .altai-admin-icon.cancel {
+        border: 2px solid @grey-light;
+        color: @grey-light;
+    }
+
+    button.iconmain {
+        // todo: replace
+        border: 2px solid @color-button-general;
+        outline: none;
+        border-radius: 50%;
+        border: 2px solid transparent;
+        height: 30px;
+        width: 30px;
+        background-color: transparent;
+        color: #232323;
+        margin-right: 5px;
+        text-transform: uppercase;
+    }
+    // other buttons
+    button[disabled].altai-admin-icon.main, button[disabled].iconmain {
+        border: #6C6C6C;
+        color: #6C6C6C;
+    }
+
+    button[enabled].iconmain:hover {
+        outline: none;
+        border-radius: 50%;
+        height: 30px;
+        width: 30px;
+        background-color: @color-button-general;
+        border: 2px solid @color-button-general;
+        color: white;
+    }
+
+    button.icon.langicon{
+        text-transform:none;
+        border:none;
+    }
+    button.icon.langicon:hover{
+        text-transform:none;
+        border:none;
+    }
+
+
+    button.icon.langicon.active {
+        background-color: @color-button-general;
+        border: 2px solid @color-button-general;
+        color: white;
+    }
+}

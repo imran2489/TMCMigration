@@ -1,0 +1,18 @@
+﻿<div class="row">
+    <div class="col-sm-12">
+        <div class="altai-card-container-ceo">
+            <comeos-event-card class="letter" ng-repeat="item in $ctrl.data.pageResults" item="item" hide-tag="true">
+            </comeos-event-card>
+        </div>
+    </div>
+</div>
+<div class="row" ng-if="$ctrl.data.totalCount > $ctrl.data.pageSize">
+    <div class="col-sm-12">
+        <div class="button-row--centralized">
+            <div class="panel-buttons">
+                <altai-pagination class="letter" paged-result="$ctrl.data" switch-page="$ctrl.openPage(pageIndex)"></altai-pagination>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,15 @@
+﻿<div class="installer-outer">
+    <div class="installer">
+        <div>
+
+            <div ng-if="$ctrl.present">
+                <p>{{'presenceconfirmed'|translate}}</p>
+            </div>
+
+            <div ng-if="!$ctrl.present">
+                <p>{{'absenceconfirmed'|translate}}</p>
+            </div>
+
+        </div>
+    </div>
+</div>

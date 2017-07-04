@@ -1,0 +1,57 @@
+﻿<div class="page-header">
+    <h2>{{'search'|translate}}</h2>
+</div>
+
+<div class='panel panel-default'>
+    <div class='panel-heading'>{{'search'|translate}}</div>
+
+    <table class="table table-striped">
+        <tr>
+            <td style="width: 25%">{{'name'|translate}}</td>
+            <td><input type="text" ng-model="searchCriteria.name" /></td>
+        </tr>
+        <tr>
+            <td style="width: 25%">{{'type'|translate}}</td>
+            <td><select ng-options="ct.id as ct.name for ct in vm.contentTypes" ng-model="searchCriteria.contentTypeId"></select></td>
+        </tr>
+
+    </table>
+
+    <div class="panel-buttons">
+        <altai-button type="search" ng-click="vm.search(searchCriteria)">{{'search'|translate}}</altai-button>
+    </div>
+
+</div>
+
+<panel title="Results" table="true">
+    <table class="table table-striped">
+
+        <thead>
+            <tr>
+                <th style="width: 1%">{{'id'|translate}}</th>
+                <th>{{'type'|translate}}</th>
+                <th>{{'name'|translate}}</th>
+                <th>{{'lastedited'|translate}}</th>
+                <th>{{'published'|translate}}</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            <tr ng-if="vm.results.length===0 || !vm.results">
+                <td colspan="5">{{'noresults'|translate}}</td>
+            </tr>
+
+            <tr data-ng-repeat="contentRow in vm.results">
+                <td>{{contentRow.id}}</td>
+                <td>{{contentRow.contentType.name}}</td>
+                <td><a ui-sref="admin.content.read({id:contentRow.id})">{{contentRow.name}}</a></td>
+                <td>{{contentRow.lastUpdated| date:'dd-MM-yyyy HH:mm'}}</td>
+                <td><span data-ng-show="contentRow.published">{{'yes'|translate}}</span><span data-ng-hide="contentRow.published">{{'no'|translate}}</span></td>
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</panel>

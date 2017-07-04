@@ -1,0 +1,7 @@
+﻿<div class="form-group" ng-show="$ctrl.hasAccess">
+    <label>{{'public'|translate}}:</label>
+    <div>
+        <div>{{'publicroles'|translate}}</div>
+        <div isteven-multi-select input-model="$ctrl.roles" output-model="$ctrl.readRoles" button-label="icon name" item-label="icon name maker" tick-property="ticked"></div>
+    </div>
+</div>

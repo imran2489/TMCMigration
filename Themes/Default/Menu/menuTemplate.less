@@ -1,0 +1,54 @@
+﻿@import "../comeos.config.less";
+
+
+.altai-menu {
+    background-color: @grey-3;
+    position: relative;
+    width: 100%;
+    color: black;
+
+    ul.menu {
+        list-style-type: none;
+        margin: 0;
+        overflow: hidden;
+        padding: 10px 20px;
+
+        li {
+            display: inline;
+            font-weight: bolder;
+            font-size: 20px;
+            padding-left: 15px;
+            padding: 15px;
+            cursor: pointer;
+            background-color: @grey-3;
+        }
+
+        li:hover {
+            background-color: @grey-2;
+        }
+    }
+
+    ul ul.child-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: @grey-5;
+        height: 150px;
+        color: @white;
+        padding: 30px;
+        width: 100%;
+        z-index:10;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+
+        li {
+            background-color: @grey-5; 
+        } 
+    }
+
+    ul li:hover > ul {
+        display: block;
+    }
+}

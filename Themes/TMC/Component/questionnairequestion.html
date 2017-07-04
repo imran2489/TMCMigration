@@ -1,0 +1,7 @@
+﻿<h1>{{$ctrl.question.question}} ({{$ctrl.question.score}}/{{$ctrl.question.maxScore}})</h1>
+
+<ul>
+    <li ng-repeat="answer in $ctrl.question.answers track by answer.id" ng-class="{'correct':answer.markedCorrect,'wrong':answer.markedWrong}">
+        <input type="radio" id="a{{answer.id}}" name="a{{$ctrl.question.id}}" value="{{answer.id}}" ng-model="$ctrl.selectedAnswer" ng-disabled="$ctrl.answeredCorrectly" /> <label for="a{{answer.id}}">{{answer.answer}}</label>
+    </li>
+</ul>

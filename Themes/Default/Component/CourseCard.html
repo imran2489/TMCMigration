@@ -1,0 +1,20 @@
+﻿    <div class="altai-card" ng-class="{'has-card-label':$ctrl.contenttype}">
+        <a ui-sref="{{$ctrl.link || 'home'}}">
+            <div class="altai-card-label comeos-bg-{{$ctrl.contenttypemachinename}}" ng-if="$ctrl.contenttype && !$ctrl.hideTag">{{$ctrl.contenttype}}</div>
+            <div class="altai-card-image" ng-if="$ctrl.image" style="height:150px;">
+                <img ng-src="{{$ctrl.image}}" />
+            </div>
+            <div class="altai-card-body">
+                <div class="altai-card-date">{{$ctrl.date | localDate}}</div>
+                <div class="altai-card-title">
+                    <h5>{{$ctrl.title}}</h5>
+                </div>
+                <p>
+                    <span altai-compile-html="{{($ctrl.description | limitTo:150)+'..'}}"></span>
+                </p>
+                <div class="altai-card-pills">
+                    <span class="altai-card-pill" ng-repeat="pill in $ctrl.pills | limitTo: 10 track by $index">{{pill.name}}</span>
+                </div>
+            </div>
+        </a>
+    </div>

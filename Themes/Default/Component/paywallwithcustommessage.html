@@ -1,0 +1,18 @@
+﻿<div class="paywall">
+    <div class="title">{{::$ctrl.title}}</div>
+    <br />
+    <div class="text">
+        {{::$ctrl.message}}
+    </div>
+    <div class="comeos-buttons" ng-if="$ctrl.loginButton || $ctrl.contactButton">
+        <a class="comeos-button" ng-if="$ctrl.loginButton" ng-click="$ctrl.login()">
+            {{::$ctrl.loginButtonText}}
+        </a>
+        <div class="comeos-button" ng-if="$ctrl.contactButton && !$ctrl.contactButtonUrl" ng-click="$ctrl.contact()" style="margin-right: 0">
+            {{::$ctrl.contactButtonText}}
+        </div>
+        <a class="comeos-button" ng-if="$ctrl.contactButton && $ctrl.contactButtonUrl" style="margin-right: 0" href="{{$ctrl.contactButtonUrl}}">
+            {{::$ctrl.contactButtonText}}
+        </a>
+    </div>
+</div>

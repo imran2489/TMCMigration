@@ -1,0 +1,27 @@
+﻿<div class="altai-admin-section">
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>{{'name'|translate}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="group in vm.groups track by group.id">
+                <td><a ng-click="vm.openGroup(group)">{{group.name}}</a></td>
+                <td>
+                    <md-button ng-click="vm.openGroup(group)" class="md-button-altai md-raised"><i class="mdi mdi-view-list"></i> {{::'roles'|translate}} </md-button>
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="actions">
+        <button ng-click="vm.createGroup()" class="altai-admin-icon main">
+            <md-tooltip md-direction="top">{{'creategroup'|translate}}</md-tooltip>
+            <i class="mdi mdi-plus"></i>
+        </button>
+    </div>
+
+</div>

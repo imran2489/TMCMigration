@@ -1,0 +1,49 @@
+﻿@import "../config.less";
+
+.dashboardcomponentheader {
+    clear:both;
+    height:40px;
+    .dashboardcomponentheadertitle{
+        float:left;
+        padding:10px;
+    }
+    .dashboardcomponentheaderbuttons{
+        float:right;
+
+        .dashboardcomponentheaderbutton{
+            padding:5px;
+            cursor:pointer;
+            &:hover{
+                color:@color-blue;
+            }
+            &.active{
+                color:@color-blue;
+            }
+        }
+    }
+}
+
+.dashboardcomponentdivider {
+    border-left: 1px solid #cacaca;
+    margin: 0 10px;
+}
+
+.insightchart {
+    margin: 10px 10px;
+    border: 1px solid #e6e6e6;
+    padding: 10px;
+    background-color: #e8e8e8;
+
+    svg {
+        //height: 600px;
+        &.nvd3-svg {
+            width: auto;
+            height: auto;
+        }
+    }
+}
+
+.myGrid {
+    width: 100%;
+    height: 300px;
+}

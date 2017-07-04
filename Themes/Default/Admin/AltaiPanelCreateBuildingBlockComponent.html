@@ -1,0 +1,10 @@
+﻿<div>
+    <select ng-options="t as t.name for t in $ctrl.panelTemplates track by t.id" ng-model="$ctrl.selectedPanelTemplate">
+
+        <option value="">{{::'none'|translate}}</option>
+
+    </select>
+</div>
+<div>
+    <button ng-click='$ctrl.createBuildingBlock()'>{{'save'|translate}}</button>
+</div>

@@ -1,0 +1,25 @@
+﻿<altai-toolbar-menu menu-model="$ctrl.toolbar" languages="$ctrl.languages"></altai-toolbar-menu>
+
+<form class="altai-form">
+
+    <div class="form-group">
+        <label>{{'label'|translate}}</label>
+        <div altai-translatable-input="$ctrl.newCampaignType.labelTranslatable" languages="$ctrl.languages" />
+    </div>
+
+    <div class="form-group">
+        <label>{{'contenttype'|translate}}</label>
+        <select ng-options="type as type.label for type in $ctrl.contentTypes" ng-model="$ctrl.selectedContentType"></select>
+    </div>
+
+    <div class="form-group">
+        <label>{{'template'|translate}}</label>
+        <select ng-options="template.id as template.name for template in $ctrl.templates" ng-model="$ctrl.newCampaignType.templateId"></select>
+    </div>
+
+    <div class="form-group">
+        <label>{{'audiences'|translate}}</label>
+        <div isteven-multi-select input-model="$ctrl.mailingLists" output-model="$ctrl.selectedAudiences" button-label="icon label" item-label="icon label maker" tick-property="ticked"></div>
+    </div>
+  
+</form>

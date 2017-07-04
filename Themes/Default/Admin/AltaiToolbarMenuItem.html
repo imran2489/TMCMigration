@@ -1,0 +1,9 @@
+﻿<span ng-repeat="item in menuGroup.menuItems track by item.name">
+    <button class="btn btn-altai"
+            ng-class="::item.class"
+            ng-click="$ctrl.performAction({action:item.action}, item.disableByFormValidity.$invalid)"
+            ng-disabled="item.disableByFormValidity.$invalid">
+        <i class="mdi" ng-class="::item.icon"></i> {{::item.name|translate}}
+    </button>
+    <span class="separator"><span class="separator-lines" ng-if="::item.separator"></span></span>
+</span>

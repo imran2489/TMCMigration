@@ -1,0 +1,22 @@
+﻿<altai-toolbar-menu menu-model="vm.toolbar" languages="vm.languages"></altai-toolbar-menu>
+
+<div class="altai-admin-section">
+
+    <table style="width:100%">
+        <thead>
+            <tr>
+                <th class="checkbox"></th>
+                <th>{{'securable'|translate}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="securable in vm.rolePermissions track by securable.securableName">
+                <td>{{::securable.securableName}}</td>
+                <td>
+                    <select ng-model="securable.allowAccess" ng-options="s.value as s.label for s in vm.securableOptions"></select>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>

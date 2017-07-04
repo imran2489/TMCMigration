@@ -1,0 +1,64 @@
+﻿<div class="altai-admin-section altai-list">
+    <div class="subheader">
+        <h2>{{'questionList'|translate}}</h2>
+    </div>
+
+    <md-button ng-click="vm.createQuestion()" class="md-button-altai md-raised"><i class="mdi mdi-plus"></i> {{::'create'|translate}} </md-button>
+
+    <table>
+        <thead>
+            <tr>
+                <th><a>{{'id'|translate}}</a></th>
+                <th><a>{{'name'|translate}}</a></th>
+                <th><a>{{'weight'|translate}}</a></th>
+                <th><a>{{'group'|translate}}</a></th>
+                <th>{{'actions'|translate}}</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr ng-repeat="question in vm.questions track by question.id">
+                <td>{{question.id}}</td>
+                <td>{{question.description}}</td>
+                <td>{{question.weight}}</td>
+                <td>{{question.questionGroupId}}</td>
+                <td>
+                    <altai-question-buttons question="question"></altai-question-buttons>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+
+<div class="altai-admin-section altai-list">
+    <div class="subheader">
+        <h2>{{'questionGroupList'|translate}}</h2>
+    </div>
+
+    <md-button ng-click="vm.createQuestionGroup()" class="md-button-altai md-raised"><i class="mdi mdi-plus"></i> {{::'create'|translate}} </md-button>
+
+
+    <table>
+
+        <thead>
+            <tr>
+                <th><a>{{'id'|translate}}</a></th>
+                <th><a>{{'name'|translate}}</a></th>
+                <th>{{'actions'|translate}}</th>
+
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr ng-repeat="questionGroup in vm.questionGroups track by questionGroup.id">
+                <td>{{questionGroup.id}}</td>
+                <td>{{questionGroup.name}}</td>
+                <td>
+                    <altai-question-group-buttons question-group="questionGroup"></altai-question-group-buttons>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

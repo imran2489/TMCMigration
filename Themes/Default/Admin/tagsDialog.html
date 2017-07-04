@@ -1,0 +1,52 @@
+﻿<md-dialog class="Tags-dialog">
+
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2><i class="mdi mdi-label-outline"></i>&nbsp;{{'tags'|translate}}</h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="vm.cancel()">
+                <md-icon md-font-icon="mdi mdi-close"></md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <md-dialog-content style="max-width:900px;max-height:810px; min-width:900px;padding:20px;">
+        <div ng-cloak>
+            <!--<div ng-repeat="tag in vm.tags | orderBy:'name'"><input type="checkbox" ng-model="tag.selected" /> {{tag.name}}</div        <!--<div ng-repeat="tag in vm.tags | orderBy:'name'"><input type="checkbox" ng-model="tag.selected" /> {{tag.name}}</div>-->
+            <md-contact-chips ng-model="vm.linktags" md-contacts="vm.querySearch($query)" md-contact-name="name" md-contact-image="image" placeholder="Select Tag" >
+               
+            </md-contact-chips>
+
+            <div>
+                <md-input-container>
+                    <label>{{'addtag'|translate}}</label><input ng-model="newTag">
+                </md-input-container>
+                <md-button value="Add" ng-click="vm.addTag(newTag);newTag=''">{{'add'|translate}}</md-button>
+            </div>
+
+            <div></div>
+           
+                <div class="fixedRows">
+                    <md-subheader class="md-no-sticky">{{'tags'|translate}}</md-subheader>
+                    <div class="md-2-line contact-item" ng-repeat="(index, tag) in  vm.tags | orderBy:'name'" ng-if="vm.linktags.indexOf(tag) < 0">
+                        <md-list-item class="md-2-line" ng-click="toggleSelection()">
+                            <div class="md-list-item-text" flex> <h3>{{tag.name}}</h3></div>
+                            <div class="md-secondary"></div>
+                        </md-list-item>                                           
+                    </div>
+                </div>
+          
+          </div>
+</md-dialog-content>
+
+    <div class="md-actions" layout="row">
+        <span flex></span>
+        <md-button ng-click="vm.cancel()">
+            {{'cancel'|translate}}
+        </md-button>
+        <md-button ng-click="vm.save()" style="margin-right:20px;">
+            {{'save'|translate}}
+        </md-button>
+    </div>
+
+
+</md-dialog>

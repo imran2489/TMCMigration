@@ -1,0 +1,35 @@
+﻿.template3 {
+    display: flex;
+    -ms-flex-direction: column;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+
+    .row {
+        -ms-flex-direction: row;
+        -webkit-flex-direction: row;
+        flex-direction: row;
+        display: flex;
+
+        .template3-zone1 {
+            flex-grow: 1;
+        }
+
+        .template3-zone2 {
+            flex-grow: 1;
+        }
+    }
+    @media only screen and (max-width : 767px) {
+        .row {
+            -ms-flex-direction: column;
+            -webkit-flex-direction: column;
+            flex-direction: column;
+        }
+    }
+}
+.template3.preview{
+    .zone{
+        height:50px;
+        background-color:tomato;
+        border:1px solid white;
+    }
+}

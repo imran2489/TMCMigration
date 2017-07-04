@@ -1,0 +1,18 @@
+﻿<div class="altai-list">
+    <div class="search">
+        <input class="query" type="text" ng-model="searchFilter.name" placeholder="{{'search'|translate}}" />
+        <button class="add" ng-click="vm.createMenu()"><i class="mdi mdi-plus"></i></button>
+    </div>
+
+    <div class="row" ng-repeat="menu in vm.menus">
+        <div class="avatar"><i class="mdi mdi-menu"></i></div>
+        <div class="text rowtext">
+            <h2>{{menu.name}}</h2>
+        </div>
+        <div class="rowactions">
+
+            <button type="button" class="icon" ng-click="vm.updateMenu(menu.id)"><md-tooltip md-direction="top">{{'edit'|translate}}</md-tooltip><i class="mdi mdi-pencil"></i></button>
+            <button type="button" class="icon" ng-click="vm.openMenuPreview(menu.id)"><md-tooltip md-direction="top">{{'showallitems'|translate}}</md-tooltip><i class="mdi mdi-magnify"></i></button>
+        </div>
+    </div>
+</div>

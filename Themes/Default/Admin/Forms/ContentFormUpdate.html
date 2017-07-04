@@ -1,0 +1,192 @@
+﻿<altai-toolbar-menu menu-model="vm.toolbar" languages="vm.languages"></altai-toolbar-menu>
+
+<div class="altai-list">
+    
+    <div class="altai-admin-section">
+
+        <div class="subheader">
+            <h3>{{"formulier" | translate}}</h3>
+        </div>
+        <panel title="Update" table="True">
+
+            <table class="table">
+
+                <tr>
+                    <td style="width:25%">{{'name'|translate}}</td>
+                    <td><input type="text" ng-model="vm.contentForm.name" /></td>
+                </tr>
+
+                <tr>
+                    <td style="width:25%">{{'buttonlabel'|translate}}</td>
+                    <td>
+                        <div altai-translatable-input="vm.contentForm.buttonLabelTranslatable" languages="vm.languages" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>{{'successmessage'|translate}}</td>
+                    <td>
+                        <div altai-translatable-input="vm.contentForm.succesMessageTranslatable" languages="vm.languages" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>{{'captcha?'|translate}}</td>
+                    <td><input type="checkbox" ng-model="vm.contentForm.captchaEnabled" /></td>
+                </tr>
+
+                <tr>
+                    <td>{{'template'|translate}}</td>
+                    <td colspan="2"><select ng-model="vm.contentForm.templateId" ng-options="t.id as t.name for t in vm.templates"><option value="">-- Default --</option></select></td>
+                </tr>
+
+            </table>
+
+        </panel>
+        <div class="subheader" ng-if="vm.contentForm.contentFormRows.length>0">
+            <h3>{{"attributen" | translate}}</h3>
+        </div>
+        <panel title="Fields" table="true" ng-if="vm.contentForm.contentFormRows.length>0">
+            <table class="table table-striped">
+
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>{{'attribute'|translate}}</th>
+                        <th>{{'parameter'|translate}}</th>
+                        <th>{{'hidden'|translate}}</th>
+                        <th>{{'label' | translate}}</th>
+                        <th>{{'actions'|translate}}</th>
+                    </tr>
+                </thead>
+
+                <tbody ui-sortable="vm.ctaSortOptions" ng-model="vm.contentForm.contentFormRows">
+                    <tr ng-repeat="row in vm.contentForm.contentFormRows">
+                        <td>{{$index}}</td>
+                        <td ng-if="row.contentTypeAttribute">{{row.id}} {{row.contentTypeAttribute.attribute.name}}</td>
+                        <td ng-if="row.contentTypeRelationLink">{{row.contentTypeRelationLink.contentTypeRelation.name}}</td>
+                        <td>{{row.parameter}}</td>
+                        <td>{{row.hidden|binary}}</td>
+                        <td>{{row.label}}</td>
+                        <td><button class="btn btn-danger" ng-click="vm.editContentFormRow(row, $index)"><i class="fa fa-pencil"></i></button><button class="btn btn-danger" ng-click="vm.deleteContentFormRow(row, $index)"><i class="fa fa-trash-o"></i></button></td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </panel>
+        <div class="subheader" ng-hide="vm.rowUpdateIndex >= 0">
+            <h3>{{"attribuut toevoegen" | translate}}</h3>
+        </div>
+        <panel title="RowAdd" table="true" ng-hide="vm.rowUpdateIndex >= 0">
+
+            <table class="table table-striped">
+
+                <tr>
+                    <td style="width:25%">{{'label'|translate}}:</td>
+                    <td>
+                        <div altai-translatable-input="newContentFormRow.labelTranslatable" languages="vm.languages" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>{{'parameter'|translate}}:</td>
+                    <td><input type="text" ng-model="newContentFormRow.parameter" /></td>
+                </tr>
+
+                <tr>
+                    <td>{{'hidden'|translate}}:</td>
+                    <td><input type="checkbox" ng-model="newContentFormRow.hidden" /></td>
+                </tr>
+
+                <tr>
+                    <td>{{'type'|translate}}</td>
+                    <td><select ng-model="newContentFormRow.type" ng-init="newContentFormRow.type='Relation'"><option value="Relation">{{'relation'|translate}}</option><option value="Attribute">{{'attribute'|translate}}</option></select></td>
+                </tr>
+
+                <tr ng-if="newContentFormRow.type=='Relation'">
+                    <td>{{'relation'|translate}}:</td>
+                    <td><select ng-options="r.id as r.contentTypeRelation.name for r in vm.contentType.contentTypeRelationLinks" ng-model="newContentFormRow.contentTypeRelationLinkId"></select></td>
+                </tr>
+
+                <tr ng-if="newContentFormRow.type=='Relation'">
+                    <td>{{'createnew'|translate}}:</td>
+                    <td><input type="checkbox" ng-model="createNew" /> <select ng-if="createNew" ng-options="f.id as f.name for f in vm.contentForms" ng-model="newContentFormRow.contentSubFormId"></select></td>
+                </tr>
+
+                <tr ng-if="newContentFormRow.type=='Attribute'">
+                    <td>{{'attribute'|translate}}:</td>
+                    <td><select ng-options="a.id as a.attribute.name for a in vm.contentType.contentTypeAttributes" ng-model="newContentFormRow.contentTypeAttributeId"></select></td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td><button class="btn btn-primary" ng-click="vm.createContentFormRow(newContentFormRow)"><i class="fa fa-plus"></i>&nbsp;{{'add'|translate}}</button></td>
+                </tr>
+
+            </table>
+        </panel>
+        <div class="subheader" ng-if="vm.rowUpdateIndex >= 0">
+            <h3>{{"attribuut wijzigen" | translate}}</h3>
+        </div>
+        <panel title="RowUpdate" table="true" ng-if="vm.rowUpdateIndex >= 0">
+
+            <table class="table table-striped">
+
+                <tr>
+                    <td style="width:25%">{{'label'|translate}}:</td>
+                    <td>
+                        <div altai-translatable-input="vm.rowUpdate.labelTranslatable" languages="vm.languages" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>{{'parameter'|translate}}:</td>
+                    <td><input type="text" ng-model="vm.rowUpdate.parameter" /></td>
+                </tr>
+
+                <tr>
+                    <td>{{'hidden'|translate}}:</td>
+                    <td><input type="checkbox" ng-model="vm.rowUpdate.hidden" /></td>
+                </tr>
+
+                <tr>
+                    <td>{{'type'|translate}}</td>
+                    <td><select ng-model="vm.rowUpdate.type"><option value="Relation">{{'relation'|translate}}</option><option value="Attribute">{{'attribute'|translate}}</option></select></td>
+                </tr>
+
+                <tr ng-if="vm.rowUpdate.type=='Relation'">
+                    <td>{{'relation'|translate}}:</td>
+                    <td><select ng-options="r.id as r.contentTypeRelation.name for r in vm.contentType.contentTypeRelationLinks" ng-model="vm.rowUpdate.contentTypeRelationLinkId"></select></td>
+                </tr>
+
+                <tr ng-if="vm.rowUpdate.type=='Relation'">
+                    <td>{{'createnew'|translate}}:</td>
+                    <td><input type="checkbox" ng-model="createNew" /> <select ng-if="createNew" ng-options="f.id as f.name for f in vm.contentForms" ng-model="vm.rowUpdate.contentSubFormId"></select></td>
+                </tr>
+
+                <tr ng-if="vm.rowUpdate.type=='Attribute'">
+                    <td>{{'attribute'|translate}}:</td>
+                    <td><select ng-options="a.id as a.attribute.name for a in vm.contentType.contentTypeAttributes" ng-model="vm.rowUpdate.contentTypeAttributeId"></select></td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td><button class="btn btn-primary" ng-click="vm.updateContentFormRow()"><i class="fa fa-save"></i>&nbsp;{{'update'|translate}}</button></td>
+                </tr>
+
+            </table>
+        </panel>
+        <!--
+        <div class="panel panel-default">
+
+            <div class="panel-heading">
+                {{'actions'|translate}}
+            </div>
+
+            <div class="panel-buttons">
+                <altai-button type="add" ui-sref="admin.content.form.generatetemplate({id:contentForm.id})">{{'generatetemplate'|translate}}</altai-button>
+            </div>
+
+        </div>-->
+    </div>
+</div>

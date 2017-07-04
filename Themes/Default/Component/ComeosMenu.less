@@ -1,0 +1,545 @@
+﻿@import "../comeos.config.less";
+@topmenuheight: 40px;
+@midmenuheight: 40px;
+
+.comeos-menu-zone-right {
+    float: right;
+}
+.altai-theme-content #bodyView .edit-mode #comeos-home-menu {
+    position: relative!important;
+}
+.altai-theme-content #bodyView .edit-mode .comeos-mobile-menu, .altai-theme-content #bodyView .edit-mode .comeos-menu-desktop {
+    position: relative;
+    display: block!important;
+}
+
+
+@media screen and (max-width:1100px) {
+    .comeos-menu-zone {
+        height: 45px;
+    }
+    .altai-theme-content #bodyView .comeos-root-container.loggedin.adminmenu{
+        margin-top: 94px;
+    }
+    .altai-theme-content #bodyView .comeos-root-container{
+        margin-top: 50px;
+    }
+    .mobile-toggle {
+        display: inline-block;
+        float: right;
+        .mC{
+            margin: -5px;
+            border-radius: 50%;
+            height: 30px;
+            width:30px;
+            line-height: 30px;
+            text-align: center;
+            display: block;
+            font-size: 8px;
+            background-color: black;
+            color: white;
+            .c{
+                font-size: 10px;
+            }
+        }
+    }
+    .mobile-logo {
+        display: inline-block;
+        float: left;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 20px;
+    }
+    .altai-theme-content #bodyView .mobile-logo img {
+        max-height: 30px;
+        margin-bottom: 0px;
+    }
+
+    .comeos-mobile-menu {
+        display: block !important;
+        .searcher{
+            form{
+               width: 100%;
+               input{
+                 background-color: @comeos-bg-grey!important;
+                width: 100%;
+            }
+          } 
+        }
+    }
+    .comeos-mobile-menu.comeos-mobile-visible {
+        display: block !important;
+    }
+}
+
+@media screen and (min-width:1101px) {
+    .mobile-toggle {
+        display: none;
+    }
+
+    .comeos-mobile-menu {
+        display: none !important;
+    }
+}
+
+@media screen and (min-width:1101px) and (max-width: 1150px) {
+    .altai-theme-content #bodyView .comeos-menu-zone .nav-bar ul.menu li {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+}
+
+@media screen and (min-width:1151px) and (max-width: 1350px) {
+    .altai-theme-content #bodyView .comeos-menu-zone .nav-bar ul.menu li {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
+
+@media screen and (min-width:1351px) and (max-width: 1600px) {
+    .altai-theme-content #bodyView .comeos-menu-zone .nav-bar ul.menu li {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+@media screen and (min-width: 1601px) and (max-width: 1800px) {
+    .altai-theme-content #bodyView .comeos-menu-zone .nav-bar ul.menu li {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+}
+@media screen and (min-width: 1801px) {
+    .altai-theme-content #bodyView .comeos-menu-zone .nav-bar ul.menu li {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+}
+
+.altai-theme-content #bodyView {
+    .comeos-menu {
+        background-color: white;
+        .altai-spinner-outer{
+                    position: absolute;
+                    top: 20px;
+                    right: 10px;
+                }
+                .altai-spinner{
+                     border: 2px solid #000;
+                    border-top-color: #D0D0D0;
+                    border-right-color: #D0D0D0;
+                    border-bottom-color: #D0D0D0;
+                }
+        .comeos-header-small {
+            display: none;
+
+            .comeos-menu-zone {
+                .nav-bar {
+                    ul.menu {
+                        li {
+                            a {
+                                color: #444;
+                                cursor: pointer;
+                                padding: 5px 0.8em;
+                                font-weight: 600;
+                                font-size: 1.3em;
+                                letter-spacing: 0;
+
+                                &.language-selector {
+                                    padding: 5px 0 0 0;
+                                    display:inline-block;
+                                    &.selected {
+                                        border-bottom: 2px solid #444;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        &.transparent {
+            position: absolute;
+            padding-top: 10px;
+            padding-left: 60px;
+            background-color: transparent;
+            z-index: 1; // 999
+            width: 100%;
+
+            .comeos-header .header-top .header-top-menu ul li.userinfo {
+                color: white;
+
+                a {
+                    color: white;
+                }
+            }
+
+
+            .comeos-header-small {
+                display: block;
+                height: 70px;
+                background-color: transparent;
+                .comeos-menu-zone {
+                    .nav-bar {
+                        ul.menu {
+                            li {
+                                color: white;
+
+                                &.userinfo {
+                                    color: white !important;
+                                }
+
+                                a {
+                                    color: white;
+
+                                    &.language-selector {
+                                        padding: 5px 0 0 0;
+
+                                        &.selected {
+                                            border-bottom: 2px solid white;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+
+                .header-top .header-top-logo {
+                    width: auto;
+
+                    img {
+                        height: auto;
+                    }
+                }
+            }
+        }
+    }
+
+    .comeos-menu-zone {
+        display: inline-block;
+    }
+
+    nav.comeos-menu-zone {
+    }
+
+    .topmenuvisible .comeos-menu .comeos-header-small {
+        display: block;
+    }
+
+    #comeos-home-menu {
+        position: fixed;
+
+        .hidden {
+            display: none;
+        }
+    }
+
+    .comeos-menu.fixed {
+        .comeos-header-small {
+            display: block;
+        }
+
+        position: fixed;
+        left: 0;
+        z-index: 100;
+        background-color: white;
+        width: 100%;
+        box-shadow: 0 14px 28px rgba(0,0,0,0.1), 0 10px 10px rgba(0,0,0,0.1);
+    }
+
+    .comeos-menu.fixed.midmenu {
+        top: 0;
+        /*top:@topmenuheight;*/
+    }
+
+    .comeos-menu.fixed.topmenu {
+        top: 0;
+    }
+
+    .edit-mode .comeos-menu.fixed {
+        position: relative;
+    }
+
+    .loggedin {
+        .comeos-menu.fixed {
+            position: fixed;
+            z-index: 100;
+            background-color: white;
+            width: 100%;
+            box-shadow: 0 14px 28px rgba(0,0,0,0.1), 0 10px 10px rgba(0,0,0,0.1);
+        }
+    }
+
+    .loggedin.adminmenu {
+        .comeos-menu.fixed {
+            top: 44px;
+        }
+    }
+    .loggedin.adminmenu .comeos-menu-mobile{
+        max-height: calc(~"100vh - 94px");
+        
+    }
+    .loggedin.adminmenu .comeos-mobile-menu{
+        top: 44px;
+    }
+    .comeos-mobile-menu {
+        transform: translate3d(0px, 0px, 0px); //iOS fix
+        position: fixed;
+        width: 100%;
+        background-color: @comeos-white;
+        top: 0;
+        display: none;
+        z-index: 99;
+
+        .altai-spinner{
+             border: 2px solid #000;
+            border-top-color: #D0D0D0;
+            border-right-color: #D0D0D0;
+            border-bottom-color: #D0D0D0;
+        }
+
+        .mobile-toggle {
+            font-size: 20px;
+            cursor: pointer;
+            outline: none;
+            height: 50px;
+            padding: 15px;
+        }
+
+        .mobile-toggle:focus {
+            outline: none;
+        }
+        .comeos-menu-mobile{
+            width: 100%;
+            display: block;
+            margin-bottom: 0;
+            overflow-y: auto;
+            height: calc(~"100vh - 50px");
+        }
+        .comeos-menu-mobile li{
+            padding-left: 25px;
+            padding-right: 20px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            //border-bottom: 1px solid @comeos-bg-light-grey;
+            border-top: 1px solid @comeos-bg-light-grey;
+            cursor: pointer;
+            .language{
+                display: inline-block;
+                background-color: @comeos-bg-light-grey;
+                padding:  0 5px;
+                margin: 0 10px 0 0;
+                border-radius: 10px;
+                text-align: center;
+                width: 35px;
+            }
+            .subitem{
+                border-top: none;
+            }
+            .submenu-chevron{
+                position: absolute; 
+                display: inline-block; 
+                top: 0; 
+                right: 0; 
+                z-index:999; 
+                height: 48px;
+                padding: 0 15px;
+                i{
+                    line-height: 48px;
+                    font-size: 130%;
+                }
+                
+                background-color: @comeos-bg-light-grey;
+            }
+            &:last-child{
+                margin-bottom: 40px;
+            }
+
+        }
+        //.comeos-menu-mobile li:last-child{
+        //    border-bottom: none;
+        //}
+    }
+
+    .edit-mode .comeos-mobile-menu {
+        display: block;
+    }
+
+    .comeos-menu-desktop {
+        height: 65px;
+        overflow: hidden;
+    }
+
+    .comeos-menu-zone {
+        height: 65px;
+        margin-top: 0;
+        margin-left: 0;
+
+        .nav-bar {
+            padding-left: 0;
+
+            ul.menu {
+                li {
+                    height: 65px;
+
+                    a {
+                        cursor: pointer;
+                        padding: 0 1em;
+                        font-weight: 600;
+                        font-size: 1.4em;
+                        letter-spacing: 0;
+                    }
+
+                    .comeos-search-bar {
+                        background-color: @comeos-white;
+                        margin-top: 13px;
+                        min-width: 40px;
+                        cursor: pointer;
+
+                        .search-icon {
+                            position: absolute;
+                            font-size: 30px;
+                            right: 10px;
+                            top: 7px;
+                            color: @comeos-bg-dark-grey;
+                            cursor: pointer;
+                        }
+                    }
+
+                    .comeos-search-bar:hover input {
+                        display: block;
+                        width: 200px;
+                    }
+
+                    .comeos-sub-menu {
+                        background: @comeos-black;
+                        color: @comeos-white;
+                        transition: 0.2s linear;
+                        -webkit-transition: 0.2s linear;
+                        -moz-transition: 0.2s linear;
+                        padding: 1.625em;
+                        position: absolute;
+                        width: 100%;
+                        display: none;
+                        left: 0;
+                        font-size: 15px;
+                        z-index: 100;
+                        padding-left: 50px;
+                        line-height: 1.5em;
+                        box-shadow: 0 5px 6px rgba(0,0,0,0.1);
+
+                        .subitemmenurow {
+                            padding: 20px 0 20px 0;
+                        }
+
+                        .title {
+                            font-size: 1.3em;
+                            line-height: 1.1em;
+                        }
+
+                        .menu-sub-item {
+                            cursor: pointer;
+                        }
+
+                        .mySelection {
+                            color: @comeos-bg-green;
+                        }
+
+                        .menu-sub-item:hover {
+                            text-decoration: none;
+                            color: @comeos-bg-grey-mid;
+                        }
+
+                        .comeos-subitem-description {
+                            border-right: 2px solid white;
+                            padding: 15px 40px 0 0;
+
+                            .title {
+                                margin-bottom: 15px;
+                            }
+
+                            p {
+                                line-height: normal;
+                            }
+                        }
+                    }
+                    
+                }
+
+                li a.hover {
+                    display:inline-block;
+                    
+                }
+
+                li.hover{
+                    background-color:#f3f3f3;
+                }
+
+                li a.hover + .comeos-sub-menu, .comeos-sub-menu:hover {
+                    display: block;
+                }
+
+                li.comeos-menu-search {
+                    font-size: 15px;
+                    color: black;
+                    position: relative;
+                    .searcher{
+                        position: absolute;
+                        top: 0px;
+                        bottom: 0px;
+                        right: 0;
+                        width: 300px;
+                        //background-color: @comeos-bg-grey-mid;
+                        form{
+                            position: relative;
+                            margin: 0;
+                            padding: 0;
+                            input{
+                            background-color: @comeos-bg-grey;
+                            height: 100%;
+                            width: 100%;
+                            margin-top: 0px;
+                        }
+                            .search{
+                            position: absolute;
+                            top: 23px;
+                            right: 15px;
+                            cursor: pointer;
+                            color: @comeos-bg-dark-grey;
+                        }
+                        }
+  
+                        
+                    }
+                }
+
+                li.comeos-divider {
+                    color: #CDCDCD;
+                    font-size: 15px;
+                    padding-left: 0;
+                    padding-right: 0;
+                }
+            }
+        }
+
+        
+    }
+}
+
+@media screen and (max-width:1100px) {
+     .altai-theme-content #bodyView .topmenuvisible .comeos-menu .comeos-header-small, 
+     .altai-theme-content #bodyView .comeos-menu.fixed .comeos-header-small, 
+     .altai-theme-content #bodyView #comeos-home-menu, 
+     .altai-theme-content #bodyView .comeos-menu-desktop {
+        display: none;
+    }
+    .mobilemenu{
+        overflow: hidden;
+    }
+
+}
+
+

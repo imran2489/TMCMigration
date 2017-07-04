@@ -1,0 +1,169 @@
+﻿<div class="root theme--square altai-theme-content dossier" data-reveal-selectors="section:not(.masonry):not(:first-of-type):not(.parallax)">
+
+    <div class="main-container container">
+        <section class="height-40 imagebg bg--primary">
+            <div class="background-image-holder">
+                <img alt="pic" src="https://static.comeos.be/Themes/comeos/img/img2.jpg">
+            </div>
+            <div class="container pos-vertical-center">
+                <div class="row">
+                    <div class="col-sm-12 text-center">
+                        <h2>{{vm.item.title}}</h2>
+
+                        <div class="dossier-contact-section blog-post__author">
+                            <div><img class="profile-picture" ng-src="{{$root.staticFileBase}}/{{vm.item.complexdossier_persoon.persoon_file.file}}" /></div>
+                            <div><span><em>{{'by'|translate}} </em></span><span class="h6">{{vm.item.complexdossier_persoon.voornaam}} {{vm.item.complexdossier_persoon.achternaam}}</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="blog-post">
+            <div class="pagecontentstart">
+                <div class="row text-center">
+                    <div class="col-sm-12">
+                        <div class="dossier-tags">
+                            <span class="dossier-tags-chip" ng-repeat="tag in vm.item.complexdossier_theme">
+                                {{tag.name}}
+                            </span>
+                            <span class="dossier-tags-chip" ng-repeat="tag in vm.item.complexdossier_sector">
+                                {{tag.name}}
+                            </span>
+                            <span class="dossier-tags-chip" ng-repeat="tag in vm.item.complexdossier_region">
+                                {{tag.name}}
+                            </span>
+                            <span class="dossier-tags-chip" ng-repeat="tag in vm.item.complexdossier_pc">
+                                {{tag.name}}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row text-center">
+                    <div class="col-sm-8 col-sm-offset-2">
+                        <h3>{{vm.item.title}}</h3>
+                        <div class="event-data-item"><i class="icon icon-Calendar-2"></i>{{vm.item.lastUpdated | localDate}}</div>
+
+                    </div>
+                </div>
+
+
+                <div class="row  text-center buttonrow">
+                    <div class="col-sm-12">
+                        <a class="btn btn--transparent">
+                            <span class="btn__text">
+                                Vragen? Contacteer ons.
+                            </span>
+                        </a>
+                        <a class="btn btn--transparent">
+                            <span class="btn__text">
+                                <i class="icon icon-Printer"></i>Print het volledige dossier
+                            </span>
+                        </a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-8 col-sm-offset-2">
+                        <div class="article-introduction" altai-compile-html="{{vm.item.publicintroduction}}">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-8 col-sm-offset-2">
+                        <div altai-compile-html="{{vm.item.membersintroduction}}">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-8 col-sm-offset-2">
+                        <div class="dossier-section">
+                            <faq class="dossier-vragen" faqmodel="vm.item.complexdossier_question" answer="true">
+                            </faq>
+                        </div>
+                    </div>
+                </div>
+                
+
+                <div class="row">
+                    <div class="col-sm-8 col-sm-offset-2">
+                        <div class="dossier-section" ng-show="vm.item.complexdossier_file_fr.length > 0">
+                            <h5>Documenten FR</h5>
+                            <div class="attached-file" ng-repeat="doc in vm.item.complexdossier_file_fr">
+                                <a ng-href="{{$root.staticFileBase}}/{{doc.file}}" target="_blank"><span class="attached-file-icon"><i class="mdi mdi-file-pdf-box actu-pdf"></i></span> <span>{{doc.label}}</span></a>
+                            </div>
+                        </div>
+                        <div class="dossier-section" ng-show="vm.item.complexdossier_file_nl.length > 0">
+                            <h5>Documenten NL</h5>
+                            <div class="attached-file" ng-repeat="doc in vm.item.complexdossier_file_nl">
+                                <a ng-href="{{$root.staticFileBase}}/{{doc.file}}" target="_blank"><span class="attached-file-icon"><i class="mdi mdi-file-pdf-box actu-pdf"></i></span> <span>{{doc.label}}</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-8 col-sm-offset-2">
+                        <div class="dossier-section" ng-show="vm.item.complexdossier_link.length > 0">
+                            <h5>Gerelateerde links</h5>
+                            <div class="attached-link" ng-repeat="link in vm.item.complexdossier_link">
+                                <a ng-href="{{link.linkurl}}" target="{{link.linktarget}}"><span class="attached-link-icon"><i class="mdi mdi-link"></i></span><span>{{link.linktekst}}</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-8 col-sm-offset-2">
+                        <div class="actu-section" ng-show="vm.item.filecomplexdossier.length > 0">
+                            <h5>Documenten</h5>
+                            <div class="attached-file" ng-repeat="doc in vm.item.filecomplexdossier">
+                                <a ng-href="{{$root.staticFileBase}}/{{doc.file}}" target="_blank"><span class="attached-file-icon"><i class="mdi mdi-file-pdf-box actu-pdf"></i></span> <span>{{doc.name}}</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-8 col-sm-offset-2">
+                        <div class="actu-section" ng-show="vm.item.linkcomplexdossier.length > 0">
+                            <h5>Gerelateerde links</h5>
+                            <div class="attached-link" ng-repeat="link in vm.item.linkcomplexdossier">
+                                <a ng-if="link.linktarget!=undefined" ng-href="{{link.linkurl}}" target="{{link.linktarget}}"><span class="attached-link-icon"><i class="mdi mdi-link"></i></span><span>{{link.linktekst}}</span></a>
+                                <a ng-if="link.linktarget==undefined" ng-href="{{link.linkurl}}" target="_blank"><span class="attached-link-icon"><i class="mdi mdi-link"></i></span><span>{{link.linktekst}}</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row text-center buttonrow">
+                    <a class="btn btn--transparent">
+                        <span class="btn__text">
+                            Vragen? Contacteer ons.
+                        </span>
+                    </a>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 text-center">
+                        <div class="blog-post__share">
+                            <a class="btn btn--sm bg--facebook vpe" href="#">
+                                <span class="btn__text">
+                                    <i class="socicon-facebook"></i> Deel op Facebook
+                                </span>
+                            </a>
+                            <a class="btn btn--sm bg--twitter vpe" href="#">
+                                <span class="btn__text">
+                                    <i class="socicon-twitter"></i> Deel op Twitter
+                                </span>
+                            </a>
+                            <a class="btn btn--sm bg--behance vpe" href="#">
+                                <span class="btn__text">
+                                    <i class="socicon-linkedin"></i> Deel op Linked In
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

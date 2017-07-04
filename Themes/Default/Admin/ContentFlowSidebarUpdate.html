@@ -1,0 +1,31 @@
+﻿<div class="altai-admin-section">
+
+    <div class="subheader">
+        <h2>{{'currenttask'|translate}}</h2>
+    </div>
+    <altai-content-flow-active-task-card content-flow-task="$ctrl.contentFlowTask" languages="$ctrl.languages"></altai-content-flow-active-task-card>
+    <div class="subheader" ng-if="$ctrl.contentFlowTask.processComments.length>0">
+        <h2>{{'processcomments'|translate}}</h2>
+    </div>
+    <div class="commentlist">
+        <altai-content-flow-comment content-flow-comment="comment" ng-repeat="comment in $ctrl.contentFlowTask.processComments track by comment.id">
+
+        </altai-content-flow-comment>
+    </div>
+</div>
+<div class="altai-admin-section">
+    <div ng-if="$ctrl.otherActiveTasks.length>0">
+        <div class="subheader">
+            <h2>{{'other_active_tasks'|translate}}</h2>
+        </div>
+        <altai-content-flow-active-task-card-disabled content-flow-task="task" languages="$ctrl.languages" ng-repeat="task in $ctrl.otherActiveTasks track by task.id"></altai-content-flow-active-task-card-disabled>
+    </div>
+</div>
+<div class="altai-admin-section">
+    <div ng-if="$ctrl.historicTasks.length>0">
+        <div class="subheader">
+            <h2>{{'finished_tasks'|translate}}</h2>
+        </div>
+        <altai-content-flow-historic-task-card content-flow-task="task" languages="$ctrl.languages" ng-repeat="task in $ctrl.historicTasks track by task.id"></altai-content-flow-historic-task-card>
+    </div>
+</div>

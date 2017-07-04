@@ -1,0 +1,11 @@
+﻿<div>
+    ExposedContentCollection: <select ng-options="c as c.label for c in $ctrl.exposedContentCollections track by c.id" ng-model="$ctrl.selectedExposedContentCollection"></select>
+</div>
+<div>
+    TPL: <select ng-options="t as t.name for t in $ctrl.contentTemplates track by t.id" ng-model="$ctrl.selectedContentTemplate">
+        <option value="0">{{'default'|translate}}</option>
+    </select>
+</div>
+<div>
+    <button ng-click='$ctrl.createBuildingBlock(selectedTemplate)'>{{'create'|translate}}</button>
+</div>

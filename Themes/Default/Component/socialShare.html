@@ -1,0 +1,28 @@
+﻿<div class="modal-header">
+    <h3 class="modal-title" id="modal-title">{{$ctrl.item.title}}</h3>
+</div>
+<div class="modal-body" id="modal-body">
+    <div class="description" ng-if="$ctrl.item.socialsharedescription">{{$ctrl.item.socialsharedescription}}</div>
+    <div class="share-buttons">
+        <!-- ng-show="$ctrl.provider=='twitter'">-->
+        <a class="share twitter" ng-click="$ctrl.cancel()" socialshare socialshare-provider="twitter" socialshare-text="{{$ctrl.item.title}}" socialshare-hashtags="{{$ctrl.item.socialsharehashtags}}" socialshare-url="{{$ctrl.item.socialshareurl}}">
+                <i class="mdi mdi-twitter"></i> <span ng-if="!$ctrl.onlyImage">
+                    {{"share_on"|translate}} Twitter
+                </span>
+        </a>
+        <!-- ng-show="$ctrl.provider=='linkedin'">-->
+        <a class="share linkedin" ng-click="$ctrl.cancel()" socialshare socialshare-provider="linkedin" socialshare-text="{{$ctrl.item.title}}" socialshare-description="{{$ctrl.item.socialsharedescription}}" socialshare-url="{{$ctrl.item.socialshareurl}}">
+                <i class="mdi mdi-linkedin"></i> <span ng-if="!$ctrl.onlyImage">{{"share_on"|translate}} LinkedIn</span>
+        </a>
+        <!-- ng-show="$ctrl.provider=='linkedin'">-->
+        <!--<a class="share facebook" ng-click="$ctrl.cancel()" socialshare socialshare-provider="facebook" socialshare-type="share" socialshare-title="{{$ctrl.item.title}}" socialshare-description="{{$ctrl.item.socialsharedescription}}" socialshare-url="{{$ctrl.item.socialshareurl}}">
+            <i class="mdi mdi-facebook"></i> <span ng-if="!$ctrl.onlyImage">{{"share_on"|translate}} Facebook</span>
+        </a>-->
+        <a class="share mail" ng-click="$ctrl.cancel()" socialshare socialshare-provider="email" socialshare-subject="Comeos: {{$ctrl.item.title}}" socialshare-body="{{$ctrl.getMail($ctrl.item.socialshareurl)}}">
+            <i class="mdi mdi-email-outline"></i> <span ng-if="!$ctrl.onlyImage">{{"share_mail"|translate}}</span>
+        </a>
+        </div>
+</div>
+<div class="modal-footer">
+    <div class="comeos-button no-animate" ng-click="$ctrl.cancel()">{{'Cancel'|translate}}</div>
+</div>

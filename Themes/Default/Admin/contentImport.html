@@ -1,0 +1,26 @@
+﻿<div class="page-header">
+    <h2><i class="fa fa-envelope-o"></i>&nbsp;{{'import'|translate}}</h2>
+</div>
+
+<div class="panel panel-default">
+
+    <div class="panel-heading">{{'import'|translate}}</div>
+
+    <form name="addMailinglistForm">
+        <table class="table table-striped">
+            <tr>
+                <td style="width:25%">{{'contenttype'|translate}}</td>
+                <td><select ng-options="ct.id as ct.name for ct in contentTypes" ng-model="contentTypeId"></select></td>
+            </tr>
+            <tr>
+                <td>{{'file'|translate}}</td>
+                <td><div class="btn btn-danger" ng-file-select ng-multiple="false" ng-model="file" accept="*">{{'selecteereenbestand'|translate}}</div></td>
+            </tr>
+        </table>
+
+        <div class="panel-buttons">
+            <altai-button type="add" ng-click="import(contentTypeId,file)">{{'import'|translate}}</altai-button>
+        </div>
+    </form>
+
+</div>

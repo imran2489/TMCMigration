@@ -1,0 +1,52 @@
+<div print-section class="root theme--square altai-theme-content actu dossier container-content" data-reveal-selectors="section:not(.masonry):not(:first-of-type):not(.parallax)">
+    <section class="comeos-cover cover-large comeos-bg-actumessage">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-10 col-sm-offset-1 text-center">
+                    <div class="title">{{vm.item.title}}</div>
+                    <div class="dossier-contact-section">
+                        <div class="contact-buttons">
+                            <!--<div class="mail"><i class="mdi mdi-heart"></i></div>-->
+
+                            <div class="contact-buttons">
+                                <comeos-content-item-like-component class="like" ng-if="vm.item != undefined" content-item="vm.item"></comeos-content-item-like-component>
+                                <div class="mail" altai-social-share item="vm.item"><i class="mdi mdi-share-variant"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="comeos-button comeos-button-cover comeos-button-white" comeos-questions-contact-us>
+            <span translate>questionscontactus</span>
+        </div>
+    </section>
+    <div  class="main-container container">
+
+        <section class="blog-post">
+            <div class="pagecontentstart">
+                <div class="row text-center">
+                    <div class="col-sm-10 col-sm-offset-1 ">
+                        <div class="breadcrumbs">
+                            <a ui-sref="Root.Home" translate>home</a> > <a>{{vm.item.title}}</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-sm-10 col-sm-offset-1 ">
+                        <div class="cktext article-body" altai-compile-html="{{vm.item.content}}">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-10 col-sm-offset-1  comeos-buttons">
+                        <a class="comeos-button" print-btn translate>
+                            print
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

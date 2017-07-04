@@ -1,0 +1,13 @@
+﻿[
+  {
+    "outputFileName": "wwwroot/AltaiScripts/altai.js",
+    "inputFiles": [
+      "wwwroot/AltaiScripts/*.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  }
+]

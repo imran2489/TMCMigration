@@ -1,0 +1,51 @@
+﻿<div class="row">
+    <div class="col-md-10 col-md-offset-1 col-sm-12 comeos-contact-form">
+        <div class='alert alert-success' ng-show='$ctrl.succesMsg'>{{$ctrl.succesMsg}}</div>
+        <div class='alert alert-error' ng-show='$ctrl.errorMsg'>{{$ctrl.errorMsg}}</div>
+        <form id='contactForm' name="contactForm" class="altaiform" ng-hide='$ctrl.succesMsg'>
+            <div class='form-group'>
+                <label>{{'firstname'|translate}}</label>
+                <input altai-content-form-firstname type='text' name='firstname' class='form-control contactform' ng-model='$ctrl.formData.Firstname' required>
+                <div class='altai-content-form-error' ng-show='contactForm.firstname.$error.required && contactForm.firstname.$touched'><i class='mdi mdi-information-outline'></i>&nbsp;{{'RequiredFieldError'|translate}}</div>
+            </div>
+            <div class='form-group'>
+                <label>{{'lastname'|translate}}</label>
+                <input altai-content-form-lastname type='text' name='lastname' class='form-control contactform' ng-model='$ctrl.formData.Lastname' required>
+                <div class='altai-content-form-error' ng-show='contactForm.lastname.$error.required && contactForm.lastname.$touched'><i class='mdi mdi-information-outline'></i>&nbsp;{{'RequiredFieldError'|translate}}</div>
+            </div>
+            <div class='form-group'>
+                <label>{{'organization'|translate}}</label>
+                <input altai-content-form-lastname type='text' name='company' class='form-control contactform' ng-model='$ctrl.formData.Company' required>
+                <div class='altai-content-form-error' ng-show='contactForm.company.$error.required && contactForm.company.$touched'><i class='mdi mdi-information-outline'></i>&nbsp;{{'RequiredFieldError'|translate}}</div>
+            </div>
+            <div class='form-group'>
+                <label>{{'email'|translate}}</label>
+                <input altai-content-form-functie' type='email' name='email' class='form-control contactform' ng-model='$ctrl.formData.Email' required>
+                <div class='altai-content-form-error' ng-show='contactForm.email.$error.required && contactForm.email.$touched'><i class='mdi mdi-information-outline'></i>&nbsp;{{'RequiredFieldError'|translate}}</div>
+                <div class='altai-content-form-error' ng-show='contactForm.email.$error.email && contactForm.email.$touched'><i class='mdi mdi-information-outline'></i>&nbsp;{{'Notavalidemail'|translate}}</div>
+            </div>
+            <div class='form-group'>
+                <label>{{'subject'|translate}}</label>
+                <input altai-content-form-lastname type='text' name='subject' class='form-control contactform' ng-model='$ctrl.formData.Subject' required>
+                <div class='altai-content-form-error' ng-show='contactForm.subject.$error.required && contactForm.subject.$touched'><i class='mdi mdi-information-outline'></i>&nbsp;{{'RequiredFieldError'|translate}}</div>
+            </div>
+            <div class='form-group'>
+                <!--<label>Bericht</label>
+                <div class='subform-row' style="border:1px solid #000">
+                    <textarea name="message" ng-model="$ctrl.formData.Message" rows="5" required></textarea>
+                </div>-->
+                <h5 translate>{{'boodschap'|translate}}</h5>
+                <textarea name="message" ng-model="$ctrl.formData.Message" class='form-control'></textarea>
+                <div class='altai-content-form-error' ng-show='contactForm.message.$error.required && contactForm.message.$touched'><i class='mdi mdi-information-outline'></i>&nbsp;{{'RequiredFieldError'|translate}}</div>
+            </div>
+            <div class='form-group'>
+                <button type='submit' ng-disabled='contactForm.$invalid' class='comeos-button' data-ng-click='$ctrl.submitForm()'>
+                    <span translate data-ng-hide="$ctrl.loading">{{'sendcontactform'|translate}}</span>
+                    <span data-ng-show='$ctrl.loading'>&nbsp;&nbsp;<i class='fa fa-circle-o-notch fa-spin'></i>&nbsp;{{'sendingMail'|translate}}</span>
+                </button>
+
+            </div>
+        </form>
+        <div ng-show='$ctrl.succesMsg' style="height: 300px;"></div>
+    </div>
+</div>

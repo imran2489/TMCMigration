@@ -1,0 +1,14 @@
+﻿<div class="content-toolbar-container">
+    <div class="content-toolbar">
+        <div class="content-toolbar-items">
+            <div ng-repeat="menuGroup in $ctrl.leftMenuGroup" ng-include="'api/template/Admin/AltaiToolbarMenuItem'"></div>
+        </div>
+        <div class="content-toolbar-items">
+            <div ng-repeat="menuGroup in $ctrl.centerMenuGroup" ng-include="'api/template/Admin/AltaiToolbarMenuItem'"></div>
+        </div>
+        <div class="content-toolbar-items">
+            <div ng-repeat="menuGroup in $ctrl.rightMenuGroup" ng-include="'api/template/Admin/AltaiToolbarMenuItem'"></div>
+            <altai-language-bar languages="$ctrl.languages" use-defaults="$ctrl.useDefaultLangs" class="toolbar-items-vertical-center toolbar-languages" ng-show="$ctrl.menuModel.showLanguages" allow-multiple="$ctrl.menuModel.allowMultipleLanguages"></altai-language-bar>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,134 @@
+﻿<!--<h3>{{$ctrl.data.pageResults[0].titel}}</h3>
+<h4>{{$ctrl.data.pageResults[0].ondertitel}}</h4>
+
+<div altai-html="$ctrl.data.pageResults[0].inhoud"></div>
+
+<div>{{$ctrl.data.pageResults[0].bron}}</div>
+<div>{{$ctrl.data.pageResults[0].databron}}</div>-->
+
+
+<div print-section class="root theme--square altai-theme-content actu dossier container-content">
+    <div altai-set-title titletext="{{$ctrl.data.pageResults[0].title}}"></div>
+    <section class="comeos-cover cover-large comeos-bg-vergelijker1">
+        <div class="altai-panel">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-10 col-sm-offset-1 text-center">
+                        <div class="title">{{$ctrl.data.pageResults[0].titel}}</div>
+                        <div class="contact-buttons">
+                            <!--<div class="mail"><i class="mdi mdi-heart"></i></div>-->
+
+                            <div class="contact-buttons">
+                                <comeos-content-item-like-header-component class="like" ng-if="$ctrl.data.pageResults[0] != undefined" content-item="$ctrl.data.pageResults[0]"></comeos-content-item-like-header-component>
+                                <socialshareheader ng-if="$ctrl.data.pageResults[0] != undefined" item="$ctrl.data.pageResults[0]"></socialshareheader>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="comeos-button comeos-button-cover comeos-button-white" comeos-questions-contact-us itemname="$ctrl.data.pageResults[0].name">
+                    <span translate>questionscontactus</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="main-container container">
+
+        <section class="blog-post">
+            <div class="pagecontentstart">
+                <!--<div class="row text-center">
+                    <div class="col-sm-10 col-sm-offset-1 ">
+                        <div class="breadcrumbs">
+                            <a ui-sref="Root.Content.Tools" translate>tools</a> > <a>{{$ctrl.data.pageResults[0].titel}}</a>
+                        </div>
+                    </div>
+                </div>-->
+
+                <div class="row text-center" ng-if="$ctrl.data.pageResults[0].themevergelijker1.length || $ctrl.data.pageResults[0].sectorvergelijker1.length || $ctrl.data.pageResults[0].regionvergelijker1.length || $ctrl.data.pageResults[0].pcvergelijker1.length">
+
+                    <div class="col-sm-10 col-sm-offset-1 ">
+
+                        <div class="dossier-tags center">
+                            <span class="dossier-tags-chip" getlink content-item-id="{{tag.isroot !== false ? tag.id : tag[tag.contentType + '_' + tag.contentType].id}}" content-type-id="{{::tag.contentTypeId}}" theme="{{::tag.id}}" ng-repeat="tag in $ctrl.data.pageResults[0].themevergelijker1">
+                                {{tag.title}}
+                            </span>
+                            <span class="dossier-tags-chip" getlink content-item-id="{{tag.isroot !== false ? tag.id : tag[tag.contentType + '_' + tag.contentType].id}}" content-type-id="{{::tag.contentTypeId}}" ng-repeat="tag in $ctrl.data.pageResults[0].sectorvergelijker1">
+                                {{tag.title}}
+                            </span>
+                            <span class="dossier-tags-chip" getlink content-item-id="{{tag.isroot !== false ? tag.id : tag[tag.contentType + '_' + tag.contentType].id}}" content-type-id="{{::tag.contentTypeId}}" ng-repeat="tag in $ctrl.data.pageResults[0].regionvergelijker1">
+                                {{tag.title}}
+                            </span>
+                            <span class="dossier-tags-chip" getlink content-item-id="{{tag.isroot !== false ? tag.id : tag[tag.contentType + '_' + tag.contentType].id}}" content-type-id="{{::tag.contentTypeId}}" ng-repeat="tag in $ctrl.data.pageResults[0].pcvergelijker1">
+                                {{tag.title}}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row introrow smartphone">
+                    <div class="col-sm-4 col-sm-offset-1">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="dossier-contact-section">
+                                    <div class="profile-picture profile-picture-circle"><img ng-src="{{::$root.staticFileBase}}/{{$ctrl.data.pageResults[0].persoonvergelijker1.persoon_file.file}}" /></div>
+                                    <div><span class="h6">{{$ctrl.data.pageResults[0].persoonvergelijker1.voornaam}} {{$ctrl.data.pageResults[0].persoonvergelijker1.achternaam}}</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="two-col-introduction cktext article-body" altai-compile-html="{{$ctrl.data.pageResults[0].membersintroduction}}">
+                        </div>
+                    </div>
+                </div>
+                <div class="row introrow screen">
+                    <div class="col-sm-6 col-sm-offset-1">
+                        <div class="two-col-introduction cktext article-body" altai-compile-html="{{$ctrl.data.pageResults[0].membersintroduction}}">
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="dossier-contact-section">
+                                    <div class="profile-picture profile-picture-circle"><img ng-src="{{::$root.staticFileBase}}/{{$ctrl.data.pageResults[0].persoonvergelijker1.persoon_file.file}}" /></div>
+                                    <div><span class="h6">{{$ctrl.data.pageResults[0].persoonvergelijker1.voornaam}} {{$ctrl.data.pageResults[0].persoonvergelijker1.achternaam}}</span></div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="row" ng-if="$ctrl.data.pageResults[0] && !$ctrl.data.pageResults[0].member">
+                <paywall></paywall>
+            </div>
+            <div class="row" ng-if="$ctrl.data.pageResults[0].member">
+                <div class="col-md-10 col-md-offset-1">
+                    <div class="dossier-section" ng-show="$ctrl.data.pageResults[0].linkvergelijker1">
+                        <!--external link-->
+                        <div class="attached-link">
+                            <a class="comeos-button comeos-button-white comeos-button-fullwidth" ng-href="{{$ctrl.data.pageResults[0].linkvergelijker1.linkurl}}" target="{{$ctrl.data.pageResults[0].linkvergelijker1.linktarget}}">{{$ctrl.data.pageResults[0].linkvergelijker1.linktekst}}</a>
+                        </div>
+                    </div>
+                    <div class="dossier-section" ng-show="$ctrl.data.pageResults[0].linkvergelijker11">
+                        <!--internal link-->
+                        <div class="attached-link">
+                            <a class="comeos-button comeos-button-white comeos-button-fullwidth" ng-href="{{$ctrl.data.pageResults[0].linkvergelijker11.linkurl}}">{{$ctrl.data.pageResults[0].linkvergelijker11.linktekst}}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-10 col-sm-offset-1 ">
+                    <div class="cktext article-body">                       
+                        <div ng-if="$ctrl.data.pageResults[0].bron!=undefined && $ctrl.data.pageResults[0].bron!=''"><span translate>source</span>: {{$ctrl.data.pageResults[0].bron}}</div>
+                        <div ng-if="$ctrl.data.pageResults[0].databron!=undefined && $ctrl.data.pageResults[0].databron!=''"><span translate>source</span>: {{$ctrl.data.pageResults[0].databron}}</div>
+                        <div ng-if="$ctrl.data.pageResults[0].date!=undefined"><span translate>lastupdate</span>: {{$ctrl.data.pageResults[0].date | localDate}}</div>
+                        <div ng-if="$ctrl.data.pageResults[0].updatefrequencyvergelijker1"><span translate>updatefrequency</span>: {{$ctrl.data.pageResults[0].updatefrequencyvergelijker1.title}}</div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </div>
+</div>

@@ -1,0 +1,259 @@
+﻿@import "../comeos.config.less";
+@nav-height-small: 50px;
+@nav-height-big: 65px;
+
+.altai-theme-content #bodyView {
+
+    .comeos-header {
+        img {
+            margin-bottom: 0;
+        }
+
+        padding-left: 25px;
+        padding-right: 25px;
+        display: flex;
+        flex-direction: column;
+
+        @media screen and (max-width:1280px) {
+            .flex-left {
+                display: flex;
+                flex: 1;
+                justify-content: flex-start;
+            }
+
+            .flex-right {
+                display: flex;
+                flex: 4;
+                justify-content: flex-end;
+            }
+        }
+
+        @media screen and (min-width:1281px) {
+            .flex-left {
+                display: flex;
+                flex: 1;
+                justify-content: flex-start;
+            }
+
+            .flex-right {
+                display: flex;
+                flex: 2;
+                justify-content: flex-end;
+            }
+        }
+
+        .header-top {
+            display: flex;
+
+            .header-top-logo {
+                padding-top: 25px;
+                width: 130px;
+            }
+
+            ul:not(.menu):not(.slides):not(.accordion):not(.tabs):not(.tabs-content), ol:not(.menu):not(.slides):not(.accordion):not(.tabs):not(.tabs-content) {
+                line-height: 3em;
+            }
+
+
+            .header-top-menu {
+                text-align: right;
+                color: white;
+                display: flex;
+                justify-content: flex-end;
+
+                ul {
+                    z-index: 10;
+                    margin-bottom: 0 !important;
+
+                    li {
+                        float: left;
+                        margin-right: 12px;
+
+                        &.userinfo {
+                            color: #444;
+                            cursor: pointer;
+                            padding: 22px 0;
+                            font-weight: 600;
+                            font-size: 0.8em;
+                            letter-spacing: 0;
+                            height: 50px;
+
+                            a {
+                                color: #444;
+                                font-weight: 600;
+                            }
+                        }
+
+                        @media screen and (max-width:1150px) {
+                            &.userinfoname {
+                                display: none;
+                            }
+
+                            &.userinfoicon {
+                                display: inline-block;
+                            }
+                        }
+
+                        @media screen and (min-width:1151px) {
+                            &.userinfoname {
+                                display: inline-block;
+                            }
+
+                            &.userinfoicon {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+
+                .comeos-menu-zone .nav-bar ul.menu li {
+                    padding-left: 0px;
+                    padding-right: 0px;
+                }
+
+                .altai-language-bar.forusers {
+                    .language-selector-user {
+                        display: inline-block;
+                        padding: 0 1.2em;
+                        padding-right: 6px;
+
+                        &:focus {
+                            outline: none !important;
+                        }
+                    }
+                }
+
+                .header-circle {
+                    width: 220px;
+                    height: 220px;
+                    background-color: #000000;
+                    border-radius: 50%;
+                    right: 70px;
+                    z-index: 5;
+                    text-align: center;
+                    padding-top: 154px;
+                    margin-top: -153px;
+                    cursor: pointer;
+                    font-weight: 600;
+                }
+
+                .mycomeos-link {
+                    margin-left: 50px;
+                    font-weight: bold;
+                    margin-right: 100px;
+                }
+
+                .logout {
+                    margin-left: 5px;
+                    padding-top: 10px;
+                }
+            }
+
+            .header-top-menu.dynamic {
+                margin-right: 50px;
+            }
+        }
+    }
+
+
+    .comeos-header-small {
+        background-color: @comeos-bg-grey;
+        height: @nav-height-small;
+
+        .comeos-menu-zone {
+            height: @nav-height-small;
+
+            .nav-bar {
+                height: @nav-height-small;
+                max-height: @nav-height-small;
+                line-height: @nav-height-small;
+
+                .nav-module {
+                    height: @nav-height-small;
+
+                    ul.menu {
+                        height: @nav-height-small;
+
+                        li {
+                            height: @nav-height-small;
+                        }
+                    }
+                }
+            }
+        }
+
+        .header-top {
+
+
+            .header-top-logo {
+                padding-top: 0;
+
+                img {
+                    height: 40px;
+                    padding-top: 10px;
+                }
+            }
+
+            .header-top-menu {
+                .header-circle {
+                    background-color: #000;
+                    color: white;
+                    padding-top: 182px;
+                    margin-top: -163px;
+                    font-weight: 600;
+                    font-size: 1em;
+                }
+
+                .mycomeos-link {
+                    margin-right: 110px;
+                }
+            }
+
+            .home .header-top-menu {
+                .header-circle {
+                    margin-top: -173px;
+                }
+            }
+        }
+    }
+
+    .comeos-header-home {
+        ///@gradient-color1: red;
+        //@gradient-color2: blue;
+        height: 600px;
+        background: @comeos-bg-blue;
+
+        .header-content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            .slidertext-container {
+                width: 1024px;
+
+                .slidertext {
+                    color: white;
+                    font-size: 24px;
+                    width: 350px;
+
+                    .slidertext-title {
+                        font-weight: bold;
+                        font-size: 42px;
+                    }
+
+                    .slidertext-content {
+                        font-size: 16px;
+                        line-height: 175%;
+                        margin-top: 25px;
+                    }
+
+                    .slidertext-navigation {
+                        font-size: 12px;
+                        margin-top: 25px;
+                    }
+                }
+            }
+        }
+    }
+}

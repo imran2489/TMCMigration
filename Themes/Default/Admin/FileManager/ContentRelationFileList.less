@@ -1,0 +1,52 @@
+﻿@import "../../config";
+
+.content-relation-file-list{
+    .input-container {
+        width: 100%;
+    }
+    table{
+        width:100%;
+        tr{
+            width:100%;
+            height:50px;
+            background-color: @grey-verylight;
+        }
+        td{
+            text-align:left;
+            vertical-align:middle;
+            padding:6px 20px 6px 20px;
+        }
+        .file-sort-handle {
+            cursor:move;
+        }
+        td:nth-child(1){
+            width:10px;
+            
+        }
+        td:nth-child(2){
+            width:50px;
+            
+        }
+    }
+    .mdi-delete{
+        cursor:pointer;
+    }
+    .mdi-content-save{
+        cursor:pointer;
+    }
+    .mdi:hover{
+        color:@blue;
+    }
+    .file-manager-button{
+        cursor:pointer;
+        margin:10px;
+    }
+    .file-manager-button:hover i{
+        color:@blue;
+    }
+}  
+.ui-sortable-helper{
+    .hide-when-dragging{
+        display:none;
+    }
+}

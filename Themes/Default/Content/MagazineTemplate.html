@@ -1,0 +1,91 @@
+﻿<div print-section class="root theme--square altai-theme-content actu dossier container-content">
+    <div altai-set-title titletext="{{vm.item.title}}"></div>
+    <section class="comeos-cover cover-large comeos-bg-magazine">
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <div class="title">{{vm.item.title}}</div>
+                <div class="contact-buttons">
+                    <!--<div class="mail"><i class="mdi mdi-heart"></i></div>-->
+
+                    <div class="contact-buttons">
+                        <comeos-content-item-like-header-component class="like" ng-if="vm.item != undefined" content-item="vm.item"></comeos-content-item-like-header-component>
+                        <socialshareheader ng-if="vm.item != undefined" item="vm.item"></socialshareheader>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="comeos-button comeos-button-cover comeos-button-white" comeos-questions-contact-us itemname="vm.item.name">
+            <span translate>questionscontactus</span>
+        </div>
+    </section>
+    <div class="main-container container">
+
+        <section class="blog-post">
+            <div class="pagecontentstart">
+
+                <div class="row text-center" ng-if="vm.item.thememagazine.length || vm.item.sectormagazine.length || vm.item.regionmagazine.length || vm.item.pcmagazine.length">
+
+                    <div class="col-sm-12">
+
+                        <div class="dossier-tags">
+                            <span class="dossier-tags-chip" getlink content-item-id="{{tag.isroot !== false ? tag.id : tag[tag.contentType + '_' + tag.contentType].id}}" content-type-id="{{::tag.contentTypeId}}" theme="{{::tag.id}}" ng-repeat="tag in vm.item.thememagazine">
+                                {{tag.title}}
+                            </span>
+                            <span class="dossier-tags-chip" getlink content-item-id="{{tag.isroot !== false ? tag.id : tag[tag.contentType + '_' + tag.contentType].id}}" content-type-id="{{::tag.contentTypeId}}" ng-repeat="tag in vm.item.sectormagazine">
+                                {{tag.title}}
+                            </span>
+                            <span class="dossier-tags-chip" getlink content-item-id="{{tag.isroot !== false ? tag.id : tag[tag.contentType + '_' + tag.contentType].id}}" content-type-id="{{::tag.contentTypeId}}" ng-repeat="tag in vm.item.regionmagazine">
+                                {{tag.title}}
+                            </span>
+                            <span class="dossier-tags-chip" getlink content-item-id="{{tag.isroot !== false ? tag.id : tag[tag.contentType + '_' + tag.contentType].id}}" content-type-id="{{::tag.contentTypeId}}" ng-repeat="tag in vm.item.pcmagazine">
+                                {{tag.title}}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row dossier-section publicationcoverimagerow mobile">
+                    <div class="col-sm-6">
+                        <div class="publicationcoverimagecontainer">
+                            <a ng-href="{{::$root.staticFileBase}}/{{vm.item.filemagazine2.file}}" target="_blank" ng-if="vm.activeLang.code=='fr'"><img class="publicationcoverimage" ng-src="{{::$root.staticFileBase}}/{{vm.item.filemagazine4.file}}" /></a>
+                            <a ng-href="{{::$root.staticFileBase}}/{{vm.item.filemagazine.file}}" target="_blank" ng-if="vm.activeLang.code=='nl'"><img class="publicationcoverimage" ng-src="{{::$root.staticFileBase}}/{{vm.item.filemagazine5.file}}" /></a>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="cktext article-introduction" altai-compile-html="{{vm.item.shortintroduction}}">
+                        </div>
+                        <div class="cktext" altai-compile-html="{{vm.item.membersintroduction}}">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row dossier-section publicationcoverimagerow desktop">
+                    <div class="col-sm-12">
+                        <div class="publicationcoverimagecontainer">
+                            <a ng-href="{{::$root.staticFileBase}}/{{vm.item.filemagazine2.file}}" target="_blank" ng-if="vm.activeLang.code=='fr'"><img class="publicationcoverimage" ng-src="{{::$root.staticFileBase}}/{{vm.item.filemagazine4.file}}" /></a>
+                            <a ng-href="{{::$root.staticFileBase}}/{{vm.item.filemagazine.file}}" target="_blank" ng-if="vm.activeLang.code=='nl'"><img class="publicationcoverimage" ng-src="{{::$root.staticFileBase}}/{{vm.item.filemagazine5.file}}" /></a>
+                        </div>
+
+                        <div class="cktext article-introduction" altai-compile-html="{{vm.item.shortintroduction}}">
+                        </div>
+                        <div class="cktext" altai-compile-html="{{vm.item.membersintroduction}}">
+                        </div>
+                    </div>
+                </div>
+                <div class="row dossier-section">
+                    <div class="col-sm-12">
+                        <h3 class="text-center" translate>magazinearticles</h3>
+                        <comeos-masonry class="dossier-section" items="vm.item.magazineartikelmagazine"></comeos-masonry>
+                    </div>
+                </div>
+                <div class="row dossier-section">
+                    <div class="col-sm-10 col-sm-offset-1  comeos-buttons">
+                        <a class="comeos-button" print-btn translate>
+                            print
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </div>
+</div>

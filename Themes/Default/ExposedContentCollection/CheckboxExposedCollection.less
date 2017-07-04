@@ -1,0 +1,28 @@
+﻿.checkbox-exposed-collection {
+
+    .filter-container {
+        display: flex;
+        flex-wrap: wrap;
+        width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+
+        .filter-container-item {
+            width: 25%;
+
+            .filter-container-item-inner {
+                margin: 10px;
+                display: flex;
+                align-items: center;
+
+                md-checkbox.md-checked .md-icon {
+                    background-color: #fff;
+                }
+
+                md-checkbox.md-default-theme.md-checked .md-icon:after, md-checkbox.md-checked .md-icon:after {
+                    border-color: #000;
+                }
+            }
+        }
+    }
+}

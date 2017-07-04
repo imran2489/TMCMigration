@@ -1,0 +1,8 @@
+﻿<altai-toolbar-menu menu-model="vm.toolbar" languages="vm.languages"></altai-toolbar-menu>
+<div class="altai-list editor-style">  
+    <div ng-cloak>
+        <md-list flex class="node-architecture-list" ng-cloak>                       
+            <div ng-repeat="node in  vm.templateTypes  track by node.id" node-element node='node' showchildren="node.showChildren"></div>         
+        </md-list>
+    </div>       
+</div>

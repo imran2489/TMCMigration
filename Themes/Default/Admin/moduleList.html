@@ -1,0 +1,31 @@
+﻿<div class="altai-admin-section">
+
+    <div class="header">
+        <h1><i class="fa fa-flag"></i>&nbsp;{{'modules'|translate}}</h1>
+    </div>
+
+
+    <table>
+
+        <thead>
+            <tr>
+                <th style="width: 25%">{{'name'|translate}}:</th>
+                <th>{{'version'|translate}}</th>
+                <th>{{'author'|translate}}</th>
+                <th>{{'installed'|translate}}</th>
+                <th>{{'actions'|translate}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr data-ng-repeat="module in modules">
+                <td>{{module.id}}</td>
+                <td>{{module.version.major}}.{{module.version.minor}}.{{module.version.build}}</td>
+                <td><a href="{{module.authorLink}}" target="_blank">{{module.author}}</a></td>
+                <td>{{module.installed|binary}}</td>
+                <td data-ng-hide="module.installed"><button class="btn btn-success" data-ng-click="installModule(module.id)"><i class="fa fa-plus"></i>&nbsp;{{'install'|translate}}</button></td>
+                <td data-ng-show="module.installed"><button class="btn btn-danger" data-ng-click="uninstallModule(module.id)"><i class="fa fa-times"></i>&nbsp;{{'uninstall'|translate}}</button></td>
+            </tr>
+        </tbody>
+
+    </table>
+</div>

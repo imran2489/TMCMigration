@@ -1,0 +1,71 @@
+﻿<div class="menus-form">
+    <div class="menu-col-1" ng-class="{'show-menu-form':vm.expandMenuItemForm,'empty-menu-list':!vm.menuItems.length>0}">
+        <menu-tree-list menu-items="vm.menuItems"></menu-tree-list>
+    </div>
+    <div class="menu-col-2" ng-class="{'show-menu-form':vm.expandMenuItemForm,'empty-menu-list':!vm.menuItems.length>0}">
+        <div class="menu-item-form">
+            <div class="sub-header">
+                <h3>{{vm.editMenuItem ? 'Edit Menu Item' : 'Add Menu Item'}}</h3>
+            </div>
+            <table>
+                <tr>
+                    <td>
+                        {{"published" | translate}}
+                    </td>
+                    <td>
+                        <input type="checkbox" ng-model="vm.menuItem.published" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        {{"name" | translate}}
+                    </td>
+                    <td>
+                        <div altai-translatable-input="vm.menuItem.labelTranslatable" languages="vm.languages" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        {{"url" | translate}}
+                    </td>
+                    <td>
+                        <input type="text" ng-model="vm.menuItem.url" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        {{"target" | translate}}
+                    </td>
+                    <td>
+                        <select ng-model="vm.menuItem.target">
+                            <option>_blank</option>
+                            <option>_self</option>
+                            <option>_parent</option>
+                            <option>_top</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        {{"state" | translate}}
+                    </td>
+                    <td>
+                        <select ng-model="vm.menuItem.stateId" ng-options="t.id as t.name for t in vm.states"></select>
+                    </td>
+                </tr>
+            </table>
+            <button type="button" class="altai-admin-icon main" ng-click="vm.saveMenuItem()" ng-if="vm.editMenuItem">
+                <md-tooltip md-direction="top">{{'save'|translate}}</md-tooltip>
+                <i class="mdi mdi-content-save"></i>
+            </button>
+            <button type="button" class="altai-admin-icon main" ng-click="vm.addMenuItem()" ng-if="!vm.editMenuItem">
+                <md-tooltip md-direction="top">{{'add'|translate}}</md-tooltip>
+                <i class="mdi mdi-plus"></i>
+            </button>
+            <button type="button" class="altai-admin-icon main" ng-click="vm.deleteMenuItem()">
+                <md-tooltip md-direction="top">{{'delete'|translate}}</md-tooltip>
+                <i class="mdi mdi-delete"></i>
+            </button>
+        </div>
+    </div>
+</div>

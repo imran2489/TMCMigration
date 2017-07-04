@@ -1,0 +1,13 @@
+﻿<div class="buttons" ng-init="edit=true;password={}">
+
+    <comeos-profile-update-button linked-content-types="vm.linkedContentTypes" update-model="vm.updateModel" content-type="vm.contentType" content-item="vm.contentItem" password="$root.password" content-item-id="vm.contentItemId" languages="vm.languages"></comeos-profile-update-button>
+</div>
+
+<form ng-class="{'editmode':edit, 'noneditmode':!edit}" class="altai-form ng-pristine ng-valid-pattern ng-valid-minlength ng-valid-maxlength ng-valid ng-valid-required ng-valid-altaitagselector" novalidate="" name="contentItemCreateForm">
+    <altai-content-item-update-inner ng-if="vm.contentItemId != undefined" edit-mode="edit" template="api/template/Content/comeosprofileupdateinner" linked-content-types="vm.linkedContentTypes" update-model="vm.updateModel" content-type="vm.contentType" content-item="vm.contentItem" content-item-id="vm.contentItemId" languages="vm.languages">
+    </altai-content-item-update-inner>
+</form>
+
+<div class="buttons">
+    <comeos-profile-update-button linked-content-types="vm.linkedContentTypes" update-model="vm.updateModel" content-type="vm.contentType" content-item="vm.contentItem" password="password" content-item-id="vm.contentItemId" languages="vm.languages"></comeos-profile-update-button>
+</div>

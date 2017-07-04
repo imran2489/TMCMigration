@@ -1,0 +1,17 @@
+﻿<div class='altai-create-building-block-popup' ng-show="$ctrl.modes.popupOpened">
+    <div class="buildingblocks-grid">
+        <div class="buildingblocks-selection">
+            <div class="buildingblocks-grid-header">{{'buildingblocks'|translate}} <i class="mdi mdi-close close" ng-click="$ctrl.closePopup()"></i></div>
+            <div class="buildingblocks-grid-container">
+                <div class="bb" ng-repeat="bbtype in buildingBlockTypes" ng-click="createBb(bbtype)">
+                    <div class="bb-icon"><i class="mdi" ng-class="bbtype.icon"></i></div>
+                    <div class="label">{{bbtype.label|translate}}</div>
+                </div>
+            </div>
+        </div>
+        <div class="buildingblocks-configuration" ng-show="inconfigurationmode">
+            <div class="buildingblocks-grid-header">{{'configurebuildingblock'|translate}}</div>
+            <div class="inline-component"></div>
+        </div>
+    </div>
+</div>

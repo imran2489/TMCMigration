@@ -1,0 +1,56 @@
+﻿<div class="window-sidebar-generic">
+    <div class="window-sidebar-header">
+        <div class="buttons">
+            <div class="md-button button" ng-class="{'active':vm.activeTab=='settings'}" ng-click="vm.switchTab('settings')"><i class="mdi mdi-settings"></i></div>
+            <div class="md-button button" ng-class="{'active':vm.activeTab=='history'}" ng-click="vm.switchTab('history')"><i class="mdi mdi-history"></i></div>
+            <div class="md-button button" ng-class="{'active':vm.activeTab=='comments'}" ng-click="vm.switchTab('comments')"><i class="mdi mdi-message-text"></i></div>
+        </div>
+    </div>
+
+    <div class="window-sidebar-content">
+
+        <div ng-if="vm.activeTab=='settings'">
+
+            <div class="window-sidebar-item-title">{{'settings'|translate}}</div>
+
+        </div>
+
+        <div ng-if="vm.activeTab=='history'">
+
+            <div class="window-sidebar-item-title">{{'history'|translate}}</div>
+
+            <div class="sidebar-boxitem" ng-repeat="publish in publishHistory">
+                <div class="description">
+                    <div><b>{{publish.userName}}</b></div>
+                    <div>{{publish.dateFormatted|date:'dd-MM-yyyy hh:mm'}}</div>
+                    <div>{{publish.description}}</div>
+                </div>
+                <div class="button"><md-button><i class="mdi mdi-eye"></i></md-button></div>
+                <div class="button"><md-button ng-click="vm.restoreModel(publish.date)"><i class="mdi mdi-backup-restore"></i></md-button></div>
+            </div>
+
+        </div>
+
+        <div ng-if="vm.activeTab=='comments'">
+
+            <div class="window-sidebar-item-title">{{'comments'|translate}}</div>
+
+            <div class="sidebar-boxitem" ng-repeat="comment in comments">
+                <div class="description">
+                    <div><b>{{comment.userName}}</b></div>
+                    <div>{{comment.creationDate|date:'dd-MM-yyyy hh:mm'}}</div>
+                    <div>{{comment.commentText}}</div>
+                </div>
+
+            </div>
+
+            <div class="sidebar-boxitem">
+                <div class="description">
+                    <textarea ng-model="newComment.commentText"></textarea>
+                    <md-button ng-click="vm.postComment(newComment)">{{'add'|translate}}</md-button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

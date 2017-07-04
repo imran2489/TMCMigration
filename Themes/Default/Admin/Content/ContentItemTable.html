@@ -1,0 +1,25 @@
+﻿<table>
+    <thead>
+        <tr>
+            <th></th>
+            <th><a>{{'id' | translate }} </a></th>
+            <th><a>{{'type' | translate }} </a></th>
+            <th><a>{{'name' | translate }}</a></th>
+            <th><a>{{'lastedited' | translate }}</a></th>
+            <th><a>{{'published' | translate }}</a></th>
+            <th>{{'actions' | translate }}</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        <tr ng-repeat="contentRow in vm.results track by $index">
+            <td><i class="mdi mdi-google-circles-extended" ng-if="!vm.selection"></i><altai-content-selection-checkbox ng-if="vm.selection" content-item="contentRow" selection-key="vm.selection"></altai-content-selection-checkbox></td>
+            <td>{{contentRow.id}}</td>
+            <td>{{contentRow.contentType}}</td>
+            <td>{{contentRow.name | altaicutoff:50}}</td>
+            <td>{{contentRow.lastUpdated | date:'dd-MM-yyyy HH:mm'}}</td>
+            <td><span ng-show="contentRow.published">{{'yes'|translate}}</span><span ng-hide="contentRow.published">{{'no'|translate}}</span> </td>
+            <td><altai-content-item-buttons content-item='contentRow'></altai-content-item-buttons></td>
+        </tr>
+    </tbody>
+</table>

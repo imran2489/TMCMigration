@@ -1,0 +1,86 @@
+﻿@import "../comeos.config.less";
+
+.altai-theme-content #bodyView {
+
+    .inlinebadge {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        padding: 6px 6px;
+        font-size: 11px;
+        /* font-weight: bold; */
+        color: #fff;
+        line-height: 1;
+        vertical-align: middle;
+        white-space: nowrap;
+        text-align: center;
+        background-color: #b1b1b1;
+        border-radius: 50%;
+        margin-top: 5px;
+        margin-left: 20px;
+    }
+
+    .inlineaggregations{
+        display: flex;
+    justify-content: center;
+    }
+
+    .grid-item.who-is-who {
+        margin-bottom:25px;
+        margin-right:20px; 
+        .altai-card.whoiswhocard {
+            min-height: 250px;
+            height:400px;
+            width: 265px;
+            display: flex;
+            align-content: flex-start;
+            align-items: flex-start;
+            justify-content: center;
+            &.highcard{
+                height:470px;
+            }
+            .contactdata{
+                padding-top:20px;
+                font-style:initial;
+                text-align:left;
+            }
+            .altai-card-body {
+                
+            }
+
+            .altai-whoiswho-image {
+                text-align: center;
+                position: absolute;
+
+                .profile-picture.profile-picture-circle {
+                    width: 100%;
+                    overflow: hidden;
+                    border-radius: 0;
+                }
+            }
+            .altai-card-image{
+                width:100%;
+            }
+            .altai-card-title {
+                /*text-align: center;*/
+
+                h5 {
+                    margin-bottom: 0.625em;
+                }
+            }
+
+            .altai-card-function-title {
+                font-style: italic;
+                font-size: 0.8em;
+                /*text-align: center;*/
+                margin-bottom: 5px;
+            }
+
+            .altai-card-contact-item {
+                font-size: 0.8em;
+                text-align: left;
+                margin-bottom: 5px;
+            }
+        }
+    }
+}

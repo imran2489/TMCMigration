@@ -1,0 +1,21 @@
+﻿<hr />
+
+<button ng-click="$ctrl.switchMode('content')" ng-class="{'active':$ctrl.mode=='content'}">1 Play video</button>
+<button ng-click="$ctrl.switchMode('test')" ng-class="{'active':$ctrl.mode=='test'}">2 Test your knowledge</button>
+
+<hr />
+
+<div ng-if="$ctrl.mode=='content'">
+
+    <div ng-if="$ctrl.nugget.video">
+        <altai-video-player wistia-id="{{$ctrl.nugget.video.wistiaid}}"></altai-video-player>
+    </div>
+
+
+</div>
+
+<div ng-if="$ctrl.mode=='test'">
+
+    <altai-questionnaire questionnaire-id="{{$ctrl.nugget.questionnaireid}}"></altai-questionnaire>
+
+</div>

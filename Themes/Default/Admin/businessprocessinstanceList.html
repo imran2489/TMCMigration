@@ -1,0 +1,45 @@
+﻿<div class="altai-list">
+    <div class="search">
+        <input class="query" type="text" placeholder="{{'searchinname'|translate}}" ng-model-options="{ debounce: 300 }" ng-model="vm.searchModel.name" />
+        <!--<button class="add" ng-click="vm.createContentItem()"><i class="mdi mdi-plus"></i></button>-->
+    </div>
+</div>
+
+<div class="altai-admin-section">
+
+    <table>
+
+        <thead>
+            <tr>
+                <th>{{'processdefinitionid'|translate}}</th>
+                <th>{{'instanceid'|translate}}</th>
+                <th>{{'instanceactivityid'|translate}}</th>
+                <th>{{'actions'|translate}}</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr ng-repeat="instance in vm.instances">
+                <td><a target="_blank" href="{{instance.processDefinitionUrl}}">{{instance.processDefinitionId}}</a></td>
+                <td><a target="_blank" href="{{instance.url}}">{{instance.id}}</a></td>
+                <td><a target="_blank" href="{{instance.url}}">{{instance.activityId}}</a></td>
+                <td>
+                    <button type="button" class="icon" ng-click="vm.openContentItemProfile(contentRow)">
+                        <i class="mdi mdi-magnify"></i>
+                    </button>
+                </td>
+
+            </tr>
+
+            <tr ng-if="!vm.instances.length">
+                <td colspan="2">{{'noresults'|translate}}</td>
+            </tr>
+        </tbody>
+
+    </table>
+
+    <div class="panel-buttons">
+        <altai-pagination paged-result="vm.contentItems" switch-page="vm.openPage(pageIndex)"></altai-pagination>
+    </div>
+
+</div>

@@ -1,0 +1,27 @@
+﻿<div class="content-relation-file-list">
+    <div ng-click="$ctrl.openFileManager()" class="file-manager-button"><i class="mdi mdi-open-in-new"></i> Selecteer een bestaand bestand</div>
+
+    <table>
+        <tbody ui-sortable="$ctrl.sortableOptions" ng-model="$ctrl.selectedFiles">
+            <tr ng-repeat="file in $ctrl.selectedFiles">
+                <td>
+                    <i class="mdi mdi-cursor-move file-sort-handle"></i>
+                </td>
+                <!--<td ng-if='file.isImage || file.name.indexOf(".png")>-1 || file.name.indexOf(".jpg")>-1'>-->
+                <td>
+                    <img ng-src='{{$root.staticFileBase}}/{{file.imagePath || file.name}}' style='height:30px;' onerror="this.style.display='none'" ng-if='file.isImage || file.name.indexOf(".png")>-1 || file.name.indexOf(".jpg")>-1'>
+                </td>
+                <td width="10%">
+                    {{file.name}}
+                </td>
+                <td class="hide-when-dragging">
+                    <div altai-translatable-input="file.labelTranslatable" languages="$ctrl.languages" ng-show="file.editable" />
+                </td>
+                <td class="hide-when-dragging" width="20">                  
+                    <a ng-click="$ctrl.deleteFile(file.id)"><i class="mdi mdi-delete"></i></a>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>

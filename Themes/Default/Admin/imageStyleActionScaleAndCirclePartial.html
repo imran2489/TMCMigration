@@ -1,0 +1,27 @@
+﻿<div>
+ <div class="admin-header">
+    <h4>{{"scaleandcirclesettings"|translate}}</h4>
+</div>
+ <form editable-form name="editableForm" onbeforesave="updateImageStyleAction($data, imageStyleAction.id)" shown="shouldBeEditableAtStart">
+    <div class="simpleformdatarow clearfix">
+          <span class="simpleformlabel">{{"radius"|translate}}</span>
+          <span class="simpleformvalue" editable-text="imageStyleAction.radius" e-name="radius" e-required>{{ imageStyleAction.radius || 'empty' }}</span>
+    </div> 
+
+    <div class="simpleformbuttonrow clearfix">
+      <!-- button to show form -->
+      <button type="button" class="btn btn-default" ng-click="editableForm.$show()" ng-show="!editableForm.$visible">
+        {{"edit"|translate}}
+      </button>
+      <!-- buttons to submit / cancel form -->
+      <span ng-show="editableForm.$visible">
+        <button type="submit" class="btn btn-primary" ng-disabled="editableForm.$waiting">
+          {{"save"|translate}}
+        </button>
+        <button type="button" class="btn btn-default" ng-disabled="editableForm.$waiting" ng-click="editableForm.$cancel()">
+          {{"cancel"|translate}}
+        </button>
+      </span>
+    </div>
+  </form>  
+</div>

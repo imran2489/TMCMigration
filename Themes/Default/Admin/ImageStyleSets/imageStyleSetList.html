@@ -1,0 +1,32 @@
+﻿<div class="altai-admin-section">
+    <panel table="true">
+
+        <h2>{{'imagestylesets'|translate}}</h2>
+
+        <md-button type="button" class="md-button-altai md-raised" data-ng-click="$ctrl.recycleEntireImageCache()"><i class="mdi mdi-autorenew"></i> {{'recycleall'|translate}} </md-button>
+        <md-button type="button" class="md-button-altai md-raised" data-ng-click="$ctrl.clearAllImageStyleSets()"><i class="mdi mdi-delete-empty"></i> {{'clearall'|translate}} </md-button>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th><span ng-click="$ctrl.predicateimagestyleset = 'name'; $ctrl.reverseimagestyleset=!$ctrl.reverseimagestyleset">{{"name"|translate}}</span></th>
+                    <th>
+                       {{"actions"|translate}}
+                    </th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="imageStyleSet in $ctrl.imageStyleSetList | orderBy:$ctrl.predicateimagestyleset:$ctrl.reverseimagestyleset">
+                    <td><span data-editable-text="imageStyleSet.name" data-e-name="name" data-e-form="firstlevelform" data-e-required data-e-ui-keypress="{13:'firstlevelform.$submit()',esc:'firstlevelform.$hide()'}">{{imageStyleSet.name || 'empty' }}</span></td>
+                    <td>
+                        <md-button ng-click="$ctrl.openImageStyleSet(imageStyleSet)" class="md-button-altai md-raised"><i class="mdi mdi-pencil"></i> {{::'update'|translate}} </md-button>
+                        <md-button ng-click="$ctrl.recycleImageCache(imageStyleSet.id)" class="md-button-altai md-raised"><i class="mdi mdi-autorenew"></i> {{::'recycle'|translate}} </md-button>
+                        <md-button ng-click="$ctrl.clearSingleImageStyleSet(imageStyleSet.name)" class="md-button-altai md-raised"><i class="mdi mdi-delete-variant"></i> {{::'clear'|translate}} </md-button>
+                        <md-button ng-click="$ctrl.removeImageStyleSet(imageStyleSet.id)" class="md-button-altai md-raised"><i class="mdi mdi-delete"></i> {{::'delete'|translate}} </md-button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <md-button type="button" class="md-button-altai md-raised" data-ng-click="$ctrl.addImageStyleSet()"><i class="mdi mdi-plus"></i> {{'create'|translate}} </md-button>
+    </panel>
+</div>

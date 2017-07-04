@@ -1,0 +1,35 @@
+﻿@import "../config";
+
+.altai-theme-admin {
+    .altai-file-list {
+
+        .file {
+            display: flex;
+
+            .preview {
+                width: 60px;
+                height: 60px;
+            }
+        }
+    }
+
+    .altai-file-dropzone {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100px;
+        padding-top:20px;
+        padding-bottom:20px;
+        width:100%;
+        background-color: @grey-light;
+        flex-direction:column;
+        .upload-icon{
+            color:@grey2;
+            font-size:50px;
+        }
+    }
+    .altai-admin-section.file-uploader-embedded {
+        padding:0;
+        width:100%;
+    }
+}

@@ -1,0 +1,364 @@
+﻿@import "../comeos.config.less";
+
+.altai-theme-content {
+    #bodyView {
+        /*mouse scroll*/
+        @-webkit-keyframes scroll-ani {
+            0% {
+                opacity: 1;
+                top: 29%;
+            }
+
+            15% {
+                opacity: 1;
+                top: 50%;
+            }
+
+            50% {
+                opacity: 0.5;
+                top: 50%;
+            }
+
+            75% {
+                opacity: 0;
+                top: 50%;
+            }
+
+            100% {
+                opacity: 0;
+                top: 50%;
+            }
+        }
+
+        @-moz-keyframes scroll-ani {
+            0% {
+                opacity: 1;
+                top: 29%;
+            }
+
+            15% {
+                opacity: 1;
+                top: 50%;
+            }
+
+            50% {
+                opacity: 0.5;
+                top: 50%;
+            }
+
+            75% {
+                opacity: 0;
+                top: 50%;
+            }
+
+            100% {
+                opacity: 0;
+                top: 50%;
+            }
+        }
+
+        @keyframes scroll-ani {
+            0% {
+                opacity: 1;
+                top: 29%;
+            }
+
+            15% {
+                opacity: 1;
+                top: 50%;
+            }
+
+            50% {
+                opacity: 0.2;
+                top: 50%;
+            }
+
+            75% {
+                opacity: 0;
+                top: 50%;
+            }
+
+            100% {
+                opacity: 0;
+                top: 50%;
+            }
+        }
+        // Mouse & Message Styles
+        // The Scroll Link
+        .mouse-scroll {
+            //display: inline-block;
+            /*line-height: 18px;
+            font-size: 13px;
+            font-weight: normal;
+            color: #7F8C8D;
+            color: #FFF;
+            letter-spacing: 2px;
+            margin-top: 10%;
+            text-decoration: none;
+            overflow: hidden;*/
+            position: absolute;
+            // The Mouse
+            .mouse {
+                position: relative;
+                display: block;
+                width: 30px;
+                height: 50px;
+                margin: 0 auto 0;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                box-sizing: border-box;
+                border: 2px solid #FFF;
+                border-radius: 23px;
+                cursor: pointer;
+                // Scroll Indicator
+                .mouse-movement {
+                    position: absolute;
+                    display: block;
+                    top: 0;
+                    border-style: solid;
+                    border-width: 2px 2px 0 0;
+                    border-color: white;
+                    content: '';
+                    height: 8px;
+                    width: 8px;
+                    left: 9px;
+                    transform: rotate(135deg);
+                    vertical-align: top;
+                    -webkit-animation: scroll-ani 2s linear infinite;
+                    -moz-animation: scroll-ani 2s linear infinite;
+                    animation: scroll-ani 2s linear infinite;
+                }
+            }
+            // The Scroll Message
+            .mouse-message {
+                float: left;
+                margin: -200px 0 0 7px;
+                padding: 0;
+                -webkit-animation: scroll-ani 4s linear infinite;
+                -moz-animation: scroll-ani 4s linear infinite;
+                animation: scroll-ani 4s linear infinite;
+            }
+            // shown on Hover of The Mouse
+            &:hover {
+                .mouse-message {
+                    margin-top: 0;
+                }
+            }
+        }
+
+
+        #altai-slideshowgrid {
+            overflow: hidden;
+            width: 100%;
+            /*POSITION*/
+            position: absolute;
+            left: 0;
+            right: 0;
+            /*min-height: 450px;*/
+        }
+
+        .slideshowgrid-title {
+            margin-bottom: 20px;
+        }
+
+        #altai-slideshowgrid-inner {
+            position: absolute;
+            -moz-transition: 1s all;
+            -o-transition: 1s all;
+            -webkit-transition: 1s all;
+            transition: 1s all;
+        }
+
+        #altai-slideshowgrid-outer {
+            /*height: @grid-item-height;*/
+        }
+
+        .altai-slideshowgrid-left {
+            left: 0;
+        }
+
+        .altai-slideshowgrid-right {
+            right: 0;
+        }
+
+        .altai-slideshowgrid-left, .altai-slideshowgrid-right {
+            position: absolute;
+            color: white;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            -webkit-user-select: none;
+            user-select: none;
+
+            &:focus {
+                outline: none;
+            }
+        }
+
+        .altai-slideshowgrid-left:hover, .altai-slideshowgrid-right:hover {
+            background-color: rgba(0, 0, 0, 0.1);
+            color: #fff;
+            cursor: pointer;
+        }
+        /* EVENT GRID */
+        .altai-slideshowgrid-item {
+            background-size: cover;
+            /*padding: 20px;*/
+            color: #fff;
+            float: left;
+            background-position: center;
+
+            &.currentslide {
+                opacity: 1;
+
+                &.fadingout {
+                    -webkit-transition: opacity 1s ease-in-out;
+                    -moz-transition: opacity 1s ease-in-out;
+                    -ms-transition: opacity 1s ease-in-out;
+                    -o-transition: opacity 1s ease-in-out;
+                    opacity: 0;
+                }
+            }
+
+            &.nextslide {
+                opacity: 0;
+
+                &.fadingin {
+                    -webkit-transition: opacity 1s ease-in-out;
+                    -moz-transition: opacity 1s ease-in-out;
+                    -ms-transition: opacity 1s ease-in-out;
+                    -o-transition: opacity 1s ease-in-out;
+                    opacity: 1;
+                }
+            }
+
+            .altai-badge {
+                float: left;
+            }
+
+            .altai-slideshowgrid-overlay {
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0);
+            }
+
+            .altai-slideshowgrid-content {
+                padding: 50px;
+                position: absolute;
+                background-color: rgba(0, 0, 0, 0.3);
+                border-radius: 15px;
+                border: 0px solid white;
+
+                .altai-slideshowgrid-item-title {
+                    font-family: Campton;
+                    font-weight: 600;
+                    padding-bottom: 20px;
+                }
+
+                .altai-slideshowgrid-item-tagline {
+                    font-family: Campton;
+                }
+
+                .altai-slideshowgrid-item-date {
+                    font-family: Campton;
+                }
+            }
+
+            @media only screen and (max-width: 600px) {
+                .altai-slideshowgrid-content {
+                    padding: 20px;
+                }
+            }
+        }
+        // Default backgrounds
+        .altai-slideshowgrid-item.Avondconferentie {
+            background-color: @comeos-bg-green;
+        }
+
+        .altai-slideshowgrid-item.Cursus {
+            background-color: @comeos-bg-blue;
+        }
+
+        .altai-slideshowgrid-item.Workshop {
+            background-color: @comeos-bg-purple;
+        }
+
+        #altai-slideshowgrid-noresults {
+            padding: 50px;
+            text-align: center;
+            font-size: 28px;
+        }
+
+
+        .altai-slideshowgrid-content:hover {
+            cursor: pointer;
+        }
+
+        .altai-slideshowgrid-down {
+            /*position: absolute;
+            border: 2px solid white;
+            width: 30px;
+            height: 50px;
+            border-radius: 15px;
+            padding: 12px 1px;
+            color: white !important;
+            opacity: 1;
+            cursor: pointer;*/
+            &:hover {
+                border-color: @comeos-bg-grey;
+                opacity: 1;
+            }
+
+            a {
+                color: white;
+            }
+
+            a:hover {
+                color: @comeos-bg-grey;
+            }
+        }
+
+        @media only screen and (max-width: 600px) {
+            .altai-slideshowgrid-down {
+                height: 40px;
+                padding: 7px 1px;
+            }
+        }
+
+        .altai-slideshowgrid-indicators {
+            position: absolute;
+
+            .altai-slideshowgrid-indicator {
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+                border: 1px solid white;
+                background-color: transparent;
+                margin-right: 5px;
+                display: inline-block;
+
+                &:focus {
+                    outline: none;
+                }
+
+                &.selected {
+                    background-color: white;
+                }
+            }
+
+            .altai-slideshowgrid-pauseplay {
+                width: 14px;
+                height: 14px;
+                border-radius: 50%;
+                background-color: transparent;
+                margin-right: 5px;
+                display: inline-block;
+                color: white;
+                font-size: 14px;
+
+                &:focus {
+                    outline: none;
+                }
+            }
+        }
+    }
+}

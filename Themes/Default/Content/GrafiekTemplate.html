@@ -1,0 +1,127 @@
+﻿<!--<h3>{{vm.item.titel}}</h3>
+<h4>{{vm.item.ondertitel}}</h4>
+
+<div altai-html="vm.item.inhoud"></div>
+
+<div>{{vm.item.bron}}</div>
+<div>{{vm.item.databron}}</div>-->
+
+
+<div print-section class="root theme--square altai-theme-content actu dossier container-content">
+    <div altai-set-title titletext="{{vm.item.title}}"></div>
+    <section class="comeos-cover cover-large comeos-bg-grafiek">
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-1 text-center">
+                <div class="title">{{vm.item.titel}}</div>
+                <div class="contact-buttons">
+                    <!--<div class="mail"><i class="mdi mdi-heart"></i></div>-->
+
+                    <div class="contact-buttons">
+                        <comeos-content-item-like-header-component class="like" ng-if="vm.item != undefined" content-item="vm.item"></comeos-content-item-like-header-component>
+                        <socialshareheader ng-if="vm.item != undefined" item="vm.item"></socialshareheader>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="comeos-button comeos-button-cover comeos-button-white" comeos-questions-contact-us itemname="vm.item.name">
+            <span translate>questionscontactus</span>
+        </div>
+    </section>
+    <div class="main-container container">
+
+        <section class="blog-post">
+            <div class="pagecontentstart">
+                <!--<div class="row text-center">
+                    <div class="col-sm-10 col-sm-offset-1 ">
+                        <div class="breadcrumbs">
+                            <a ui-sref="Root.Content.Tools" translate>tools</a> > <a>{{vm.item.titel}}</a>
+                        </div>
+                    </div>
+                </div>-->
+
+                <div class="row text-center" ng-if="vm.item.themegrafiek.length || vm.item.sectorgrafiek.length || vm.item.regiongrafiek.length || vm.item.pcgrafiek.length">
+
+                    <div class="col-sm-10 col-sm-offset-1 ">
+
+                        <div class="dossier-tags center">
+                            <span class="dossier-tags-chip" getlink content-item-id="{{tag.isroot !== false ? tag.id : tag[tag.contentType + '_' + tag.contentType].id}}" content-type-id="{{::tag.contentTypeId}}" theme="{{::tag.id}}" ng-repeat="tag in vm.item.themegrafiek">
+                                {{tag.title}}
+                            </span>
+                            <span class="dossier-tags-chip" getlink content-item-id="{{tag.isroot !== false ? tag.id : tag[tag.contentType + '_' + tag.contentType].id}}" content-type-id="{{::tag.contentTypeId}}" ng-repeat="tag in vm.item.sectorgrafiek">
+                                {{tag.title}}
+                            </span>
+                            <span class="dossier-tags-chip" getlink content-item-id="{{tag.isroot !== false ? tag.id : tag[tag.contentType + '_' + tag.contentType].id}}" content-type-id="{{::tag.contentTypeId}}" ng-repeat="tag in vm.item.regiongrafiek">
+                                {{tag.title}}
+                            </span>
+                            <span class="dossier-tags-chip" getlink content-item-id="{{tag.isroot !== false ? tag.id : tag[tag.contentType + '_' + tag.contentType].id}}" content-type-id="{{::tag.contentTypeId}}" ng-repeat="tag in vm.item.pcgrafiek">
+                                {{tag.title}}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row introrow smartphone">
+                    <div class="col-sm-4 col-sm-offset-1">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="dossier-contact-section">
+                                    <div class="profile-picture profile-picture-circle"><img ng-src="{{::$root.staticFileBase}}/{{vm.item.persoongrafiek0.persoon_file.file}}" /></div>
+                                    <div><span class="h6">{{vm.item.persoongrafiek0.voornaam}} {{vm.item.persoongrafiek0.achternaam}}</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="two-col-introduction cktext article-body" altai-compile-html="{{vm.item.membersintroduction}}">
+                        </div>
+                    </div>
+                </div>
+                <div class="row introrow screen">
+                    <div class="col-sm-6 col-sm-offset-1">
+                        <div class="two-col-introduction cktext article-body" altai-compile-html="{{vm.item.membersintroduction}}">
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="dossier-contact-section">
+                                    <div class="profile-picture profile-picture-circle"><img ng-src="{{::$root.staticFileBase}}/{{vm.item.persoongrafiek0.persoon_file.file}}" /></div>
+                                    <div><span class="h6">{{vm.item.persoongrafiek0.voornaam}} {{vm.item.persoongrafiek0.achternaam}}</span></div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-10 col-sm-offset-1 text-center" style="margin-top:30px;">
+                    <h4>{{vm.item.titel}}</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-10 col-sm-offset-1">
+                    <div class="cktext article-body" altai-compile-html="{{vm.item.inhoud}}"></div>
+                </div>
+            </div>
+
+            <!--<div class="row">
+                <div class="col-sm-10 col-sm-offset-1">
+                    <div class="cktext article-body" altai-compile-html="{{vm.item.membersintroduction}}"></div>
+                </div>
+            </div>-->
+
+            <div class="row">
+                <div class="col-sm-10 col-sm-offset-1 ">
+                    <div class="cktext article-body">
+                        <div ng-if="vm.item.bron!=undefined && vm.item.bron!=''"><span translate>source</span>: {{vm.item.bron}}</div>
+                        <div ng-if="vm.item.databron!=undefined"><span translate>source</span>: {{vm.item.databron}}</div>
+                        <div ng-if="vm.item.date!=undefined"><span translate>lastupdate</span>: {{vm.item.date | localDate}}</div>
+                        <div ng-if="vm.item.updatefrequencygrafiek"><span translate>updatefrequency</span>: {{vm.item.updatefrequencygrafiek.title}}</div>
+                    </div>
+                </div>
+            </div>
+            <!--</div>-->
+        </section>
+    </div>
+</div>

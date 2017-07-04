@@ -1,0 +1,38 @@
+﻿
+<section id="raadvanbestuur">
+    <div>
+        <!--<div class="row">
+            <div class="comeos-search-bar">
+                <input type="text" ng-model="$ctrl.searchRequest.queryField" ng-model-options="{debounce: 400}" placeholder="{{'search' | translate}}">
+                <i class="mdi mdi-chevron-right chevron"></i>
+            </div>
+        </div>-->
+        <div class="row">
+            <div class="col-sm-12">
+                <h1 class="text-center" translate>rvb</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="rvbcards">
+                <div class="altai-card rvbcard" ng-repeat="item in $ctrl.data.pageResults">
+                    <div>
+                        <div class="altai-card-body">
+                            <div class="altai-card-image-wrapper">
+                                <div class="altai-card-image" ng-if="item.filervblid[0].file" altai-image-style-set imagestyleset="smallcorporatelogo" image="item.filervblid[0].file"></div>
+                            </div>
+                            <div class="altai-card-title">
+                                <h5>{{item.fullname}}</h5>
+                            </div>
+                            <div class="altai-card-function-titles">
+                                <div class="altai-card-function-title" altai-compile-html="{{item.description}}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</section>

@@ -1,0 +1,40 @@
+﻿<div class="altai-list">
+    <div class="search">
+        <input class="query" type="text" placeholder="{{'searchinname'|translate}}" ng-model-options="{ debounce: 300 }" ng-model="vm.searchModel.name" />
+        <md-button ng-click="vm.createCategory()" class="md-button-altai md-raised"><i class="mdi mdi-plus"></i> {{::'create'|translate}} </md-button>
+    </div>
+
+
+</div>
+<div class="altai-admin-section altai-Forum">
+    <table>
+
+        <thead>
+            <tr class="forum-Category-Border color" >                
+                <th><a ng-click="vm.setSorting('Name')">{{'category'|translate}}<span ng-if="vm.searchModel.sorterAttr =='Name'"><span ng-if="vm.searchModel.sorterDesc"><i class="mdi mdi-menu-down"></i></span><span ng-if="!vm.searchModel.sorterDesc"><i class="mdi mdi-menu-up"></i></span></span></a></th>
+                <th><a ng-click="vm.setSorting('ForumCount')">{{'forumCount'|translate}}<span ng-if="vm.searchModel.sorterAttr =='ForumCount'"><span ng-if="vm.searchModel.sorterDesc"><i class="mdi mdi-menu-down"></i></span><span ng-if="!vm.searchModel.sorterDesc"><i class="mdi mdi-menu-up"></i></span></span></a></th>
+                <th>{{'actions'|translate}}</th>
+
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr ng-repeat="category in vm.categories.pageResults track by category.id" class="forum-Category-Border" style="border-color:{{category.color}}">                
+                <td><h2><b>{{category.name}}</b></h2>{{category.description}}</td>
+                <td>{{category.forumCount}}</td>
+                <td style="width: 35%">
+                    <md-button ng-click="vm.deleteCategories(category)" class="md-button-altai md-raised"><i class="mdi mdi-delete"></i> {{::'delete'|translate}}</md-button>
+                    <md-button ng-click="vm.createForum(category)" class="md-button-altai md-raised"><i class="mdi mdi-plus"></i> {{::'createForum'|translate}} </md-button>
+                    <md-button ng-click="vm.openForums(category)" class="md-button-altai md-raised"><i class="mdi mdi-google-circles-extended"></i> {{::'forumCount'|translate}} </md-button>
+                </td>
+
+            </tr>
+        </tbody>
+
+    </table>
+
+    <div class="panel-buttons">
+        <altai-pagination paged-result="vm.categories" switch-page="vm.openPage(pageIndex)"></altai-pagination>
+    </div>
+
+</div>

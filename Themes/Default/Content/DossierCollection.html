@@ -1,0 +1,46 @@
+﻿<div>
+    <div class="container content-container">
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <div class="elements--title text-center">
+                    <h4>Alle Dossiers</h4>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="masonry masonry-blog">
+                <div class="masonry__container masonry--animate masonry--active">
+                    <div class="col-md-4 col-sm-6 masonry__item" ng-repeat="dossier in $ctrl.data.pageResults">
+                        <a href="#">
+                            <div class="card card-1 card-with-image box-shadow">
+                                <div class="content-type-label">dossier</div>
+                                <div class="card__image">
+                                    <div class="mycomeos-label">mC</div>
+                                </div>
+                                <div class="card__body boxed boxed--sm bg--white">
+                                    <div class="card__like">
+                                        <i class="icon icon-Heart"></i>
+                                    </div>
+                                    <div class="card__pills">
+                                        <span class="tag-pill--small" ng-repeat="tag in dossier.complexdossier_theme">{{tag.name}}</span>
+                                        <span class="tag-pill--small" ng-repeat="tag in dossier.complexdossier_sector">{{tag.name}}</span>
+                                        <span class="tag-pill--small" ng-repeat="tag in dossier.complexdossier_region">{{tag.name}}</span>
+                                        <span class="tag-pill--small" ng-repeat="tag in dossier.complexdossier_pc">{{tag.name}}</span>
+                                    </div>
+                                    <div class="card__title">
+                                        <h5>{{dossier.title}}</h5>
+                                    </div>
+                                    <div class="card__event-data">
+                                        <div class="event-data-item"><i class="icon icon-Calendar-2"></i>{{vm.item.lastUpdated | localDate}}</div>
+                                    </div>
+                                    <div ng-if="dossier.membersintroduction" altai-compile-html="{{dossier.membersintroduction | limitTo:100}}"></div>
+                                    <div ng-if="!dossier.membersintroduction" altai-compile-html="{{dossier.publicintroduction | limitTo:100}}"></div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

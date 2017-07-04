@@ -1,0 +1,100 @@
+﻿<div analytics analytics-item="$ctrl.data.pageResults[0]" analytics-on-view="true"></div>
+<div print-section class="root theme--square altai-theme-content actu dossier container-content">
+    <section class="comeos-cover cover-large comeos-bg-magazine">
+        <div class="altai-panel">
+            <div class="container">
+                <div class="row">
+                    <div class="row">
+                        <div class="col-sm-10 col-sm-offset-1 text-center">
+                            <div class="title">{{$ctrl.data.pageResults[0].title}}</div>
+                            <div class="contact-buttons">
+                                <!--<div class="mail"><i class="mdi mdi-heart"></i></div>-->
+
+                                <div class="contact-buttons">
+                                    <comeos-content-item-like-header-component class="like" ng-if="$ctrl.data.pageResults[0] != undefined" content-item="$ctrl.data.pageResults[0]"></comeos-content-item-like-header-component>
+                                    <socialshareheader ng-if="$ctrl.data.pageResults[0] != undefined" item="$ctrl.data.pageResults[0]"></socialshareheader>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="comeos-button comeos-button-cover comeos-button-white" comeos-questions-contact-us itemname="$ctrl.data.pageResults[0].name">
+                        <span translate>questionscontactus</span>
+                    </div>
+                </div>
+            </div>
+    </section>
+    <div  class="main-container container">
+
+        <section class="blog-post">
+            <div class="pagecontentstart">
+                <!--<div class="row text-center">
+                    <div class="col-sm-10 col-sm-offset-1 ">
+                        <div class="breadcrumbs">
+                            <a ui-sref="Root.Content.Library" translate>bibliotheek</a> > <a><span translate>comeos</span> <span translate>magazine</span> {{$ctrl.data.pageResults[0].title}}</a>
+                        </div>
+                    </div>
+                </div>-->
+
+                <div class="row text-center" ng-if="$ctrl.data.pageResults[0].thememagazineartikel.length || $ctrl.data.pageResults[0].sectormagazineartikel.length || $ctrl.data.pageResults[0].regionmagazineartikel.length || $ctrl.data.pageResults[0].pcmagazineartikel.length">
+
+                    <div class="col-sm-10 col-sm-offset-1 ">
+
+                        <div class="dossier-tags">
+                            <span class="dossier-tags-chip" getlink content-item-id="{{tag.isroot !== false ? tag.id : tag[tag.contentType + '_' + tag.contentType].id}}" content-type-id="{{::tag.contentTypeId}}" theme="{{::tag.id}}" ng-repeat="tag in $ctrl.data.pageResults[0].thememagazineartikel">
+                                {{tag.title}}
+                            </span>
+                            <span class="dossier-tags-chip" getlink content-item-id="{{tag.isroot !== false ? tag.id : tag[tag.contentType + '_' + tag.contentType].id}}" content-type-id="{{::tag.contentTypeId}}" ng-repeat="tag in $ctrl.data.pageResults[0].sectormagazineartikel">
+                                {{tag.title}}
+                            </span>
+                            <span class="dossier-tags-chip" getlink content-item-id="{{tag.isroot !== false ? tag.id : tag[tag.contentType + '_' + tag.contentType].id}}" content-type-id="{{::tag.contentTypeId}}" ng-repeat="tag in $ctrl.data.pageResults[0].regionmagazineartikel">
+                                {{tag.title}}
+                            </span>
+                            <span class="dossier-tags-chip" getlink content-item-id="{{tag.isroot !== false ? tag.id : tag[tag.contentType + '_' + tag.contentType].id}}" content-type-id="{{::tag.contentTypeId}}" ng-repeat="tag in $ctrl.data.pageResults[0].pcmagazineartikel">
+                                {{tag.title}}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row dossier-section publicationcoverimagerow mobile">
+                    <div class="col-sm-5 col-sm-offset-1">
+                        <div class="publicationcoverimagecontainer">
+                            <a ng-href="{{::$root.staticFileBase}}/{{$ctrl.data.pageResults[0].filemagazine1.file}}" target="_blank"><img class="publicationcoverimage" ng-src="{{::$root.staticFileBase}}/{{$ctrl.data.pageResults[0].filemagazine2.file}}" ng-if="vm.activeLang.code=='fr'" /></a>
+                            <a ng-href="{{::$root.staticFileBase}}/{{$ctrl.data.pageResults[0].filemagazine.file}}" target="_blank"><img class="publicationcoverimage" ng-src="{{::$root.staticFileBase}}/{{$ctrl.data.pageResults[0].filemagazine3.file}}" ng-if="vm.activeLang.code=='nl'" /></a>
+                        </div>
+                    </div>
+                    <div class="col-sm-5">
+                        <div class="cktext article-introduction" altai-compile-html="{{$ctrl.data.pageResults[0].shortintroduction}}">
+                        </div>
+                        <div class="cktext" altai-compile-html="{{$ctrl.data.pageResults[0].membersintroduction}}">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row dossier-section publicationcoverimagerow desktop">
+                    <div class="col-sm-10 col-sm-offset-1">
+                        <div class="publicationcoverimagecontainer">
+                            <a ng-href="{{::$root.staticFileBase}}/{{$ctrl.data.pageResults[0].filemagazine1.file}}" target="_blank"><img class="publicationcoverimage" ng-src="{{::$root.staticFileBase}}/{{$ctrl.data.pageResults[0].filemagazine2.file}}" ng-if="vm.activeLang.code=='fr'" /></a>
+                            <a ng-href="{{::$root.staticFileBase}}/{{$ctrl.data.pageResults[0].filemagazine.file}}" target="_blank"><img class="publicationcoverimage" ng-src="{{::$root.staticFileBase}}/{{$ctrl.data.pageResults[0].filemagazine3.file}}" ng-if="vm.activeLang.code=='nl'" /></a>
+                        </div>
+                        <div class="cktext article-introduction" altai-compile-html="{{$ctrl.data.pageResults[0].shortintroduction}}">
+                        </div>
+                        <div class="cktext" altai-compile-html="{{$ctrl.data.pageResults[0].membersintroduction}}">
+                        </div>
+                    </div>
+                </div>
+                <div class="row dossier-section>
+                    <div class="col-sm-10 col-sm-offset-1">
+                        <h1 class="text-center" translate>magazine</h1>
+                        <comeos-masonry items="$ctrl.data.pageResults[0].magazineartikelmagazine"></comeos-masonry>
+                    </div>
+                </div>
+                <div class="row dossier-section">
+                    <div print-remove class="col-sm-10 col-sm-offset-1  comeos-buttons">
+                        <a class="comeos-button" analytics analytics-item="$ctrl.data.pageResults[0]" analytics-on-click="logprint" print-btn><span translate>print</span></a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </div>
+</div>

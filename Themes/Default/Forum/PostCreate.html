@@ -1,0 +1,22 @@
+﻿
+<section ng-if="vm.show" class="comeos-bg-grey-light comment-add-section" >
+    <div class="container content-container comeos-bg-grey ">
+        <div id="topic-title">
+            <div class="form-group">
+                <altai-text-editor ng-model="::vm.newPost.Description" template="complexmiddle"></altai-text-editor>
+            </div>
+            <div class="container comment-button-container">
+                <md-button ng-click="vm.createPost(vm.newPost)" class="md-button-altai md-raised comment-count-button altai-button-go">
+                    <i class="mdi mdi-content-save"></i>
+                    {{'post'|translate}}
+                </md-button>
+                <md-button ng-click="vm.cancel()" class="md-button-altai md-raised comment-count-button altai-button-back">
+                    <i class="mdi mdi-close"></i>
+                    {{'cancel'|translate}}
+                </md-button>
+            </div>
+        </div>
+    </div>
+</section>
+
+

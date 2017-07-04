@@ -1,0 +1,6 @@
+﻿<div>
+    <select ng-model="vm.selectedForm" ng-options="m.id as m.name for m in vm.contentForms"></select>
+    <button ng-click="vm.createFormBuildingBlock(vm.selectedForm)">
+        {{"add" | translate}}
+    </button>
+</div>

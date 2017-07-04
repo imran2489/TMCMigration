@@ -1,0 +1,1 @@
+{"version":3,"file":"CourseContentHistoryClass.js","sourceRoot":"","sources":["CourseContentHistoryClass.ts"],"names":[],"mappings":";;AAAA;IAEI,MAAM,CAAC;QACH,KAAK,EAAE;YACP,UAAU,EAAC,GAAG;SACrB;QACD,QAAQ,EAAC,OAAO;QACR,IAAI,EAAE,UAAS,KAAK,EAAC,GAAG,EAAC,IAAI;YAEzB,OAAO,CAAC,GAAG,CAAC,KAAK,CAAC,QAAQ,CAAC,CAAC;QAEhC,CAAC;KAEJ,CAAC;AAEN,CAAC;AAfD,gFAeC"}

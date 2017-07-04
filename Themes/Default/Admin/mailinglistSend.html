@@ -1,0 +1,40 @@
+﻿<div class="page-header">
+    <h2><i class="fa fa-envelope-o"></i>&nbsp;{{'sendnewsletter'|translate}}</h2>
+</div>
+
+<panel table="true" title="Newsletter">
+    <table class="table table-striped">
+
+        <tr>
+            <td class="table-admin-col1">{{'title'|translate}}:</td>
+            <td>
+                <input type="text" data-ng-model="newNewsletter.title" />
+            </td>
+        </tr>
+
+        <tr>
+            <td>{{'message'|translate}}:</td>
+            <td><textarea data-ng-model="newNewsletter.message" style="height: 200px;width:400px;"></textarea></td>
+        </tr>
+        <tr>
+            <td>{{'scheduled'|translate}}</td>
+            <td>
+                <input type="checkbox" ng-model="scheduled" /> <input ng-if="scheduled" type="text" ng-model="newNewsletter.scheduledDateTime" placeholder="yyyy-mm-dd hh:ii" />
+            </td>
+        </tr>
+        <tr>
+            <td>{{'contentcollection'|translate}}:</td>
+            <td><select ng-options="c.id as c.name for c in contentCollections" ng-model="newNewsletter.contentCollectionId"></select> <a ui-sref="admin.content.view.edit({id:newNewsletter.contentCollectionId})">{{'settings'|translate}}</a> <altai-button type="load" ng-click="preview(newNewsletter.contentCollectionId)">{{'load'|translate}}</altai-button></td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td><altai-button type="send" ng-click="sendNewsletter()">{{'send'|translate}}</altai-button></td>
+        </tr>
+
+    </table>
+</panel>
+
+<panel title="Preview">
+    <div id="mailingPreview" style="height:300px;overflow:scroll"></div>
+</panel>

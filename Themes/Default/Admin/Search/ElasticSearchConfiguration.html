@@ -1,0 +1,17 @@
+﻿<form class="altai-form">
+    <div class="altai-admin-section">
+        <div class="subheader">
+            <h3>{{'Fields'|translate}}</h3>
+        </div>
+
+        <div class="altai-simple-form">
+            <ul class="treeview">
+                <li><altai-index-tree-selector tree="$ctrl.contentTypeId" depth="[]" add-attribute="" includes="$ctrl.includes" first-Level="$ctrl.firstLevel"></altai-index-tree-selector></li>
+            </ul>
+         
+        </div>
+        <div class="form-buttons mainbuttonrow">
+            <button type="button" class="altai-admin-icon main" ng-click="$ctrl.update()"><i class="mdi mdi-content-save"></i></button>
+        </div>
+    </div>
+</form>

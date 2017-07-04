@@ -1,0 +1,39 @@
+﻿<div class="dossier-vragen">    
+    <div class="row text-center" ng-if="$ctrl.answer">
+        <div class="col-xs-12">
+            <div ng-if="$ctrl.tagAnswerList.length>0">
+                <div class="h6 text-center nomargin">{{'ChoosePC'|translate}}</div>
+                <div class="dossier-tags">
+                    <!--<span>
+                        <span class="dossier-tags-chip" ng-click="$ctrl.selectGeneralTag()" ng-class="{selected:$ctrl.generalTagSelected}">{{'TAG_GENERAL_PC'|translate}}</span>
+                    </span>-->
+                    <span class="dossier-tags-chip" ng-click="$ctrl.selectGeneralAnswer()" ng-class="{selected:$ctrl.generalAnswerSelected}">{{"PC UNDEFINED"|translate}}</span>
+                    <span ng-repeat="tag in $ctrl.tagAnswerList">
+                        <span class="dossier-tags-chip" ng-click="$ctrl.selectTag(tag)" ng-class="{selected:tag.selected}">{{tag.tag.name}}</span>
+                    </span>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div    ng-if="$ctrl.faqmodel.length>0">
+       
+        <div class="row" print-remove>
+           
+            <div class="col-md-12 comeos-buttons">
+                <div class="comeos-button no-animate" ng-click="$ctrl.expandAll()" ng-show="!$ctrl.allexpanded" translate>
+                    showcompletedossier
+                </div>
+                <div class="comeos-button no-animate" ng-click="$ctrl.collapseAll()" ng-show="$ctrl.allexpanded" translate>
+                    hideanswers
+                </div>
+                <a class="comeos-button" analytics analytics-item="$ctrl.data.pageResults[0]" analytics-on-click="logprint" print-btn><span translate>print</span></a>    
+            </div>
+            </div>
+
+        <faqquestion activelang="$ctrl.activelang" answer="$ctrl.answer" faqquestionmodel="question" ng-repeat="question in $ctrl.faqmodel">
+
+        </faqquestion>
+        
+    </div>
+</div>

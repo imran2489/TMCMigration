@@ -1,0 +1,7 @@
+﻿<div>
+    <select ng-options="t as t.name for t in $ctrl.templates track by t.id" ng-model="$ctrl.contentItemBb.template"></select>
+    <div>ContentItemId: <input type="text" ng-model="$ctrl.contentItemBb.contentItemId" /></div>
+</div>
+<div>
+    <button ng-click='$ctrl.createBuildingBlock($ctrl.contentItemBb)'>{{'save'|translate}}</button>
+</div>

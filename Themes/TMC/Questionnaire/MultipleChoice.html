@@ -1,0 +1,11 @@
+﻿<div class="animate-show">
+
+    <div class="question">
+        {{question}}
+    </div>
+
+    <ul class="question-options">
+        <li ng-repeat="choice in choices" ng-click="selectChoice($index)" ng-class="{'activeChoice':activeChoice==$index,'inapplicable':choice.inapplicable}"><i class="fa fa-circle-o"></i> {{choice.description}}</li>
+    </ul>
+
+</div>

@@ -1,0 +1,67 @@
+﻿<altai-toolbar-menu menu-model="vm.toolbar" use-default-langs="true" languages="vm.languages"></altai-toolbar-menu>
+<form class="altai-form" name="contentTypeAttributeUpdate">
+    <div class="altai-admin-section">
+        <div class="subheader">
+            <h3>{{'properties'|translate}}</h3>
+        </div>
+        <div class="altai-simple-form">
+            <div class="form-group">
+                <label>{{'label'|translate}}</label>
+                <div altai-translatable-input="vm.item.labelTranslatable" languages="vm.languages" />
+            </div>
+            <div class="form-group">
+                <label>{{'key'|translate}}</label>
+                <input type="text" ng-model="vm.item.key" />
+            </div>
+            <div class="form-group">
+                <label>{{'type'|translate}}</label>
+                <select ng-model="vm.item.variableType" ng-options="t.name as t.name for t in vm.variableTypes">
+                </select>
+            </div>
+            <div class="form-group">
+                <label>{{'required'|translate}}</label>
+                <input type="checkbox" ng-model="vm.item.required" />
+            </div>
+            <div class="form-group">
+                <label>{{'hasdefaultvalue'|translate}}</label>
+                <input type="checkbox" ng-model="vm.item.hasDefaultValue" />
+            </div>
+            <div class="form-group">
+                <label>{{'defaultvalue'|translate}}</label>
+                <input type="text" ng-model="vm.item.defaultValue" />
+            </div>
+            <div class="form-group">
+                <label>{{'template'|translate}}</label>
+                <select ng-model="vm.item.editTemplate" ng-options="t.name as t.name for t in vm.contentRelationTemplates">
+                    <option value="">-- {{'default'|translate}} --</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>{{'collections'|translate}}</label>
+                <select ng-model="vm.item.contentCollectionId" ng-options="t.id as t.name for t in vm.contentCollections">
+                    <option value="">-- {{'default'|translate}} --</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>{{'userdefinable'|translate}}</label>
+                <input type="checkbox" ng-model="vm.item.userDefinable" />
+            </div>
+            <div class="form-group">
+                <label>{{'servicedefinable'|translate}}</label>
+                <input type="checkbox" ng-model="vm.item.serviceDefinable" />
+            </div>
+            <div class="form-group">
+                <label>{{'serviceurl'|translate}}</label>
+                <input type="text" ng-model="vm.item.serviceUrl" />
+            </div>
+            <div class="form-group">
+                <label>{{'variablevisibilitydependencyexpression'|translate}}</label>
+                <input type="text" ng-model="vm.item.variableVisibilityDependencyExpression" />
+            </div>
+            <div class="form-group">
+                <label>{{'variablerequirednessdependencyexpression'|translate}}</label>
+                <input type="text" ng-model="vm.item.variableRequirednessDependencyExpression" />
+            </div>
+        </div>
+    </div>
+</form>

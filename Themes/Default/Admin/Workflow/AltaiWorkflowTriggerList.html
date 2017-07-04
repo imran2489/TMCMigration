@@ -1,0 +1,43 @@
+﻿<div class="altai-list">
+    
+    <div class="search">
+        <input class="query" type="text" placeholder="{{'searchinname'|translate}}" ng-model-options="{ debounce: 300 }" ng-model="$ctrl.searchModel.name" />
+        <md-button ng-click="$ctrl.createTrigger()" class="md-button-altai md-raised"><i class="mdi mdi-plus"></i> {{::'create'|translate}} </md-button>
+    </div>
+
+
+</div>
+<div class="altai-admin-section altai-Forum">
+    <table>
+
+        <thead>
+            <tr class="forum-Category-Border color">
+                <th><a ng-click="$ctrl.setSorting('Name')">{{'triggername'|translate}}<span ng-if="$ctrl.searchModel.sorterAttr =='Name'"><span ng-if="$ctrl.searchModel.sorterDesc"><i class="mdi mdi-menu-down"></i></span><span ng-if="!$ctrl.searchModel.sorterDesc"><i class="mdi mdi-menu-up"></i></span></span></a></th>
+                <th><a ng-click="$ctrl.setSorting('EventName')">{{'eventname'|translate}}<span ng-if="$ctrl.searchModel.sorterAttr =='EventName'"><span ng-if="$ctrl.searchModel.sorterDesc"><i class="mdi mdi-menu-down"></i></span><span ng-if="!$ctrl.searchModel.sorterDesc"><i class="mdi mdi-menu-up"></i></span></span></a></th>
+                <th><a ng-click="$ctrl.setSorting('Active')">{{'active'|translate}}<span ng-if="$ctrl.searchModel.sorterAttr =='Active'"><span ng-if="$ctrl.searchModel.sorterDesc"><i class="mdi mdi-menu-down"></i></span><span ng-if="!$ctrl.searchModel.sorterDesc"><i class="mdi mdi-menu-up"></i></span></span></a></th>
+                <th>{{'actions'|translate}}</th>
+
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr ng-repeat="trigger in $ctrl.triggers.pageResults track by trigger.id"  >
+                <td>{{trigger.name}}</td>
+                <td>{{trigger.eventName}}</td>
+                <td>{{trigger.active}}</td>
+                <td style="width: 35%">
+                    <md-button ng-click="$ctrl.viewTrigger(trigger)" class="md-button-altai md-raised"><i class="mdi mdi-google-circles-extended"></i> {{'viewTriggers'|translate}} </md-button>
+                    <md-button ng-click="$ctrl.deleteTriggers(trigger)" class="md-button-altai md-raised"><i class="mdi mdi-delete"></i> {{::'delete'|translate}}</md-button>
+                    <md-button ng-click="$ctrl.updateTrigger(trigger)" class="md-button-altai md-raised"><i class="mdi mdi-pencil"></i> {{::'edit'|translate}}</md-button>
+                </td>
+
+            </tr>
+        </tbody>
+
+    </table>
+
+    <div class="panel-buttons">
+        <altai-pagination paged-result="$ctrl.triggers" switch-page="$ctrl.openPage(pageIndex)"></altai-pagination>
+    </div>
+
+</div>
